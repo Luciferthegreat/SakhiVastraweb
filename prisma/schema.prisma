@@ -1,0 +1,110 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  id        String    @id @default(cuid())
+  name      String
+  slug      String    @unique
+  createdAt DateTime  @default(now())
+  products  Product[]
+}
+
+model Product {
+  id          String           @id @default(cuid())
+  name        String
+  slug        String           @unique
+  description String
+  fabric      String?
+  images      String[]
+  basePrice   Int
+  categoryId  String?
+  active      Boolean          @default(true)
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  category    Category?        @relation(fields: [categoryId], references: [id])
+  variants    ProductVariant[]
+}
+
+model ProductVariant {
+  id         String      @id @default(cuid())
+  productId  String
+  size       String
+  color      String?
+  sku        String      @unique
+  stock      Int         @default(0)
+  priceDelta Int         @default(0)
+  orderItems OrderItem[]
+  product    Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
+
+model Address {
+  id       String  @id @default(cuid())
+  fullName String
+  phone    String
+  line1    String
+  line2    String?
+  city     String
+  state    String
+  pincode  String
+  country  String  @default("India")
+  orders   Order[]
+}
+
+model Order {
+  id                   String        @id @default(cuid())
+  orderNumber          String        @unique
+  email                String
+  phone                String
+  addressId            String
+  subtotal             Int
+  shippingFee          Int           @default(0)
+  total                Int
+  razorpayOrderId      String?       @unique
+  razorpayPaymentId    String?
+  razorpaySignature    String?
+  paymentStatus        PaymentStatus @default(PENDING)
+  shiprocketOrderId    String?
+  shiprocketShipmentId String?
+  awbCode              String?
+  courierName          String?
+  shipmentStatus       String?       @default("NOT_CREATED")
+  status               OrderStatus   @default(CREATED)
+  createdAt            DateTime      @default(now())
+  updatedAt            DateTime      @updatedAt
+  address              Address       @relation(fields: [addressId], references: [id])
+  items                OrderItem[]
+}
+
+model OrderItem {
+  id          String         @id @default(cuid())
+  orderId     String
+  variantId   String
+  productName String
+  size        String
+  quantity    Int
+  unitPrice   Int
+  order       Order          @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  variant     ProductVariant @relation(fields: [variantId], references: [id])
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
+
+enum OrderStatus {
+  CREATED
+  CONFIRMED
+  PACKED
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}

@@ -1,0 +1,463 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Fraunces", serif;
+  --font-body: "Work Sans", sans-serif;
+}
+
+/* =========================================================
+   SAKHI VASTRA — BRAND PALETTE
+   ========================================================= */
+
+body {
+  background-color: #f8f5ea;
+  color: #30301f;
+}
+
+/* =========================================================
+   BOOTI / HERITAGE DIVIDER
+   ========================================================= */
+
+.booti-divider {
+  height: 14px;
+
+  background-image: radial-gradient(
+    circle at 7px 7px,
+    #c89b2b 1.6px,
+    transparent 1.8px
+  );
+
+  background-size: 20px 14px;
+  background-repeat: repeat-x;
+  background-position: center;
+
+  opacity: 0.75;
+}
+
+.booti-divider--dense {
+  background-size: 14px 14px;
+}
+
+/* =========================================================
+   GLOBAL LINKS
+   ========================================================= */
+
+a {
+  transition:
+    color 300ms ease,
+    background-color 300ms ease,
+    border-color 300ms ease,
+    transform 300ms ease;
+}
+
+/* =========================================================
+   BUTTON / INTERACTION HELPERS
+   ========================================================= */
+
+::selection {
+  background: #6b7135;
+  color: #f8f5ea;
+}
+
+/* =========================================================
+   KEYBOARD ACCESSIBILITY
+   ========================================================= */
+
+:focus-visible {
+  outline: 2px solid #c89b2b;
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   SMOOTH SCROLL
+   ========================================================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8f5ea;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6b7135;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #565b2a;
+}
+
+/* =========================================================
+   SUBTLE ANIMATIONS
+   ========================================================= */
+
+@keyframes soft-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes soft-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.45;
+  }
+
+  50% {
+    transform: scale(1.025);
+    opacity: 0.7;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes card-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-soft-float {
+  animation: soft-float 4s ease-in-out infinite;
+}
+
+.animate-soft-pulse {
+  animation: soft-pulse 5s ease-in-out infinite;
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s ease-out both;
+}
+
+.animate-fade-up-delay {
+  animation: fade-up 0.8s ease-out 0.12s both;
+}
+
+.animate-fade-up-delay-2 {
+  animation: fade-up 0.8s ease-out 0.22s both;
+}
+
+.animate-fade-up-delay-3 {
+  animation: fade-up 0.8s ease-out 0.35s both;
+}
+
+.animate-card-float {
+  animation: card-float 4s ease-in-out infinite;
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* =========================================
+   SAKHI VASTRA — PREMIUM MOTION
+   ========================================= */
+
+@keyframes sv-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sv-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sv-image-reveal {
+  from {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes sv-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes sv-float-slow {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(8px, -8px);
+  }
+}
+
+@keyframes sv-line-grow {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: center;
+  }
+
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+    transform-origin: center;
+  }
+}
+
+.sv-fade-up {
+  animation: sv-fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.sv-fade-in {
+  animation: sv-fade-in 0.9s ease-out both;
+}
+
+.sv-image-reveal {
+  animation: sv-image-reveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.sv-float {
+  animation: sv-float 6s ease-in-out infinite;
+}
+
+.sv-float-slow {
+  animation: sv-float-slow 10s ease-in-out infinite;
+}
+
+.sv-line-grow {
+  animation: sv-line-grow 0.8s ease-out both;
+}
+
+/* Staggered entrance */
+.sv-delay-1 {
+  animation-delay: 0.1s;
+}
+
+.sv-delay-2 {
+  animation-delay: 0.22s;
+}
+
+.sv-delay-3 {
+  animation-delay: 0.34s;
+}
+
+.sv-delay-4 {
+  animation-delay: 0.48s;
+}
+
+.sv-delay-5 {
+  animation-delay: 0.62s;
+}
+
+.sv-delay-6 {
+  animation-delay: 0.8s;
+}
+
+/* Premium hover */
+.sv-hover-lift {
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s ease;
+}
+
+.sv-hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+.sv-hover-image {
+  transition:
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.6s ease;
+}
+
+.sv-hover-image:hover {
+  transform: scale(1.025);
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .sv-fade-up,
+  .sv-fade-in,
+  .sv-image-reveal,
+  .sv-float,
+  .sv-float-slow,
+  .sv-line-grow {
+    animation: none !important;
+  }
+
+  .sv-hover-lift,
+  .sv-hover-image {
+    transition: none !important;
+  }
+}
+
+/* =========================================
+   SAKHIVASTRA WALKING LOADER
+========================================= */
+
+@keyframes walk-left-leg {
+  0%,
+  100% {
+    transform: rotate(25deg);
+  }
+
+  50% {
+    transform: rotate(-25deg);
+  }
+}
+
+@keyframes walk-right-leg {
+  0%,
+  100% {
+    transform: rotate(-25deg);
+  }
+
+  50% {
+    transform: rotate(25deg);
+  }
+}
+
+@keyframes walk-left-arm {
+  0%,
+  100% {
+    transform: rotate(-25deg);
+  }
+
+  50% {
+    transform: rotate(25deg);
+  }
+}
+
+@keyframes walk-right-arm {
+  0%,
+  100% {
+    transform: rotate(25deg);
+  }
+
+  50% {
+    transform: rotate(-25deg);
+  }
+}
+
+@keyframes girl-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes loader-dot {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+
+/* Girl body movement */
+.walking-girl {
+  animation: girl-bounce 0.7s ease-in-out infinite;
+}
+
+/* Arms */
+.walking-arm-left {
+  animation: walk-left-arm 0.7s ease-in-out infinite;
+}
+
+.walking-arm-right {
+  animation: walk-right-arm 0.7s ease-in-out infinite;
+}
+
+/* Legs */
+.walking-leg-left {
+  animation: walk-left-leg 0.7s ease-in-out infinite;
+}
+
+.walking-leg-right {
+  animation: walk-right-leg 0.7s ease-in-out infinite;
+}
+
+/* Loading dots */
+.loader-dot {
+  animation: loader-dot 1.2s ease-in-out infinite;
+}
+
+.loader-dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.loader-dot:nth-child(3) {
+  animation-delay: 0.3s;
+}

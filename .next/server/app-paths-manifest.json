@@ -1,0 +1,18 @@
+{
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/checkout/create-order/route": "app/api/checkout/create-order/route.js",
+  "/api/checkout/verify/route": "app/api/checkout/verify/route.js",
+  "/api/malik/login/route": "app/api/malik/login/route.js",
+  "/api/products/route": "app/api/products/route.js",
+  "/api/shiprocket/track/[awb]/route": "app/api/shiprocket/track/[awb]/route.js",
+  "/api/sync-sheet/route": "app/api/sync-sheet/route.js",
+  "/cart/page": "app/cart/page.js",
+  "/checkout/page": "app/checkout/page.js",
+  "/malik/page": "app/malik/page.js",
+  "/order-confirmation/[orderId]/page": "app/order-confirmation/[orderId]/page.js",
+  "/page": "app/page.js",
+  "/product/[slug]/page": "app/product/[slug]/page.js",
+  "/shop/page": "app/shop/page.js",
+  "/sync/page": "app/sync/page.js"
+}
