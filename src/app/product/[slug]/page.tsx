@@ -7,9 +7,15 @@ function formatInr(paise: number) {
   return `₹${(paise / 100).toLocaleString("en-IN")}`;
 }
 
-export default async function ProductPage({ params }: { params: { slug: string } }) {
+export default async function ProductPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+
   const product = await prisma.product.findUnique({
-    where: { slug: params.slug },
+    where: { slug },
     include: { variants: true },
   });
 
