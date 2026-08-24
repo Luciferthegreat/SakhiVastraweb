@@ -1165,3 +1165,12 @@ export async function syncProducts() {
 // --------------------------------------------------------------
 // ERROR HANDLING
 // --------------------------------------------------------------
+syncProducts()
+  .catch((err) => {
+    console.error("\n❌ Sync failed:");
+    console.error(err);
+    process.exit(1);
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
+  });
