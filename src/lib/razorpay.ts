@@ -1,17 +1,20 @@
 import Razorpay from "razorpay";
 import crypto from "crypto";
 
-// Server-side Razorpay instance. Never import this from a client component.
-export const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID!,
-  key_secret: process.env.RAZORPAY_KEY_SECRET!,
-});
+export function getRazorpay() {
+  const keyId = process.env.RAZORPAY_KEY_ID;
+  const keySecret = process.env.RAZORPAY_KEY_SECRET;
 
-/**
- * Verifies the signature Razorpay returns after checkout completes.
- * This MUST pass before an order is marked as paid — never trust the
- * client-side "success" callback alone.
- */
+  if (!keyId || !keySecret) {
+    throw new Error("Razorpay environment variables are missing");
+  }
+
+  return new Razorpay({
+    key_id: keyId,
+    key_secret: keySecret,
+  });
+}
+
 export function verifyRazorpaySignature({
   orderId,
   paymentId,
@@ -21,19 +24,27 @@ export function verifyRazorpaySignature({
   paymentId: string;
   signature: string;
 }): boolean {
+  const secret = process.env.RAZORPAY_KEY_SECRET;
+
+  if (!secret) {
+    throw new Error("RAZORPAY_KEY_SECRET is missing");
+  }
+
   const expected = crypto
-    .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET!)
+    .createHmac("sha256", secret)
     .update(`${orderId}|${paymentId}`)
     .digest("hex");
 
-  return crypto.timingSafeEqual(Buffer.from(expected), Buffer.from(signature));
+  if (expected.length !== signature.length) {
+    return false;
+  }
+
+  return crypto.timingSafeEqual(
+    Buffer.from(expected, "utf8"),
+    Buffer.from(signature, "utf8")
+  );
 }
 
-/**
- * Verifies webhook payloads sent to /api/webhooks/razorpay (recommended
- * in addition to client-side verification, since webhooks fire even if
- * the user closes the tab mid-checkout).
- */
 export function verifyRazorpayWebhookSignature({
   body,
   signature,
@@ -41,10 +52,23 @@ export function verifyRazorpayWebhookSignature({
   body: string;
   signature: string;
 }): boolean {
+  const secret = process.env.RAZORPAY_WEBHOOK_SECRET;
+
+  if (!secret) {
+    throw new Error("RAZORPAY_WEBHOOK_SECRET is missing");
+  }
+
   const expected = crypto
-    .createHmac("sha256", process.env.RAZORPAY_WEBHOOK_SECRET!)
+    .createHmac("sha256", secret)
     .update(body)
     .digest("hex");
 
-  return crypto.timingSafeEqual(Buffer.from(expected), Buffer.from(signature));
+  if (expected.length !== signature.length) {
+    return false;
+  }
+
+  return crypto.timingSafeEqual(
+    Buffer.from(expected, "utf8"),
+    Buffer.from(signature, "utf8")
+  );
 }
