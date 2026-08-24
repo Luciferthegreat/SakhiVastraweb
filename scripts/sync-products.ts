@@ -572,7 +572,7 @@ async function findExistingProduct(
 // MAIN
 // ------------------------------------------------------------
 
-async function main() {
+export async function syncProducts() {
   validateEnvironment();
 
   console.log(
@@ -1165,25 +1165,3 @@ async function main() {
 // --------------------------------------------------------------
 // ERROR HANDLING
 // --------------------------------------------------------------
-
-main()
-  .catch(
-    (err) => {
-      console.error(
-        "\n❌ Sync failed:"
-      );
-
-      console.error(
-        err
-      );
-
-      process.exit(
-        1
-      );
-    }
-  )
-  .finally(
-    async () => {
-      await prisma.$disconnect();
-    }
-  );
