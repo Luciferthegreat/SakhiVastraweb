@@ -908,10 +908,18 @@ export async function syncProducts() {
           variant.sku
       );
 
-    const existing =
-      await findExistingProduct(
-        variantSkus
-      );
+      let existing =
+        await findExistingProduct(
+          variantSkus
+        );
+
+      if (!existing) {
+        existing = await prisma.product.findUnique({
+          where: {
+            slug,
+          },
+        });
+      }
 
     // --------------------------------------------------------
     // PRODUCT DATA
