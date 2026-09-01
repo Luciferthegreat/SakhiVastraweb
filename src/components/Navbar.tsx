@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { useCartStore } from "@/lib/cart-store";
 
 const links = [
@@ -17,6 +18,25 @@ export default function Navbar() {
   const itemCount = useCartStore((s) =>
     s.items.reduce((n, i) => n + i.quantity, 0)
   );
+
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    async function checkLogin() {
+      try {
+        const response = await fetch("/api/auth/me", {
+          method: "GET",
+          cache: "no-store",
+        });
+
+        setLoggedIn(response.ok);
+      } catch {
+        setLoggedIn(false);
+      }
+    }
+
+    checkLogin();
+  }, [pathname]);
 
   return (
     <header className="sticky top-0 z-40 border-b border-ink/10 bg-ivory/95 backdrop-blur-md">
@@ -36,7 +56,7 @@ export default function Navbar() {
         </Link>
 
         {/* ================= NAVIGATION ================= */}
-        <div className="hidden md:flex items-center gap-9 lg:gap-11">
+        <div className="hidden items-center gap-9 md:flex lg:gap-11">
           {links.map((link) => {
             const linkPath = link.href.split("?")[0];
 
@@ -58,10 +78,9 @@ export default function Navbar() {
               >
                 {link.label}
 
-                {/* Elegant gold active line */}
                 <span
                   className={`absolute bottom-0 left-1/2 h-[1.5px] -translate-x-1/2 bg-zari transition-all duration-300 ${
-                    isActive ? "w-full" : "w-0 group-hover:w-full"
+                    isActive ? "w-full" : "w-0"
                   }`}
                 />
               </Link>
@@ -69,48 +88,123 @@ export default function Navbar() {
           })}
         </div>
 
-        {/* ================= CART ================= */}
-        <Link
-          href="/cart"
-          aria-label={`Cart, ${itemCount} item${
-            itemCount === 1 ? "" : "s"
-          }`}
-          className="group relative flex items-center gap-2.5 rounded-full border border-ink/15 px-4 py-2.5 transition-all duration-300 hover:border-rani/50 hover:bg-rani/5"
-        >
-          {/* Shopping bag icon */}
-          <svg
-            width="17"
-            height="17"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="text-ink/75 transition-colors duration-300 group-hover:text-rani"
-          >
-            <path
-              d="M6.5 8.5H17.5L19 21H5L6.5 8.5Z"
-              stroke="currentColor"
-              strokeWidth="1.4"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M9 9V6.5C9 4.84 10.34 3.5 12 3.5C13.66 3.5 15 4.84 15 6.5V9"
-              stroke="currentColor"
-              strokeWidth="1.4"
-              strokeLinecap="round"
-            />
-          </svg>
+        {/* ================= LOGIN / PROFILE + CART ================= */}
+        <div className="flex items-center gap-3">
 
-          <span className="text-[11px] font-medium uppercase tracking-[0.16em] text-ink/80 transition-colors duration-300 group-hover:text-rani">
-            Cart
-          </span>
+          {/* LOGIN / PROFILE */}
+          {loggedIn ? (
+            <Link
+              href="/profile"
+              aria-label="Profile"
+              className="group flex items-center gap-2.5 rounded-full border border-ink/15 px-4 py-2.5 transition-all duration-300 hover:border-rani/50 hover:bg-rani/5"
+            >
+              <svg
+                width="17"
+                height="17"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="text-ink/75 transition-colors duration-300 group-hover:text-rani"
+              >
+                <circle
+                  cx="12"
+                  cy="8"
+                  r="3.5"
+                  stroke="currentColor"
+                  strokeWidth="1.4"
+                />
 
-          {/* Count */}
-          {itemCount > 0 && (
-            <span className="flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-rani px-1 text-[9px] font-medium text-ivory">
-              {itemCount}
-            </span>
+                <path
+                  d="M5 20C5.8 16.7 8.2 14.5 12 14.5C15.8 14.5 18.2 16.7 19 20"
+                  stroke="currentColor"
+                  strokeWidth="1.4"
+                  strokeLinecap="round"
+                />
+              </svg>
+
+              <span className="text-[11px] font-medium uppercase tracking-[0.16em] text-ink/80 transition-colors duration-300 group-hover:text-rani">
+                Profile
+              </span>
+            </Link>
+          ) : (
+            <Link
+              href={`/login?redirect=${encodeURIComponent(pathname)}`}
+              aria-label="Login"
+              className="group flex items-center gap-2.5 rounded-full border border-ink/15 px-4 py-2.5 transition-all duration-300 hover:border-rani/50 hover:bg-rani/5"
+            >
+              <svg
+                width="17"
+                height="17"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="text-ink/75 transition-colors duration-300 group-hover:text-rani"
+              >
+                <circle
+                  cx="12"
+                  cy="8"
+                  r="3.5"
+                  stroke="currentColor"
+                  strokeWidth="1.4"
+                />
+
+                <path
+                  d="M5 20C5.8 16.7 8.2 14.5 12 14.5C15.8 14.5 18.2 16.7 19 20"
+                  stroke="currentColor"
+                  strokeWidth="1.4"
+                  strokeLinecap="round"
+                />
+              </svg>
+
+              <span className="text-[11px] font-medium uppercase tracking-[0.16em] text-ink/80 transition-colors duration-300 group-hover:text-rani">
+                Login
+              </span>
+            </Link>
           )}
-        </Link>
+
+          {/* ================= CART ================= */}
+          <Link
+            href="/cart"
+            aria-label={`Cart, ${itemCount} item${
+              itemCount === 1 ? "" : "s"
+            }`}
+            className="group relative flex items-center gap-2.5 rounded-full border border-ink/15 px-4 py-2.5 transition-all duration-300 hover:border-rani/50 hover:bg-rani/5"
+          >
+            <svg
+              width="17"
+              height="17"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="text-ink/75 transition-colors duration-300 group-hover:text-rani"
+            >
+              <path
+                d="M6.5 8.5H17.5L19 21H5L6.5 8.5Z"
+                stroke="currentColor"
+                strokeWidth="1.4"
+                strokeLinejoin="round"
+              />
+
+              <path
+                d="M9 9V6.5C9 4.84 10.34 3.5 12 3.5C13.66 3.5 15 4.84 15 6.5V9"
+                stroke="currentColor"
+                strokeWidth="1.4"
+                strokeLinecap="round"
+              />
+            </svg>
+
+            <span className="text-[11px] font-medium uppercase tracking-[0.16em] text-ink/80 transition-colors duration-300 group-hover:text-rani">
+              Cart
+            </span>
+
+            {itemCount > 0 && (
+              <span className="flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-rani px-1 text-[9px] font-medium text-ivory">
+                {itemCount}
+              </span>
+            )}
+          </Link>
+
+        </div>
       </nav>
 
       {/* Heritage divider */}

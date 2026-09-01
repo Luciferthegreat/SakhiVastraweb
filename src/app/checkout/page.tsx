@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Script from "next/script";
 import { useRouter } from "next/navigation";
 import { useCartStore } from "@/lib/cart-store";
@@ -18,8 +18,11 @@ function formatInr(paise: number) {
 export default function CheckoutPage() {
   const { items, subtotal, clear } = useCartStore();
   const router = useRouter();
+
+  const [loadingUser, setLoadingUser] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
   const [form, setForm] = useState({
     email: "",
     phone: "",
@@ -31,17 +34,65 @@ export default function CheckoutPage() {
     pincode: "",
   });
 
-  function update<K extends keyof typeof form>(key: K, value: string) {
-    setForm((f) => ({ ...f, [key]: value }));
+  // ================================
+  // LOAD LOGGED-IN USER
+  // ================================
+
+  useEffect(() => {
+    async function loadUser() {
+      try {
+        const res = await fetch("/api/auth/me", {
+          method: "GET",
+          credentials: "include",
+          cache: "no-store",
+        });
+
+        if (!res.ok) {
+          setLoadingUser(false);
+          return;
+        }
+
+        const data = await res.json();
+
+        if (data.user) {
+          setForm((current) => ({
+            ...current,
+            email: data.user.email || "",
+            phone: data.user.phone || "",
+            fullName: data.user.name || "",
+          }));
+        }
+      } catch (error) {
+        console.error("Could not load user:", error);
+      } finally {
+        setLoadingUser(false);
+      }
+    }
+
+    loadUser();
+  }, []);
+
+  function update<K extends keyof typeof form>(
+    key: K,
+    value: string
+  ) {
+    setForm((f) => ({
+      ...f,
+      [key]: value,
+    }));
   }
 
   async function handlePay() {
     setError(null);
     setSubmitting(true);
+
     try {
       const res = await fetch("/api/checkout/create-order", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
         body: JSON.stringify({
           email: form.email,
           phone: form.phone,
@@ -53,13 +104,21 @@ export default function CheckoutPage() {
             state: form.state,
             pincode: form.pincode,
           },
-          items: items.map((i) => ({ variantId: i.variantId, quantity: i.quantity })),
+          items: items.map((i) => ({
+            variantId: i.variantId,
+            quantity: i.quantity,
+          })),
         }),
       });
 
       if (!res.ok) {
         const body = await res.json();
-        throw new Error(body.error?._errors?.[0] || body.error || "Could not start checkout.");
+
+        throw new Error(
+          body.error?._errors?.[0] ||
+            body.error ||
+            "Could not start checkout."
+        );
       }
 
       const data = await res.json();
@@ -71,53 +130,116 @@ export default function CheckoutPage() {
         name: "SakhiVastra",
         description: "Order payment",
         order_id: data.razorpayOrderId,
-        prefill: { email: form.email, contact: form.phone, name: form.fullName },
-        theme: { color: "#7A1F3D" },
+
+        prefill: {
+          email: form.email,
+          contact: form.phone,
+          name: form.fullName,
+        },
+
+        theme: {
+          color: "#7A1F3D",
+        },
+
         handler: async (response: any) => {
-          const verifyRes = await fetch("/api/checkout/verify", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              orderId: data.orderId,
-              razorpay_order_id: response.razorpay_order_id,
-              razorpay_payment_id: response.razorpay_payment_id,
-              razorpay_signature: response.razorpay_signature,
-            }),
-          });
+          const verifyRes = await fetch(
+            "/api/checkout/verify",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              credentials: "include",
+              body: JSON.stringify({
+                orderId: data.orderId,
+                razorpay_order_id:
+                  response.razorpay_order_id,
+                razorpay_payment_id:
+                  response.razorpay_payment_id,
+                razorpay_signature:
+                  response.razorpay_signature,
+              }),
+            }
+          );
+
           if (verifyRes.ok) {
             const result = await verifyRes.json();
+
             clear();
-            router.push(`/order-confirmation/${result.orderId}`);
+
+            router.push(
+              `/order-confirmation/${result.orderId}`
+            );
           } else {
-            setError("Payment succeeded but verification failed. Contact support with your payment ID.");
+            setError(
+              "Payment succeeded but verification failed. Contact support with your payment ID."
+            );
+
+            setSubmitting(false);
           }
         },
+
         modal: {
-          ondismiss: () => setSubmitting(false),
+          ondismiss: () => {
+            setSubmitting(false);
+          },
         },
       });
 
       rzp.open();
     } catch (err: any) {
-      setError(err.message || "Something went wrong. Please try again.");
+      setError(
+        err.message ||
+          "Something went wrong. Please try again."
+      );
+
       setSubmitting(false);
     }
   }
 
+  // ================================
+  // EMPTY CART
+  // ================================
+
   if (items.length === 0) {
     return (
-      <section className="max-w-xl mx-auto px-6 py-24 text-center">
-        <h1 className="font-display text-3xl text-ink mb-4">Nothing to check out</h1>
-        <p className="text-ink/60">Your cart is empty.</p>
+      <section className="mx-auto max-w-xl px-6 py-24 text-center">
+        <h1 className="mb-4 font-display text-3xl text-ink">
+          Nothing to check out
+        </h1>
+
+        <p className="text-ink/60">
+          Your cart is empty.
+        </p>
       </section>
     );
   }
 
   return (
     <>
-      <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="lazyOnload" />
-      <section className="max-w-3xl mx-auto px-6 py-16">
-        <h1 className="font-display text-4xl text-ink mb-10">Checkout</h1>
+      <Script
+        src="https://checkout.razorpay.com/v1/checkout.js"
+        strategy="lazyOnload"
+      />
+
+      <section className="mx-auto max-w-3xl px-6 py-16">
+        <h1 className="mb-10 font-display text-4xl text-ink">
+          Checkout
+        </h1>
+
+        {/* LOGGED-IN USER MESSAGE */}
+
+        {!loadingUser && form.email && (
+          <div className="mb-8 rounded-xl border border-[#68753a]/20 bg-[#68753a]/5 px-5 py-4">
+            <p className="text-xs uppercase tracking-widest text-[#68753a]">
+              Welcome back
+            </p>
+
+            <p className="mt-1 text-sm text-ink/70">
+              Your saved account details have been filled in.
+            </p>
+          </div>
+        )}
 
         <form
           onSubmit={(e) => {
@@ -126,57 +248,137 @@ export default function CheckoutPage() {
           }}
           className="grid gap-5"
         >
-          <div className="grid md:grid-cols-2 gap-5">
-            <Field label="Email" type="email" value={form.email} onChange={(v) => update("email", v)} required />
-            <Field label="Phone" type="tel" value={form.phone} onChange={(v) => update("phone", v)} required />
+          {/* EMAIL + PHONE */}
+
+          <div className="grid gap-5 md:grid-cols-2">
+            <Field
+              label="Email"
+              type="email"
+              value={form.email}
+              onChange={(v) => update("email", v)}
+              required
+            />
+
+            <Field
+              label="Phone"
+              type="tel"
+              value={form.phone}
+              onChange={(v) => update("phone", v)}
+              required
+            />
           </div>
-          <Field label="Full Name" value={form.fullName} onChange={(v) => update("fullName", v)} required />
-          <Field label="Address Line 1" value={form.line1} onChange={(v) => update("line1", v)} required />
-          <Field label="Address Line 2 (optional)" value={form.line2} onChange={(v) => update("line2", v)} />
-          <div className="grid md:grid-cols-3 gap-5">
-            <Field label="City" value={form.city} onChange={(v) => update("city", v)} required />
-            <Field label="State" value={form.state} onChange={(v) => update("state", v)} required />
-            <Field label="Pincode" value={form.pincode} onChange={(v) => update("pincode", v)} required />
+
+          {/* NAME */}
+
+          <Field
+            label="Full Name"
+            value={form.fullName}
+            onChange={(v) => update("fullName", v)}
+            required
+          />
+
+          {/* ADDRESS */}
+
+          <Field
+            label="Address Line 1"
+            value={form.line1}
+            onChange={(v) => update("line1", v)}
+            required
+          />
+
+          <Field
+            label="Address Line 2 (optional)"
+            value={form.line2}
+            onChange={(v) => update("line2", v)}
+          />
+
+          {/* CITY STATE PINCODE */}
+
+          <div className="grid gap-5 md:grid-cols-3">
+            <Field
+              label="City"
+              value={form.city}
+              onChange={(v) => update("city", v)}
+              required
+            />
+
+            <Field
+              label="State"
+              value={form.state}
+              onChange={(v) => update("state", v)}
+              required
+            />
+
+            <Field
+              label="Pincode"
+              value={form.pincode}
+              onChange={(v) => update("pincode", v)}
+              required
+            />
           </div>
 
-            <div className="mt-6 border-t border-ink/10 pt-6 space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-ink/60">Subtotal</span>
-                <span className="text-sm text-ink">
-                  {formatInr(subtotal())}
-                </span>
-              </div>
+          {/* ERROR */}
 
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-ink/60">Shipping</span>
-                <span className="text-sm text-ink">
-                  ₹79
-                </span>
-              </div>
-
-              <div className="flex items-center justify-between border-t border-ink/10 pt-4">
-                <span className="font-display text-xl text-ink">
-                  Total
-                </span>
-                <span className="font-display text-xl text-rani">
-                  {formatInr(subtotal() + 7900)}
-                </span>
-              </div>
+          {error && (
+            <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-xs text-red-700">
+              {error}
             </div>
-          
+          )}
+
+          {/* ORDER SUMMARY */}
+
+          <div className="mt-6 space-y-3 border-t border-ink/10 pt-6">
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-ink/60">
+                Subtotal
+              </span>
+
+              <span className="text-sm text-ink">
+                {formatInr(subtotal())}
+              </span>
+            </div>
+
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-ink/60">
+                Shipping
+              </span>
+
+              <span className="text-sm text-ink">
+                ₹79
+              </span>
+            </div>
+
+            <div className="flex items-center justify-between border-t border-ink/10 pt-4">
+              <span className="font-display text-xl text-ink">
+                Total
+              </span>
+
+              <span className="font-display text-xl text-rani">
+                {formatInr(subtotal() + 7900)}
+              </span>
+            </div>
+          </div>
+
+          {/* PAY BUTTON */}
 
           <button
             type="submit"
-            disabled={submitting}
-            className="mt-4 font-body text-sm tracking-widest px-8 py-4 bg-rani text-ivory rounded-full hover:bg-rani-dark transition-colors disabled:opacity-50"
+            disabled={submitting || loadingUser}
+            className="mt-4 rounded-full bg-rani px-8 py-4 font-body text-sm tracking-widest text-ivory transition-colors hover:bg-rani-dark disabled:cursor-not-allowed disabled:opacity-50"
           >
-            {submitting ? "Processing…" : "Pay with Razorpay"}
+            {submitting
+              ? "Processing…"
+              : "Pay with Razorpay"}
           </button>
         </form>
       </section>
     </>
   );
 }
+
+// =================================
+// FIELD COMPONENT
+// =================================
 
 function Field({
   label,
@@ -193,13 +395,16 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="text-xs uppercase tracking-widest text-ink/50">{label}</span>
+      <span className="text-xs uppercase tracking-widest text-ink/50">
+        {label}
+      </span>
+
       <input
         type={type}
         required={required}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="mt-1 w-full border border-ink/20 rounded px-3 py-2 focus:border-rani"
+        className="mt-1 w-full rounded border border-ink/20 px-3 py-2 focus:border-rani focus:outline-none"
       />
     </label>
   );
