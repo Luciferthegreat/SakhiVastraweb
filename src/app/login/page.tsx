@@ -1,20 +1,13 @@
 "use client";
 
+import { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  // Page where the user came from
-  const redirectParam = searchParams.get("redirect");
-
-  // Only allow internal routes
-  const redirect =
-    redirectParam && redirectParam.startsWith("/")
-      ? redirectParam
-      : "/";
+  const redirect = searchParams.get("redirect") || "/";
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -46,12 +39,9 @@ export default function LoginPage() {
         return;
       }
 
-      // Login successful
-      // Return user to the page where they started login
-      router.replace(redirect);
+      router.push(redirect);
       router.refresh();
-    } catch (error) {
-      console.error("LOGIN ERROR:", error);
+    } catch {
       setError("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
@@ -62,10 +52,10 @@ export default function LoginPage() {
     <main className="min-h-[calc(100vh-82px)] bg-ivory px-6 py-16 sm:px-8 lg:px-12">
       <div className="mx-auto flex max-w-[1100px] items-center justify-center">
 
-        <div className="grid w-full max-w-[900px] overflow-hidden rounded-2xl border border-ink/10 bg-[#f8f4e8] shadow-[0_20px_60px_rgba(38,43,18,0.08)] md:grid-cols-2">
+        <div className="grid w-full max-w-[900px] overflow-hidden rounded-3xl border border-ink/10 bg-[#f8f4e8] shadow-[0_20px_60px_rgba(38,43,18,0.08)] md:grid-cols-2">
 
-          {/* ================= LEFT SIDE ================= */}
-          <div className="relative hidden min-h-[520px] flex-col justify-between overflow-hidden rounded-l-2xl bg-[#30371c] p-10 text-ivory md:flex lg:p-14">
+          {/* LEFT SIDE */}
+          <div className="relative hidden min-h-[520px] flex-col justify-between overflow-hidden rounded-l-3xl bg-[#30371c] p-10 text-ivory md:flex lg:p-14">
 
             <div>
               <p className="mb-5 text-[10px] uppercase tracking-[0.3em] text-zari">
@@ -91,12 +81,14 @@ export default function LoginPage() {
                 SakhiVastra
               </p>
             </div>
+
           </div>
 
-          {/* ================= RIGHT SIDE ================= */}
-          <div className="flex min-h-[520px] flex-col justify-center rounded-r-2xl px-7 py-12 sm:px-12 lg:px-16">
+          {/* RIGHT SIDE */}
+          <div className="flex min-h-[520px] flex-col justify-center rounded-r-3xl px-7 py-12 sm:px-12 lg:px-16">
 
             <div className="mb-9">
+
               <p className="mb-3 text-[10px] uppercase tracking-[0.28em] text-rani">
                 SakhiVastra
               </p>
@@ -108,13 +100,14 @@ export default function LoginPage() {
               <p className="mt-3 text-sm leading-6 text-ink/55">
                 Sign in to continue your journey with us.
               </p>
+
             </div>
 
-            {/* ================= LOGIN FORM ================= */}
             <form onSubmit={handleLogin} className="space-y-5">
 
               {/* EMAIL */}
               <div>
+
                 <label
                   htmlFor="email"
                   className="mb-2 block text-[10px] font-medium uppercase tracking-[0.18em] text-ink/60"
@@ -129,14 +122,16 @@ export default function LoginPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  autoComplete="email"
-                  className="h-12 w-full rounded-lg border border-ink/15 bg-ivory px-4 text-sm text-ink outline-none transition-all placeholder:text-ink/35 focus:border-rani focus:ring-1 focus:ring-rani/20"
+                  className="h-12 w-full rounded-xl border border-ink/15 bg-ivory px-4 text-sm text-ink outline-none transition-all placeholder:text-ink/35 focus:border-rani focus:ring-1 focus:ring-rani/20"
                 />
+
               </div>
 
               {/* PASSWORD */}
               <div>
+
                 <div className="mb-2 flex items-center justify-between">
+
                   <label
                     htmlFor="password"
                     className="block text-[10px] font-medium uppercase tracking-[0.18em] text-ink/60"
@@ -150,6 +145,7 @@ export default function LoginPage() {
                   >
                     Forgot password?
                   </button>
+
                 </div>
 
                 <input
@@ -159,14 +155,14 @@ export default function LoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  autoComplete="current-password"
-                  className="h-12 w-full rounded-lg border border-ink/15 bg-ivory px-4 text-sm text-ink outline-none transition-all placeholder:text-ink/35 focus:border-rani focus:ring-1 focus:ring-rani/20"
+                  className="h-12 w-full rounded-xl border border-ink/15 bg-ivory px-4 text-sm text-ink outline-none transition-all placeholder:text-ink/35 focus:border-rani focus:ring-1 focus:ring-rani/20"
                 />
+
               </div>
 
               {/* ERROR */}
               {error && (
-                <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-xs text-red-700">
+                <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-xs text-red-700">
                   {error}
                 </div>
               )}
@@ -175,14 +171,16 @@ export default function LoginPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="flex h-12 w-full items-center justify-center rounded-lg bg-[#68753a] text-[11px] font-medium uppercase tracking-[0.2em] text-ivory transition-all duration-300 hover:bg-[#56632f] disabled:cursor-not-allowed disabled:opacity-60"
+                className="flex h-12 w-full items-center justify-center rounded-xl bg-[#68753a] text-[11px] font-medium uppercase tracking-[0.2em] text-ivory transition-all duration-300 hover:bg-[#56632f] disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {loading ? "Signing in..." : "Sign In"}
               </button>
+
             </form>
 
-            {/* ================= REGISTER ================= */}
+            {/* REGISTER */}
             <div className="mt-8 border-t border-ink/10 pt-7 text-center">
+
               <p className="text-xs text-ink/50">
                 Don't have an account?
               </p>
@@ -194,11 +192,30 @@ export default function LoginPage() {
               >
                 Create an account
               </button>
+
             </div>
 
           </div>
+
         </div>
+
       </div>
     </main>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense
+      fallback={
+        <main className="flex min-h-[calc(100vh-82px)] items-center justify-center bg-ivory">
+          <p className="text-sm text-ink/50">
+            Loading...
+          </p>
+        </main>
+      }
+    >
+      <LoginForm />
+    </Suspense>
   );
 }
