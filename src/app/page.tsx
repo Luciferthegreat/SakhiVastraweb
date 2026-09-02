@@ -36,8 +36,8 @@ export default async function HomePage() {
         {/* Decorative background circles */}
         <div className="pointer-events-none absolute -left-40 top-20 h-96 w-96 rounded-full border border-zari/20" />
         <div className="pointer-events-none absolute -right-40 bottom-0 h-[500px] w-[500px] rounded-full border border-zari/20" />
+
         <div className="relative w-full px-6 sm:px-8 md:px-[6vw] lg:px-[7vw] xl:px-[8vw]">
-         
           {/* Soft luxury background motif */}
           <div
             className="pointer-events-none absolute left-[42%] top-[46%] hidden -translate-x-1/2 -translate-y-1/2 lg:block"
@@ -52,10 +52,9 @@ export default async function HomePage() {
             </div>
           </div>
 
-           <div className="grid min-h-[calc(100vh-90px)] items-center gap-10 py-14 md:gap-12 lg:grid-cols-[45%_55%] lg:gap-0 lg:py-16">
+          <div className="grid min-h-[calc(100vh-90px)] items-center gap-10 py-14 md:gap-12 lg:grid-cols-[45%_55%] lg:gap-0 lg:py-16">
             {/* LEFT CONTENT */}
             <div className="relative z-10 max-w-xl">
-
               <p
                 className="mb-5 text-sm tracking-[0.35em] text-rani"
                 style={{ fontVariant: "small-caps" }}
@@ -87,9 +86,7 @@ export default async function HomePage() {
                   href={`/product/${heroProduct.slug}`}
                   className="group mt-8 inline-flex items-center gap-5 rounded-full bg-rani px-7 py-4 text-sm font-medium tracking-wide text-ivory transition-all duration-500 hover:-translate-y-1 hover:bg-rani-dark hover:shadow-xl"
                 >
-                  <span>
-                    Discover {heroProduct.name}
-                  </span>
+                  <span>Discover {heroProduct.name}</span>
 
                   <span className="transition-transform duration-300 group-hover:translate-x-1">
                     →
@@ -99,7 +96,6 @@ export default async function HomePage() {
 
               {/* Feature points */}
               <div className="mt-12 grid max-w-xl grid-cols-3 border-y border-ink/10 py-5">
-
                 <div className="px-3 text-center first:pl-0">
                   <div className="mb-2 text-lg text-zari">♡</div>
                   <p className="text-[10px] tracking-widest text-ink/60 md:text-xs">
@@ -120,14 +116,12 @@ export default async function HomePage() {
                     PAN INDIA DELIVERY
                   </p>
                 </div>
-
               </div>
             </div>
 
             {/* RIGHT HERO IMAGE */}
             {heroProduct && (
               <div className="relative flex justify-center lg:justify-end">
-
                 {/* Large decorative ring */}
                 <div className="pointer-events-none absolute -left-8 top-1/2 hidden h-[470px] w-[470px] -translate-y-1/2 rounded-full border border-zari/40 lg:block" />
 
@@ -137,7 +131,6 @@ export default async function HomePage() {
                   className="group relative block w-full max-w-[560px]"
                 >
                   <div className="relative aspect-[4/5] overflow-hidden rounded-[45%_45%_8%_8%] bg-ink/5 shadow-2xl">
-
                     <img
                       src={
                         heroProduct.images?.[0] ||
@@ -147,23 +140,19 @@ export default async function HomePage() {
                       className="sv-fade-up absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
                     />
 
-                      {/* Image gradient */}
-                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-60" />
+                    {/* Image gradient */}
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-60" />
 
                     {/* Image text */}
                     <div className="absolute bottom-7 left-7 right-7 text-ivory">
                       <p className="mb-2 text-[10px] tracking-[0.3em] text-ivory/80">
                         FEATURED PIECE
                       </p>
-
                     </div>
                   </div>
 
                   {/* Floating price card */}
                   <div className="absolute -bottom-7 left-6 max-w-[270px] rounded-3xl bg-white px-6 py-5 shadow-[0_20px_50px_rgba(43,36,32,0.15)] transition-transform duration-500 group-hover:-translate-y-2 md:-left-12">
-
-                    
-
                     <p className="mt-2 font-display text-lg leading-tight text-ink">
                       {heroProduct.name}
                     </p>
@@ -183,7 +172,6 @@ export default async function HomePage() {
                           : "Out of Stock"}
                       </span>
                     </div>
-
                   </div>
                 </Link>
               </div>
@@ -197,7 +185,6 @@ export default async function HomePage() {
 
       {/* ================= FEATURED COLLECTION ================= */}
       <section className="mx-auto max-w-[1400px] px-6 py-24 md:px-10 lg:px-16">
-
         <div className="sv-fade-up mb-14 text-center">
           <p className="mb-3 text-xs tracking-[0.35em] text-rani">
             CURATED FOR YOU
@@ -225,6 +212,7 @@ export default async function HomePage() {
                     ? product.images
                     : ["/products/placeholder.jpg"],
                 basePrice: product.basePrice,
+                originalPrice: product.originalPrice,
                 fabric: product.fabric,
               }}
             />
@@ -240,7 +228,6 @@ export default async function HomePage() {
             <span>→</span>
           </Link>
         </div>
-
       </section>
     </>
   );

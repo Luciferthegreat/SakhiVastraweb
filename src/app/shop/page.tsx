@@ -43,6 +43,7 @@ export default async function ShopPage({
                     ? p.images
                     : ["/products/placeholder.jpg"],
                 basePrice: p.basePrice,
+                originalPrice: p.originalPrice,
                 fabric: p.fabric,
               }}
             />

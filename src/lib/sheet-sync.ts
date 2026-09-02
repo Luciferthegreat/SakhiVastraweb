@@ -17,13 +17,15 @@ const COL = {
   SIZE_LABEL: 12, // M
   QTY: 13, // N
   WEBSITE_PRICE: 14, // O
-  RATE: 15, // P
-  AMOUNT: 16, // Q
-  MEESHO_AMOUNT: 17, // R
-  EXPECTED_INCOME: 18, // S
-  REMARKS: 19, // T
-  WEBSITE_LIVE: 20, // U
-  STATUS: 21, // V
+  ORIGINAL_PRICE: 15, // P
+  RATE: 16, // Q
+  AMOUNT: 17, // R
+  MEESHO_AMOUNT: 18, // S
+  EXPECTED_INCOME: 19, // T
+  REMARKS: 20, // U
+  WEBSITE_LIVE: 21, // V
+  STATUS: 22, // W
+  TOTAL_QUANTITY: 23, // X
 };
 
 export interface SheetVariant {
@@ -52,6 +54,7 @@ export interface SheetProduct {
   weightGm?: number;
   websiteLive: boolean;
   websitePriceRupees?: number;
+  originalPriceRupees?: number;
   variants: SheetVariant[];
 }
 
@@ -392,6 +395,11 @@ export async function parseSheetProducts(
         COL.WEBSITE_PRICE
       ).replace(/[₹,]/g, "");
 
+      const originalPriceStr = cell(
+        row,
+        COL.ORIGINAL_PRICE
+      ).replace(/[₹,]/g, "");
+
       const websiteLiveStr = cell(
         row,
         COL.WEBSITE_LIVE
@@ -435,6 +443,10 @@ export async function parseSheetProducts(
         websitePriceRupees:
           priceStr
             ? Number(priceStr)
+            : undefined,
+        originalPriceRupees:
+          originalPriceStr
+            ? Number(originalPriceStr)
             : undefined,
 
         variants: [],

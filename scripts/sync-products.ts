@@ -938,6 +938,11 @@ export async function syncProducts() {
       basePrice:
         basePricePaise,
 
+      originalPrice:
+        typeof product.originalPriceRupees === "number"
+          ? Math.round(product.originalPriceRupees * 100)
+          : null,
+
       active:
         product.websiteLive &&
         hasPrice,

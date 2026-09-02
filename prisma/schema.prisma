@@ -16,19 +16,20 @@ model Category {
 }
 
 model Product {
-  id          String           @id @default(cuid())
-  name        String
-  slug        String           @unique
-  description String
-  fabric      String?
-  images      String[]
-  basePrice   Int
-  categoryId  String?
-  active      Boolean          @default(true)
-  createdAt   DateTime         @default(now())
-  updatedAt   DateTime         @updatedAt
-  category    Category?        @relation(fields: [categoryId], references: [id])
-  variants    ProductVariant[]
+  id            String           @id @default(cuid())
+  name          String
+  slug          String           @unique
+  description   String
+  fabric        String?
+  images        String[]
+  basePrice     Int
+  originalPrice Int?
+  categoryId    String?
+  active        Boolean          @default(true)
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+  category      Category?        @relation(fields: [categoryId], references: [id])
+  variants      ProductVariant[]
 }
 
 model ProductVariant {
