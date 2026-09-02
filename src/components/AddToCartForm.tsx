@@ -30,63 +30,120 @@ export default function AddToCartForm({
   const router = useRouter();
 
   if (!selected) {
-    return <p className="text-ink/60 text-sm">This piece is currently unavailable.</p>;
+    return (
+      <div className="rounded-xl border border-ink/15 bg-ink/5 p-4 text-center">
+        <p className="text-ink/60 text-sm">This piece is currently unavailable.</p>
+      </div>
+    );
   }
 
+  const isOutOfStock = selected.stock === 0;
+
   return (
-    <div>
+    <div className="space-y-6">
+      {/* ================= SIZE SELECTION ================= */}
       <fieldset>
-        <legend className="text-sm uppercase tracking-widest text-ink/60 mb-3">Size</legend>
-        <div className="flex gap-2 flex-wrap" role="radiogroup" aria-label="Select size">
-          {variants.map((v) => (
-            <button
-              key={v.id}
-              type="button"
-              role="radio"
-              aria-checked={selected.id === v.id}
-              disabled={v.stock === 0}
-              onClick={() => setSelected(v)}
-              className={`w-12 h-12 rounded-full border text-sm font-medium transition-colors
-                ${selected.id === v.id ? "border-rani bg-rani text-ivory" : "border-ink/20 text-ink"}
-                ${v.stock === 0 ? "opacity-30 cursor-not-allowed" : "hover:border-rani"}
-              `}
-            >
-              {v.size}
-            </button>
-          ))}
+        <div className="flex items-center justify-between mb-3">
+          <legend className="text-xs uppercase tracking-[0.2em] font-semibold text-ink/70">
+            Select Size
+          </legend>
+          {selected.stock > 0 && selected.stock <= 3 && (
+            <span className="text-[11px] font-medium text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full">
+              Only {selected.stock} left
+            </span>
+          )}
+        </div>
+
+        <div className="flex gap-2.5 flex-wrap" role="radiogroup" aria-label="Select size">
+          {variants.map((v) => {
+            const isSelected = selected.id === v.id;
+            const disabled = v.stock === 0;
+
+            return (
+              <button
+                key={v.id}
+                type="button"
+                role="radio"
+                aria-checked={isSelected}
+                disabled={disabled}
+                onClick={() => setSelected(v)}
+                className={`
+                  relative min-w-[50px] h-[48px] px-3 rounded-2xl border text-sm font-medium transition-all duration-200 flex items-center justify-center
+                  ${
+                    isSelected
+                      ? "border-rani bg-rani text-ivory shadow-md scale-105"
+                      : "border-ink/20 text-ink bg-white/60 hover:border-rani/50 hover:bg-white"
+                  }
+                  ${disabled ? "opacity-30 cursor-not-allowed line-through bg-ink/5 border-ink/10" : "cursor-pointer active:scale-95"}
+                `}
+              >
+                {v.size}
+              </button>
+            );
+          })}
         </div>
       </fieldset>
 
-      <button
-        type="button"
-        disabled={selected.stock === 0}
-        onClick={() => {
-          addItem({
-            variantId: selected.id,
-            productName,
-            slug,
-            size: selected.size,
-            image,
-            unitPrice: selected.price,
-            quantity: 1,
-          });
-          setAdded(true);
-          setTimeout(() => setAdded(false), 2000);
-        }}
-        className="mt-8 w-full md:w-auto font-body text-sm tracking-widest px-10 py-4 bg-rani text-ivory rounded-full hover:bg-rani-dark transition-colors duration-300 disabled:opacity-40 disabled:cursor-not-allowed"
-      >
-        {selected.stock === 0 ? "Out of stock" : added ? "Added ✓" : "Add to Cart"}
-      </button>
-
-      {added && (
+      {/* ================= ACTIONS ================= */}
+      <div className="pt-2">
         <button
           type="button"
-          onClick={() => router.push("/cart")}
-          className="mt-3 block text-sm text-rani underline"
+          disabled={isOutOfStock}
+          onClick={() => {
+            addItem({
+              variantId: selected.id,
+              productName,
+              slug,
+              size: selected.size,
+              image,
+              unitPrice: selected.price,
+              quantity: 1,
+            });
+            setAdded(true);
+            setTimeout(() => setAdded(false), 2500);
+          }}
+          className={`
+            w-full py-4 px-8 rounded-full font-body text-sm font-medium tracking-widest uppercase transition-all duration-300 shadow-md flex items-center justify-center gap-2
+            ${
+              isOutOfStock
+                ? "bg-ink/20 text-ink/40 cursor-not-allowed shadow-none"
+                : added
+                ? "bg-peacock text-ivory shadow-lg scale-[1.01]"
+                : "bg-rani text-ivory hover:bg-rani-dark hover:shadow-xl active:scale-[0.98]"
+            }
+          `}
         >
-          View cart →
+          {isOutOfStock ? (
+            "Out of Stock"
+          ) : added ? (
+            <>
+              <span>✓ Added to Cart</span>
+            </>
+          ) : (
+            <>
+              <span>Add to Cart</span>
+              <span>—</span>
+              <span>₹{(selected.price / 100).toLocaleString("en-IN")}</span>
+            </>
+          )}
         </button>
-      )}
+
+        {added && (
+          <div className="mt-3 flex items-center justify-between bg-rani/10 border border-rani/20 rounded-2xl p-3 animate-in fade-in slide-in-from-top-2 duration-300">
+            <span className="text-xs font-medium text-ink">
+              1 item added to your bag
+            </span>
+            <button
+              type="button"
+              onClick={() => router.push("/cart")}
+              className="text-xs font-semibold text-rani underline hover:text-ink transition-colors"
+            >
+              View Cart →
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
+

@@ -22,6 +22,10 @@ export default function ProductGallery({
   const [activeIndex, setActiveIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
+  // Mobile Touch Swipe State
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchEndX, setTouchEndX] = useState<number | null>(null);
+
   // Keyboard navigation for lightbox & gallery
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
@@ -38,14 +42,37 @@ export default function ProductGallery({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [images.length, isLightboxOpen]);
 
+  function handleTouchStart(e: React.TouchEvent) {
+    setTouchEndX(null);
+    setTouchStartX(e.targetTouches[0].clientX);
+  }
+
+  function handleTouchMove(e: React.TouchEvent) {
+    setTouchEndX(e.targetTouches[0].clientX);
+  }
+
+  function handleTouchEnd() {
+    if (touchStartX === null || touchEndX === null) return;
+    const distance = touchStartX - touchEndX;
+    const minSwipeDistance = 35;
+
+    if (distance > minSwipeDistance) {
+      // Swiped left -> next image
+      setActiveIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+    } else if (distance < -minSwipeDistance) {
+      // Swiped right -> prev image
+      setActiveIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+    }
+  }
+
   const activeImage = images[activeIndex] || images[0];
 
   return (
     <>
-      <div className="flex flex-col-reverse md:flex-row gap-4 lg:gap-6">
+      <div className="flex flex-col-reverse md:flex-row gap-3.5 sm:gap-4 lg:gap-6">
         {/* ================= THUMBNAILS (VERTICAL ON MD+, HORIZONTAL ON MOBILE) ================= */}
         {images.length > 1 && (
-          <div className="flex md:flex-col gap-2.5 overflow-x-auto md:overflow-y-auto md:max-h-[620px] pb-2 md:pb-0 scrollbar-thin scrollbar-thumb-ink/10 flex-shrink-0">
+          <div className="flex md:flex-col gap-2 sm:gap-2.5 overflow-x-auto md:overflow-y-auto md:max-h-[620px] pb-1.5 md:pb-0 scrollbar-none flex-shrink-0">
             {images.map((img, idx) => {
               const isSelected = activeIndex === idx;
               return (
@@ -55,11 +82,11 @@ export default function ProductGallery({
                   onClick={() => setActiveIndex(idx)}
                   aria-label={`View ${productName} image ${idx + 1}`}
                   className={`
-                    relative w-16 h-20 md:w-20 md:h-24 flex-shrink-0 overflow-hidden rounded-xl border-2 transition-all duration-300
+                    relative w-14 h-16 sm:w-16 sm:h-20 md:w-20 md:h-24 flex-shrink-0 overflow-hidden rounded-lg sm:rounded-xl border-2 transition-all duration-300
                     ${
                       isSelected
-                        ? "border-rani shadow-md ring-2 ring-rani/20 scale-[1.02] opacity-100"
-                        : "border-ink/10 opacity-70 hover:opacity-100 hover:border-ink/30"
+                        ? "border-rani shadow-md ring-2 ring-rani/20 scale-[1.03] opacity-100"
+                        : "border-ink/10 opacity-60 hover:opacity-100 hover:border-ink/30"
                     }
                   `}
                 >
@@ -77,7 +104,12 @@ export default function ProductGallery({
         )}
 
         {/* ================= MAIN IMAGE CONTAINER ================= */}
-        <div className="relative flex-1 aspect-[3/4] rounded-2xl overflow-hidden bg-ink/5 border border-ink/10 shadow-sm group">
+        <div
+          className="relative flex-1 aspect-[3/4] rounded-2xl sm:rounded-3xl overflow-hidden bg-ink/5 border border-ink/10 shadow-sm group select-none"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           {/* Main images stack with smooth fade */}
           {images.map((img, idx) => (
             <div
@@ -93,7 +125,7 @@ export default function ProductGallery({
                 alt={`${productName} view ${idx + 1}`}
                 fill
                 priority={idx === 0}
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                className="object-cover transition-transform duration-700 md:group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
@@ -101,7 +133,7 @@ export default function ProductGallery({
 
           {/* Discount Badge */}
           {discountBadge && (
-            <div className="absolute top-4 left-4 z-20 rounded-full border border-rani/20 bg-ivory/95 px-3 py-1.5 text-[10px] font-semibold tracking-wider text-rani shadow-sm backdrop-blur-md">
+            <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-20 rounded-full border border-rani/20 bg-ivory/95 px-2.5 py-1 sm:px-3 sm:py-1.5 text-[9px] sm:text-[10px] font-semibold tracking-wider text-rani shadow-sm backdrop-blur-md">
               {discountBadge}
             </div>
           )}
@@ -111,10 +143,10 @@ export default function ProductGallery({
             type="button"
             onClick={() => setIsLightboxOpen(true)}
             aria-label="Open zoom view"
-            className="absolute top-4 right-4 z-20 flex h-9 w-9 items-center justify-center rounded-full bg-ivory/90 text-ink/70 shadow-sm backdrop-blur-md transition-all duration-300 hover:bg-ivory hover:text-ink hover:scale-105"
+            className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-ivory/90 text-ink/70 shadow-sm backdrop-blur-md transition-all duration-300 hover:bg-ivory hover:text-ink hover:scale-105"
           >
             <svg
-              className="w-4 h-4"
+              className="w-3.5 h-3.5 sm:w-4 sm:h-4"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -128,7 +160,7 @@ export default function ProductGallery({
             </svg>
           </button>
 
-          {/* Image Navigation Arrows (Desktop & Tablet) */}
+          {/* Image Navigation Arrows */}
           {images.length > 1 && (
             <>
               <button
@@ -140,7 +172,7 @@ export default function ProductGallery({
                   );
                 }}
                 aria-label="Previous image"
-                className="absolute left-3 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-ivory/85 text-ink/80 shadow-md backdrop-blur-md transition-all duration-300 hover:bg-ivory hover:text-ink hover:scale-110 opacity-80 hover:opacity-100"
+                className="hidden sm:flex absolute left-3 top-1/2 -translate-y-1/2 z-20 h-10 w-10 items-center justify-center rounded-full bg-ivory/85 text-ink/80 shadow-md backdrop-blur-md transition-all duration-300 hover:bg-ivory hover:text-ink hover:scale-110 opacity-80 hover:opacity-100"
               >
                 <svg
                   className="w-5 h-5 -translate-x-0.5"
@@ -166,7 +198,7 @@ export default function ProductGallery({
                   );
                 }}
                 aria-label="Next image"
-                className="absolute right-3 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-ivory/85 text-ink/80 shadow-md backdrop-blur-md transition-all duration-300 hover:bg-ivory hover:text-ink hover:scale-110 opacity-80 hover:opacity-100"
+                className="hidden sm:flex absolute right-3 top-1/2 -translate-y-1/2 z-20 h-10 w-10 items-center justify-center rounded-full bg-ivory/85 text-ink/80 shadow-md backdrop-blur-md transition-all duration-300 hover:bg-ivory hover:text-ink hover:scale-110 opacity-80 hover:opacity-100"
               >
                 <svg
                   className="w-5 h-5 translate-x-0.5"
@@ -187,8 +219,8 @@ export default function ProductGallery({
 
           {/* Bottom Counter & Dots */}
           {images.length > 1 && (
-            <div className="absolute bottom-4 left-0 right-0 z-20 flex items-center justify-between px-4 pointer-events-none">
-              <div className="flex items-center gap-1.5 rounded-full bg-ink/30 px-3 py-1.5 backdrop-blur-md pointer-events-auto">
+            <div className="absolute bottom-3 sm:bottom-4 left-0 right-0 z-20 flex items-center justify-between px-3 sm:px-4 pointer-events-none">
+              <div className="flex items-center gap-1 sm:gap-1.5 rounded-full bg-ink/30 px-2.5 sm:px-3 py-1 sm:py-1.5 backdrop-blur-md pointer-events-auto">
                 {images.map((_, idx) => (
                   <button
                     key={idx}
@@ -199,18 +231,18 @@ export default function ProductGallery({
                     }}
                     aria-label={`Go to image ${idx + 1}`}
                     className={`
-                      h-1.5 rounded-full transition-all duration-300
+                      h-1 sm:h-1.5 rounded-full transition-all duration-300
                       ${
                         activeIndex === idx
-                          ? "w-5 bg-ivory"
-                          : "w-1.5 bg-ivory/60 hover:bg-ivory"
+                          ? "w-4 sm:w-5 bg-ivory"
+                          : "w-1 sm:w-1.5 bg-ivory/60 hover:bg-ivory"
                       }
                     `}
                   />
                 ))}
               </div>
 
-              <div className="rounded-full border border-ivory/60 bg-ivory/90 px-3 py-1 text-[11px] font-medium tracking-wider text-ink shadow-sm backdrop-blur-md">
+              <div className="rounded-full border border-ivory/60 bg-ivory/90 px-2.5 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-[11px] font-medium tracking-wider text-ink shadow-sm backdrop-blur-md">
                 {activeIndex + 1} / {images.length}
               </div>
             </div>
@@ -221,18 +253,21 @@ export default function ProductGallery({
       {/* ================= FULLSCREEN LIGHTBOX MODAL ================= */}
       {isLightboxOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md p-4 animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md p-2 sm:p-4 animate-in fade-in duration-200"
           onClick={() => setIsLightboxOpen(false)}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
         >
           {/* Close button */}
           <button
             type="button"
             onClick={() => setIsLightboxOpen(false)}
             aria-label="Close zoomed view"
-            className="absolute top-5 right-5 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-white/20 text-white transition-all hover:bg-white/30 hover:scale-110"
+            className="absolute top-4 right-4 z-50 flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-white/20 text-white transition-all hover:bg-white/30 hover:scale-110"
           >
             <svg
-              className="w-6 h-6"
+              className="w-5 h-5 sm:w-6 sm:h-6"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -248,7 +283,7 @@ export default function ProductGallery({
 
           {/* Lightbox Main Image */}
           <div
-            className="relative w-full max-w-4xl h-[85vh] flex items-center justify-center"
+            className="relative w-full max-w-4xl h-[78vh] sm:h-[85vh] flex items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
             <Image
@@ -271,10 +306,10 @@ export default function ProductGallery({
                     )
                   }
                   aria-label="Previous image"
-                  className="absolute left-2 md:-left-14 top-1/2 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-sm transition-all hover:bg-white/40 hover:scale-110"
+                  className="absolute left-2 md:-left-14 top-1/2 -translate-y-1/2 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-sm transition-all hover:bg-white/40 hover:scale-110"
                 >
                   <svg
-                    className="w-6 h-6 -translate-x-0.5"
+                    className="w-5 h-5 sm:w-6 sm:h-6 -translate-x-0.5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -296,10 +331,10 @@ export default function ProductGallery({
                     )
                   }
                   aria-label="Next image"
-                  className="absolute right-2 md:-right-14 top-1/2 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-sm transition-all hover:bg-white/40 hover:scale-110"
+                  className="absolute right-2 md:-right-14 top-1/2 -translate-y-1/2 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-sm transition-all hover:bg-white/40 hover:scale-110"
                 >
                   <svg
-                    className="w-6 h-6 translate-x-0.5"
+                    className="w-5 h-5 sm:w-6 sm:h-6 translate-x-0.5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -317,13 +352,13 @@ export default function ProductGallery({
 
             {/* Bottom thumbnail bar in Lightbox */}
             {images.length > 1 && (
-              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2 bg-black/60 px-4 py-2 rounded-full backdrop-blur-md">
+              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 sm:gap-2 bg-black/60 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full backdrop-blur-md max-w-[90vw] overflow-x-auto">
                 {images.map((img, idx) => (
                   <button
                     key={idx}
                     type="button"
                     onClick={() => setActiveIndex(idx)}
-                    className={`relative w-10 h-12 rounded-md overflow-hidden border transition-all ${
+                    className={`relative w-8 h-10 sm:w-10 sm:h-12 flex-shrink-0 rounded-md overflow-hidden border transition-all ${
                       activeIndex === idx
                         ? "border-white scale-105"
                         : "border-transparent opacity-60 hover:opacity-100"

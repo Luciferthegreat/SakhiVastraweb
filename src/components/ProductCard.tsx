@@ -26,6 +26,10 @@ export default function ProductCard({
   const [isHovered, setIsHovered] = useState(false);
   const [shareCopied, setShareCopied] = useState(false);
 
+  // Touch swipe state for mobile
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchEndX, setTouchEndX] = useState<number | null>(null);
+
   const images =
     product.images?.length > 0
       ? product.images
@@ -46,12 +50,6 @@ export default function ProductCard({
           100
       )
     : 0;
-
-  /*
-   * 5 different offer variations.
-   * Uses product slug so the same product
-   * keeps the same variation after refresh.
-   */
 
   const offerVariations = [
     `OH! ${discountPercent}% OFF`,
@@ -78,19 +76,40 @@ export default function ProductCard({
 
     const timer = setInterval(() => {
       setActiveImage((current) => (current + 1) % images.length);
-    }, 3000);
+    }, 3500);
 
     return () => clearInterval(timer);
   }, [images.length, isHovered]);
 
   /*
+   * ================= MOBILE TOUCH SWIPE =================
+   */
+
+  function handleTouchStart(e: React.TouchEvent) {
+    setTouchEndX(null);
+    setTouchStartX(e.targetTouches[0].clientX);
+  }
+
+  function handleTouchMove(e: React.TouchEvent) {
+    setTouchEndX(e.targetTouches[0].clientX);
+  }
+
+  function handleTouchEnd() {
+    if (touchStartX === null || touchEndX === null) return;
+    const distance = touchStartX - touchEndX;
+    const minSwipeDistance = 35;
+
+    if (distance > minSwipeDistance) {
+      // Swiped left -> next
+      setActiveImage((prev) => (prev + 1) % images.length);
+    } else if (distance < -minSwipeDistance) {
+      // Swiped right -> prev
+      setActiveImage((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+    }
+  }
+
+  /*
    * ================= SHARE PRODUCT =================
-   *
-   * Mobile:
-   * Opens native share sheet.
-   *
-   * Desktop:
-   * Copies product URL to clipboard.
    */
 
   async function handleShare() {
@@ -103,19 +122,15 @@ export default function ProductCard({
           text: `Check out this beautiful kurti from SakhiVastra`,
           url,
         });
-
         return;
       }
 
       await navigator.clipboard.writeText(url);
-
       setShareCopied(true);
-
       setTimeout(() => {
         setShareCopied(false);
       }, 2000);
-    } catch (error) {
-      // User cancelled native share.
+    } catch {
       console.log("Share cancelled");
     }
   }
@@ -125,17 +140,22 @@ export default function ProductCard({
       className="
         group
         overflow-hidden
-        rounded-[24px]
+        rounded-[18px] sm:rounded-[24px]
         border border-ink/10
         bg-[#f8f4e8]
-        shadow-[0_8px_30px_rgba(38,43,18,0.06)]
+        shadow-[0_4px_20px_rgba(38,43,18,0.05)]
+        sm:shadow-[0_8px_30px_rgba(38,43,18,0.06)]
         transition-all
         duration-500
         hover:-translate-y-1
         hover:shadow-[0_18px_45px_rgba(38,43,18,0.12)]
+        flex flex-col justify-between
       "
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
       {/* ================= IMAGE ================= */}
 
@@ -147,7 +167,6 @@ export default function ProductCard({
         >
           <div className="relative aspect-[3/4]">
             {/* Background image */}
-
             <Image
               src={images[(activeImage + 1) % images.length]}
               alt=""
@@ -158,7 +177,6 @@ export default function ProductCard({
             />
 
             {/* Active image */}
-
             {images.map((image, index) => (
               <Image
                 key={`${image}-${index}`}
@@ -169,7 +187,7 @@ export default function ProductCard({
                 className={`
                   object-cover
                   transition-all
-                  duration-1000
+                  duration-700
                   ease-in-out
                   ${
                     activeImage === index
@@ -188,18 +206,26 @@ export default function ProductCard({
           <div
             className="
               absolute
-              left-4
-              top-4
+              left-2.5
+              top-2.5
+              sm:left-4
+              sm:top-4
               z-20
+              max-w-[110px]
+              sm:max-w-none
+              truncate
               rounded-full
               border
               border-rani/20
               bg-ivory/95
-              px-3
-              py-1.5
-              text-[9px]
+              px-2
+              py-1
+              sm:px-3
+              sm:py-1.5
+              text-[8px]
+              sm:text-[9px]
               font-semibold
-              tracking-[0.08em]
+              tracking-wider
               text-rani
               shadow-sm
               backdrop-blur-md
@@ -214,12 +240,15 @@ export default function ProductCard({
         <div
           className="
             absolute
-            right-4
-            top-4
+            right-2.5
+            top-2.5
+            sm:right-4
+            sm:top-4
             z-20
             flex
             flex-col
-            gap-2
+            gap-1.5
+            sm:gap-2
           "
         >
           {/* ================= WISHLIST ================= */}
@@ -230,13 +259,13 @@ export default function ProductCard({
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
-
-              // Wishlist functionality will be connected next.
             }}
             className="
               flex
-              h-10
-              w-10
+              h-8
+              w-8
+              sm:h-10
+              sm:w-10
               items-center
               justify-center
               rounded-full
@@ -254,8 +283,7 @@ export default function ProductCard({
             "
           >
             <svg
-              width="18"
-              height="18"
+              className="w-3.5 h-3.5 sm:w-4 sm:h-4"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -283,8 +311,10 @@ export default function ProductCard({
             className="
               relative
               flex
-              h-10
-              w-10
+              h-8
+              w-8
+              sm:h-10
+              sm:w-10
               items-center
               justify-center
               rounded-full
@@ -302,8 +332,7 @@ export default function ProductCard({
             "
           >
             <svg
-              width="18"
-              height="18"
+              className="w-3.5 h-3.5 sm:w-4 sm:h-4"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -315,7 +344,6 @@ export default function ProductCard({
                 stroke="currentColor"
                 strokeWidth="1.4"
               />
-
               <circle
                 cx="6"
                 cy="12"
@@ -323,7 +351,6 @@ export default function ProductCard({
                 stroke="currentColor"
                 strokeWidth="1.4"
               />
-
               <circle
                 cx="18"
                 cy="19"
@@ -331,13 +358,11 @@ export default function ProductCard({
                 stroke="currentColor"
                 strokeWidth="1.4"
               />
-
               <path
                 d="M8.2 10.8L15.8 6.2"
                 stroke="currentColor"
                 strokeWidth="1.4"
               />
-
               <path
                 d="M8.2 13.2L15.8 17.8"
                 stroke="currentColor"
@@ -353,16 +378,16 @@ export default function ProductCard({
           <div
             className="
               absolute
-              bottom-4
+              bottom-3
               left-1/2
               z-30
               -translate-x-1/2
               whitespace-nowrap
               rounded-full
               bg-ink
-              px-4
-              py-2
-              text-xs
+              px-3
+              py-1.5
+              text-[10px]
               text-ivory
               shadow-lg
             "
@@ -377,18 +402,23 @@ export default function ProductCard({
           <div
             className="
               absolute
-              bottom-4
-              right-4
+              bottom-2.5
+              right-2.5
+              sm:bottom-4
+              sm:right-4
               z-10
               rounded-full
               border
               border-ivory/60
               bg-ivory/90
-              px-3
-              py-1.5
-              text-[10px]
+              px-2
+              py-1
+              sm:px-3
+              sm:py-1.5
+              text-[9px]
+              sm:text-[10px]
               font-medium
-              tracking-[0.12em]
+              tracking-wider
               text-ink
               shadow-sm
               backdrop-blur-md
@@ -404,17 +434,18 @@ export default function ProductCard({
           <div
             className="
               absolute
-              bottom-4
+              bottom-2.5
               left-1/2
               z-10
               flex
               -translate-x-1/2
               items-center
-              gap-1.5
+              gap-1
+              sm:gap-1.5
               rounded-full
               bg-ink/20
-              px-3
-              py-2
+              px-2.5
+              py-1.5
               backdrop-blur-md
             "
           >
@@ -429,14 +460,15 @@ export default function ProductCard({
                 }}
                 aria-label={`View image ${index + 1}`}
                 className={`
-                  h-1.5
+                  h-1
+                  sm:h-1.5
                   rounded-full
                   transition-all
                   duration-300
                   ${
                     activeImage === index
-                      ? "w-5 bg-ivory"
-                      : "w-1.5 bg-ivory/60 hover:bg-ivory"
+                      ? "w-3.5 sm:w-5 bg-ivory"
+                      : "w-1 sm:w-1.5 bg-ivory/60 hover:bg-ivory"
                   }
                 `}
               />
@@ -447,155 +479,170 @@ export default function ProductCard({
 
       {/* ================= PRODUCT INFO ================= */}
 
-      <div className="px-5 pb-5 pt-5 sm:px-6 sm:pb-6">
-        {/* ================= THUMBNAILS ================= */}
+      <div className="p-3 sm:px-6 sm:pb-6 sm:pt-5 flex flex-col justify-between flex-1">
+        <div>
+          {/* ================= THUMBNAILS ================= */}
 
-        {images.length > 1 && (
-          <div className="mb-5 flex gap-2 overflow-x-auto pb-1">
-            {images.map((image, index) => (
-              <button
-                key={`${image}-${index}`}
-                type="button"
-                onClick={() => setActiveImage(index)}
-                aria-label={`View image ${index + 1}`}
-                className={`
-                  relative
-                  h-11
-                  w-9
-                  flex-shrink-0
-                  overflow-hidden
-                  rounded-md
-                  border
-                  transition-all
-                  duration-300
-                  ${
-                    activeImage === index
-                      ? "border-zari opacity-100 shadow-sm"
-                      : "border-ink/10 opacity-60 hover:opacity-100"
-                  }
-                `}
-              >
-                <Image
-                  src={image}
-                  alt={`${product.name} ${index + 1}`}
-                  fill
-                  className="object-cover"
-                  sizes="36px"
-                />
-              </button>
-            ))}
-          </div>
-        )}
+          {images.length > 1 && (
+            <div className="mb-3 sm:mb-4 flex gap-1.5 sm:gap-2 overflow-x-auto pb-1 scrollbar-none">
+              {images.map((image, index) => (
+                <button
+                  key={`${image}-${index}`}
+                  type="button"
+                  onClick={() => setActiveImage(index)}
+                  aria-label={`View image ${index + 1}`}
+                  className={`
+                    relative
+                    h-8
+                    w-7
+                    sm:h-11
+                    sm:w-9
+                    flex-shrink-0
+                    overflow-hidden
+                    rounded-md
+                    border
+                    transition-all
+                    duration-300
+                    ${
+                      activeImage === index
+                        ? "border-zari opacity-100 shadow-sm scale-105"
+                        : "border-ink/10 opacity-60 hover:opacity-100"
+                    }
+                  `}
+                >
+                  <Image
+                    src={image}
+                    alt={`${product.name} ${index + 1}`}
+                    fill
+                    className="object-cover"
+                    sizes="36px"
+                  />
+                </button>
+              ))}
+            </div>
+          )}
 
-        {/* ================= PRODUCT NAME ================= */}
+          {/* ================= PRODUCT NAME ================= */}
 
-        <Link href={`/product/${product.slug}`}>
-          <h3
-            className="
-              font-display
-              text-base
-              leading-snug
-              text-ink
-              transition-colors
-              duration-300
-              group-hover:text-peacock
-              sm:text-lg
-            "
-          >
-            {product.name}
-          </h3>
-        </Link>
+          <Link href={`/product/${product.slug}`} className="block">
+            <h3
+              className="
+                font-display
+                text-xs
+                sm:text-base
+                leading-snug
+                text-ink
+                transition-colors
+                duration-300
+                group-hover:text-peacock
+                line-clamp-2
+              "
+            >
+              {product.name}
+            </h3>
+          </Link>
 
-        {/* ================= FABRIC ================= */}
+          {/* ================= FABRIC ================= */}
 
-        {product.fabric && (
-          <p
-            className="
-              mt-2
-              text-[9px]
-              uppercase
-              tracking-[0.22em]
-              text-ink/45
-            "
-          >
-            {product.fabric}
-          </p>
-        )}
-
-        {/* ================= PRICE ROW ================= */}
-
-        <div className="mt-4 flex items-end justify-between gap-3">
-          <div>
-            {hasDiscount && (
-              <p
-                className="
-                  mb-1
-                  text-xs
-                  text-ink/45
-                  line-through
-                "
-              >
-                {formatInr(product.originalPrice!)}
-              </p>
-            )}
-
+          {product.fabric && (
             <p
               className="
-                font-body
-                text-sm
-                font-medium
-                tracking-wide
-                text-peacock
+                mt-1
+                sm:mt-2
+                text-[8px]
+                sm:text-[9px]
+                uppercase
+                tracking-[0.2em]
+                text-ink/45
+                truncate
               "
             >
-              {formatInr(product.basePrice)}
+              {product.fabric}
             </p>
-          </div>
-
-          {hasDiscount && (
-            <span
-              className="
-                rounded-full
-                bg-green-50
-                px-2.5
-                py-1
-                text-[9px]
-                font-semibold
-                tracking-wide
-                text-green-700
-              "
-            >
-              {discountPercent}% OFF
-            </span>
           )}
         </div>
 
-        {/* ================= VIEW DETAILS ================= */}
+        <div>
+          {/* ================= PRICE ROW ================= */}
 
-        <div className="mt-3">
-          <Link
-            href={`/product/${product.slug}`}
-            className="
-              text-[9px]
-              font-medium
-              uppercase
-              tracking-[0.18em]
-              text-rani
-              transition-colors
-              duration-300
-              hover:text-ink
-            "
-          >
-            View Details
-          </Link>
-        </div>
+          <div className="mt-3 sm:mt-4 flex items-baseline justify-between gap-1.5 sm:gap-3 flex-wrap">
+            <div className="flex items-baseline gap-1.5">
+              <p
+                className="
+                  font-body
+                  text-xs
+                  sm:text-sm
+                  font-semibold
+                  tracking-wide
+                  text-peacock
+                "
+              >
+                {formatInr(product.basePrice)}
+              </p>
 
-        {/* ================= DECORATIVE DIVIDER ================= */}
+              {hasDiscount && (
+                <p
+                  className="
+                    text-[10px]
+                    sm:text-xs
+                    text-ink/40
+                    line-through
+                  "
+                >
+                  {formatInr(product.originalPrice!)}
+                </p>
+              )}
+            </div>
 
-        <div className="mt-5 flex items-center justify-center gap-2">
-          <span className="h-px w-8 bg-zari/40" />
-          <span className="h-1 w-1 rotate-45 bg-zari" />
-          <span className="h-px w-8 bg-zari/40" />
+            {hasDiscount && (
+              <span
+                className="
+                  rounded-full
+                  bg-green-50
+                  px-1.5
+                  py-0.5
+                  sm:px-2.5
+                  sm:py-1
+                  text-[8px]
+                  sm:text-[9px]
+                  font-semibold
+                  tracking-wide
+                  text-green-700
+                "
+              >
+                {discountPercent}% OFF
+              </span>
+            )}
+          </div>
+
+          {/* ================= VIEW DETAILS ================= */}
+
+          <div className="mt-2.5 sm:mt-3 flex items-center justify-between">
+            <Link
+              href={`/product/${product.slug}`}
+              className="
+                text-[8px]
+                sm:text-[9px]
+                font-semibold
+                uppercase
+                tracking-[0.16em]
+                text-rani
+                transition-colors
+                duration-300
+                hover:text-ink
+              "
+            >
+              View Details →
+            </Link>
+          </div>
+
+          {/* ================= DECORATIVE DIVIDER ================= */}
+
+          <div className="mt-3 sm:mt-5 flex items-center justify-center gap-1.5 sm:gap-2">
+            <span className="h-px w-5 sm:w-8 bg-zari/40" />
+            <span className="h-0.5 w-0.5 sm:h-1 sm:w-1 rotate-45 bg-zari" />
+            <span className="h-px w-5 sm:w-8 bg-zari/40" />
+          </div>
         </div>
       </div>
     </article>

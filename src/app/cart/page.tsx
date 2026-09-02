@@ -173,16 +173,14 @@ export default function CartPage() {
             transition: none;
           }
         }
-      `}</style>
-
-      <section className="max-w-4xl mx-auto px-6 py-16 cart-page">
+      `}</style>      <section className="max-w-4xl mx-auto px-4 sm:px-6 py-10 sm:py-16 cart-page">
         {/* Heading */}
-        <div className="mb-10">
-          <p className="font-body text-[10px] md:text-xs tracking-[0.3em] uppercase text-rani mb-2">
+        <div className="mb-8 sm:mb-10">
+          <p className="font-body text-[10px] md:text-xs tracking-[0.3em] uppercase text-rani mb-2 font-medium">
             Your Selection
           </p>
 
-          <h1 className="font-display text-4xl text-ink">
+          <h1 className="font-display text-3xl sm:text-4xl text-ink">
             Your Cart
           </h1>
         </div>
@@ -192,66 +190,74 @@ export default function CartPage() {
           {items.map((item, index) => (
             <li
               key={item.variantId}
-              className="cart-item flex items-center gap-5 py-6"
+              className="cart-item flex flex-col sm:flex-row sm:items-center justify-between gap-4 py-5 sm:py-6"
               style={
                 {
                   "--delay": `${index * 100}ms`,
                 } as React.CSSProperties
               }
             >
-              {/* Product Image */}
-              <div className="cart-product-image relative w-20 h-24 bg-ink/5 rounded-xl overflow-hidden shrink-0">
-                <Image
-                  src={item.image}
-                  alt={item.productName}
-                  fill
-                  className="object-cover"
-                  sizes="80px"
-                />
+              <div className="flex items-center gap-4 min-w-0">
+                {/* Product Image */}
+                <div className="cart-product-image relative w-16 h-20 sm:w-20 sm:h-24 bg-ink/5 rounded-xl overflow-hidden shrink-0">
+                  <Image
+                    src={item.image}
+                    alt={item.productName}
+                    fill
+                    className="object-cover"
+                    sizes="80px"
+                  />
+                </div>
+
+                {/* Product Info */}
+                <div className="flex-1 min-w-0">
+                  <Link href={`/product/${item.slug}`} className="block">
+                    <p className="font-display text-base sm:text-lg text-ink truncate hover:text-rani transition-colors">
+                      {item.productName}
+                    </p>
+                  </Link>
+
+                  <p className="text-xs sm:text-sm text-ink/50 mt-0.5">
+                    Size: <span className="font-medium text-ink/80">{item.size}</span>
+                  </p>
+
+                  <p className="text-sm text-rani mt-1 font-semibold">
+                    {formatInr(item.unitPrice)}
+                  </p>
+                </div>
               </div>
 
-              {/* Product Info */}
-              <div className="flex-1 min-w-0">
-                <p className="font-display text-lg text-ink truncate">
-                  {item.productName}
-                </p>
+              {/* Quantity + Remove (Row on mobile) */}
+              <div className="flex items-center justify-between sm:justify-end gap-3 pl-20 sm:pl-0">
+                {/* Touch friendly Quantity Stepper */}
+                <div className="flex items-center border border-ink/20 rounded-full bg-white/60 p-1">
+                  <button
+                    type="button"
+                    onClick={() => updateQuantity(item.variantId, Math.max(1, item.quantity - 1))}
+                    className="w-7 h-7 flex items-center justify-center rounded-full text-ink/70 hover:bg-ink/10 transition-colors text-base font-semibold"
+                    aria-label="Decrease quantity"
+                  >
+                    -
+                  </button>
 
-                <p className="text-sm text-ink/50 mt-1">
-                  Size {item.size}
-                </p>
+                  <span className="w-8 text-center text-xs sm:text-sm font-medium text-ink">
+                    {item.quantity}
+                  </span>
 
-                <p className="text-sm text-rani mt-2 font-medium">
-                  {formatInr(item.unitPrice)}
-                </p>
-              </div>
-
-              {/* Quantity + Remove */}
-              <div className="flex items-center gap-2">
-                <label
-                  className="sr-only"
-                  htmlFor={`qty-${item.variantId}`}
-                >
-                  Quantity for {item.productName}
-                </label>
-
-                <input
-                  id={`qty-${item.variantId}`}
-                  type="number"
-                  min={1}
-                  value={item.quantity}
-                  onChange={(e) =>
-                    updateQuantity(
-                      item.variantId,
-                      Number(e.target.value)
-                    )
-                  }
-                  className="quantity-input w-16 border border-ink/20 rounded-lg px-2 py-2 text-center bg-transparent"
-                />
+                  <button
+                    type="button"
+                    onClick={() => updateQuantity(item.variantId, item.quantity + 1)}
+                    className="w-7 h-7 flex items-center justify-center rounded-full text-ink/70 hover:bg-ink/10 transition-colors text-base font-semibold"
+                    aria-label="Increase quantity"
+                  >
+                    +
+                  </button>
+                </div>
 
                 <button
                   type="button"
                   onClick={() => removeItem(item.variantId)}
-                  className="remove-button text-sm text-ink/40 hover:text-rani underline ml-2"
+                  className="remove-button text-xs sm:text-sm text-ink/40 hover:text-rani underline ml-2"
                   aria-label={`Remove ${item.productName} from cart`}
                 >
                   Remove
@@ -262,26 +268,26 @@ export default function CartPage() {
         </ul>
 
         {/* Subtotal */}
-        <div className="mt-10 border-t border-ink/10 pt-6">
+        <div className="mt-8 sm:mt-10 border-t border-ink/10 pt-6">
           <div className="flex items-center justify-between">
-            <span className="font-display text-xl text-ink">
+            <span className="font-display text-lg sm:text-xl text-ink">
               Subtotal
             </span>
 
-            <span className="font-display text-xl text-ink">
+            <span className="font-display text-xl sm:text-2xl text-peacock font-medium">
               {formatInr(total)}
             </span>
           </div>
 
-          <p className="text-xs text-ink/50 mt-2">
-            Shipping calculated at checkout.
+          <p className="text-xs text-ink/50 mt-1.5">
+            Free shipping across India. Taxes included.
           </p>
         </div>
 
         {/* Checkout */}
         <Link
           href="/checkout"
-          className="checkout-button mt-8 block text-center font-body text-sm tracking-widest px-8 py-4 bg-rani text-ivory rounded-full hover:bg-rani-dark"
+          className="checkout-button mt-6 sm:mt-8 block text-center font-body text-xs sm:text-sm tracking-widest uppercase font-medium px-8 py-4 bg-rani text-ivory rounded-full hover:bg-rani-dark shadow-md"
         >
           Proceed to Checkout
           <span className="ml-2">→</span>

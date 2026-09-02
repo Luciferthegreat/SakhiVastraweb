@@ -44,8 +44,8 @@ export default async function ProductPage({
   return (
     <div className="min-h-screen bg-ivory">
       {/* ================= BREADCRUMBS ================= */}
-      <nav className="max-w-7xl mx-auto px-6 pt-6 pb-2">
-        <div className="flex items-center gap-2 text-xs tracking-wider text-ink/50">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 pt-4 sm:pt-6 pb-2 overflow-x-auto scrollbar-none">
+        <div className="flex items-center gap-2 text-[11px] sm:text-xs tracking-wider text-ink/50 whitespace-nowrap">
           <Link href="/" className="hover:text-rani transition-colors">
             HOME
           </Link>
@@ -54,13 +54,13 @@ export default async function ProductPage({
             SHOP
           </Link>
           <span>/</span>
-          <span className="text-ink truncate max-w-xs">{product.name}</span>
+          <span className="text-ink truncate max-w-[180px] sm:max-w-xs">{product.name}</span>
         </div>
       </nav>
 
       {/* ================= MAIN PRODUCT SECTION ================= */}
-      <section className="max-w-7xl mx-auto px-6 py-8 md:py-12">
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-14">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-8 md:py-12">
+        <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-14">
           {/* LEFT: MULTI-IMAGE GALLERY (7 cols on LG) */}
           <div className="lg:col-span-7">
             <ProductGallery
@@ -73,27 +73,27 @@ export default async function ProductPage({
           {/* RIGHT: PRODUCT INFO & PURCHASE (5 cols on LG) */}
           <div className="lg:col-span-5 flex flex-col justify-start">
             {product.fabric && (
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-rani mb-2">
+              <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.25em] text-rani mb-1.5 sm:mb-2">
                 {product.fabric}
               </p>
             )}
 
-            <h1 className="font-display text-3xl md:text-4xl font-medium text-ink leading-tight">
+            <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-medium text-ink leading-snug sm:leading-tight">
               {product.name}
             </h1>
 
             {/* Price section */}
-            <div className="mt-5 flex items-baseline gap-3">
-              <span className="font-display text-3xl font-medium text-peacock">
+            <div className="mt-3 sm:mt-5 flex items-baseline gap-3 flex-wrap">
+              <span className="font-display text-2xl sm:text-3xl font-medium text-peacock">
                 {formatInr(product.basePrice)}
               </span>
 
               {hasDiscount && (
                 <>
-                  <span className="text-lg text-ink/40 line-through">
+                  <span className="text-base sm:text-lg text-ink/40 line-through">
                     {formatInr(product.originalPrice!)}
                   </span>
-                  <span className="rounded-full bg-green-50 px-3 py-1 text-xs font-semibold text-green-700 tracking-wide">
+                  <span className="rounded-full bg-green-50 px-2.5 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs font-semibold text-green-700 tracking-wide">
                     {discountPercent}% OFF
                   </span>
                 </>
