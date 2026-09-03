@@ -78,18 +78,18 @@ export default function Navbar() {
             : "bg-[#F8F5EA]/90 backdrop-blur-md border-b border-ink/10"
         }`}
       >
-        <nav className="mx-auto flex h-[62px] sm:h-[80px] w-full max-w-[1600px] items-center justify-between px-4 sm:px-8 lg:px-12">
+        <nav className="mx-auto flex h-[60px] sm:h-[80px] w-full max-w-[1600px] items-center justify-between px-3 sm:px-8 lg:px-12">
           {/* ================= LEFT: MOBILE HAMBURGER BUTTON ================= */}
-          <div className="flex items-center gap-3 md:hidden">
+          <div className="flex items-center gap-2 md:hidden">
             <button
               type="button"
               onClick={() => setMobileMenuOpen(true)}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 bg-white/60 text-ink shadow-sm transition-all duration-200 active:scale-95 hover:border-rani hover:text-rani"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-ink/10 bg-white/70 text-ink shadow-sm transition-all duration-200 active:scale-95 hover:border-rani hover:text-rani"
               aria-label="Open navigation menu"
               aria-expanded={mobileMenuOpen}
             >
               <svg
-                className="h-5 w-5"
+                className="h-4.5 w-4.5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -107,13 +107,13 @@ export default function Navbar() {
           {/* ================= LOGO ================= */}
           <Link
             href="/"
-            className="group flex items-center transition-transform duration-300 hover:scale-[1.02]"
+            className="group flex items-center justify-center transition-transform duration-300 hover:scale-[1.02]"
             aria-label="SakhiVastra Home"
           >
             <img
               src="/logo.png"
               alt="SakhiVastra"
-              className="h-[40px] sm:h-[54px] w-auto object-contain"
+              className="h-[34px] sm:h-[52px] w-auto object-contain"
             />
           </Link>
 
@@ -148,8 +148,8 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* ================= RIGHT: PROFILE + CART ================= */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          {/* ================= RIGHT: PROFILE + WISHLIST + CART ================= */}
+          <div className="flex items-center gap-1.5 sm:gap-3">
             {/* PROFILE (DESKTOP + TABLET) */}
             <Link
               href={
@@ -193,7 +193,7 @@ export default function Navbar() {
               href="/wishlist"
               aria-label={`Wishlist, ${wishlistCount} items`}
               title="View Liked Products"
-              className="group relative flex items-center gap-1.5 rounded-full border border-ink/15 bg-white/50 px-2.5 py-2 sm:px-3 sm:py-2 text-ink transition-all duration-300 hover:border-rani hover:bg-rani/5 hover:text-rani shadow-sm active:scale-95"
+              className="group relative flex h-9 w-9 sm:h-auto sm:w-auto items-center justify-center sm:gap-1.5 rounded-full border border-ink/10 sm:border-ink/15 bg-white/70 sm:bg-white/50 sm:px-3 sm:py-2 text-ink transition-all duration-300 hover:border-rani hover:bg-rani/5 hover:text-rani shadow-sm active:scale-95"
             >
               <svg
                 width="16"
@@ -221,7 +221,7 @@ export default function Navbar() {
               </span>
 
               {wishlistCount > 0 && (
-                <span className="flex h-4 min-w-4 items-center justify-center rounded-full bg-rani px-1 text-[9px] font-bold text-ivory shadow-sm">
+                <span className="absolute -top-1 -right-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-rani px-1 text-[8px] font-bold text-ivory shadow-sm">
                   {wishlistCount}
                 </span>
               )}
@@ -231,11 +231,11 @@ export default function Navbar() {
             <Link
               href="/cart"
               aria-label={`Cart, ${itemCount} items`}
-              className="group relative flex items-center gap-2 rounded-full border border-ink/15 bg-white/60 px-3 py-2 sm:px-4 sm:py-2.5 text-ink transition-all duration-300 hover:border-rani hover:bg-rani/5 hover:text-rani shadow-sm active:scale-95"
+              className="group relative flex h-9 w-9 sm:h-auto sm:w-auto items-center justify-center sm:gap-2 rounded-full border border-ink/10 sm:border-ink/15 bg-white/70 sm:bg-white/60 sm:px-4 sm:py-2.5 text-ink transition-all duration-300 hover:border-rani hover:bg-rani/5 hover:text-rani shadow-sm active:scale-95"
             >
               <svg
-                width="18"
-                height="18"
+                width="16"
+                height="16"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -260,7 +260,7 @@ export default function Navbar() {
               </span>
 
               {itemCount > 0 && (
-                <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-rani px-1.5 text-[10px] font-bold text-ivory shadow-sm animate-pulse">
+                <span className="absolute -top-1 -right-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-rani px-1 text-[8px] font-bold text-ivory shadow-sm animate-pulse">
                   {itemCount}
                 </span>
               )}
@@ -362,7 +362,9 @@ export default function Navbar() {
                   className="flex items-center justify-between py-3 px-3.5 rounded-2xl text-sm font-medium tracking-wide text-ink hover:bg-rani/5 hover:text-rani transition-all"
                 >
                   <span className="flex items-center gap-2">
-                    <span className="text-rani">♥</span>
+                    <svg className="w-4 h-4 text-rani" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M20.84 4.61C19.32 3.09 16.88 3.09 15.36 4.61L12 7.97L8.64 4.61C7.12 3.09 4.68 3.09 3.16 4.61C1.64 6.13 1.64 8.57 3.16 10.09L12 18.93L20.84 10.09C22.36 8.57 22.36 6.13 20.84 4.61Z" />
+                    </svg>
                     <span>Liked Products</span>
                   </span>
                   <span className="text-xs font-semibold text-rani bg-rani/10 px-2 py-0.5 rounded-full">
@@ -495,19 +497,34 @@ export default function Navbar() {
             <span className="text-[10px] tracking-tight">Shop</span>
           </Link>
 
-          {/* 3. FESTIVE EDIT */}
+          {/* 3. WISHLIST */}
           <Link
-            href="/shop?category=festive"
-            className="flex flex-col items-center justify-center py-1 px-2 rounded-xl text-ink/60 hover:text-rani transition-all duration-200"
+            href="/wishlist"
+            className={`relative flex flex-col items-center justify-center py-1 px-2 rounded-xl transition-all duration-200 ${
+              pathname === "/wishlist" ? "text-rani font-semibold" : "text-ink/60 hover:text-rani"
+            }`}
           >
-            <svg
-              className="w-5 h-5 mb-0.5 text-zari"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path d="M12 2l2.4 6.9 7.1.4-5.4 4.7 1.7 7-5.8-3.9-5.8 3.9 1.7-7-5.4-4.7 7.1-.4z" />
-            </svg>
-            <span className="text-[10px] tracking-tight text-zari-dark font-medium">Festive</span>
+            <div className="relative">
+              <svg
+                className="w-5 h-5 mb-0.5"
+                fill={pathname === "/wishlist" || wishlistCount > 0 ? "currentColor" : "none"}
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={1.7}
+                  d="M20.84 4.61C19.32 3.09 16.88 3.09 15.36 4.61L12 7.97L8.64 4.61C7.12 3.09 4.68 3.09 3.16 4.61C1.64 6.13 1.64 8.57 3.16 10.09L12 18.93L20.84 10.09C22.36 8.57 22.36 6.13 20.84 4.61Z"
+                />
+              </svg>
+              {wishlistCount > 0 && (
+                <span className="absolute -top-1 -right-2 flex h-4 min-w-4 items-center justify-center rounded-full bg-rani px-1 text-[8px] font-bold text-ivory shadow-sm">
+                  {wishlistCount}
+                </span>
+              )}
+            </div>
+            <span className="text-[10px] tracking-tight">Wishlist</span>
           </Link>
 
           {/* 4. CART */}

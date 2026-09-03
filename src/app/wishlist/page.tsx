@@ -32,9 +32,8 @@ export default function WishlistPage() {
           <p className="text-[10px] sm:text-xs tracking-[0.35em] uppercase text-rani font-semibold mb-2">
             SAVED PIECES
           </p>
-          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-medium text-ink flex items-center justify-center gap-3">
-            <span>Liked Products</span>
-            <span className="text-rani text-2xl sm:text-3xl">♥</span>
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-medium text-ink">
+            Liked Products
           </h1>
 
           <div className="my-3 sm:my-4 flex items-center justify-center gap-3">
@@ -54,8 +53,10 @@ export default function WishlistPage() {
 
         {items.length === 0 ? (
           <div className="rounded-3xl border border-ink/10 bg-[#f8f4e8] p-10 sm:p-16 text-center max-w-lg mx-auto shadow-sm">
-            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-rani/10 text-3xl text-rani">
-              ♡
+            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-rani/10 text-rani">
+              <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M20.84 4.61C19.32 3.09 16.88 3.09 15.36 4.61L12 7.97L8.64 4.61C7.12 3.09 4.68 3.09 3.16 4.61C1.64 6.13 1.64 8.57 3.16 10.09L12 18.93L20.84 10.09C22.36 8.57 22.36 6.13 20.84 4.61Z" />
+              </svg>
             </div>
             <h2 className="font-display text-2xl font-medium text-ink">
               Your Wishlist is Empty

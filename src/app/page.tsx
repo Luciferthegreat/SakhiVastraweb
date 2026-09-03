@@ -32,7 +32,7 @@ export default async function HomePage() {
   return (
     <>
       {/* ================= HERO ================= */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden pt-4 sm:pt-8 pb-12 sm:pb-20">
         {/* Decorative background circles */}
         <div className="pointer-events-none absolute -left-40 top-20 h-96 w-96 rounded-full border border-zari/20" />
         <div className="pointer-events-none absolute -right-40 bottom-0 h-[500px] w-[500px] rounded-full border border-zari/20" />
@@ -46,92 +46,102 @@ export default async function HomePage() {
             <div className="flex h-64 w-64 items-center justify-center rounded-full border border-zari/10">
               <div className="flex h-44 w-44 items-center justify-center rounded-full border border-zari/10">
                 <span className="font-display text-6xl font-light text-zari/10">
-                  ✽
+                  ✦
                 </span>
               </div>
             </div>
           </div>
 
-          <div className="grid min-h-[calc(100vh-80px)] items-center gap-8 py-10 sm:py-14 md:gap-12 lg:grid-cols-[48%_52%] lg:gap-0 lg:py-16">
+          <div className="grid items-center gap-10 sm:gap-12 lg:grid-cols-[48%_52%] lg:gap-10">
             {/* LEFT CONTENT */}
-            <div className="relative z-10 max-w-xl">
+            <div className="relative z-10 max-w-xl text-center sm:text-left">
               <p
-                className="mb-3 sm:mb-5 text-xs sm:text-sm tracking-[0.35em] text-rani font-medium"
-                style={{ fontVariant: "small-caps" }}
+                className="mb-3 sm:mb-4 text-[11px] sm:text-xs font-semibold tracking-[0.3em] uppercase text-rani"
               >
-                Grace of Tradition
+                Handcrafted Heritage · Jaipur
               </p>
 
-              <h1 className="sv-fade-up font-display text-4xl sm:text-6xl md:text-7xl lg:text-[5.8rem] font-medium leading-[1.05] sm:leading-[0.95] tracking-tight text-ink">
+              <h1 className="sv-fade-up font-display text-4xl sm:text-6xl md:text-7xl lg:text-[5.4rem] font-medium leading-[1.05] sm:leading-[0.95] tracking-tight text-ink">
                 Kurtis worth
                 <br />
-                <span className="italic text-rani">keeping.</span>
+                <span className="italic text-rani font-normal">keeping.</span>
               </h1>
 
               {/* Decorative divider */}
-              <div className="my-5 sm:my-8 flex items-center gap-4">
-                <span className="h-px w-10 sm:w-14 bg-zari" />
-                <span className="text-sm sm:text-lg text-zari">✦</span>
-                <span className="h-px w-10 sm:w-14 bg-zari" />
+              <div className="my-5 sm:my-7 flex items-center justify-center sm:justify-start gap-4">
+                <span className="h-px w-10 sm:w-16 bg-zari" />
+                <span className="text-xs sm:text-sm text-zari">✦</span>
+                <span className="h-px w-10 sm:w-16 bg-zari" />
               </div>
 
-              <p className="max-w-lg text-sm sm:text-base leading-6 sm:leading-7 text-ink/70 md:text-lg">
-                Hand-embroidered chikankari, handloom ikat, and zari-trim
-                weaves — finished by artisan partners in small batches,
-                shipped across India.
+              <p className="mx-auto sm:mx-0 max-w-lg text-sm sm:text-base leading-relaxed text-ink/75 sm:leading-7">
+                Hand-embroidered Chikankari, handloom ikat, and zari-trim weaves — finished by master artisan partners in small batches, shipped across India.
               </p>
 
-              {heroProduct && (
-                <div className="mt-6 sm:mt-8">
-                  <Link
-                    href={`/product/${heroProduct.slug}`}
-                    className="group flex sm:inline-flex items-center justify-center gap-4 rounded-full bg-rani px-6 sm:px-7 py-3.5 sm:py-4 text-xs sm:text-sm font-medium tracking-wider text-ivory transition-all duration-500 hover:-translate-y-1 hover:bg-rani-dark hover:shadow-xl w-full sm:w-auto text-center"
-                  >
-                    <span>Discover {heroProduct.name}</span>
-                    <span className="transition-transform duration-300 group-hover:translate-x-1">
-                      →
-                    </span>
-                  </Link>
-                </div>
-              )}
+              {/* CTA Buttons */}
+              <div className="mt-6 sm:mt-9 flex flex-wrap items-center justify-center sm:justify-start gap-3.5">
+                <Link
+                  href="/shop"
+                  className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-rani px-7 sm:px-9 py-3.5 sm:py-4 text-xs sm:text-sm font-semibold tracking-wider text-ivory transition-all duration-300 hover:bg-rani-dark hover:shadow-lg active:scale-95 shadow-sm"
+                >
+                  <span>Explore Collection</span>
+                  <span className="transition-transform duration-300 group-hover:translate-x-1">
+                    →
+                  </span>
+                </Link>
 
-              {/* Feature points */}
-              <div className="mt-8 sm:mt-12 grid max-w-xl grid-cols-3 border-y border-ink/10 py-4 sm:py-5 gap-1">
-                <div className="px-1.5 sm:px-3 text-center first:pl-0">
-                  <div className="mb-1 text-base sm:text-lg text-zari">♡</div>
-                  <p className="text-[9px] sm:text-xs tracking-wider sm:tracking-widest text-ink/60 font-medium">
-                    ARTISAN MADE
+                <Link
+                  href="/shop?category=festive"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-ink/20 bg-white/70 px-6 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-sm font-semibold tracking-wider text-ink transition-all duration-300 hover:border-rani hover:text-rani hover:bg-white active:scale-95 shadow-sm"
+                >
+                  <span>Festive Edit</span>
+                </Link>
+              </div>
+
+              {/* Clean Luxury Feature Points */}
+              <div className="mt-10 sm:mt-14 grid grid-cols-3 border-y border-ink/10 py-4 sm:py-5 text-center">
+                <div className="px-2">
+                  <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.16em] text-ink">
+                    Artisan Made
+                  </p>
+                  <p className="mt-0.5 text-[9px] sm:text-[11px] text-ink/50">
+                    Small Batch Weaves
                   </p>
                 </div>
 
-                <div className="border-x border-ink/10 px-1.5 sm:px-3 text-center">
-                  <div className="mb-1 text-base sm:text-lg text-zari">◇</div>
-                  <p className="text-[9px] sm:text-xs tracking-wider sm:tracking-widest text-ink/60 font-medium">
-                    NATURAL FABRICS
+                <div className="border-x border-ink/10 px-2">
+                  <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.16em] text-ink">
+                    Pure Fabrics
+                  </p>
+                  <p className="mt-0.5 text-[9px] sm:text-[11px] text-ink/50">
+                    Breathable Cotton
                   </p>
                 </div>
 
-                <div className="px-1.5 sm:px-3 text-center">
-                  <div className="mb-1 text-base sm:text-lg text-zari">♧</div>
-                  <p className="text-[9px] sm:text-xs tracking-wider sm:tracking-widest text-ink/60 font-medium">
-                    PAN INDIA DELIVERY
+                <div className="px-2">
+                  <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.16em] text-ink">
+                    Pan-India
+                  </p>
+                  <p className="mt-0.5 text-[9px] sm:text-[11px] text-ink/50">
+                    Direct Delivery
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* RIGHT HERO IMAGE */}
+            {/* RIGHT HERO IMAGE - ARCHED ROYAL JHAROKHA SILHOUETTE */}
             {heroProduct && (
-              <div className="relative flex justify-center lg:justify-end pb-8 sm:pb-0">
-                {/* Large decorative ring */}
-                <div className="pointer-events-none absolute -left-8 top-1/2 hidden h-[470px] w-[470px] -translate-y-1/2 rounded-full border border-zari/40 lg:block" />
+              <div className="relative flex justify-center lg:justify-end pb-8 sm:pb-4">
+                {/* Concentric decorative gold rings */}
+                <div className="pointer-events-none absolute -left-10 top-1/2 hidden h-[500px] w-[500px] -translate-y-1/2 rounded-full border border-zari/35 lg:block" />
+                <div className="pointer-events-none absolute -left-4 top-1/2 hidden h-[390px] w-[390px] -translate-y-1/2 rounded-full border border-zari/20 lg:block" />
 
-                {/* Image frame */}
+                {/* Arched image frame */}
                 <Link
                   href={`/product/${heroProduct.slug}`}
-                  className="group relative block w-full max-w-[480px] lg:max-w-[540px]"
+                  className="group relative block w-full max-w-[360px] sm:max-w-[440px] lg:max-w-[490px]"
                 >
-                  <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] sm:rounded-[45%_45%_8%_8%] bg-ink/5 shadow-xl sm:shadow-2xl">
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-[42%_42%_10%_10%] bg-ink/5 shadow-[0_25px_60px_rgba(43,36,32,0.15)] border border-zari/30">
                     <img
                       src={
                         heroProduct.images?.[0] ||
@@ -141,33 +151,25 @@ export default async function HomePage() {
                       className="sv-fade-up absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
                     />
 
-                    {/* Image gradient */}
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-70" />
-
-                    {/* Image text */}
-                    <div className="absolute bottom-5 sm:bottom-7 left-5 sm:left-7 right-5 sm:right-7 text-ivory">
-                      <p className="mb-1 text-[9px] sm:text-[10px] tracking-[0.3em] text-ivory/80 font-medium">
-                        FEATURED PIECE
-                      </p>
-                    </div>
+                    {/* Subtle warm luxury gradient */}
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-60" />
                   </div>
 
-                  {/* Floating price card */}
-                  <div className="absolute -bottom-4 left-3 right-3 sm:right-auto sm:max-w-[270px] rounded-2xl sm:rounded-3xl bg-white/95 backdrop-blur-md px-4 sm:px-6 py-3.5 sm:py-5 shadow-[0_15px_35px_rgba(43,36,32,0.12)] transition-transform duration-500 group-hover:-translate-y-2 sm:-left-8">
-                    <p className="font-display text-sm sm:text-lg leading-tight text-ink truncate">
+                  {/* Floating Luxury Price Card */}
+                  <div className="absolute -bottom-4 -left-2 sm:-bottom-6 sm:-left-8 max-w-[270px] sm:max-w-[300px] rounded-2xl sm:rounded-3xl bg-white/95 backdrop-blur-xl border border-zari/30 px-4 py-3.5 sm:px-6 sm:py-5 shadow-[0_20px_45px_rgba(43,36,32,0.14)] transition-transform duration-500 group-hover:-translate-y-2">
+                    <p className="font-display text-sm sm:text-base leading-snug text-ink truncate">
                       {heroProduct.name}
                     </p>
 
                     <div className="mt-2 sm:mt-3 flex items-center justify-between gap-3 sm:gap-5">
                       <span className="font-display text-base sm:text-xl text-rani font-medium">
-                        ₹
-                        {heroPrice.toLocaleString("en-IN", {
+                        ₹{heroPrice.toLocaleString("en-IN", {
                           minimumFractionDigits: 2,
                           maximumFractionDigits: 2,
                         })}
                       </span>
 
-                      <span className="rounded-full bg-green-50 px-2.5 sm:px-3 py-0.5 sm:py-1 text-[9px] sm:text-[10px] font-medium text-green-700">
+                      <span className="rounded-full bg-green-50 border border-green-200/80 px-2.5 sm:px-3 py-0.5 sm:py-1 text-[9px] sm:text-[10px] font-semibold text-green-800">
                         {heroProduct.totalStock > 0
                           ? `In Stock (${heroProduct.totalStock})`
                           : "Out of Stock"}

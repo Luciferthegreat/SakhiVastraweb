@@ -287,10 +287,9 @@ export default function AddToCartForm({
                     block: "center",
                   });
                 }}
-                className="text-[10px] uppercase font-semibold text-rani bg-rani/10 px-1.5 py-0.5 rounded flex items-center gap-1"
+                className="text-[10px] uppercase font-semibold text-rani bg-rani/10 px-2 py-0.5 rounded-full flex items-center"
               >
                 <span>Size: {selected.size}</span>
-                <span className="text-[9px]">✎</span>
               </button>
             </div>
           </div>
@@ -320,7 +319,9 @@ export default function AddToCartForm({
         <div className="mt-8 pt-6 border-t border-ink/10">
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
-              <span className="text-zari text-sm">📏</span>
+              <svg className="w-4 h-4 text-zari" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+              </svg>
               <h3 className="text-xs uppercase tracking-[0.2em] font-semibold text-ink">
                 Size Guide & Garment Measurements
               </h3>

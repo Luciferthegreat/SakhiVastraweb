@@ -275,7 +275,7 @@ export default function ProductCard({
                 originalPrice: product.originalPrice,
                 fabric: product.fabric,
               });
-              setWishlistToast(nowLiked ? "Added to Liked Products ♥" : "Removed from Liked Products");
+              setWishlistToast(nowLiked ? "Saved to Liked Products" : "Removed from Liked Products");
               setTimeout(() => setWishlistToast(null), 2000);
             }}
             className={`

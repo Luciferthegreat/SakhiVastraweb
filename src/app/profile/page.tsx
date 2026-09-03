@@ -218,7 +218,6 @@ export default function ProfilePage() {
 
             <h3 className="mt-2 font-serif text-xl text-ink flex items-center gap-1.5 transition-colors group-hover:text-rani">
               <span>Liked Products</span>
-              <span className="text-rani text-base">♥</span>
             </h3>
 
             <p className="mt-2 text-xs sm:text-sm text-ink/50">
@@ -252,9 +251,8 @@ export default function ProfilePage() {
               <p className="text-[10px] uppercase tracking-[0.3em] text-rani font-semibold">
                 Curated Wishlist
               </p>
-              <h2 className="mt-1 font-serif text-2xl sm:text-3xl text-ink flex items-center gap-2">
-                <span>Your Liked Products</span>
-                <span className="text-rani text-xl">♥</span>
+              <h2 className="mt-1 font-serif text-2xl sm:text-3xl text-ink">
+                Your Liked Products
               </h2>
             </div>
 
@@ -270,8 +268,10 @@ export default function ProfilePage() {
 
           {wishlistItems.length === 0 ? (
             <div className="rounded-3xl border border-ink/10 bg-[#f8f4e8] p-10 sm:p-14 text-center max-w-lg mx-auto shadow-sm">
-              <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-rani/10 text-2xl text-rani">
-                ♡
+              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-rani/10 text-rani">
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M20.84 4.61C19.32 3.09 16.88 3.09 15.36 4.61L12 7.97L8.64 4.61C7.12 3.09 4.68 3.09 3.16 4.61C1.64 6.13 1.64 8.57 3.16 10.09L12 18.93L20.84 10.09C22.36 8.57 22.36 6.13 20.84 4.61Z" />
+                </svg>
               </div>
               <h3 className="font-serif text-xl text-ink">No Liked Products Yet</h3>
               <p className="mt-2 text-xs sm:text-sm text-ink/60 leading-relaxed">

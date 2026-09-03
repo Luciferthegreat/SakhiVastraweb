@@ -182,7 +182,7 @@ export default function ProductGallery({
                   const nowLiked = await toggleWishlist(product);
                   setWishlistToast(
                     nowLiked
-                      ? "Saved to Liked Products ♥"
+                      ? "Saved to Liked Products"
                       : "Removed from Liked Products"
                   );
                   setTimeout(() => setWishlistToast(null), 2000);
