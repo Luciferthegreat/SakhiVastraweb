@@ -1,39 +1,8 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import { PrismaClient } from "@prisma/client";
-import crypto from "crypto";
+import { prisma } from "@/lib/db";
+import { verifyAuthToken } from "@/lib/auth";
 
-const prisma = new PrismaClient();
-
-function verifyAuthToken(token: string) {
-  const secret = process.env.AUTH_SECRET;
-
-  if (!secret) {
-    throw new Error("AUTH_SECRET is not configured");
-  }
-
-  const [userId, signature] = token.split(".");
-
-  if (!userId || !signature) {
-    return null;
-  }
-
-  const expectedSignature = crypto
-    .createHmac("sha256", secret)
-    .update(userId)
-    .digest("hex");
-
-  const isValid = crypto.timingSafeEqual(
-    Buffer.from(signature),
-    Buffer.from(expectedSignature)
-  );
-
-  if (!isValid) {
-    return null;
-  }
-
-  return userId;
-}
 
 export async function GET() {
   try {

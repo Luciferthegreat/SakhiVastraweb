@@ -1,25 +1,8 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import bcrypt from "bcryptjs";
-import { PrismaClient } from "@prisma/client";
-import crypto from "crypto";
-
-const prisma = new PrismaClient();
-
-function createAuthToken(userId: string) {
-  const secret = process.env.AUTH_SECRET;
-
-  if (!secret) {
-    throw new Error("AUTH_SECRET is not configured");
-  }
-
-  const signature = crypto
-    .createHmac("sha256", secret)
-    .update(userId)
-    .digest("hex");
-
-  return `${userId}.${signature}`;
-}
+import { prisma } from "@/lib/db";
+import { createAuthToken } from "@/lib/auth";
 
 export async function POST(request: Request) {
   try {

@@ -2,17 +2,20 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { useWishlistStore, WishlistProduct } from "@/lib/wishlist-store";
 
 interface ProductGalleryProps {
   images: string[];
   productName: string;
   discountBadge?: string | null;
+  product?: WishlistProduct;
 }
 
 export default function ProductGallery({
   images: rawImages,
   productName,
   discountBadge,
+  product,
 }: ProductGalleryProps) {
   const images =
     rawImages && rawImages.length > 0
@@ -21,6 +24,35 @@ export default function ProductGallery({
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [wishlistToast, setWishlistToast] = useState<string | null>(null);
+  const [shareToast, setShareToast] = useState<string | null>(null);
+
+  const isLiked = useWishlistStore((s) =>
+    product ? s.isWishlisted(product.slug) : false
+  );
+  const toggleWishlist = useWishlistStore((s) => s.toggleWishlist);
+
+  async function handleShare(e: React.MouseEvent) {
+    e.stopPropagation();
+    const url = typeof window !== "undefined" ? window.location.href : "";
+
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: productName,
+          text: `Check out ${productName} on SakhiVastra`,
+          url,
+        });
+        return;
+      }
+
+      await navigator.clipboard.writeText(url);
+      setShareToast("Link copied to clipboard ✓");
+      setTimeout(() => setShareToast(null), 2500);
+    } catch {
+      console.log("Share cancelled");
+    }
+  }
 
   // Mobile Touch Swipe State
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
@@ -138,27 +170,130 @@ export default function ProductGallery({
             </div>
           )}
 
-          {/* Zoom hint overlay icon */}
-          <button
-            type="button"
-            onClick={() => setIsLightboxOpen(true)}
-            aria-label="Open zoom view"
-            className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-ivory/90 text-ink/70 shadow-sm backdrop-blur-md transition-all duration-300 hover:bg-ivory hover:text-ink hover:scale-105"
-          >
-            <svg
-              className="w-3.5 h-3.5 sm:w-4 sm:h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          {/* Top Right Action Icons: Wishlist, Share & Zoom */}
+          <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 flex items-center gap-1.5 sm:gap-2">
+            {product && (
+              <button
+                type="button"
+                aria-label={isLiked ? "Remove from wishlist" : "Add to wishlist"}
+                title={isLiked ? "Saved in Liked Products" : "Add to Liked Products"}
+                onClick={async (e) => {
+                  e.stopPropagation();
+                  const nowLiked = await toggleWishlist(product);
+                  setWishlistToast(
+                    nowLiked
+                      ? "Saved to Liked Products ♥"
+                      : "Removed from Liked Products"
+                  );
+                  setTimeout(() => setWishlistToast(null), 2000);
+                }}
+                className={`
+                  flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border shadow-sm backdrop-blur-md transition-all duration-300 hover:scale-110
+                  ${
+                    isLiked
+                      ? "border-rani bg-rani text-ivory shadow-md scale-105"
+                      : "border-ivory/60 bg-ivory/90 text-ink/70 hover:bg-ivory hover:text-rani"
+                  }
+                `}
+              >
+                <svg
+                  className="w-3.5 h-3.5 sm:w-4 sm:h-4"
+                  viewBox="0 0 24 24"
+                  fill={isLiked ? "currentColor" : "none"}
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20.84 4.61C19.32 3.09 16.88 3.09 15.36 4.61L12 7.97L8.64 4.61C7.12 3.09 4.68 3.09 3.16 4.61C1.64 6.13 1.64 8.57 3.16 10.09L12 18.93L20.84 10.09C22.36 8.57 22.36 6.13 20.84 4.61Z"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+            )}
+
+            {/* Share button */}
+            <button
+              type="button"
+              onClick={handleShare}
+              aria-label="Share product"
+              title="Share this Kurti"
+              className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-ivory/60 bg-ivory/90 text-ink/70 shadow-sm backdrop-blur-md transition-all duration-300 hover:bg-ivory hover:text-rani hover:scale-105"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1.8}
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
-              />
-            </svg>
-          </button>
+              <svg
+                className="w-3.5 h-3.5 sm:w-4 sm:h-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="18"
+                  cy="5"
+                  r="2.5"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                />
+                <circle
+                  cx="6"
+                  cy="12"
+                  r="2.5"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                />
+                <circle
+                  cx="18"
+                  cy="19"
+                  r="2.5"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                />
+                <path
+                  d="M8.2 10.8L15.8 6.2"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                />
+                <path
+                  d="M8.2 13.2L15.8 17.8"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                />
+              </svg>
+            </button>
+
+            {/* Zoom hint overlay icon */}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsLightboxOpen(true);
+              }}
+              aria-label="Open zoom view"
+              title="Click to zoom images"
+              className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-ivory/60 bg-ivory/90 text-ink/70 shadow-sm backdrop-blur-md transition-all duration-300 hover:bg-ivory hover:text-ink hover:scale-105"
+            >
+              <svg
+                className="w-3.5 h-3.5 sm:w-4 sm:h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={1.8}
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
+                />
+              </svg>
+            </button>
+          </div>
+
+          {/* Toast popup on gallery */}
+          {(wishlistToast || shareToast) && (
+            <div className="absolute top-14 right-3 sm:right-4 z-30 whitespace-nowrap rounded-full bg-ink px-3.5 py-1.5 text-[10px] font-medium text-ivory shadow-lg animate-in fade-in slide-in-from-top-1 duration-200">
+              {wishlistToast || shareToast}
+            </div>
+          )}
 
           {/* Image Navigation Arrows */}
           {images.length > 1 && (

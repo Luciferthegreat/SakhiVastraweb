@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useCartStore } from "@/lib/cart-store";
+import { useWishlistStore } from "@/lib/wishlist-store";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -21,6 +22,9 @@ export default function Navbar() {
   const itemCount = useCartStore((s) =>
     s.items.reduce((n, i) => n + i.quantity, 0)
   );
+
+  const wishlistCount = useWishlistStore((s) => s.items.length);
+  const syncWishlist = useWishlistStore((s) => s.syncFromServer);
 
   // Scroll detection for dynamic shadow and blur
   useEffect(() => {
@@ -184,6 +188,45 @@ export default function Navbar() {
               </span>
             </Link>
 
+            {/* WISHLIST (HEART ICON + BADGE) */}
+            <Link
+              href="/wishlist"
+              aria-label={`Wishlist, ${wishlistCount} items`}
+              title="View Liked Products"
+              className="group relative flex items-center gap-1.5 rounded-full border border-ink/15 bg-white/50 px-2.5 py-2 sm:px-3 sm:py-2 text-ink transition-all duration-300 hover:border-rani hover:bg-rani/5 hover:text-rani shadow-sm active:scale-95"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill={wishlistCount > 0 ? "currentColor" : "none"}
+                xmlns="http://www.w3.org/2000/svg"
+                className={`transition-colors duration-300 ${
+                  wishlistCount > 0
+                    ? "text-rani"
+                    : "text-ink/70 group-hover:text-rani"
+                }`}
+              >
+                <path
+                  d="M20.84 4.61C19.32 3.09 16.88 3.09 15.36 4.61L12 7.97L8.64 4.61C7.12 3.09 4.68 3.09 3.16 4.61C1.64 6.13 1.64 8.57 3.16 10.09L12 18.93L20.84 10.09C22.36 8.57 22.36 6.13 20.84 4.61Z"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+
+              <span className="hidden lg:inline text-[11px] font-medium uppercase tracking-[0.14em]">
+                Wishlist
+              </span>
+
+              {wishlistCount > 0 && (
+                <span className="flex h-4 min-w-4 items-center justify-center rounded-full bg-rani px-1 text-[9px] font-bold text-ivory shadow-sm">
+                  {wishlistCount}
+                </span>
+              )}
+            </Link>
+
             {/* CART (ALWAYS VISIBLE WITH BADGE) */}
             <Link
               href="/cart"
@@ -312,6 +355,20 @@ export default function Navbar() {
                     </Link>
                   );
                 })}
+
+                <Link
+                  href="/wishlist"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-between py-3 px-3.5 rounded-2xl text-sm font-medium tracking-wide text-ink hover:bg-rani/5 hover:text-rani transition-all"
+                >
+                  <span className="flex items-center gap-2">
+                    <span className="text-rani">♥</span>
+                    <span>Liked Products</span>
+                  </span>
+                  <span className="text-xs font-semibold text-rani bg-rani/10 px-2 py-0.5 rounded-full">
+                    {wishlistCount}
+                  </span>
+                </Link>
 
                 <Link
                   href="/track-order"

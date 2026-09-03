@@ -16,7 +16,7 @@
  * - Sheet Website Live + Website Price controls Product.active
  */
 
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "../src/generated/client";
 
 import {
   parseSheetProducts,
@@ -1006,6 +1006,26 @@ export async function syncProducts() {
                   variant.color ||
                   undefined,
 
+                chest:
+                  variant.chest ||
+                  null,
+
+                shoulder:
+                  variant.shoulder ||
+                  null,
+
+                waist:
+                  variant.waist ||
+                  null,
+
+                length:
+                  variant.length ||
+                  null,
+
+                hip:
+                  variant.hip ||
+                  null,
+
                 productId:
                   existing.id,
               },
@@ -1035,6 +1055,26 @@ export async function syncProducts() {
                 color:
                   variant.color ||
                   undefined,
+
+                chest:
+                  variant.chest ||
+                  null,
+
+                shoulder:
+                  variant.shoulder ||
+                  null,
+
+                waist:
+                  variant.waist ||
+                  null,
+
+                length:
+                  variant.length ||
+                  null,
+
+                hip:
+                  variant.hip ||
+                  null,
 
                 productId:
                   existing.id,
@@ -1082,6 +1122,26 @@ export async function syncProducts() {
                   color:
                     variant.color ||
                     undefined,
+
+                  chest:
+                    variant.chest ||
+                    null,
+
+                  shoulder:
+                    variant.shoulder ||
+                    null,
+
+                  waist:
+                    variant.waist ||
+                    null,
+
+                  length:
+                    variant.length ||
+                    null,
+
+                  hip:
+                    variant.hip ||
+                    null,
                 })
               ),
           },

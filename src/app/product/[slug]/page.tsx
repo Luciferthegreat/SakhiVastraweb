@@ -3,6 +3,7 @@ import Link from "next/link";
 import { prisma } from "@/lib/db";
 import AddToCartForm from "@/components/AddToCartForm";
 import ProductGallery from "@/components/ProductGallery";
+import ProductCard from "@/components/ProductCard";
 
 function formatInr(paise: number) {
   return `₹${(paise / 100).toLocaleString("en-IN")}`;
@@ -21,6 +22,38 @@ export default async function ProductPage({
   });
 
   if (!product || !product.active) notFound();
+
+  // Fetch similar / random products from the database (synced from sheet)
+  const similarCategoryProducts = await prisma.product.findMany({
+    where: {
+      active: true,
+      slug: { not: slug },
+      ...(product.categoryId ? { categoryId: product.categoryId } : {}),
+    },
+    take: 8,
+  });
+
+  let recommendedProducts = [...similarCategoryProducts];
+
+  // If fewer than 4 items from the same category, fetch other active products
+  if (recommendedProducts.length < 4) {
+    const remainingCount = 8 - recommendedProducts.length;
+    const additionalProducts = await prisma.product.findMany({
+      where: {
+        active: true,
+        slug: {
+          notIn: [slug, ...recommendedProducts.map((p) => p.slug)],
+        },
+      },
+      take: remainingCount,
+    });
+    recommendedProducts = [...recommendedProducts, ...additionalProducts];
+  }
+
+  // Shuffle and pick 4 random products for display
+  const displaySimilar = recommendedProducts
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 4);
 
   const images =
     product.images && product.images.length > 0
@@ -42,7 +75,7 @@ export default async function ProductPage({
   const discountBadge = hasDiscount ? `${discountPercent}% OFF` : null;
 
   return (
-    <div className="min-h-screen bg-ivory">
+    <div className="min-h-screen bg-ivory pb-28 sm:pb-16">
       {/* ================= BREADCRUMBS ================= */}
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 pt-4 sm:pt-6 pb-2 overflow-x-auto scrollbar-none">
         <div className="flex items-center gap-2 text-[11px] sm:text-xs tracking-wider text-ink/50 whitespace-nowrap">
@@ -67,6 +100,15 @@ export default async function ProductPage({
               images={images}
               productName={product.name}
               discountBadge={discountBadge}
+              product={{
+                id: product.id,
+                slug: product.slug,
+                name: product.name,
+                images,
+                basePrice: product.basePrice,
+                originalPrice: product.originalPrice,
+                fabric: product.fabric,
+              }}
             />
           </div>
 
@@ -115,7 +157,7 @@ export default async function ProductPage({
               </p>
             )}
 
-            {/* Add to Cart form */}
+            {/* Add to Cart form with Kurti-specific Size Chart */}
             <div className="mt-8">
               <AddToCartForm
                 productName={product.name}
@@ -126,55 +168,74 @@ export default async function ProductPage({
                   size: v.size,
                   stock: v.stock,
                   price: product.basePrice + v.priceDelta,
+                  chest: v.chest,
+                  shoulder: v.shoulder,
+                  waist: v.waist,
+                  length: v.length,
+                  hip: v.hip,
                 }))}
               />
-            </div>
-
-            {/* Value Props / Trust Highlights */}
-            <div className="mt-10 pt-8 border-t border-ink/10 grid grid-cols-2 gap-4">
-              <div className="flex items-start gap-3">
-                <span className="text-zari text-lg">✦</span>
-                <div>
-                  <p className="text-xs font-medium text-ink">Handcrafted Finish</p>
-                  <p className="text-[11px] text-ink/60 mt-0.5">
-                    Made with artisan care
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <span className="text-zari text-lg">❀</span>
-                <div>
-                  <p className="text-xs font-medium text-ink">Pure Breathable Fabric</p>
-                  <p className="text-[11px] text-ink/60 mt-0.5">
-                    Comfortable all day
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <span className="text-zari text-lg">🚚</span>
-                <div>
-                  <p className="text-xs font-medium text-ink">Pan India Delivery</p>
-                  <p className="text-[11px] text-ink/60 mt-0.5">
-                    Fast & safe shipping
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <span className="text-zari text-lg">↺</span>
-                <div>
-                  <p className="text-xs font-medium text-ink">Easy Exchange</p>
-                  <p className="text-[11px] text-ink/60 mt-0.5">
-                    Hassle-free 7-day returns
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* ================= SIMILAR PRODUCTS SECTION ================= */}
+      {displaySimilar.length > 0 && (
+        <>
+          <div className="booti-divider" aria-hidden="true" />
+
+          <section className="max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
+            <div className="text-center mb-8 sm:mb-12">
+              <p className="text-[10px] sm:text-xs tracking-[0.35em] uppercase text-rani font-semibold mb-2">
+                CURATED FOR YOU
+              </p>
+              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-medium text-ink">
+                Similar Kurtis You Might Like
+              </h2>
+              <div className="my-3 sm:my-4 flex items-center justify-center gap-3">
+                <span className="h-px w-8 sm:w-12 bg-zari" />
+                <span className="text-xs sm:text-sm text-zari">✦</span>
+                <span className="h-px w-8 sm:w-12 bg-zari" />
+              </div>
+              <p className="mx-auto mt-2 max-w-lg text-xs sm:text-sm leading-5 text-ink/60">
+                Discover more handcrafted artisan pieces designed for your everyday and festive grace.
+              </p>
+            </div>
+
+            {/* Product Cards Grid */}
+            <div className="grid grid-cols-2 gap-3.5 sm:gap-x-5 sm:gap-y-12 md:grid-cols-4 md:gap-x-8">
+              {displaySimilar.map((item) => (
+                <ProductCard
+                  key={item.id}
+                  product={{
+                    slug: item.slug,
+                    name: item.name,
+                    images:
+                      item.images && item.images.length > 0
+                        ? item.images
+                        : ["/products/placeholder.jpg"],
+                    basePrice: item.basePrice,
+                    originalPrice: item.originalPrice,
+                    fabric: item.fabric,
+                  }}
+                />
+              ))}
+            </div>
+
+            {/* Bottom link */}
+            <div className="mt-12 sm:mt-16 text-center">
+              <Link
+                href="/shop"
+                className="inline-flex items-center gap-3 border-b border-rani pb-1 text-xs sm:text-sm tracking-widest text-rani transition-all duration-300 hover:gap-5"
+              >
+                EXPLORE ALL COLLECTION
+                <span>→</span>
+              </Link>
+            </div>
+          </section>
+        </>
+      )}
     </div>
   );
 }

@@ -3,8 +3,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useWishlistStore } from "@/lib/wishlist-store";
 
 export interface ProductCardData {
+  id?: string;
   slug: string;
   name: string;
   images: string[];
@@ -25,6 +27,10 @@ export default function ProductCard({
   const [activeImage, setActiveImage] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [shareCopied, setShareCopied] = useState(false);
+  const [wishlistToast, setWishlistToast] = useState<string | null>(null);
+
+  const isLiked = useWishlistStore((s) => s.isWishlisted(product.slug));
+  const toggleWishlist = useWishlistStore((s) => s.toggleWishlist);
 
   // Touch swipe state for mobile
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
@@ -255,12 +261,24 @@ export default function ProductCard({
 
           <button
             type="button"
-            aria-label="Add to wishlist"
-            onClick={(e) => {
+            aria-label={isLiked ? "Remove from wishlist" : "Add to wishlist"}
+            title={isLiked ? "Saved to Liked Products" : "Add to Liked Products"}
+            onClick={async (e) => {
               e.preventDefault();
               e.stopPropagation();
+              const nowLiked = await toggleWishlist({
+                id: product.id,
+                slug: product.slug,
+                name: product.name,
+                images,
+                basePrice: product.basePrice,
+                originalPrice: product.originalPrice,
+                fabric: product.fabric,
+              });
+              setWishlistToast(nowLiked ? "Added to Liked Products ♥" : "Removed from Liked Products");
+              setTimeout(() => setWishlistToast(null), 2000);
             }}
-            className="
+            className={`
               flex
               h-8
               w-8
@@ -270,28 +288,28 @@ export default function ProductCard({
               justify-center
               rounded-full
               border
-              border-ivory/60
-              bg-ivory/90
-              text-ink/70
               shadow-sm
               backdrop-blur-md
               transition-all
               duration-300
-              hover:scale-105
-              hover:bg-ivory
-              hover:text-rani
-            "
+              hover:scale-110
+              ${
+                isLiked
+                  ? "border-rani bg-rani text-ivory shadow-md scale-105"
+                  : "border-ivory/60 bg-ivory/90 text-ink/70 hover:bg-ivory hover:text-rani"
+              }
+            `}
           >
             <svg
-              className="w-3.5 h-3.5 sm:w-4 sm:h-4"
+              className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform duration-300"
               viewBox="0 0 24 24"
-              fill="none"
+              fill={isLiked ? "currentColor" : "none"}
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 d="M20.84 4.61C19.32 3.09 16.88 3.09 15.36 4.61L12 7.97L8.64 4.61C7.12 3.09 4.68 3.09 3.16 4.61C1.64 6.13 1.64 8.57 3.16 10.09L12 18.93L20.84 10.09C22.36 8.57 22.36 6.13 20.84 4.61Z"
                 stroke="currentColor"
-                strokeWidth="1.4"
+                strokeWidth="1.6"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
@@ -372,9 +390,36 @@ export default function ProductCard({
           </button>
         </div>
 
-        {/* ================= SHARE COPIED MESSAGE ================= */}
+        {/* ================= WISHLIST / SHARE TOAST MESSAGES ================= */}
 
-        {shareCopied && (
+        {wishlistToast && (
+          <div
+            className="
+              absolute
+              bottom-3
+              left-1/2
+              z-30
+              -translate-x-1/2
+              whitespace-nowrap
+              rounded-full
+              bg-ink
+              px-3.5
+              py-1.5
+              text-[10px]
+              font-medium
+              text-ivory
+              shadow-lg
+              animate-in
+              fade-in
+              slide-in-from-bottom-2
+              duration-200
+            "
+          >
+            {wishlistToast}
+          </div>
+        )}
+
+        {shareCopied && !wishlistToast && (
           <div
             className="
               absolute

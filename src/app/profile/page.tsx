@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useWishlistStore } from "@/lib/wishlist-store";
+import ProductCard from "@/components/ProductCard";
 
 type User = {
   id: string;
@@ -13,6 +15,9 @@ type User = {
 export default function ProfilePage() {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+
+  const wishlistItems = useWishlistStore((s) => s.items);
+  const syncFromServer = useWishlistStore((s) => s.syncFromServer);
 
   useEffect(() => {
     async function loadProfile() {
@@ -28,6 +33,9 @@ export default function ProfilePage() {
 
         const data = await response.json();
         setUser(data.user);
+
+        // Sync wishlist from server for logged in user
+        syncFromServer();
       } catch {
         window.location.href = "/login?redirect=/profile";
       } finally {
@@ -36,7 +44,7 @@ export default function ProfilePage() {
     }
 
     loadProfile();
-  }, []);
+  }, [syncFromServer]);
 
   if (loading) {
     return (
@@ -56,11 +64,11 @@ export default function ProfilePage() {
 
   return (
     <main className="min-h-[calc(100vh-82px)] bg-ivory px-6 py-16 sm:px-8 lg:px-12">
-      <div className="mx-auto max-w-[1000px]">
+      <div className="mx-auto max-w-[1100px]">
 
         {/* HEADER */}
         <div className="mb-10">
-          <p className="mb-3 text-[10px] uppercase tracking-[0.3em] text-rani">
+          <p className="mb-3 text-[10px] uppercase tracking-[0.3em] text-rani font-medium">
             SakhiVastra
           </p>
 
@@ -176,11 +184,12 @@ export default function ProfilePage() {
           </div>
         </div>
 
-        {/* FUTURE SECTIONS */}
-        <div className="mt-8 grid gap-5 md:grid-cols-2">
+        {/* 3 CARDS IN ONE LINE (ORDERS - LIKED PRODUCTS - ADDRESS) */}
+        <div className="mt-8 grid gap-5 grid-cols-1 md:grid-cols-3">
 
-          <div className="rounded-2xl border border-ink/10 bg-[#f8f4e8] p-7">
-            <p className="text-[10px] uppercase tracking-[0.2em] text-rani">
+          {/* CARD 1: ORDERS */}
+          <div className="rounded-2xl border border-ink/10 bg-[#f8f4e8] p-7 transition-all duration-300 hover:shadow-md">
+            <p className="text-[10px] uppercase tracking-[0.2em] text-rani font-semibold">
               Orders
             </p>
 
@@ -188,13 +197,40 @@ export default function ProfilePage() {
               My Orders
             </h3>
 
-            <p className="mt-2 text-sm text-ink/50">
+            <p className="mt-2 text-xs sm:text-sm text-ink/50">
               Your order history will appear here.
             </p>
           </div>
 
-          <div className="rounded-2xl border border-ink/10 bg-[#f8f4e8] p-7">
-            <p className="text-[10px] uppercase tracking-[0.2em] text-rani">
+          {/* CARD 2: LIKED PRODUCTS (IN BETWEEN) */}
+          <a
+            href="#liked-products"
+            className="group block rounded-2xl border border-rani/25 bg-[#f8f4e8] p-7 transition-all duration-300 hover:shadow-lg hover:border-rani hover:-translate-y-0.5"
+          >
+            <div className="flex items-center justify-between">
+              <p className="text-[10px] uppercase tracking-[0.2em] text-rani font-semibold">
+                Wishlist
+              </p>
+              <span className="rounded-full bg-rani/10 px-2.5 py-0.5 text-[10px] font-semibold text-rani">
+                {wishlistItems.length} {wishlistItems.length === 1 ? "Piece" : "Pieces"}
+              </span>
+            </div>
+
+            <h3 className="mt-2 font-serif text-xl text-ink flex items-center gap-1.5 transition-colors group-hover:text-rani">
+              <span>Liked Products</span>
+              <span className="text-rani text-base">♥</span>
+            </h3>
+
+            <p className="mt-2 text-xs sm:text-sm text-ink/50">
+              {wishlistItems.length > 0
+                ? `${wishlistItems.length} saved piece(s) in your wishlist. Click to view ↓`
+                : "Your saved & liked kurtis appear here. Click to view ↓"}
+            </p>
+          </a>
+
+          {/* CARD 3: ADDRESS */}
+          <div className="rounded-2xl border border-ink/10 bg-[#f8f4e8] p-7 transition-all duration-300 hover:shadow-md">
+            <p className="text-[10px] uppercase tracking-[0.2em] text-rani font-semibold">
               Address
             </p>
 
@@ -202,12 +238,71 @@ export default function ProfilePage() {
               Saved Addresses
             </h3>
 
-            <p className="mt-2 text-sm text-ink/50">
+            <p className="mt-2 text-xs sm:text-sm text-ink/50">
               Your saved delivery addresses will appear here.
             </p>
           </div>
 
         </div>
+
+        {/* LIKED PRODUCTS SECTION */}
+        <section id="liked-products" className="mt-12 pt-8 border-t border-ink/10 scroll-mt-24">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.3em] text-rani font-semibold">
+                Curated Wishlist
+              </p>
+              <h2 className="mt-1 font-serif text-2xl sm:text-3xl text-ink flex items-center gap-2">
+                <span>Your Liked Products</span>
+                <span className="text-rani text-xl">♥</span>
+              </h2>
+            </div>
+
+            {wishlistItems.length > 0 && (
+              <Link
+                href="/shop"
+                className="text-xs uppercase tracking-wider font-semibold text-rani hover:text-ink transition-colors inline-flex items-center gap-1"
+              >
+                Explore More <span>→</span>
+              </Link>
+            )}
+          </div>
+
+          {wishlistItems.length === 0 ? (
+            <div className="rounded-3xl border border-ink/10 bg-[#f8f4e8] p-10 sm:p-14 text-center max-w-lg mx-auto shadow-sm">
+              <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-rani/10 text-2xl text-rani">
+                ♡
+              </div>
+              <h3 className="font-serif text-xl text-ink">No Liked Products Yet</h3>
+              <p className="mt-2 text-xs sm:text-sm text-ink/60 leading-relaxed">
+                Tap the heart icon on any kurti in our collection to save your favorite designs to your profile.
+              </p>
+              <Link
+                href="/shop"
+                className="mt-6 inline-flex items-center gap-2 rounded-full bg-rani px-6 py-3 text-xs font-semibold uppercase tracking-wider text-ivory transition-all hover:bg-rani-dark hover:shadow-md"
+              >
+                Explore Collection →
+              </Link>
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 gap-3.5 sm:gap-x-5 sm:gap-y-10 md:grid-cols-3 lg:grid-cols-4">
+              {wishlistItems.map((item) => (
+                <ProductCard
+                  key={item.slug}
+                  product={{
+                    id: item.id,
+                    slug: item.slug,
+                    name: item.name,
+                    images: item.images,
+                    basePrice: item.basePrice,
+                    originalPrice: item.originalPrice,
+                    fabric: item.fabric,
+                  }}
+                />
+              ))}
+            </div>
+          )}
+        </section>
 
       </div>
     </main>
