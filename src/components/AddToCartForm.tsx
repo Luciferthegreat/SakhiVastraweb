@@ -28,6 +28,7 @@ export default function AddToCartForm({
   image: string;
   variants: VariantOption[];
 }) {
+  const [imgSrc, setImgSrc] = useState(image || "/products/placeholder.jpg");
   const [selected, setSelected] = useState<VariantOption | null>(
     variants.find((v) => v.stock > 0) ?? variants[0] ?? null
   );
@@ -268,11 +269,12 @@ export default function AddToCartForm({
           <div className="flex items-center gap-2.5 min-w-0">
             <div className="relative h-10 w-8 rounded-lg overflow-hidden flex-shrink-0 border border-ink/10">
               <Image
-                src={image}
+                src={imgSrc}
                 alt={productName}
                 fill
                 className="object-cover"
                 sizes="40px"
+                onError={() => setImgSrc("/products/placeholder.jpg")}
               />
             </div>
             <div className="min-w-0">

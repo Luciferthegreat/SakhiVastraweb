@@ -36,10 +36,20 @@ export default function ProductCard({
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const [touchEndX, setTouchEndX] = useState<number | null>(null);
 
+  const fallbackPlaceholder = "/products/placeholder.jpg";
+  const [imgErrors, setImgErrors] = useState<Record<string, boolean>>({});
+
+  const getImageSrc = (src: string) =>
+    imgErrors[src] ? fallbackPlaceholder : src;
+
+  const handleImageError = (src: string) => {
+    setImgErrors((prev) => (prev[src] ? prev : { ...prev, [src]: true }));
+  };
+
   const images =
     product.images?.length > 0
       ? product.images
-      : ["/products/placeholder.jpg"];
+      : [fallbackPlaceholder];
 
   /*
    * ================= DISCOUNT =================
@@ -174,22 +184,26 @@ export default function ProductCard({
           <div className="relative aspect-[3/4]">
             {/* Background image */}
             <Image
-              src={images[(activeImage + 1) % images.length]}
+              src={getImageSrc(images[(activeImage + 1) % images.length])}
               alt=""
               fill
               priority={activeImage === 0}
               className="object-cover scale-[1.01]"
               sizes="(max-width: 768px) 50vw, 25vw"
+              onError={() =>
+                handleImageError(images[(activeImage + 1) % images.length])
+              }
             />
 
             {/* Active image */}
             {images.map((image, index) => (
               <Image
                 key={`${image}-${index}`}
-                src={image}
+                src={getImageSrc(image)}
                 alt={product.name}
                 fill
                 sizes="(max-width: 768px) 50vw, 25vw"
+                onError={() => handleImageError(image)}
                 className={`
                   object-cover
                   transition-all
@@ -556,11 +570,12 @@ export default function ProductCard({
                   `}
                 >
                   <Image
-                    src={image}
+                    src={getImageSrc(image)}
                     alt={`${product.name} ${index + 1}`}
                     fill
                     className="object-cover"
                     sizes="36px"
+                    onError={() => handleImageError(image)}
                   />
                 </button>
               ))}

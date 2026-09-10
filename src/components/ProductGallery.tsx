@@ -22,10 +22,20 @@ export default function ProductGallery({
       ? rawImages
       : ["/products/placeholder.jpg"];
 
+  const fallbackPlaceholder = "/products/placeholder.jpg";
+  const [imgErrors, setImgErrors] = useState<Record<string, boolean>>({});
+
   const [activeIndex, setActiveIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [wishlistToast, setWishlistToast] = useState<string | null>(null);
   const [shareToast, setShareToast] = useState<string | null>(null);
+
+  const getImageSrc = (src: string) =>
+    imgErrors[src] ? fallbackPlaceholder : src;
+
+  const handleImageError = (src: string) => {
+    setImgErrors((prev) => (prev[src] ? prev : { ...prev, [src]: true }));
+  };
 
   const isLiked = useWishlistStore((s) =>
     product ? s.isWishlisted(product.slug) : false
@@ -123,11 +133,12 @@ export default function ProductGallery({
                   `}
                 >
                   <Image
-                    src={img}
+                    src={getImageSrc(img)}
                     alt={`${productName} thumbnail ${idx + 1}`}
                     fill
                     className="object-cover"
                     sizes="80px"
+                    onError={() => handleImageError(img)}
                   />
                 </button>
               );
@@ -153,12 +164,13 @@ export default function ProductGallery({
               onClick={() => setIsLightboxOpen(true)}
             >
               <Image
-                src={img}
+                src={getImageSrc(img)}
                 alt={`${productName} view ${idx + 1}`}
                 fill
                 priority={idx === 0}
                 className="object-cover transition-transform duration-700 md:group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 50vw"
+                onError={() => handleImageError(img)}
               />
             </div>
           ))}
@@ -422,12 +434,13 @@ export default function ProductGallery({
             onClick={(e) => e.stopPropagation()}
           >
             <Image
-              src={activeImage}
+              src={getImageSrc(activeImage)}
               alt={`${productName} zoomed view`}
               fill
               className="object-contain"
               priority
               sizes="100vw"
+              onError={() => handleImageError(activeImage)}
             />
 
             {/* Lightbox Nav Arrows */}
@@ -500,10 +513,11 @@ export default function ProductGallery({
                     }`}
                   >
                     <Image
-                      src={img}
+                      src={getImageSrc(img)}
                       alt={`Thumbnail ${idx + 1}`}
                       fill
                       className="object-cover"
+                      onError={() => handleImageError(img)}
                     />
                   </button>
                 ))}

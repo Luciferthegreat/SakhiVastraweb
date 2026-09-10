@@ -1,11 +1,26 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useCartStore } from "@/lib/cart-store";
 
 function formatInr(paise: number) {
   return `₹${(paise / 100).toLocaleString("en-IN")}`;
+}
+
+function CartItemImage({ src, alt }: { src: string; alt: string }) {
+  const [imgSrc, setImgSrc] = useState(src || "/products/placeholder.jpg");
+  return (
+    <Image
+      src={imgSrc}
+      alt={alt}
+      fill
+      className="object-cover"
+      sizes="80px"
+      onError={() => setImgSrc("/products/placeholder.jpg")}
+    />
+  );
 }
 
 export default function CartPage() {
@@ -200,12 +215,9 @@ export default function CartPage() {
               <div className="flex items-center gap-4 min-w-0">
                 {/* Product Image */}
                 <div className="cart-product-image relative w-16 h-20 sm:w-20 sm:h-24 bg-ink/5 rounded-xl overflow-hidden shrink-0">
-                  <Image
+                  <CartItemImage
                     src={item.image}
                     alt={item.productName}
-                    fill
-                    className="object-cover"
-                    sizes="80px"
                   />
                 </div>
 
