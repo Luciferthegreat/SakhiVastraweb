@@ -234,6 +234,27 @@ export default function MetaAdsDashboard() {
     }
   }
 
+  // Quick switch operating mode from header
+  async function handleQuickModeChange(newMode: "monitor" | "simulation" | "live") {
+    try {
+      const res = await fetch("/api/meta/config", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ automationMode: newMode }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Failed to switch mode");
+      setActionMessage({
+        type: "success",
+        text: `Operating mode changed to ${newMode.toUpperCase()}`,
+      });
+      setConfigForm((prev) => ({ ...prev, automationMode: newMode }));
+      await loadDashboardData();
+    } catch (err: any) {
+      setActionMessage({ type: "error", text: err.message });
+    }
+  }
+
   // Generate Creatives for Selected Product
   async function handleGenerateCreatives(prodId: string) {
     setSelectedProductId(prodId);
@@ -406,15 +427,15 @@ export default function MetaAdsDashboard() {
               </h1>
             </div>
 
-            {/* Mode & Live Indicator */}
+            {/* Mode & Live Interactive Selector */}
             <div className="flex items-center gap-2">
-              <span
-                className={`text-xs px-2.5 py-1 rounded-full font-medium flex items-center gap-1.5 ${
+              <div
+                className={`text-xs px-2.5 py-1 rounded-full font-medium flex items-center gap-1.5 shadow-2xs border ${
                   overview?.config?.mode === "live"
-                    ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
+                    ? "bg-emerald-50 text-emerald-800 border-emerald-300"
                     : overview?.config?.mode === "simulation"
-                    ? "bg-amber-50 text-amber-700 border border-amber-200"
-                    : "bg-blue-50 text-blue-700 border border-blue-200"
+                    ? "bg-amber-50 text-amber-800 border-amber-300"
+                    : "bg-blue-50 text-blue-800 border-blue-300"
                 }`}
               >
                 <span
@@ -426,8 +447,16 @@ export default function MetaAdsDashboard() {
                       : "bg-blue-500"
                   }`}
                 />
-                MODE: {overview?.config?.mode?.toUpperCase() || "MONITOR"}
-              </span>
+                <select
+                  value={overview?.config?.mode || "monitor"}
+                  onChange={(e) => handleQuickModeChange(e.target.value as any)}
+                  className="bg-transparent font-bold uppercase tracking-wider text-[11px] outline-none cursor-pointer pr-1"
+                >
+                  <option value="monitor">Mode: Monitor (Safe)</option>
+                  <option value="simulation">Mode: Simulation</option>
+                  <option value="live">Mode: Live (Meta Ads)</option>
+                </select>
+              </div>
 
               {overview?.config?.emergencyStop && (
                 <span className="text-xs px-2 py-0.5 rounded-md font-bold bg-red-600 text-white animate-bounce">
