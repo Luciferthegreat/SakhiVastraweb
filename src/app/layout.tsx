@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WalkingLoader from "@/components/WalkingLoader";
+import MetaPixel from "@/components/MetaPixel";
 
 const display = Fraunces({
   subsets: ["latin"],
@@ -31,6 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
       <body className="font-body flex min-h-screen flex-col">
+        <MetaPixel />
         <WalkingLoader />
         <Navbar />
         <main className="flex-1 pb-16 md:pb-0">{children}</main>

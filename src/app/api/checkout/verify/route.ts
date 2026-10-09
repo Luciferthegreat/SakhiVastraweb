@@ -98,5 +98,42 @@ export async function POST(req: Request) {
     });
   }
 
+  // --- Meta Conversions API (CAPI) Purchase Event ---
+  try {
+    const { sendCapiEvent } = await import("@/lib/meta/capi");
+    const clientIp =
+      req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+      req.headers.get("x-real-ip") ||
+      undefined;
+    const clientUserAgent = req.headers.get("user-agent") || undefined;
+
+    await sendCapiEvent({
+      eventName: "Purchase",
+      eventId: `purchase_${order.orderNumber}`,
+      eventSourceUrl: "https://www.sakhivastra.in/checkout",
+      userData: {
+        email: order.email,
+        phone: order.phone,
+        clientIpAddress: clientIp,
+        clientUserAgent,
+      },
+      customData: {
+        currency: "INR",
+        value: order.total,
+        orderId: order.orderNumber,
+        numItems: order.items.reduce((acc, i) => acc + i.quantity, 0),
+        contents: order.items.map((i) => ({
+          id: i.variant.sku,
+          quantity: i.quantity,
+          item_price: i.unitPrice,
+        })),
+        contentIds: order.items.map((i) => i.variant.sku),
+        contentType: "product",
+      },
+    });
+  } catch (metaErr) {
+    console.error("Meta CAPI purchase dispatch error:", metaErr);
+  }
+
   return NextResponse.json({ success: true, orderNumber: order.orderNumber, orderId: order.id });
 }

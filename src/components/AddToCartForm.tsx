@@ -55,6 +55,20 @@ export default function AddToCartForm({
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (selected) {
+      import("@/lib/pixel").then(({ trackPixelEvent }) => {
+        trackPixelEvent("ViewContent", {
+          content_name: productName,
+          content_ids: [slug],
+          content_type: "product",
+          value: selected.price / 100,
+          currency: "INR",
+        });
+      });
+    }
+  }, [productName, slug, selected]);
+
   function handleAddToCart() {
     if (!selected || selected.stock === 0) return;
     addItem({
@@ -67,6 +81,17 @@ export default function AddToCartForm({
       quantity: 1,
     });
     setAdded(true);
+
+    import("@/lib/pixel").then(({ trackPixelEvent }) => {
+      trackPixelEvent("AddToCart", {
+        content_name: productName,
+        content_ids: [selected.id],
+        content_type: "product",
+        value: selected.price / 100,
+        currency: "INR",
+      });
+    });
+
     setTimeout(() => setAdded(false), 2500);
   }
 

@@ -53,6 +53,46 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
  * 
  */
 export type Wishlist = $Result.DefaultSelection<Prisma.$WishlistPayload>
+/**
+ * Model MetaConfig
+ * 
+ */
+export type MetaConfig = $Result.DefaultSelection<Prisma.$MetaConfigPayload>
+/**
+ * Model MetaCampaign
+ * 
+ */
+export type MetaCampaign = $Result.DefaultSelection<Prisma.$MetaCampaignPayload>
+/**
+ * Model MetaAdSet
+ * 
+ */
+export type MetaAdSet = $Result.DefaultSelection<Prisma.$MetaAdSetPayload>
+/**
+ * Model MetaAd
+ * 
+ */
+export type MetaAd = $Result.DefaultSelection<Prisma.$MetaAdPayload>
+/**
+ * Model MetaInsight
+ * 
+ */
+export type MetaInsight = $Result.DefaultSelection<Prisma.$MetaInsightPayload>
+/**
+ * Model MetaAutomationRule
+ * 
+ */
+export type MetaAutomationRule = $Result.DefaultSelection<Prisma.$MetaAutomationRulePayload>
+/**
+ * Model MetaActivityLog
+ * 
+ */
+export type MetaActivityLog = $Result.DefaultSelection<Prisma.$MetaActivityLogPayload>
+/**
+ * Model MetaConversionEvent
+ * 
+ */
+export type MetaConversionEvent = $Result.DefaultSelection<Prisma.$MetaConversionEventPayload>
 
 /**
  * Enums
@@ -291,6 +331,86 @@ export class PrismaClient<
     * ```
     */
   get wishlist(): Prisma.WishlistDelegate<ExtArgs>;
+
+  /**
+   * `prisma.metaConfig`: Exposes CRUD operations for the **MetaConfig** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MetaConfigs
+    * const metaConfigs = await prisma.metaConfig.findMany()
+    * ```
+    */
+  get metaConfig(): Prisma.MetaConfigDelegate<ExtArgs>;
+
+  /**
+   * `prisma.metaCampaign`: Exposes CRUD operations for the **MetaCampaign** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MetaCampaigns
+    * const metaCampaigns = await prisma.metaCampaign.findMany()
+    * ```
+    */
+  get metaCampaign(): Prisma.MetaCampaignDelegate<ExtArgs>;
+
+  /**
+   * `prisma.metaAdSet`: Exposes CRUD operations for the **MetaAdSet** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MetaAdSets
+    * const metaAdSets = await prisma.metaAdSet.findMany()
+    * ```
+    */
+  get metaAdSet(): Prisma.MetaAdSetDelegate<ExtArgs>;
+
+  /**
+   * `prisma.metaAd`: Exposes CRUD operations for the **MetaAd** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MetaAds
+    * const metaAds = await prisma.metaAd.findMany()
+    * ```
+    */
+  get metaAd(): Prisma.MetaAdDelegate<ExtArgs>;
+
+  /**
+   * `prisma.metaInsight`: Exposes CRUD operations for the **MetaInsight** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MetaInsights
+    * const metaInsights = await prisma.metaInsight.findMany()
+    * ```
+    */
+  get metaInsight(): Prisma.MetaInsightDelegate<ExtArgs>;
+
+  /**
+   * `prisma.metaAutomationRule`: Exposes CRUD operations for the **MetaAutomationRule** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MetaAutomationRules
+    * const metaAutomationRules = await prisma.metaAutomationRule.findMany()
+    * ```
+    */
+  get metaAutomationRule(): Prisma.MetaAutomationRuleDelegate<ExtArgs>;
+
+  /**
+   * `prisma.metaActivityLog`: Exposes CRUD operations for the **MetaActivityLog** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MetaActivityLogs
+    * const metaActivityLogs = await prisma.metaActivityLog.findMany()
+    * ```
+    */
+  get metaActivityLog(): Prisma.MetaActivityLogDelegate<ExtArgs>;
+
+  /**
+   * `prisma.metaConversionEvent`: Exposes CRUD operations for the **MetaConversionEvent** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MetaConversionEvents
+    * const metaConversionEvents = await prisma.metaConversionEvent.findMany()
+    * ```
+    */
+  get metaConversionEvent(): Prisma.MetaConversionEventDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -739,7 +859,15 @@ export namespace Prisma {
     Order: 'Order',
     OrderItem: 'OrderItem',
     User: 'User',
-    Wishlist: 'Wishlist'
+    Wishlist: 'Wishlist',
+    MetaConfig: 'MetaConfig',
+    MetaCampaign: 'MetaCampaign',
+    MetaAdSet: 'MetaAdSet',
+    MetaAd: 'MetaAd',
+    MetaInsight: 'MetaInsight',
+    MetaAutomationRule: 'MetaAutomationRule',
+    MetaActivityLog: 'MetaActivityLog',
+    MetaConversionEvent: 'MetaConversionEvent'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -755,7 +883,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "category" | "product" | "productVariant" | "address" | "order" | "orderItem" | "user" | "wishlist"
+      modelProps: "category" | "product" | "productVariant" | "address" | "order" | "orderItem" | "user" | "wishlist" | "metaConfig" | "metaCampaign" | "metaAdSet" | "metaAd" | "metaInsight" | "metaAutomationRule" | "metaActivityLog" | "metaConversionEvent"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1319,6 +1447,566 @@ export namespace Prisma {
           }
         }
       }
+      MetaConfig: {
+        payload: Prisma.$MetaConfigPayload<ExtArgs>
+        fields: Prisma.MetaConfigFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MetaConfigFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaConfigPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MetaConfigFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaConfigPayload>
+          }
+          findFirst: {
+            args: Prisma.MetaConfigFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaConfigPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MetaConfigFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaConfigPayload>
+          }
+          findMany: {
+            args: Prisma.MetaConfigFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaConfigPayload>[]
+          }
+          create: {
+            args: Prisma.MetaConfigCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaConfigPayload>
+          }
+          createMany: {
+            args: Prisma.MetaConfigCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MetaConfigCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaConfigPayload>[]
+          }
+          delete: {
+            args: Prisma.MetaConfigDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaConfigPayload>
+          }
+          update: {
+            args: Prisma.MetaConfigUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaConfigPayload>
+          }
+          deleteMany: {
+            args: Prisma.MetaConfigDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MetaConfigUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.MetaConfigUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaConfigPayload>
+          }
+          aggregate: {
+            args: Prisma.MetaConfigAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMetaConfig>
+          }
+          groupBy: {
+            args: Prisma.MetaConfigGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MetaConfigGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MetaConfigCountArgs<ExtArgs>
+            result: $Utils.Optional<MetaConfigCountAggregateOutputType> | number
+          }
+        }
+      }
+      MetaCampaign: {
+        payload: Prisma.$MetaCampaignPayload<ExtArgs>
+        fields: Prisma.MetaCampaignFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MetaCampaignFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaCampaignPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MetaCampaignFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaCampaignPayload>
+          }
+          findFirst: {
+            args: Prisma.MetaCampaignFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaCampaignPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MetaCampaignFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaCampaignPayload>
+          }
+          findMany: {
+            args: Prisma.MetaCampaignFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaCampaignPayload>[]
+          }
+          create: {
+            args: Prisma.MetaCampaignCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaCampaignPayload>
+          }
+          createMany: {
+            args: Prisma.MetaCampaignCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MetaCampaignCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaCampaignPayload>[]
+          }
+          delete: {
+            args: Prisma.MetaCampaignDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaCampaignPayload>
+          }
+          update: {
+            args: Prisma.MetaCampaignUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaCampaignPayload>
+          }
+          deleteMany: {
+            args: Prisma.MetaCampaignDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MetaCampaignUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.MetaCampaignUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaCampaignPayload>
+          }
+          aggregate: {
+            args: Prisma.MetaCampaignAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMetaCampaign>
+          }
+          groupBy: {
+            args: Prisma.MetaCampaignGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MetaCampaignGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MetaCampaignCountArgs<ExtArgs>
+            result: $Utils.Optional<MetaCampaignCountAggregateOutputType> | number
+          }
+        }
+      }
+      MetaAdSet: {
+        payload: Prisma.$MetaAdSetPayload<ExtArgs>
+        fields: Prisma.MetaAdSetFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MetaAdSetFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaAdSetPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MetaAdSetFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaAdSetPayload>
+          }
+          findFirst: {
+            args: Prisma.MetaAdSetFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaAdSetPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MetaAdSetFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaAdSetPayload>
+          }
+          findMany: {
+            args: Prisma.MetaAdSetFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaAdSetPayload>[]
+          }
+          create: {
+            args: Prisma.MetaAdSetCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaAdSetPayload>
+          }
+          createMany: {
+            args: Prisma.MetaAdSetCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MetaAdSetCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaAdSetPayload>[]
+          }
+          delete: {
+            args: Prisma.MetaAdSetDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaAdSetPayload>
+          }
+          update: {
+            args: Prisma.MetaAdSetUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaAdSetPayload>
+          }
+          deleteMany: {
+            args: Prisma.MetaAdSetDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MetaAdSetUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.MetaAdSetUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaAdSetPayload>
+          }
+          aggregate: {
+            args: Prisma.MetaAdSetAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMetaAdSet>
+          }
+          groupBy: {
+            args: Prisma.MetaAdSetGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MetaAdSetGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MetaAdSetCountArgs<ExtArgs>
+            result: $Utils.Optional<MetaAdSetCountAggregateOutputType> | number
+          }
+        }
+      }
+      MetaAd: {
+        payload: Prisma.$MetaAdPayload<ExtArgs>
+        fields: Prisma.MetaAdFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MetaAdFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaAdPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MetaAdFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaAdPayload>
+          }
+          findFirst: {
+            args: Prisma.MetaAdFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaAdPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MetaAdFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaAdPayload>
+          }
+          findMany: {
+            args: Prisma.MetaAdFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaAdPayload>[]
+          }
+          create: {
+            args: Prisma.MetaAdCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaAdPayload>
+          }
+          createMany: {
+            args: Prisma.MetaAdCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MetaAdCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaAdPayload>[]
+          }
+          delete: {
+            args: Prisma.MetaAdDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaAdPayload>
+          }
+          update: {
+            args: Prisma.MetaAdUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaAdPayload>
+          }
+          deleteMany: {
+            args: Prisma.MetaAdDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MetaAdUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.MetaAdUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaAdPayload>
+          }
+          aggregate: {
+            args: Prisma.MetaAdAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMetaAd>
+          }
+          groupBy: {
+            args: Prisma.MetaAdGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MetaAdGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MetaAdCountArgs<ExtArgs>
+            result: $Utils.Optional<MetaAdCountAggregateOutputType> | number
+          }
+        }
+      }
+      MetaInsight: {
+        payload: Prisma.$MetaInsightPayload<ExtArgs>
+        fields: Prisma.MetaInsightFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MetaInsightFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaInsightPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MetaInsightFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaInsightPayload>
+          }
+          findFirst: {
+            args: Prisma.MetaInsightFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaInsightPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MetaInsightFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaInsightPayload>
+          }
+          findMany: {
+            args: Prisma.MetaInsightFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaInsightPayload>[]
+          }
+          create: {
+            args: Prisma.MetaInsightCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaInsightPayload>
+          }
+          createMany: {
+            args: Prisma.MetaInsightCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MetaInsightCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaInsightPayload>[]
+          }
+          delete: {
+            args: Prisma.MetaInsightDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaInsightPayload>
+          }
+          update: {
+            args: Prisma.MetaInsightUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaInsightPayload>
+          }
+          deleteMany: {
+            args: Prisma.MetaInsightDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MetaInsightUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.MetaInsightUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaInsightPayload>
+          }
+          aggregate: {
+            args: Prisma.MetaInsightAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMetaInsight>
+          }
+          groupBy: {
+            args: Prisma.MetaInsightGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MetaInsightGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MetaInsightCountArgs<ExtArgs>
+            result: $Utils.Optional<MetaInsightCountAggregateOutputType> | number
+          }
+        }
+      }
+      MetaAutomationRule: {
+        payload: Prisma.$MetaAutomationRulePayload<ExtArgs>
+        fields: Prisma.MetaAutomationRuleFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MetaAutomationRuleFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaAutomationRulePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MetaAutomationRuleFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaAutomationRulePayload>
+          }
+          findFirst: {
+            args: Prisma.MetaAutomationRuleFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaAutomationRulePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MetaAutomationRuleFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaAutomationRulePayload>
+          }
+          findMany: {
+            args: Prisma.MetaAutomationRuleFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaAutomationRulePayload>[]
+          }
+          create: {
+            args: Prisma.MetaAutomationRuleCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaAutomationRulePayload>
+          }
+          createMany: {
+            args: Prisma.MetaAutomationRuleCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MetaAutomationRuleCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaAutomationRulePayload>[]
+          }
+          delete: {
+            args: Prisma.MetaAutomationRuleDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaAutomationRulePayload>
+          }
+          update: {
+            args: Prisma.MetaAutomationRuleUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaAutomationRulePayload>
+          }
+          deleteMany: {
+            args: Prisma.MetaAutomationRuleDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MetaAutomationRuleUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.MetaAutomationRuleUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaAutomationRulePayload>
+          }
+          aggregate: {
+            args: Prisma.MetaAutomationRuleAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMetaAutomationRule>
+          }
+          groupBy: {
+            args: Prisma.MetaAutomationRuleGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MetaAutomationRuleGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MetaAutomationRuleCountArgs<ExtArgs>
+            result: $Utils.Optional<MetaAutomationRuleCountAggregateOutputType> | number
+          }
+        }
+      }
+      MetaActivityLog: {
+        payload: Prisma.$MetaActivityLogPayload<ExtArgs>
+        fields: Prisma.MetaActivityLogFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MetaActivityLogFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaActivityLogPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MetaActivityLogFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaActivityLogPayload>
+          }
+          findFirst: {
+            args: Prisma.MetaActivityLogFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaActivityLogPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MetaActivityLogFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaActivityLogPayload>
+          }
+          findMany: {
+            args: Prisma.MetaActivityLogFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaActivityLogPayload>[]
+          }
+          create: {
+            args: Prisma.MetaActivityLogCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaActivityLogPayload>
+          }
+          createMany: {
+            args: Prisma.MetaActivityLogCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MetaActivityLogCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaActivityLogPayload>[]
+          }
+          delete: {
+            args: Prisma.MetaActivityLogDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaActivityLogPayload>
+          }
+          update: {
+            args: Prisma.MetaActivityLogUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaActivityLogPayload>
+          }
+          deleteMany: {
+            args: Prisma.MetaActivityLogDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MetaActivityLogUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.MetaActivityLogUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaActivityLogPayload>
+          }
+          aggregate: {
+            args: Prisma.MetaActivityLogAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMetaActivityLog>
+          }
+          groupBy: {
+            args: Prisma.MetaActivityLogGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MetaActivityLogGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MetaActivityLogCountArgs<ExtArgs>
+            result: $Utils.Optional<MetaActivityLogCountAggregateOutputType> | number
+          }
+        }
+      }
+      MetaConversionEvent: {
+        payload: Prisma.$MetaConversionEventPayload<ExtArgs>
+        fields: Prisma.MetaConversionEventFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MetaConversionEventFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaConversionEventPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MetaConversionEventFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaConversionEventPayload>
+          }
+          findFirst: {
+            args: Prisma.MetaConversionEventFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaConversionEventPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MetaConversionEventFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaConversionEventPayload>
+          }
+          findMany: {
+            args: Prisma.MetaConversionEventFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaConversionEventPayload>[]
+          }
+          create: {
+            args: Prisma.MetaConversionEventCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaConversionEventPayload>
+          }
+          createMany: {
+            args: Prisma.MetaConversionEventCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MetaConversionEventCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaConversionEventPayload>[]
+          }
+          delete: {
+            args: Prisma.MetaConversionEventDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaConversionEventPayload>
+          }
+          update: {
+            args: Prisma.MetaConversionEventUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaConversionEventPayload>
+          }
+          deleteMany: {
+            args: Prisma.MetaConversionEventDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MetaConversionEventUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.MetaConversionEventUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetaConversionEventPayload>
+          }
+          aggregate: {
+            args: Prisma.MetaConversionEventAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMetaConversionEvent>
+          }
+          groupBy: {
+            args: Prisma.MetaConversionEventGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MetaConversionEventGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MetaConversionEventCountArgs<ExtArgs>
+            result: $Utils.Optional<MetaConversionEventCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1513,11 +2201,13 @@ export namespace Prisma {
   export type ProductCountOutputType = {
     variants: number
     wishlists: number
+    metaCampaigns: number
   }
 
   export type ProductCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     variants?: boolean | ProductCountOutputTypeCountVariantsArgs
     wishlists?: boolean | ProductCountOutputTypeCountWishlistsArgs
+    metaCampaigns?: boolean | ProductCountOutputTypeCountMetaCampaignsArgs
   }
 
   // Custom InputTypes
@@ -1543,6 +2233,13 @@ export namespace Prisma {
    */
   export type ProductCountOutputTypeCountWishlistsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: WishlistWhereInput
+  }
+
+  /**
+   * ProductCountOutputType without action
+   */
+  export type ProductCountOutputTypeCountMetaCampaignsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MetaCampaignWhereInput
   }
 
 
@@ -1667,6 +2364,77 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountWishlistArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: WishlistWhereInput
+  }
+
+
+  /**
+   * Count Type MetaCampaignCountOutputType
+   */
+
+  export type MetaCampaignCountOutputType = {
+    adSets: number
+    insights: number
+  }
+
+  export type MetaCampaignCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    adSets?: boolean | MetaCampaignCountOutputTypeCountAdSetsArgs
+    insights?: boolean | MetaCampaignCountOutputTypeCountInsightsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * MetaCampaignCountOutputType without action
+   */
+  export type MetaCampaignCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaCampaignCountOutputType
+     */
+    select?: MetaCampaignCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * MetaCampaignCountOutputType without action
+   */
+  export type MetaCampaignCountOutputTypeCountAdSetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MetaAdSetWhereInput
+  }
+
+  /**
+   * MetaCampaignCountOutputType without action
+   */
+  export type MetaCampaignCountOutputTypeCountInsightsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MetaInsightWhereInput
+  }
+
+
+  /**
+   * Count Type MetaAdSetCountOutputType
+   */
+
+  export type MetaAdSetCountOutputType = {
+    ads: number
+  }
+
+  export type MetaAdSetCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ads?: boolean | MetaAdSetCountOutputTypeCountAdsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * MetaAdSetCountOutputType without action
+   */
+  export type MetaAdSetCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAdSetCountOutputType
+     */
+    select?: MetaAdSetCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * MetaAdSetCountOutputType without action
+   */
+  export type MetaAdSetCountOutputTypeCountAdsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MetaAdWhereInput
   }
 
 
@@ -2867,6 +3635,7 @@ export namespace Prisma {
     category?: boolean | Product$categoryArgs<ExtArgs>
     variants?: boolean | Product$variantsArgs<ExtArgs>
     wishlists?: boolean | Product$wishlistsArgs<ExtArgs>
+    metaCampaigns?: boolean | Product$metaCampaignsArgs<ExtArgs>
     _count?: boolean | ProductCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["product"]>
 
@@ -2905,6 +3674,7 @@ export namespace Prisma {
     category?: boolean | Product$categoryArgs<ExtArgs>
     variants?: boolean | Product$variantsArgs<ExtArgs>
     wishlists?: boolean | Product$wishlistsArgs<ExtArgs>
+    metaCampaigns?: boolean | Product$metaCampaignsArgs<ExtArgs>
     _count?: boolean | ProductCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ProductIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2917,6 +3687,7 @@ export namespace Prisma {
       category: Prisma.$CategoryPayload<ExtArgs> | null
       variants: Prisma.$ProductVariantPayload<ExtArgs>[]
       wishlists: Prisma.$WishlistPayload<ExtArgs>[]
+      metaCampaigns: Prisma.$MetaCampaignPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3298,6 +4069,7 @@ export namespace Prisma {
     category<T extends Product$categoryArgs<ExtArgs> = {}>(args?: Subset<T, Product$categoryArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
     variants<T extends Product$variantsArgs<ExtArgs> = {}>(args?: Subset<T, Product$variantsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductVariantPayload<ExtArgs>, T, "findMany"> | Null>
     wishlists<T extends Product$wishlistsArgs<ExtArgs> = {}>(args?: Subset<T, Product$wishlistsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WishlistPayload<ExtArgs>, T, "findMany"> | Null>
+    metaCampaigns<T extends Product$metaCampaignsArgs<ExtArgs> = {}>(args?: Subset<T, Product$metaCampaignsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MetaCampaignPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3709,6 +4481,26 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: WishlistScalarFieldEnum | WishlistScalarFieldEnum[]
+  }
+
+  /**
+   * Product.metaCampaigns
+   */
+  export type Product$metaCampaignsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaCampaign
+     */
+    select?: MetaCampaignSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaCampaignInclude<ExtArgs> | null
+    where?: MetaCampaignWhereInput
+    orderBy?: MetaCampaignOrderByWithRelationInput | MetaCampaignOrderByWithRelationInput[]
+    cursor?: MetaCampaignWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MetaCampaignScalarFieldEnum | MetaCampaignScalarFieldEnum[]
   }
 
   /**
@@ -9885,6 +10677,8536 @@ export namespace Prisma {
 
 
   /**
+   * Model MetaConfig
+   */
+
+  export type AggregateMetaConfig = {
+    _count: MetaConfigCountAggregateOutputType | null
+    _avg: MetaConfigAvgAggregateOutputType | null
+    _sum: MetaConfigSumAggregateOutputType | null
+    _min: MetaConfigMinAggregateOutputType | null
+    _max: MetaConfigMaxAggregateOutputType | null
+  }
+
+  export type MetaConfigAvgAggregateOutputType = {
+    dailySpendCap: number | null
+    maxBudgetIncreasePct: number | null
+    budgetIncreaseCooldownHours: number | null
+    minDataPurchases: number | null
+    minDataSpendPaise: number | null
+    maxLossPerAdPaise: number | null
+    targetRoas: number | null
+  }
+
+  export type MetaConfigSumAggregateOutputType = {
+    dailySpendCap: number | null
+    maxBudgetIncreasePct: number | null
+    budgetIncreaseCooldownHours: number | null
+    minDataPurchases: number | null
+    minDataSpendPaise: number | null
+    maxLossPerAdPaise: number | null
+    targetRoas: number | null
+  }
+
+  export type MetaConfigMinAggregateOutputType = {
+    id: string | null
+    adAccountId: string | null
+    pixelId: string | null
+    accessToken: string | null
+    capiToken: string | null
+    appId: string | null
+    appSecret: string | null
+    automationMode: string | null
+    automationEnabled: boolean | null
+    dailySpendCap: number | null
+    maxBudgetIncreasePct: number | null
+    budgetIncreaseCooldownHours: number | null
+    minDataPurchases: number | null
+    minDataSpendPaise: number | null
+    maxLossPerAdPaise: number | null
+    targetRoas: number | null
+    emergencyStop: boolean | null
+    autoSyncSchedule: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MetaConfigMaxAggregateOutputType = {
+    id: string | null
+    adAccountId: string | null
+    pixelId: string | null
+    accessToken: string | null
+    capiToken: string | null
+    appId: string | null
+    appSecret: string | null
+    automationMode: string | null
+    automationEnabled: boolean | null
+    dailySpendCap: number | null
+    maxBudgetIncreasePct: number | null
+    budgetIncreaseCooldownHours: number | null
+    minDataPurchases: number | null
+    minDataSpendPaise: number | null
+    maxLossPerAdPaise: number | null
+    targetRoas: number | null
+    emergencyStop: boolean | null
+    autoSyncSchedule: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MetaConfigCountAggregateOutputType = {
+    id: number
+    adAccountId: number
+    pixelId: number
+    accessToken: number
+    capiToken: number
+    appId: number
+    appSecret: number
+    automationMode: number
+    automationEnabled: number
+    dailySpendCap: number
+    maxBudgetIncreasePct: number
+    budgetIncreaseCooldownHours: number
+    minDataPurchases: number
+    minDataSpendPaise: number
+    maxLossPerAdPaise: number
+    targetRoas: number
+    emergencyStop: number
+    autoSyncSchedule: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type MetaConfigAvgAggregateInputType = {
+    dailySpendCap?: true
+    maxBudgetIncreasePct?: true
+    budgetIncreaseCooldownHours?: true
+    minDataPurchases?: true
+    minDataSpendPaise?: true
+    maxLossPerAdPaise?: true
+    targetRoas?: true
+  }
+
+  export type MetaConfigSumAggregateInputType = {
+    dailySpendCap?: true
+    maxBudgetIncreasePct?: true
+    budgetIncreaseCooldownHours?: true
+    minDataPurchases?: true
+    minDataSpendPaise?: true
+    maxLossPerAdPaise?: true
+    targetRoas?: true
+  }
+
+  export type MetaConfigMinAggregateInputType = {
+    id?: true
+    adAccountId?: true
+    pixelId?: true
+    accessToken?: true
+    capiToken?: true
+    appId?: true
+    appSecret?: true
+    automationMode?: true
+    automationEnabled?: true
+    dailySpendCap?: true
+    maxBudgetIncreasePct?: true
+    budgetIncreaseCooldownHours?: true
+    minDataPurchases?: true
+    minDataSpendPaise?: true
+    maxLossPerAdPaise?: true
+    targetRoas?: true
+    emergencyStop?: true
+    autoSyncSchedule?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MetaConfigMaxAggregateInputType = {
+    id?: true
+    adAccountId?: true
+    pixelId?: true
+    accessToken?: true
+    capiToken?: true
+    appId?: true
+    appSecret?: true
+    automationMode?: true
+    automationEnabled?: true
+    dailySpendCap?: true
+    maxBudgetIncreasePct?: true
+    budgetIncreaseCooldownHours?: true
+    minDataPurchases?: true
+    minDataSpendPaise?: true
+    maxLossPerAdPaise?: true
+    targetRoas?: true
+    emergencyStop?: true
+    autoSyncSchedule?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MetaConfigCountAggregateInputType = {
+    id?: true
+    adAccountId?: true
+    pixelId?: true
+    accessToken?: true
+    capiToken?: true
+    appId?: true
+    appSecret?: true
+    automationMode?: true
+    automationEnabled?: true
+    dailySpendCap?: true
+    maxBudgetIncreasePct?: true
+    budgetIncreaseCooldownHours?: true
+    minDataPurchases?: true
+    minDataSpendPaise?: true
+    maxLossPerAdPaise?: true
+    targetRoas?: true
+    emergencyStop?: true
+    autoSyncSchedule?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type MetaConfigAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MetaConfig to aggregate.
+     */
+    where?: MetaConfigWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetaConfigs to fetch.
+     */
+    orderBy?: MetaConfigOrderByWithRelationInput | MetaConfigOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MetaConfigWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetaConfigs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetaConfigs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MetaConfigs
+    **/
+    _count?: true | MetaConfigCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MetaConfigAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MetaConfigSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MetaConfigMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MetaConfigMaxAggregateInputType
+  }
+
+  export type GetMetaConfigAggregateType<T extends MetaConfigAggregateArgs> = {
+        [P in keyof T & keyof AggregateMetaConfig]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMetaConfig[P]>
+      : GetScalarType<T[P], AggregateMetaConfig[P]>
+  }
+
+
+
+
+  export type MetaConfigGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MetaConfigWhereInput
+    orderBy?: MetaConfigOrderByWithAggregationInput | MetaConfigOrderByWithAggregationInput[]
+    by: MetaConfigScalarFieldEnum[] | MetaConfigScalarFieldEnum
+    having?: MetaConfigScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MetaConfigCountAggregateInputType | true
+    _avg?: MetaConfigAvgAggregateInputType
+    _sum?: MetaConfigSumAggregateInputType
+    _min?: MetaConfigMinAggregateInputType
+    _max?: MetaConfigMaxAggregateInputType
+  }
+
+  export type MetaConfigGroupByOutputType = {
+    id: string
+    adAccountId: string | null
+    pixelId: string | null
+    accessToken: string | null
+    capiToken: string | null
+    appId: string | null
+    appSecret: string | null
+    automationMode: string
+    automationEnabled: boolean
+    dailySpendCap: number
+    maxBudgetIncreasePct: number
+    budgetIncreaseCooldownHours: number
+    minDataPurchases: number
+    minDataSpendPaise: number
+    maxLossPerAdPaise: number
+    targetRoas: number
+    emergencyStop: boolean
+    autoSyncSchedule: string
+    createdAt: Date
+    updatedAt: Date
+    _count: MetaConfigCountAggregateOutputType | null
+    _avg: MetaConfigAvgAggregateOutputType | null
+    _sum: MetaConfigSumAggregateOutputType | null
+    _min: MetaConfigMinAggregateOutputType | null
+    _max: MetaConfigMaxAggregateOutputType | null
+  }
+
+  type GetMetaConfigGroupByPayload<T extends MetaConfigGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MetaConfigGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MetaConfigGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MetaConfigGroupByOutputType[P]>
+            : GetScalarType<T[P], MetaConfigGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MetaConfigSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    adAccountId?: boolean
+    pixelId?: boolean
+    accessToken?: boolean
+    capiToken?: boolean
+    appId?: boolean
+    appSecret?: boolean
+    automationMode?: boolean
+    automationEnabled?: boolean
+    dailySpendCap?: boolean
+    maxBudgetIncreasePct?: boolean
+    budgetIncreaseCooldownHours?: boolean
+    minDataPurchases?: boolean
+    minDataSpendPaise?: boolean
+    maxLossPerAdPaise?: boolean
+    targetRoas?: boolean
+    emergencyStop?: boolean
+    autoSyncSchedule?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["metaConfig"]>
+
+  export type MetaConfigSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    adAccountId?: boolean
+    pixelId?: boolean
+    accessToken?: boolean
+    capiToken?: boolean
+    appId?: boolean
+    appSecret?: boolean
+    automationMode?: boolean
+    automationEnabled?: boolean
+    dailySpendCap?: boolean
+    maxBudgetIncreasePct?: boolean
+    budgetIncreaseCooldownHours?: boolean
+    minDataPurchases?: boolean
+    minDataSpendPaise?: boolean
+    maxLossPerAdPaise?: boolean
+    targetRoas?: boolean
+    emergencyStop?: boolean
+    autoSyncSchedule?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["metaConfig"]>
+
+  export type MetaConfigSelectScalar = {
+    id?: boolean
+    adAccountId?: boolean
+    pixelId?: boolean
+    accessToken?: boolean
+    capiToken?: boolean
+    appId?: boolean
+    appSecret?: boolean
+    automationMode?: boolean
+    automationEnabled?: boolean
+    dailySpendCap?: boolean
+    maxBudgetIncreasePct?: boolean
+    budgetIncreaseCooldownHours?: boolean
+    minDataPurchases?: boolean
+    minDataSpendPaise?: boolean
+    maxLossPerAdPaise?: boolean
+    targetRoas?: boolean
+    emergencyStop?: boolean
+    autoSyncSchedule?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+
+  export type $MetaConfigPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MetaConfig"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      adAccountId: string | null
+      pixelId: string | null
+      accessToken: string | null
+      capiToken: string | null
+      appId: string | null
+      appSecret: string | null
+      automationMode: string
+      automationEnabled: boolean
+      dailySpendCap: number
+      maxBudgetIncreasePct: number
+      budgetIncreaseCooldownHours: number
+      minDataPurchases: number
+      minDataSpendPaise: number
+      maxLossPerAdPaise: number
+      targetRoas: number
+      emergencyStop: boolean
+      autoSyncSchedule: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["metaConfig"]>
+    composites: {}
+  }
+
+  type MetaConfigGetPayload<S extends boolean | null | undefined | MetaConfigDefaultArgs> = $Result.GetResult<Prisma.$MetaConfigPayload, S>
+
+  type MetaConfigCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<MetaConfigFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: MetaConfigCountAggregateInputType | true
+    }
+
+  export interface MetaConfigDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MetaConfig'], meta: { name: 'MetaConfig' } }
+    /**
+     * Find zero or one MetaConfig that matches the filter.
+     * @param {MetaConfigFindUniqueArgs} args - Arguments to find a MetaConfig
+     * @example
+     * // Get one MetaConfig
+     * const metaConfig = await prisma.metaConfig.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MetaConfigFindUniqueArgs>(args: SelectSubset<T, MetaConfigFindUniqueArgs<ExtArgs>>): Prisma__MetaConfigClient<$Result.GetResult<Prisma.$MetaConfigPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one MetaConfig that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {MetaConfigFindUniqueOrThrowArgs} args - Arguments to find a MetaConfig
+     * @example
+     * // Get one MetaConfig
+     * const metaConfig = await prisma.metaConfig.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MetaConfigFindUniqueOrThrowArgs>(args: SelectSubset<T, MetaConfigFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MetaConfigClient<$Result.GetResult<Prisma.$MetaConfigPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first MetaConfig that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaConfigFindFirstArgs} args - Arguments to find a MetaConfig
+     * @example
+     * // Get one MetaConfig
+     * const metaConfig = await prisma.metaConfig.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MetaConfigFindFirstArgs>(args?: SelectSubset<T, MetaConfigFindFirstArgs<ExtArgs>>): Prisma__MetaConfigClient<$Result.GetResult<Prisma.$MetaConfigPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first MetaConfig that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaConfigFindFirstOrThrowArgs} args - Arguments to find a MetaConfig
+     * @example
+     * // Get one MetaConfig
+     * const metaConfig = await prisma.metaConfig.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MetaConfigFindFirstOrThrowArgs>(args?: SelectSubset<T, MetaConfigFindFirstOrThrowArgs<ExtArgs>>): Prisma__MetaConfigClient<$Result.GetResult<Prisma.$MetaConfigPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more MetaConfigs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaConfigFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MetaConfigs
+     * const metaConfigs = await prisma.metaConfig.findMany()
+     * 
+     * // Get first 10 MetaConfigs
+     * const metaConfigs = await prisma.metaConfig.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const metaConfigWithIdOnly = await prisma.metaConfig.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MetaConfigFindManyArgs>(args?: SelectSubset<T, MetaConfigFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MetaConfigPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a MetaConfig.
+     * @param {MetaConfigCreateArgs} args - Arguments to create a MetaConfig.
+     * @example
+     * // Create one MetaConfig
+     * const MetaConfig = await prisma.metaConfig.create({
+     *   data: {
+     *     // ... data to create a MetaConfig
+     *   }
+     * })
+     * 
+     */
+    create<T extends MetaConfigCreateArgs>(args: SelectSubset<T, MetaConfigCreateArgs<ExtArgs>>): Prisma__MetaConfigClient<$Result.GetResult<Prisma.$MetaConfigPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many MetaConfigs.
+     * @param {MetaConfigCreateManyArgs} args - Arguments to create many MetaConfigs.
+     * @example
+     * // Create many MetaConfigs
+     * const metaConfig = await prisma.metaConfig.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MetaConfigCreateManyArgs>(args?: SelectSubset<T, MetaConfigCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MetaConfigs and returns the data saved in the database.
+     * @param {MetaConfigCreateManyAndReturnArgs} args - Arguments to create many MetaConfigs.
+     * @example
+     * // Create many MetaConfigs
+     * const metaConfig = await prisma.metaConfig.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MetaConfigs and only return the `id`
+     * const metaConfigWithIdOnly = await prisma.metaConfig.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MetaConfigCreateManyAndReturnArgs>(args?: SelectSubset<T, MetaConfigCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MetaConfigPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a MetaConfig.
+     * @param {MetaConfigDeleteArgs} args - Arguments to delete one MetaConfig.
+     * @example
+     * // Delete one MetaConfig
+     * const MetaConfig = await prisma.metaConfig.delete({
+     *   where: {
+     *     // ... filter to delete one MetaConfig
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MetaConfigDeleteArgs>(args: SelectSubset<T, MetaConfigDeleteArgs<ExtArgs>>): Prisma__MetaConfigClient<$Result.GetResult<Prisma.$MetaConfigPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one MetaConfig.
+     * @param {MetaConfigUpdateArgs} args - Arguments to update one MetaConfig.
+     * @example
+     * // Update one MetaConfig
+     * const metaConfig = await prisma.metaConfig.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MetaConfigUpdateArgs>(args: SelectSubset<T, MetaConfigUpdateArgs<ExtArgs>>): Prisma__MetaConfigClient<$Result.GetResult<Prisma.$MetaConfigPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more MetaConfigs.
+     * @param {MetaConfigDeleteManyArgs} args - Arguments to filter MetaConfigs to delete.
+     * @example
+     * // Delete a few MetaConfigs
+     * const { count } = await prisma.metaConfig.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MetaConfigDeleteManyArgs>(args?: SelectSubset<T, MetaConfigDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MetaConfigs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaConfigUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MetaConfigs
+     * const metaConfig = await prisma.metaConfig.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MetaConfigUpdateManyArgs>(args: SelectSubset<T, MetaConfigUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one MetaConfig.
+     * @param {MetaConfigUpsertArgs} args - Arguments to update or create a MetaConfig.
+     * @example
+     * // Update or create a MetaConfig
+     * const metaConfig = await prisma.metaConfig.upsert({
+     *   create: {
+     *     // ... data to create a MetaConfig
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MetaConfig we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MetaConfigUpsertArgs>(args: SelectSubset<T, MetaConfigUpsertArgs<ExtArgs>>): Prisma__MetaConfigClient<$Result.GetResult<Prisma.$MetaConfigPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of MetaConfigs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaConfigCountArgs} args - Arguments to filter MetaConfigs to count.
+     * @example
+     * // Count the number of MetaConfigs
+     * const count = await prisma.metaConfig.count({
+     *   where: {
+     *     // ... the filter for the MetaConfigs we want to count
+     *   }
+     * })
+    **/
+    count<T extends MetaConfigCountArgs>(
+      args?: Subset<T, MetaConfigCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MetaConfigCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MetaConfig.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaConfigAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MetaConfigAggregateArgs>(args: Subset<T, MetaConfigAggregateArgs>): Prisma.PrismaPromise<GetMetaConfigAggregateType<T>>
+
+    /**
+     * Group by MetaConfig.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaConfigGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MetaConfigGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MetaConfigGroupByArgs['orderBy'] }
+        : { orderBy?: MetaConfigGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MetaConfigGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMetaConfigGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MetaConfig model
+   */
+  readonly fields: MetaConfigFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MetaConfig.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MetaConfigClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MetaConfig model
+   */ 
+  interface MetaConfigFieldRefs {
+    readonly id: FieldRef<"MetaConfig", 'String'>
+    readonly adAccountId: FieldRef<"MetaConfig", 'String'>
+    readonly pixelId: FieldRef<"MetaConfig", 'String'>
+    readonly accessToken: FieldRef<"MetaConfig", 'String'>
+    readonly capiToken: FieldRef<"MetaConfig", 'String'>
+    readonly appId: FieldRef<"MetaConfig", 'String'>
+    readonly appSecret: FieldRef<"MetaConfig", 'String'>
+    readonly automationMode: FieldRef<"MetaConfig", 'String'>
+    readonly automationEnabled: FieldRef<"MetaConfig", 'Boolean'>
+    readonly dailySpendCap: FieldRef<"MetaConfig", 'Int'>
+    readonly maxBudgetIncreasePct: FieldRef<"MetaConfig", 'Float'>
+    readonly budgetIncreaseCooldownHours: FieldRef<"MetaConfig", 'Int'>
+    readonly minDataPurchases: FieldRef<"MetaConfig", 'Int'>
+    readonly minDataSpendPaise: FieldRef<"MetaConfig", 'Int'>
+    readonly maxLossPerAdPaise: FieldRef<"MetaConfig", 'Int'>
+    readonly targetRoas: FieldRef<"MetaConfig", 'Float'>
+    readonly emergencyStop: FieldRef<"MetaConfig", 'Boolean'>
+    readonly autoSyncSchedule: FieldRef<"MetaConfig", 'String'>
+    readonly createdAt: FieldRef<"MetaConfig", 'DateTime'>
+    readonly updatedAt: FieldRef<"MetaConfig", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MetaConfig findUnique
+   */
+  export type MetaConfigFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaConfig
+     */
+    select?: MetaConfigSelect<ExtArgs> | null
+    /**
+     * Filter, which MetaConfig to fetch.
+     */
+    where: MetaConfigWhereUniqueInput
+  }
+
+  /**
+   * MetaConfig findUniqueOrThrow
+   */
+  export type MetaConfigFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaConfig
+     */
+    select?: MetaConfigSelect<ExtArgs> | null
+    /**
+     * Filter, which MetaConfig to fetch.
+     */
+    where: MetaConfigWhereUniqueInput
+  }
+
+  /**
+   * MetaConfig findFirst
+   */
+  export type MetaConfigFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaConfig
+     */
+    select?: MetaConfigSelect<ExtArgs> | null
+    /**
+     * Filter, which MetaConfig to fetch.
+     */
+    where?: MetaConfigWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetaConfigs to fetch.
+     */
+    orderBy?: MetaConfigOrderByWithRelationInput | MetaConfigOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MetaConfigs.
+     */
+    cursor?: MetaConfigWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetaConfigs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetaConfigs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MetaConfigs.
+     */
+    distinct?: MetaConfigScalarFieldEnum | MetaConfigScalarFieldEnum[]
+  }
+
+  /**
+   * MetaConfig findFirstOrThrow
+   */
+  export type MetaConfigFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaConfig
+     */
+    select?: MetaConfigSelect<ExtArgs> | null
+    /**
+     * Filter, which MetaConfig to fetch.
+     */
+    where?: MetaConfigWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetaConfigs to fetch.
+     */
+    orderBy?: MetaConfigOrderByWithRelationInput | MetaConfigOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MetaConfigs.
+     */
+    cursor?: MetaConfigWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetaConfigs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetaConfigs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MetaConfigs.
+     */
+    distinct?: MetaConfigScalarFieldEnum | MetaConfigScalarFieldEnum[]
+  }
+
+  /**
+   * MetaConfig findMany
+   */
+  export type MetaConfigFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaConfig
+     */
+    select?: MetaConfigSelect<ExtArgs> | null
+    /**
+     * Filter, which MetaConfigs to fetch.
+     */
+    where?: MetaConfigWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetaConfigs to fetch.
+     */
+    orderBy?: MetaConfigOrderByWithRelationInput | MetaConfigOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MetaConfigs.
+     */
+    cursor?: MetaConfigWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetaConfigs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetaConfigs.
+     */
+    skip?: number
+    distinct?: MetaConfigScalarFieldEnum | MetaConfigScalarFieldEnum[]
+  }
+
+  /**
+   * MetaConfig create
+   */
+  export type MetaConfigCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaConfig
+     */
+    select?: MetaConfigSelect<ExtArgs> | null
+    /**
+     * The data needed to create a MetaConfig.
+     */
+    data: XOR<MetaConfigCreateInput, MetaConfigUncheckedCreateInput>
+  }
+
+  /**
+   * MetaConfig createMany
+   */
+  export type MetaConfigCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MetaConfigs.
+     */
+    data: MetaConfigCreateManyInput | MetaConfigCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MetaConfig createManyAndReturn
+   */
+  export type MetaConfigCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaConfig
+     */
+    select?: MetaConfigSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many MetaConfigs.
+     */
+    data: MetaConfigCreateManyInput | MetaConfigCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MetaConfig update
+   */
+  export type MetaConfigUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaConfig
+     */
+    select?: MetaConfigSelect<ExtArgs> | null
+    /**
+     * The data needed to update a MetaConfig.
+     */
+    data: XOR<MetaConfigUpdateInput, MetaConfigUncheckedUpdateInput>
+    /**
+     * Choose, which MetaConfig to update.
+     */
+    where: MetaConfigWhereUniqueInput
+  }
+
+  /**
+   * MetaConfig updateMany
+   */
+  export type MetaConfigUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MetaConfigs.
+     */
+    data: XOR<MetaConfigUpdateManyMutationInput, MetaConfigUncheckedUpdateManyInput>
+    /**
+     * Filter which MetaConfigs to update
+     */
+    where?: MetaConfigWhereInput
+  }
+
+  /**
+   * MetaConfig upsert
+   */
+  export type MetaConfigUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaConfig
+     */
+    select?: MetaConfigSelect<ExtArgs> | null
+    /**
+     * The filter to search for the MetaConfig to update in case it exists.
+     */
+    where: MetaConfigWhereUniqueInput
+    /**
+     * In case the MetaConfig found by the `where` argument doesn't exist, create a new MetaConfig with this data.
+     */
+    create: XOR<MetaConfigCreateInput, MetaConfigUncheckedCreateInput>
+    /**
+     * In case the MetaConfig was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MetaConfigUpdateInput, MetaConfigUncheckedUpdateInput>
+  }
+
+  /**
+   * MetaConfig delete
+   */
+  export type MetaConfigDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaConfig
+     */
+    select?: MetaConfigSelect<ExtArgs> | null
+    /**
+     * Filter which MetaConfig to delete.
+     */
+    where: MetaConfigWhereUniqueInput
+  }
+
+  /**
+   * MetaConfig deleteMany
+   */
+  export type MetaConfigDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MetaConfigs to delete
+     */
+    where?: MetaConfigWhereInput
+  }
+
+  /**
+   * MetaConfig without action
+   */
+  export type MetaConfigDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaConfig
+     */
+    select?: MetaConfigSelect<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MetaCampaign
+   */
+
+  export type AggregateMetaCampaign = {
+    _count: MetaCampaignCountAggregateOutputType | null
+    _avg: MetaCampaignAvgAggregateOutputType | null
+    _sum: MetaCampaignSumAggregateOutputType | null
+    _min: MetaCampaignMinAggregateOutputType | null
+    _max: MetaCampaignMaxAggregateOutputType | null
+  }
+
+  export type MetaCampaignAvgAggregateOutputType = {
+    dailyBudget: number | null
+    lifetimeBudget: number | null
+  }
+
+  export type MetaCampaignSumAggregateOutputType = {
+    dailyBudget: number | null
+    lifetimeBudget: number | null
+  }
+
+  export type MetaCampaignMinAggregateOutputType = {
+    id: string | null
+    metaCampaignId: string | null
+    name: string | null
+    objective: string | null
+    status: string | null
+    dailyBudget: number | null
+    lifetimeBudget: number | null
+    buyingType: string | null
+    isAutomated: boolean | null
+    templateType: string | null
+    productId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MetaCampaignMaxAggregateOutputType = {
+    id: string | null
+    metaCampaignId: string | null
+    name: string | null
+    objective: string | null
+    status: string | null
+    dailyBudget: number | null
+    lifetimeBudget: number | null
+    buyingType: string | null
+    isAutomated: boolean | null
+    templateType: string | null
+    productId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MetaCampaignCountAggregateOutputType = {
+    id: number
+    metaCampaignId: number
+    name: number
+    objective: number
+    status: number
+    dailyBudget: number
+    lifetimeBudget: number
+    buyingType: number
+    isAutomated: number
+    templateType: number
+    productId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type MetaCampaignAvgAggregateInputType = {
+    dailyBudget?: true
+    lifetimeBudget?: true
+  }
+
+  export type MetaCampaignSumAggregateInputType = {
+    dailyBudget?: true
+    lifetimeBudget?: true
+  }
+
+  export type MetaCampaignMinAggregateInputType = {
+    id?: true
+    metaCampaignId?: true
+    name?: true
+    objective?: true
+    status?: true
+    dailyBudget?: true
+    lifetimeBudget?: true
+    buyingType?: true
+    isAutomated?: true
+    templateType?: true
+    productId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MetaCampaignMaxAggregateInputType = {
+    id?: true
+    metaCampaignId?: true
+    name?: true
+    objective?: true
+    status?: true
+    dailyBudget?: true
+    lifetimeBudget?: true
+    buyingType?: true
+    isAutomated?: true
+    templateType?: true
+    productId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MetaCampaignCountAggregateInputType = {
+    id?: true
+    metaCampaignId?: true
+    name?: true
+    objective?: true
+    status?: true
+    dailyBudget?: true
+    lifetimeBudget?: true
+    buyingType?: true
+    isAutomated?: true
+    templateType?: true
+    productId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type MetaCampaignAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MetaCampaign to aggregate.
+     */
+    where?: MetaCampaignWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetaCampaigns to fetch.
+     */
+    orderBy?: MetaCampaignOrderByWithRelationInput | MetaCampaignOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MetaCampaignWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetaCampaigns from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetaCampaigns.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MetaCampaigns
+    **/
+    _count?: true | MetaCampaignCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MetaCampaignAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MetaCampaignSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MetaCampaignMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MetaCampaignMaxAggregateInputType
+  }
+
+  export type GetMetaCampaignAggregateType<T extends MetaCampaignAggregateArgs> = {
+        [P in keyof T & keyof AggregateMetaCampaign]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMetaCampaign[P]>
+      : GetScalarType<T[P], AggregateMetaCampaign[P]>
+  }
+
+
+
+
+  export type MetaCampaignGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MetaCampaignWhereInput
+    orderBy?: MetaCampaignOrderByWithAggregationInput | MetaCampaignOrderByWithAggregationInput[]
+    by: MetaCampaignScalarFieldEnum[] | MetaCampaignScalarFieldEnum
+    having?: MetaCampaignScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MetaCampaignCountAggregateInputType | true
+    _avg?: MetaCampaignAvgAggregateInputType
+    _sum?: MetaCampaignSumAggregateInputType
+    _min?: MetaCampaignMinAggregateInputType
+    _max?: MetaCampaignMaxAggregateInputType
+  }
+
+  export type MetaCampaignGroupByOutputType = {
+    id: string
+    metaCampaignId: string | null
+    name: string
+    objective: string
+    status: string
+    dailyBudget: number | null
+    lifetimeBudget: number | null
+    buyingType: string
+    isAutomated: boolean
+    templateType: string | null
+    productId: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: MetaCampaignCountAggregateOutputType | null
+    _avg: MetaCampaignAvgAggregateOutputType | null
+    _sum: MetaCampaignSumAggregateOutputType | null
+    _min: MetaCampaignMinAggregateOutputType | null
+    _max: MetaCampaignMaxAggregateOutputType | null
+  }
+
+  type GetMetaCampaignGroupByPayload<T extends MetaCampaignGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MetaCampaignGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MetaCampaignGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MetaCampaignGroupByOutputType[P]>
+            : GetScalarType<T[P], MetaCampaignGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MetaCampaignSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    metaCampaignId?: boolean
+    name?: boolean
+    objective?: boolean
+    status?: boolean
+    dailyBudget?: boolean
+    lifetimeBudget?: boolean
+    buyingType?: boolean
+    isAutomated?: boolean
+    templateType?: boolean
+    productId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    product?: boolean | MetaCampaign$productArgs<ExtArgs>
+    adSets?: boolean | MetaCampaign$adSetsArgs<ExtArgs>
+    insights?: boolean | MetaCampaign$insightsArgs<ExtArgs>
+    _count?: boolean | MetaCampaignCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["metaCampaign"]>
+
+  export type MetaCampaignSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    metaCampaignId?: boolean
+    name?: boolean
+    objective?: boolean
+    status?: boolean
+    dailyBudget?: boolean
+    lifetimeBudget?: boolean
+    buyingType?: boolean
+    isAutomated?: boolean
+    templateType?: boolean
+    productId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    product?: boolean | MetaCampaign$productArgs<ExtArgs>
+  }, ExtArgs["result"]["metaCampaign"]>
+
+  export type MetaCampaignSelectScalar = {
+    id?: boolean
+    metaCampaignId?: boolean
+    name?: boolean
+    objective?: boolean
+    status?: boolean
+    dailyBudget?: boolean
+    lifetimeBudget?: boolean
+    buyingType?: boolean
+    isAutomated?: boolean
+    templateType?: boolean
+    productId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type MetaCampaignInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | MetaCampaign$productArgs<ExtArgs>
+    adSets?: boolean | MetaCampaign$adSetsArgs<ExtArgs>
+    insights?: boolean | MetaCampaign$insightsArgs<ExtArgs>
+    _count?: boolean | MetaCampaignCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type MetaCampaignIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | MetaCampaign$productArgs<ExtArgs>
+  }
+
+  export type $MetaCampaignPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MetaCampaign"
+    objects: {
+      product: Prisma.$ProductPayload<ExtArgs> | null
+      adSets: Prisma.$MetaAdSetPayload<ExtArgs>[]
+      insights: Prisma.$MetaInsightPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      metaCampaignId: string | null
+      name: string
+      objective: string
+      status: string
+      dailyBudget: number | null
+      lifetimeBudget: number | null
+      buyingType: string
+      isAutomated: boolean
+      templateType: string | null
+      productId: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["metaCampaign"]>
+    composites: {}
+  }
+
+  type MetaCampaignGetPayload<S extends boolean | null | undefined | MetaCampaignDefaultArgs> = $Result.GetResult<Prisma.$MetaCampaignPayload, S>
+
+  type MetaCampaignCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<MetaCampaignFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: MetaCampaignCountAggregateInputType | true
+    }
+
+  export interface MetaCampaignDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MetaCampaign'], meta: { name: 'MetaCampaign' } }
+    /**
+     * Find zero or one MetaCampaign that matches the filter.
+     * @param {MetaCampaignFindUniqueArgs} args - Arguments to find a MetaCampaign
+     * @example
+     * // Get one MetaCampaign
+     * const metaCampaign = await prisma.metaCampaign.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MetaCampaignFindUniqueArgs>(args: SelectSubset<T, MetaCampaignFindUniqueArgs<ExtArgs>>): Prisma__MetaCampaignClient<$Result.GetResult<Prisma.$MetaCampaignPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one MetaCampaign that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {MetaCampaignFindUniqueOrThrowArgs} args - Arguments to find a MetaCampaign
+     * @example
+     * // Get one MetaCampaign
+     * const metaCampaign = await prisma.metaCampaign.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MetaCampaignFindUniqueOrThrowArgs>(args: SelectSubset<T, MetaCampaignFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MetaCampaignClient<$Result.GetResult<Prisma.$MetaCampaignPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first MetaCampaign that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaCampaignFindFirstArgs} args - Arguments to find a MetaCampaign
+     * @example
+     * // Get one MetaCampaign
+     * const metaCampaign = await prisma.metaCampaign.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MetaCampaignFindFirstArgs>(args?: SelectSubset<T, MetaCampaignFindFirstArgs<ExtArgs>>): Prisma__MetaCampaignClient<$Result.GetResult<Prisma.$MetaCampaignPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first MetaCampaign that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaCampaignFindFirstOrThrowArgs} args - Arguments to find a MetaCampaign
+     * @example
+     * // Get one MetaCampaign
+     * const metaCampaign = await prisma.metaCampaign.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MetaCampaignFindFirstOrThrowArgs>(args?: SelectSubset<T, MetaCampaignFindFirstOrThrowArgs<ExtArgs>>): Prisma__MetaCampaignClient<$Result.GetResult<Prisma.$MetaCampaignPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more MetaCampaigns that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaCampaignFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MetaCampaigns
+     * const metaCampaigns = await prisma.metaCampaign.findMany()
+     * 
+     * // Get first 10 MetaCampaigns
+     * const metaCampaigns = await prisma.metaCampaign.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const metaCampaignWithIdOnly = await prisma.metaCampaign.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MetaCampaignFindManyArgs>(args?: SelectSubset<T, MetaCampaignFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MetaCampaignPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a MetaCampaign.
+     * @param {MetaCampaignCreateArgs} args - Arguments to create a MetaCampaign.
+     * @example
+     * // Create one MetaCampaign
+     * const MetaCampaign = await prisma.metaCampaign.create({
+     *   data: {
+     *     // ... data to create a MetaCampaign
+     *   }
+     * })
+     * 
+     */
+    create<T extends MetaCampaignCreateArgs>(args: SelectSubset<T, MetaCampaignCreateArgs<ExtArgs>>): Prisma__MetaCampaignClient<$Result.GetResult<Prisma.$MetaCampaignPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many MetaCampaigns.
+     * @param {MetaCampaignCreateManyArgs} args - Arguments to create many MetaCampaigns.
+     * @example
+     * // Create many MetaCampaigns
+     * const metaCampaign = await prisma.metaCampaign.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MetaCampaignCreateManyArgs>(args?: SelectSubset<T, MetaCampaignCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MetaCampaigns and returns the data saved in the database.
+     * @param {MetaCampaignCreateManyAndReturnArgs} args - Arguments to create many MetaCampaigns.
+     * @example
+     * // Create many MetaCampaigns
+     * const metaCampaign = await prisma.metaCampaign.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MetaCampaigns and only return the `id`
+     * const metaCampaignWithIdOnly = await prisma.metaCampaign.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MetaCampaignCreateManyAndReturnArgs>(args?: SelectSubset<T, MetaCampaignCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MetaCampaignPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a MetaCampaign.
+     * @param {MetaCampaignDeleteArgs} args - Arguments to delete one MetaCampaign.
+     * @example
+     * // Delete one MetaCampaign
+     * const MetaCampaign = await prisma.metaCampaign.delete({
+     *   where: {
+     *     // ... filter to delete one MetaCampaign
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MetaCampaignDeleteArgs>(args: SelectSubset<T, MetaCampaignDeleteArgs<ExtArgs>>): Prisma__MetaCampaignClient<$Result.GetResult<Prisma.$MetaCampaignPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one MetaCampaign.
+     * @param {MetaCampaignUpdateArgs} args - Arguments to update one MetaCampaign.
+     * @example
+     * // Update one MetaCampaign
+     * const metaCampaign = await prisma.metaCampaign.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MetaCampaignUpdateArgs>(args: SelectSubset<T, MetaCampaignUpdateArgs<ExtArgs>>): Prisma__MetaCampaignClient<$Result.GetResult<Prisma.$MetaCampaignPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more MetaCampaigns.
+     * @param {MetaCampaignDeleteManyArgs} args - Arguments to filter MetaCampaigns to delete.
+     * @example
+     * // Delete a few MetaCampaigns
+     * const { count } = await prisma.metaCampaign.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MetaCampaignDeleteManyArgs>(args?: SelectSubset<T, MetaCampaignDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MetaCampaigns.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaCampaignUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MetaCampaigns
+     * const metaCampaign = await prisma.metaCampaign.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MetaCampaignUpdateManyArgs>(args: SelectSubset<T, MetaCampaignUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one MetaCampaign.
+     * @param {MetaCampaignUpsertArgs} args - Arguments to update or create a MetaCampaign.
+     * @example
+     * // Update or create a MetaCampaign
+     * const metaCampaign = await prisma.metaCampaign.upsert({
+     *   create: {
+     *     // ... data to create a MetaCampaign
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MetaCampaign we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MetaCampaignUpsertArgs>(args: SelectSubset<T, MetaCampaignUpsertArgs<ExtArgs>>): Prisma__MetaCampaignClient<$Result.GetResult<Prisma.$MetaCampaignPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of MetaCampaigns.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaCampaignCountArgs} args - Arguments to filter MetaCampaigns to count.
+     * @example
+     * // Count the number of MetaCampaigns
+     * const count = await prisma.metaCampaign.count({
+     *   where: {
+     *     // ... the filter for the MetaCampaigns we want to count
+     *   }
+     * })
+    **/
+    count<T extends MetaCampaignCountArgs>(
+      args?: Subset<T, MetaCampaignCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MetaCampaignCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MetaCampaign.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaCampaignAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MetaCampaignAggregateArgs>(args: Subset<T, MetaCampaignAggregateArgs>): Prisma.PrismaPromise<GetMetaCampaignAggregateType<T>>
+
+    /**
+     * Group by MetaCampaign.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaCampaignGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MetaCampaignGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MetaCampaignGroupByArgs['orderBy'] }
+        : { orderBy?: MetaCampaignGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MetaCampaignGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMetaCampaignGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MetaCampaign model
+   */
+  readonly fields: MetaCampaignFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MetaCampaign.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MetaCampaignClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    product<T extends MetaCampaign$productArgs<ExtArgs> = {}>(args?: Subset<T, MetaCampaign$productArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    adSets<T extends MetaCampaign$adSetsArgs<ExtArgs> = {}>(args?: Subset<T, MetaCampaign$adSetsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MetaAdSetPayload<ExtArgs>, T, "findMany"> | Null>
+    insights<T extends MetaCampaign$insightsArgs<ExtArgs> = {}>(args?: Subset<T, MetaCampaign$insightsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MetaInsightPayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MetaCampaign model
+   */ 
+  interface MetaCampaignFieldRefs {
+    readonly id: FieldRef<"MetaCampaign", 'String'>
+    readonly metaCampaignId: FieldRef<"MetaCampaign", 'String'>
+    readonly name: FieldRef<"MetaCampaign", 'String'>
+    readonly objective: FieldRef<"MetaCampaign", 'String'>
+    readonly status: FieldRef<"MetaCampaign", 'String'>
+    readonly dailyBudget: FieldRef<"MetaCampaign", 'Int'>
+    readonly lifetimeBudget: FieldRef<"MetaCampaign", 'Int'>
+    readonly buyingType: FieldRef<"MetaCampaign", 'String'>
+    readonly isAutomated: FieldRef<"MetaCampaign", 'Boolean'>
+    readonly templateType: FieldRef<"MetaCampaign", 'String'>
+    readonly productId: FieldRef<"MetaCampaign", 'String'>
+    readonly createdAt: FieldRef<"MetaCampaign", 'DateTime'>
+    readonly updatedAt: FieldRef<"MetaCampaign", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MetaCampaign findUnique
+   */
+  export type MetaCampaignFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaCampaign
+     */
+    select?: MetaCampaignSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaCampaignInclude<ExtArgs> | null
+    /**
+     * Filter, which MetaCampaign to fetch.
+     */
+    where: MetaCampaignWhereUniqueInput
+  }
+
+  /**
+   * MetaCampaign findUniqueOrThrow
+   */
+  export type MetaCampaignFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaCampaign
+     */
+    select?: MetaCampaignSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaCampaignInclude<ExtArgs> | null
+    /**
+     * Filter, which MetaCampaign to fetch.
+     */
+    where: MetaCampaignWhereUniqueInput
+  }
+
+  /**
+   * MetaCampaign findFirst
+   */
+  export type MetaCampaignFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaCampaign
+     */
+    select?: MetaCampaignSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaCampaignInclude<ExtArgs> | null
+    /**
+     * Filter, which MetaCampaign to fetch.
+     */
+    where?: MetaCampaignWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetaCampaigns to fetch.
+     */
+    orderBy?: MetaCampaignOrderByWithRelationInput | MetaCampaignOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MetaCampaigns.
+     */
+    cursor?: MetaCampaignWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetaCampaigns from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetaCampaigns.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MetaCampaigns.
+     */
+    distinct?: MetaCampaignScalarFieldEnum | MetaCampaignScalarFieldEnum[]
+  }
+
+  /**
+   * MetaCampaign findFirstOrThrow
+   */
+  export type MetaCampaignFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaCampaign
+     */
+    select?: MetaCampaignSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaCampaignInclude<ExtArgs> | null
+    /**
+     * Filter, which MetaCampaign to fetch.
+     */
+    where?: MetaCampaignWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetaCampaigns to fetch.
+     */
+    orderBy?: MetaCampaignOrderByWithRelationInput | MetaCampaignOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MetaCampaigns.
+     */
+    cursor?: MetaCampaignWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetaCampaigns from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetaCampaigns.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MetaCampaigns.
+     */
+    distinct?: MetaCampaignScalarFieldEnum | MetaCampaignScalarFieldEnum[]
+  }
+
+  /**
+   * MetaCampaign findMany
+   */
+  export type MetaCampaignFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaCampaign
+     */
+    select?: MetaCampaignSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaCampaignInclude<ExtArgs> | null
+    /**
+     * Filter, which MetaCampaigns to fetch.
+     */
+    where?: MetaCampaignWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetaCampaigns to fetch.
+     */
+    orderBy?: MetaCampaignOrderByWithRelationInput | MetaCampaignOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MetaCampaigns.
+     */
+    cursor?: MetaCampaignWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetaCampaigns from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetaCampaigns.
+     */
+    skip?: number
+    distinct?: MetaCampaignScalarFieldEnum | MetaCampaignScalarFieldEnum[]
+  }
+
+  /**
+   * MetaCampaign create
+   */
+  export type MetaCampaignCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaCampaign
+     */
+    select?: MetaCampaignSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaCampaignInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MetaCampaign.
+     */
+    data: XOR<MetaCampaignCreateInput, MetaCampaignUncheckedCreateInput>
+  }
+
+  /**
+   * MetaCampaign createMany
+   */
+  export type MetaCampaignCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MetaCampaigns.
+     */
+    data: MetaCampaignCreateManyInput | MetaCampaignCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MetaCampaign createManyAndReturn
+   */
+  export type MetaCampaignCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaCampaign
+     */
+    select?: MetaCampaignSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many MetaCampaigns.
+     */
+    data: MetaCampaignCreateManyInput | MetaCampaignCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaCampaignIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MetaCampaign update
+   */
+  export type MetaCampaignUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaCampaign
+     */
+    select?: MetaCampaignSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaCampaignInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MetaCampaign.
+     */
+    data: XOR<MetaCampaignUpdateInput, MetaCampaignUncheckedUpdateInput>
+    /**
+     * Choose, which MetaCampaign to update.
+     */
+    where: MetaCampaignWhereUniqueInput
+  }
+
+  /**
+   * MetaCampaign updateMany
+   */
+  export type MetaCampaignUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MetaCampaigns.
+     */
+    data: XOR<MetaCampaignUpdateManyMutationInput, MetaCampaignUncheckedUpdateManyInput>
+    /**
+     * Filter which MetaCampaigns to update
+     */
+    where?: MetaCampaignWhereInput
+  }
+
+  /**
+   * MetaCampaign upsert
+   */
+  export type MetaCampaignUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaCampaign
+     */
+    select?: MetaCampaignSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaCampaignInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MetaCampaign to update in case it exists.
+     */
+    where: MetaCampaignWhereUniqueInput
+    /**
+     * In case the MetaCampaign found by the `where` argument doesn't exist, create a new MetaCampaign with this data.
+     */
+    create: XOR<MetaCampaignCreateInput, MetaCampaignUncheckedCreateInput>
+    /**
+     * In case the MetaCampaign was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MetaCampaignUpdateInput, MetaCampaignUncheckedUpdateInput>
+  }
+
+  /**
+   * MetaCampaign delete
+   */
+  export type MetaCampaignDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaCampaign
+     */
+    select?: MetaCampaignSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaCampaignInclude<ExtArgs> | null
+    /**
+     * Filter which MetaCampaign to delete.
+     */
+    where: MetaCampaignWhereUniqueInput
+  }
+
+  /**
+   * MetaCampaign deleteMany
+   */
+  export type MetaCampaignDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MetaCampaigns to delete
+     */
+    where?: MetaCampaignWhereInput
+  }
+
+  /**
+   * MetaCampaign.product
+   */
+  export type MetaCampaign$productArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Product
+     */
+    select?: ProductSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductInclude<ExtArgs> | null
+    where?: ProductWhereInput
+  }
+
+  /**
+   * MetaCampaign.adSets
+   */
+  export type MetaCampaign$adSetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAdSet
+     */
+    select?: MetaAdSetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaAdSetInclude<ExtArgs> | null
+    where?: MetaAdSetWhereInput
+    orderBy?: MetaAdSetOrderByWithRelationInput | MetaAdSetOrderByWithRelationInput[]
+    cursor?: MetaAdSetWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MetaAdSetScalarFieldEnum | MetaAdSetScalarFieldEnum[]
+  }
+
+  /**
+   * MetaCampaign.insights
+   */
+  export type MetaCampaign$insightsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaInsight
+     */
+    select?: MetaInsightSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaInsightInclude<ExtArgs> | null
+    where?: MetaInsightWhereInput
+    orderBy?: MetaInsightOrderByWithRelationInput | MetaInsightOrderByWithRelationInput[]
+    cursor?: MetaInsightWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MetaInsightScalarFieldEnum | MetaInsightScalarFieldEnum[]
+  }
+
+  /**
+   * MetaCampaign without action
+   */
+  export type MetaCampaignDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaCampaign
+     */
+    select?: MetaCampaignSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaCampaignInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MetaAdSet
+   */
+
+  export type AggregateMetaAdSet = {
+    _count: MetaAdSetCountAggregateOutputType | null
+    _avg: MetaAdSetAvgAggregateOutputType | null
+    _sum: MetaAdSetSumAggregateOutputType | null
+    _min: MetaAdSetMinAggregateOutputType | null
+    _max: MetaAdSetMaxAggregateOutputType | null
+  }
+
+  export type MetaAdSetAvgAggregateOutputType = {
+    dailyBudget: number | null
+    bidAmount: number | null
+  }
+
+  export type MetaAdSetSumAggregateOutputType = {
+    dailyBudget: number | null
+    bidAmount: number | null
+  }
+
+  export type MetaAdSetMinAggregateOutputType = {
+    id: string | null
+    metaAdSetId: string | null
+    campaignId: string | null
+    name: string | null
+    status: string | null
+    dailyBudget: number | null
+    optimizationGoal: string | null
+    billingEvent: string | null
+    bidAmount: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MetaAdSetMaxAggregateOutputType = {
+    id: string | null
+    metaAdSetId: string | null
+    campaignId: string | null
+    name: string | null
+    status: string | null
+    dailyBudget: number | null
+    optimizationGoal: string | null
+    billingEvent: string | null
+    bidAmount: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MetaAdSetCountAggregateOutputType = {
+    id: number
+    metaAdSetId: number
+    campaignId: number
+    name: number
+    status: number
+    dailyBudget: number
+    targetingJson: number
+    optimizationGoal: number
+    billingEvent: number
+    bidAmount: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type MetaAdSetAvgAggregateInputType = {
+    dailyBudget?: true
+    bidAmount?: true
+  }
+
+  export type MetaAdSetSumAggregateInputType = {
+    dailyBudget?: true
+    bidAmount?: true
+  }
+
+  export type MetaAdSetMinAggregateInputType = {
+    id?: true
+    metaAdSetId?: true
+    campaignId?: true
+    name?: true
+    status?: true
+    dailyBudget?: true
+    optimizationGoal?: true
+    billingEvent?: true
+    bidAmount?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MetaAdSetMaxAggregateInputType = {
+    id?: true
+    metaAdSetId?: true
+    campaignId?: true
+    name?: true
+    status?: true
+    dailyBudget?: true
+    optimizationGoal?: true
+    billingEvent?: true
+    bidAmount?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MetaAdSetCountAggregateInputType = {
+    id?: true
+    metaAdSetId?: true
+    campaignId?: true
+    name?: true
+    status?: true
+    dailyBudget?: true
+    targetingJson?: true
+    optimizationGoal?: true
+    billingEvent?: true
+    bidAmount?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type MetaAdSetAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MetaAdSet to aggregate.
+     */
+    where?: MetaAdSetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetaAdSets to fetch.
+     */
+    orderBy?: MetaAdSetOrderByWithRelationInput | MetaAdSetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MetaAdSetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetaAdSets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetaAdSets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MetaAdSets
+    **/
+    _count?: true | MetaAdSetCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MetaAdSetAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MetaAdSetSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MetaAdSetMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MetaAdSetMaxAggregateInputType
+  }
+
+  export type GetMetaAdSetAggregateType<T extends MetaAdSetAggregateArgs> = {
+        [P in keyof T & keyof AggregateMetaAdSet]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMetaAdSet[P]>
+      : GetScalarType<T[P], AggregateMetaAdSet[P]>
+  }
+
+
+
+
+  export type MetaAdSetGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MetaAdSetWhereInput
+    orderBy?: MetaAdSetOrderByWithAggregationInput | MetaAdSetOrderByWithAggregationInput[]
+    by: MetaAdSetScalarFieldEnum[] | MetaAdSetScalarFieldEnum
+    having?: MetaAdSetScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MetaAdSetCountAggregateInputType | true
+    _avg?: MetaAdSetAvgAggregateInputType
+    _sum?: MetaAdSetSumAggregateInputType
+    _min?: MetaAdSetMinAggregateInputType
+    _max?: MetaAdSetMaxAggregateInputType
+  }
+
+  export type MetaAdSetGroupByOutputType = {
+    id: string
+    metaAdSetId: string | null
+    campaignId: string
+    name: string
+    status: string
+    dailyBudget: number | null
+    targetingJson: JsonValue | null
+    optimizationGoal: string
+    billingEvent: string
+    bidAmount: number | null
+    createdAt: Date
+    updatedAt: Date
+    _count: MetaAdSetCountAggregateOutputType | null
+    _avg: MetaAdSetAvgAggregateOutputType | null
+    _sum: MetaAdSetSumAggregateOutputType | null
+    _min: MetaAdSetMinAggregateOutputType | null
+    _max: MetaAdSetMaxAggregateOutputType | null
+  }
+
+  type GetMetaAdSetGroupByPayload<T extends MetaAdSetGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MetaAdSetGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MetaAdSetGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MetaAdSetGroupByOutputType[P]>
+            : GetScalarType<T[P], MetaAdSetGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MetaAdSetSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    metaAdSetId?: boolean
+    campaignId?: boolean
+    name?: boolean
+    status?: boolean
+    dailyBudget?: boolean
+    targetingJson?: boolean
+    optimizationGoal?: boolean
+    billingEvent?: boolean
+    bidAmount?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    campaign?: boolean | MetaCampaignDefaultArgs<ExtArgs>
+    ads?: boolean | MetaAdSet$adsArgs<ExtArgs>
+    _count?: boolean | MetaAdSetCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["metaAdSet"]>
+
+  export type MetaAdSetSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    metaAdSetId?: boolean
+    campaignId?: boolean
+    name?: boolean
+    status?: boolean
+    dailyBudget?: boolean
+    targetingJson?: boolean
+    optimizationGoal?: boolean
+    billingEvent?: boolean
+    bidAmount?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    campaign?: boolean | MetaCampaignDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["metaAdSet"]>
+
+  export type MetaAdSetSelectScalar = {
+    id?: boolean
+    metaAdSetId?: boolean
+    campaignId?: boolean
+    name?: boolean
+    status?: boolean
+    dailyBudget?: boolean
+    targetingJson?: boolean
+    optimizationGoal?: boolean
+    billingEvent?: boolean
+    bidAmount?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type MetaAdSetInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    campaign?: boolean | MetaCampaignDefaultArgs<ExtArgs>
+    ads?: boolean | MetaAdSet$adsArgs<ExtArgs>
+    _count?: boolean | MetaAdSetCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type MetaAdSetIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    campaign?: boolean | MetaCampaignDefaultArgs<ExtArgs>
+  }
+
+  export type $MetaAdSetPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MetaAdSet"
+    objects: {
+      campaign: Prisma.$MetaCampaignPayload<ExtArgs>
+      ads: Prisma.$MetaAdPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      metaAdSetId: string | null
+      campaignId: string
+      name: string
+      status: string
+      dailyBudget: number | null
+      targetingJson: Prisma.JsonValue | null
+      optimizationGoal: string
+      billingEvent: string
+      bidAmount: number | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["metaAdSet"]>
+    composites: {}
+  }
+
+  type MetaAdSetGetPayload<S extends boolean | null | undefined | MetaAdSetDefaultArgs> = $Result.GetResult<Prisma.$MetaAdSetPayload, S>
+
+  type MetaAdSetCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<MetaAdSetFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: MetaAdSetCountAggregateInputType | true
+    }
+
+  export interface MetaAdSetDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MetaAdSet'], meta: { name: 'MetaAdSet' } }
+    /**
+     * Find zero or one MetaAdSet that matches the filter.
+     * @param {MetaAdSetFindUniqueArgs} args - Arguments to find a MetaAdSet
+     * @example
+     * // Get one MetaAdSet
+     * const metaAdSet = await prisma.metaAdSet.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MetaAdSetFindUniqueArgs>(args: SelectSubset<T, MetaAdSetFindUniqueArgs<ExtArgs>>): Prisma__MetaAdSetClient<$Result.GetResult<Prisma.$MetaAdSetPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one MetaAdSet that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {MetaAdSetFindUniqueOrThrowArgs} args - Arguments to find a MetaAdSet
+     * @example
+     * // Get one MetaAdSet
+     * const metaAdSet = await prisma.metaAdSet.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MetaAdSetFindUniqueOrThrowArgs>(args: SelectSubset<T, MetaAdSetFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MetaAdSetClient<$Result.GetResult<Prisma.$MetaAdSetPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first MetaAdSet that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaAdSetFindFirstArgs} args - Arguments to find a MetaAdSet
+     * @example
+     * // Get one MetaAdSet
+     * const metaAdSet = await prisma.metaAdSet.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MetaAdSetFindFirstArgs>(args?: SelectSubset<T, MetaAdSetFindFirstArgs<ExtArgs>>): Prisma__MetaAdSetClient<$Result.GetResult<Prisma.$MetaAdSetPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first MetaAdSet that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaAdSetFindFirstOrThrowArgs} args - Arguments to find a MetaAdSet
+     * @example
+     * // Get one MetaAdSet
+     * const metaAdSet = await prisma.metaAdSet.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MetaAdSetFindFirstOrThrowArgs>(args?: SelectSubset<T, MetaAdSetFindFirstOrThrowArgs<ExtArgs>>): Prisma__MetaAdSetClient<$Result.GetResult<Prisma.$MetaAdSetPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more MetaAdSets that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaAdSetFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MetaAdSets
+     * const metaAdSets = await prisma.metaAdSet.findMany()
+     * 
+     * // Get first 10 MetaAdSets
+     * const metaAdSets = await prisma.metaAdSet.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const metaAdSetWithIdOnly = await prisma.metaAdSet.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MetaAdSetFindManyArgs>(args?: SelectSubset<T, MetaAdSetFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MetaAdSetPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a MetaAdSet.
+     * @param {MetaAdSetCreateArgs} args - Arguments to create a MetaAdSet.
+     * @example
+     * // Create one MetaAdSet
+     * const MetaAdSet = await prisma.metaAdSet.create({
+     *   data: {
+     *     // ... data to create a MetaAdSet
+     *   }
+     * })
+     * 
+     */
+    create<T extends MetaAdSetCreateArgs>(args: SelectSubset<T, MetaAdSetCreateArgs<ExtArgs>>): Prisma__MetaAdSetClient<$Result.GetResult<Prisma.$MetaAdSetPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many MetaAdSets.
+     * @param {MetaAdSetCreateManyArgs} args - Arguments to create many MetaAdSets.
+     * @example
+     * // Create many MetaAdSets
+     * const metaAdSet = await prisma.metaAdSet.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MetaAdSetCreateManyArgs>(args?: SelectSubset<T, MetaAdSetCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MetaAdSets and returns the data saved in the database.
+     * @param {MetaAdSetCreateManyAndReturnArgs} args - Arguments to create many MetaAdSets.
+     * @example
+     * // Create many MetaAdSets
+     * const metaAdSet = await prisma.metaAdSet.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MetaAdSets and only return the `id`
+     * const metaAdSetWithIdOnly = await prisma.metaAdSet.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MetaAdSetCreateManyAndReturnArgs>(args?: SelectSubset<T, MetaAdSetCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MetaAdSetPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a MetaAdSet.
+     * @param {MetaAdSetDeleteArgs} args - Arguments to delete one MetaAdSet.
+     * @example
+     * // Delete one MetaAdSet
+     * const MetaAdSet = await prisma.metaAdSet.delete({
+     *   where: {
+     *     // ... filter to delete one MetaAdSet
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MetaAdSetDeleteArgs>(args: SelectSubset<T, MetaAdSetDeleteArgs<ExtArgs>>): Prisma__MetaAdSetClient<$Result.GetResult<Prisma.$MetaAdSetPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one MetaAdSet.
+     * @param {MetaAdSetUpdateArgs} args - Arguments to update one MetaAdSet.
+     * @example
+     * // Update one MetaAdSet
+     * const metaAdSet = await prisma.metaAdSet.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MetaAdSetUpdateArgs>(args: SelectSubset<T, MetaAdSetUpdateArgs<ExtArgs>>): Prisma__MetaAdSetClient<$Result.GetResult<Prisma.$MetaAdSetPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more MetaAdSets.
+     * @param {MetaAdSetDeleteManyArgs} args - Arguments to filter MetaAdSets to delete.
+     * @example
+     * // Delete a few MetaAdSets
+     * const { count } = await prisma.metaAdSet.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MetaAdSetDeleteManyArgs>(args?: SelectSubset<T, MetaAdSetDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MetaAdSets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaAdSetUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MetaAdSets
+     * const metaAdSet = await prisma.metaAdSet.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MetaAdSetUpdateManyArgs>(args: SelectSubset<T, MetaAdSetUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one MetaAdSet.
+     * @param {MetaAdSetUpsertArgs} args - Arguments to update or create a MetaAdSet.
+     * @example
+     * // Update or create a MetaAdSet
+     * const metaAdSet = await prisma.metaAdSet.upsert({
+     *   create: {
+     *     // ... data to create a MetaAdSet
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MetaAdSet we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MetaAdSetUpsertArgs>(args: SelectSubset<T, MetaAdSetUpsertArgs<ExtArgs>>): Prisma__MetaAdSetClient<$Result.GetResult<Prisma.$MetaAdSetPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of MetaAdSets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaAdSetCountArgs} args - Arguments to filter MetaAdSets to count.
+     * @example
+     * // Count the number of MetaAdSets
+     * const count = await prisma.metaAdSet.count({
+     *   where: {
+     *     // ... the filter for the MetaAdSets we want to count
+     *   }
+     * })
+    **/
+    count<T extends MetaAdSetCountArgs>(
+      args?: Subset<T, MetaAdSetCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MetaAdSetCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MetaAdSet.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaAdSetAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MetaAdSetAggregateArgs>(args: Subset<T, MetaAdSetAggregateArgs>): Prisma.PrismaPromise<GetMetaAdSetAggregateType<T>>
+
+    /**
+     * Group by MetaAdSet.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaAdSetGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MetaAdSetGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MetaAdSetGroupByArgs['orderBy'] }
+        : { orderBy?: MetaAdSetGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MetaAdSetGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMetaAdSetGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MetaAdSet model
+   */
+  readonly fields: MetaAdSetFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MetaAdSet.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MetaAdSetClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    campaign<T extends MetaCampaignDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MetaCampaignDefaultArgs<ExtArgs>>): Prisma__MetaCampaignClient<$Result.GetResult<Prisma.$MetaCampaignPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    ads<T extends MetaAdSet$adsArgs<ExtArgs> = {}>(args?: Subset<T, MetaAdSet$adsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MetaAdPayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MetaAdSet model
+   */ 
+  interface MetaAdSetFieldRefs {
+    readonly id: FieldRef<"MetaAdSet", 'String'>
+    readonly metaAdSetId: FieldRef<"MetaAdSet", 'String'>
+    readonly campaignId: FieldRef<"MetaAdSet", 'String'>
+    readonly name: FieldRef<"MetaAdSet", 'String'>
+    readonly status: FieldRef<"MetaAdSet", 'String'>
+    readonly dailyBudget: FieldRef<"MetaAdSet", 'Int'>
+    readonly targetingJson: FieldRef<"MetaAdSet", 'Json'>
+    readonly optimizationGoal: FieldRef<"MetaAdSet", 'String'>
+    readonly billingEvent: FieldRef<"MetaAdSet", 'String'>
+    readonly bidAmount: FieldRef<"MetaAdSet", 'Int'>
+    readonly createdAt: FieldRef<"MetaAdSet", 'DateTime'>
+    readonly updatedAt: FieldRef<"MetaAdSet", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MetaAdSet findUnique
+   */
+  export type MetaAdSetFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAdSet
+     */
+    select?: MetaAdSetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaAdSetInclude<ExtArgs> | null
+    /**
+     * Filter, which MetaAdSet to fetch.
+     */
+    where: MetaAdSetWhereUniqueInput
+  }
+
+  /**
+   * MetaAdSet findUniqueOrThrow
+   */
+  export type MetaAdSetFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAdSet
+     */
+    select?: MetaAdSetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaAdSetInclude<ExtArgs> | null
+    /**
+     * Filter, which MetaAdSet to fetch.
+     */
+    where: MetaAdSetWhereUniqueInput
+  }
+
+  /**
+   * MetaAdSet findFirst
+   */
+  export type MetaAdSetFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAdSet
+     */
+    select?: MetaAdSetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaAdSetInclude<ExtArgs> | null
+    /**
+     * Filter, which MetaAdSet to fetch.
+     */
+    where?: MetaAdSetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetaAdSets to fetch.
+     */
+    orderBy?: MetaAdSetOrderByWithRelationInput | MetaAdSetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MetaAdSets.
+     */
+    cursor?: MetaAdSetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetaAdSets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetaAdSets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MetaAdSets.
+     */
+    distinct?: MetaAdSetScalarFieldEnum | MetaAdSetScalarFieldEnum[]
+  }
+
+  /**
+   * MetaAdSet findFirstOrThrow
+   */
+  export type MetaAdSetFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAdSet
+     */
+    select?: MetaAdSetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaAdSetInclude<ExtArgs> | null
+    /**
+     * Filter, which MetaAdSet to fetch.
+     */
+    where?: MetaAdSetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetaAdSets to fetch.
+     */
+    orderBy?: MetaAdSetOrderByWithRelationInput | MetaAdSetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MetaAdSets.
+     */
+    cursor?: MetaAdSetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetaAdSets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetaAdSets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MetaAdSets.
+     */
+    distinct?: MetaAdSetScalarFieldEnum | MetaAdSetScalarFieldEnum[]
+  }
+
+  /**
+   * MetaAdSet findMany
+   */
+  export type MetaAdSetFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAdSet
+     */
+    select?: MetaAdSetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaAdSetInclude<ExtArgs> | null
+    /**
+     * Filter, which MetaAdSets to fetch.
+     */
+    where?: MetaAdSetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetaAdSets to fetch.
+     */
+    orderBy?: MetaAdSetOrderByWithRelationInput | MetaAdSetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MetaAdSets.
+     */
+    cursor?: MetaAdSetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetaAdSets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetaAdSets.
+     */
+    skip?: number
+    distinct?: MetaAdSetScalarFieldEnum | MetaAdSetScalarFieldEnum[]
+  }
+
+  /**
+   * MetaAdSet create
+   */
+  export type MetaAdSetCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAdSet
+     */
+    select?: MetaAdSetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaAdSetInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MetaAdSet.
+     */
+    data: XOR<MetaAdSetCreateInput, MetaAdSetUncheckedCreateInput>
+  }
+
+  /**
+   * MetaAdSet createMany
+   */
+  export type MetaAdSetCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MetaAdSets.
+     */
+    data: MetaAdSetCreateManyInput | MetaAdSetCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MetaAdSet createManyAndReturn
+   */
+  export type MetaAdSetCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAdSet
+     */
+    select?: MetaAdSetSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many MetaAdSets.
+     */
+    data: MetaAdSetCreateManyInput | MetaAdSetCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaAdSetIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MetaAdSet update
+   */
+  export type MetaAdSetUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAdSet
+     */
+    select?: MetaAdSetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaAdSetInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MetaAdSet.
+     */
+    data: XOR<MetaAdSetUpdateInput, MetaAdSetUncheckedUpdateInput>
+    /**
+     * Choose, which MetaAdSet to update.
+     */
+    where: MetaAdSetWhereUniqueInput
+  }
+
+  /**
+   * MetaAdSet updateMany
+   */
+  export type MetaAdSetUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MetaAdSets.
+     */
+    data: XOR<MetaAdSetUpdateManyMutationInput, MetaAdSetUncheckedUpdateManyInput>
+    /**
+     * Filter which MetaAdSets to update
+     */
+    where?: MetaAdSetWhereInput
+  }
+
+  /**
+   * MetaAdSet upsert
+   */
+  export type MetaAdSetUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAdSet
+     */
+    select?: MetaAdSetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaAdSetInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MetaAdSet to update in case it exists.
+     */
+    where: MetaAdSetWhereUniqueInput
+    /**
+     * In case the MetaAdSet found by the `where` argument doesn't exist, create a new MetaAdSet with this data.
+     */
+    create: XOR<MetaAdSetCreateInput, MetaAdSetUncheckedCreateInput>
+    /**
+     * In case the MetaAdSet was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MetaAdSetUpdateInput, MetaAdSetUncheckedUpdateInput>
+  }
+
+  /**
+   * MetaAdSet delete
+   */
+  export type MetaAdSetDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAdSet
+     */
+    select?: MetaAdSetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaAdSetInclude<ExtArgs> | null
+    /**
+     * Filter which MetaAdSet to delete.
+     */
+    where: MetaAdSetWhereUniqueInput
+  }
+
+  /**
+   * MetaAdSet deleteMany
+   */
+  export type MetaAdSetDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MetaAdSets to delete
+     */
+    where?: MetaAdSetWhereInput
+  }
+
+  /**
+   * MetaAdSet.ads
+   */
+  export type MetaAdSet$adsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAd
+     */
+    select?: MetaAdSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaAdInclude<ExtArgs> | null
+    where?: MetaAdWhereInput
+    orderBy?: MetaAdOrderByWithRelationInput | MetaAdOrderByWithRelationInput[]
+    cursor?: MetaAdWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MetaAdScalarFieldEnum | MetaAdScalarFieldEnum[]
+  }
+
+  /**
+   * MetaAdSet without action
+   */
+  export type MetaAdSetDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAdSet
+     */
+    select?: MetaAdSetSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaAdSetInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MetaAd
+   */
+
+  export type AggregateMetaAd = {
+    _count: MetaAdCountAggregateOutputType | null
+    _min: MetaAdMinAggregateOutputType | null
+    _max: MetaAdMaxAggregateOutputType | null
+  }
+
+  export type MetaAdMinAggregateOutputType = {
+    id: string | null
+    metaAdId: string | null
+    adSetId: string | null
+    name: string | null
+    status: string | null
+    creativeAngle: string | null
+    headline: string | null
+    primaryText: string | null
+    description: string | null
+    callToAction: string | null
+    imageUrl: string | null
+    destinationUrl: string | null
+    productId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MetaAdMaxAggregateOutputType = {
+    id: string | null
+    metaAdId: string | null
+    adSetId: string | null
+    name: string | null
+    status: string | null
+    creativeAngle: string | null
+    headline: string | null
+    primaryText: string | null
+    description: string | null
+    callToAction: string | null
+    imageUrl: string | null
+    destinationUrl: string | null
+    productId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MetaAdCountAggregateOutputType = {
+    id: number
+    metaAdId: number
+    adSetId: number
+    name: number
+    status: number
+    creativeAngle: number
+    headline: number
+    primaryText: number
+    description: number
+    callToAction: number
+    imageUrl: number
+    destinationUrl: number
+    creativeJson: number
+    productId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type MetaAdMinAggregateInputType = {
+    id?: true
+    metaAdId?: true
+    adSetId?: true
+    name?: true
+    status?: true
+    creativeAngle?: true
+    headline?: true
+    primaryText?: true
+    description?: true
+    callToAction?: true
+    imageUrl?: true
+    destinationUrl?: true
+    productId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MetaAdMaxAggregateInputType = {
+    id?: true
+    metaAdId?: true
+    adSetId?: true
+    name?: true
+    status?: true
+    creativeAngle?: true
+    headline?: true
+    primaryText?: true
+    description?: true
+    callToAction?: true
+    imageUrl?: true
+    destinationUrl?: true
+    productId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MetaAdCountAggregateInputType = {
+    id?: true
+    metaAdId?: true
+    adSetId?: true
+    name?: true
+    status?: true
+    creativeAngle?: true
+    headline?: true
+    primaryText?: true
+    description?: true
+    callToAction?: true
+    imageUrl?: true
+    destinationUrl?: true
+    creativeJson?: true
+    productId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type MetaAdAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MetaAd to aggregate.
+     */
+    where?: MetaAdWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetaAds to fetch.
+     */
+    orderBy?: MetaAdOrderByWithRelationInput | MetaAdOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MetaAdWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetaAds from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetaAds.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MetaAds
+    **/
+    _count?: true | MetaAdCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MetaAdMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MetaAdMaxAggregateInputType
+  }
+
+  export type GetMetaAdAggregateType<T extends MetaAdAggregateArgs> = {
+        [P in keyof T & keyof AggregateMetaAd]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMetaAd[P]>
+      : GetScalarType<T[P], AggregateMetaAd[P]>
+  }
+
+
+
+
+  export type MetaAdGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MetaAdWhereInput
+    orderBy?: MetaAdOrderByWithAggregationInput | MetaAdOrderByWithAggregationInput[]
+    by: MetaAdScalarFieldEnum[] | MetaAdScalarFieldEnum
+    having?: MetaAdScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MetaAdCountAggregateInputType | true
+    _min?: MetaAdMinAggregateInputType
+    _max?: MetaAdMaxAggregateInputType
+  }
+
+  export type MetaAdGroupByOutputType = {
+    id: string
+    metaAdId: string | null
+    adSetId: string
+    name: string
+    status: string
+    creativeAngle: string
+    headline: string
+    primaryText: string
+    description: string | null
+    callToAction: string
+    imageUrl: string
+    destinationUrl: string
+    creativeJson: JsonValue | null
+    productId: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: MetaAdCountAggregateOutputType | null
+    _min: MetaAdMinAggregateOutputType | null
+    _max: MetaAdMaxAggregateOutputType | null
+  }
+
+  type GetMetaAdGroupByPayload<T extends MetaAdGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MetaAdGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MetaAdGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MetaAdGroupByOutputType[P]>
+            : GetScalarType<T[P], MetaAdGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MetaAdSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    metaAdId?: boolean
+    adSetId?: boolean
+    name?: boolean
+    status?: boolean
+    creativeAngle?: boolean
+    headline?: boolean
+    primaryText?: boolean
+    description?: boolean
+    callToAction?: boolean
+    imageUrl?: boolean
+    destinationUrl?: boolean
+    creativeJson?: boolean
+    productId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    adSet?: boolean | MetaAdSetDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["metaAd"]>
+
+  export type MetaAdSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    metaAdId?: boolean
+    adSetId?: boolean
+    name?: boolean
+    status?: boolean
+    creativeAngle?: boolean
+    headline?: boolean
+    primaryText?: boolean
+    description?: boolean
+    callToAction?: boolean
+    imageUrl?: boolean
+    destinationUrl?: boolean
+    creativeJson?: boolean
+    productId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    adSet?: boolean | MetaAdSetDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["metaAd"]>
+
+  export type MetaAdSelectScalar = {
+    id?: boolean
+    metaAdId?: boolean
+    adSetId?: boolean
+    name?: boolean
+    status?: boolean
+    creativeAngle?: boolean
+    headline?: boolean
+    primaryText?: boolean
+    description?: boolean
+    callToAction?: boolean
+    imageUrl?: boolean
+    destinationUrl?: boolean
+    creativeJson?: boolean
+    productId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type MetaAdInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    adSet?: boolean | MetaAdSetDefaultArgs<ExtArgs>
+  }
+  export type MetaAdIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    adSet?: boolean | MetaAdSetDefaultArgs<ExtArgs>
+  }
+
+  export type $MetaAdPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MetaAd"
+    objects: {
+      adSet: Prisma.$MetaAdSetPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      metaAdId: string | null
+      adSetId: string
+      name: string
+      status: string
+      creativeAngle: string
+      headline: string
+      primaryText: string
+      description: string | null
+      callToAction: string
+      imageUrl: string
+      destinationUrl: string
+      creativeJson: Prisma.JsonValue | null
+      productId: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["metaAd"]>
+    composites: {}
+  }
+
+  type MetaAdGetPayload<S extends boolean | null | undefined | MetaAdDefaultArgs> = $Result.GetResult<Prisma.$MetaAdPayload, S>
+
+  type MetaAdCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<MetaAdFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: MetaAdCountAggregateInputType | true
+    }
+
+  export interface MetaAdDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MetaAd'], meta: { name: 'MetaAd' } }
+    /**
+     * Find zero or one MetaAd that matches the filter.
+     * @param {MetaAdFindUniqueArgs} args - Arguments to find a MetaAd
+     * @example
+     * // Get one MetaAd
+     * const metaAd = await prisma.metaAd.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MetaAdFindUniqueArgs>(args: SelectSubset<T, MetaAdFindUniqueArgs<ExtArgs>>): Prisma__MetaAdClient<$Result.GetResult<Prisma.$MetaAdPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one MetaAd that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {MetaAdFindUniqueOrThrowArgs} args - Arguments to find a MetaAd
+     * @example
+     * // Get one MetaAd
+     * const metaAd = await prisma.metaAd.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MetaAdFindUniqueOrThrowArgs>(args: SelectSubset<T, MetaAdFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MetaAdClient<$Result.GetResult<Prisma.$MetaAdPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first MetaAd that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaAdFindFirstArgs} args - Arguments to find a MetaAd
+     * @example
+     * // Get one MetaAd
+     * const metaAd = await prisma.metaAd.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MetaAdFindFirstArgs>(args?: SelectSubset<T, MetaAdFindFirstArgs<ExtArgs>>): Prisma__MetaAdClient<$Result.GetResult<Prisma.$MetaAdPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first MetaAd that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaAdFindFirstOrThrowArgs} args - Arguments to find a MetaAd
+     * @example
+     * // Get one MetaAd
+     * const metaAd = await prisma.metaAd.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MetaAdFindFirstOrThrowArgs>(args?: SelectSubset<T, MetaAdFindFirstOrThrowArgs<ExtArgs>>): Prisma__MetaAdClient<$Result.GetResult<Prisma.$MetaAdPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more MetaAds that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaAdFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MetaAds
+     * const metaAds = await prisma.metaAd.findMany()
+     * 
+     * // Get first 10 MetaAds
+     * const metaAds = await prisma.metaAd.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const metaAdWithIdOnly = await prisma.metaAd.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MetaAdFindManyArgs>(args?: SelectSubset<T, MetaAdFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MetaAdPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a MetaAd.
+     * @param {MetaAdCreateArgs} args - Arguments to create a MetaAd.
+     * @example
+     * // Create one MetaAd
+     * const MetaAd = await prisma.metaAd.create({
+     *   data: {
+     *     // ... data to create a MetaAd
+     *   }
+     * })
+     * 
+     */
+    create<T extends MetaAdCreateArgs>(args: SelectSubset<T, MetaAdCreateArgs<ExtArgs>>): Prisma__MetaAdClient<$Result.GetResult<Prisma.$MetaAdPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many MetaAds.
+     * @param {MetaAdCreateManyArgs} args - Arguments to create many MetaAds.
+     * @example
+     * // Create many MetaAds
+     * const metaAd = await prisma.metaAd.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MetaAdCreateManyArgs>(args?: SelectSubset<T, MetaAdCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MetaAds and returns the data saved in the database.
+     * @param {MetaAdCreateManyAndReturnArgs} args - Arguments to create many MetaAds.
+     * @example
+     * // Create many MetaAds
+     * const metaAd = await prisma.metaAd.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MetaAds and only return the `id`
+     * const metaAdWithIdOnly = await prisma.metaAd.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MetaAdCreateManyAndReturnArgs>(args?: SelectSubset<T, MetaAdCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MetaAdPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a MetaAd.
+     * @param {MetaAdDeleteArgs} args - Arguments to delete one MetaAd.
+     * @example
+     * // Delete one MetaAd
+     * const MetaAd = await prisma.metaAd.delete({
+     *   where: {
+     *     // ... filter to delete one MetaAd
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MetaAdDeleteArgs>(args: SelectSubset<T, MetaAdDeleteArgs<ExtArgs>>): Prisma__MetaAdClient<$Result.GetResult<Prisma.$MetaAdPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one MetaAd.
+     * @param {MetaAdUpdateArgs} args - Arguments to update one MetaAd.
+     * @example
+     * // Update one MetaAd
+     * const metaAd = await prisma.metaAd.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MetaAdUpdateArgs>(args: SelectSubset<T, MetaAdUpdateArgs<ExtArgs>>): Prisma__MetaAdClient<$Result.GetResult<Prisma.$MetaAdPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more MetaAds.
+     * @param {MetaAdDeleteManyArgs} args - Arguments to filter MetaAds to delete.
+     * @example
+     * // Delete a few MetaAds
+     * const { count } = await prisma.metaAd.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MetaAdDeleteManyArgs>(args?: SelectSubset<T, MetaAdDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MetaAds.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaAdUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MetaAds
+     * const metaAd = await prisma.metaAd.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MetaAdUpdateManyArgs>(args: SelectSubset<T, MetaAdUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one MetaAd.
+     * @param {MetaAdUpsertArgs} args - Arguments to update or create a MetaAd.
+     * @example
+     * // Update or create a MetaAd
+     * const metaAd = await prisma.metaAd.upsert({
+     *   create: {
+     *     // ... data to create a MetaAd
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MetaAd we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MetaAdUpsertArgs>(args: SelectSubset<T, MetaAdUpsertArgs<ExtArgs>>): Prisma__MetaAdClient<$Result.GetResult<Prisma.$MetaAdPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of MetaAds.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaAdCountArgs} args - Arguments to filter MetaAds to count.
+     * @example
+     * // Count the number of MetaAds
+     * const count = await prisma.metaAd.count({
+     *   where: {
+     *     // ... the filter for the MetaAds we want to count
+     *   }
+     * })
+    **/
+    count<T extends MetaAdCountArgs>(
+      args?: Subset<T, MetaAdCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MetaAdCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MetaAd.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaAdAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MetaAdAggregateArgs>(args: Subset<T, MetaAdAggregateArgs>): Prisma.PrismaPromise<GetMetaAdAggregateType<T>>
+
+    /**
+     * Group by MetaAd.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaAdGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MetaAdGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MetaAdGroupByArgs['orderBy'] }
+        : { orderBy?: MetaAdGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MetaAdGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMetaAdGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MetaAd model
+   */
+  readonly fields: MetaAdFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MetaAd.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MetaAdClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    adSet<T extends MetaAdSetDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MetaAdSetDefaultArgs<ExtArgs>>): Prisma__MetaAdSetClient<$Result.GetResult<Prisma.$MetaAdSetPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MetaAd model
+   */ 
+  interface MetaAdFieldRefs {
+    readonly id: FieldRef<"MetaAd", 'String'>
+    readonly metaAdId: FieldRef<"MetaAd", 'String'>
+    readonly adSetId: FieldRef<"MetaAd", 'String'>
+    readonly name: FieldRef<"MetaAd", 'String'>
+    readonly status: FieldRef<"MetaAd", 'String'>
+    readonly creativeAngle: FieldRef<"MetaAd", 'String'>
+    readonly headline: FieldRef<"MetaAd", 'String'>
+    readonly primaryText: FieldRef<"MetaAd", 'String'>
+    readonly description: FieldRef<"MetaAd", 'String'>
+    readonly callToAction: FieldRef<"MetaAd", 'String'>
+    readonly imageUrl: FieldRef<"MetaAd", 'String'>
+    readonly destinationUrl: FieldRef<"MetaAd", 'String'>
+    readonly creativeJson: FieldRef<"MetaAd", 'Json'>
+    readonly productId: FieldRef<"MetaAd", 'String'>
+    readonly createdAt: FieldRef<"MetaAd", 'DateTime'>
+    readonly updatedAt: FieldRef<"MetaAd", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MetaAd findUnique
+   */
+  export type MetaAdFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAd
+     */
+    select?: MetaAdSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaAdInclude<ExtArgs> | null
+    /**
+     * Filter, which MetaAd to fetch.
+     */
+    where: MetaAdWhereUniqueInput
+  }
+
+  /**
+   * MetaAd findUniqueOrThrow
+   */
+  export type MetaAdFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAd
+     */
+    select?: MetaAdSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaAdInclude<ExtArgs> | null
+    /**
+     * Filter, which MetaAd to fetch.
+     */
+    where: MetaAdWhereUniqueInput
+  }
+
+  /**
+   * MetaAd findFirst
+   */
+  export type MetaAdFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAd
+     */
+    select?: MetaAdSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaAdInclude<ExtArgs> | null
+    /**
+     * Filter, which MetaAd to fetch.
+     */
+    where?: MetaAdWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetaAds to fetch.
+     */
+    orderBy?: MetaAdOrderByWithRelationInput | MetaAdOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MetaAds.
+     */
+    cursor?: MetaAdWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetaAds from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetaAds.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MetaAds.
+     */
+    distinct?: MetaAdScalarFieldEnum | MetaAdScalarFieldEnum[]
+  }
+
+  /**
+   * MetaAd findFirstOrThrow
+   */
+  export type MetaAdFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAd
+     */
+    select?: MetaAdSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaAdInclude<ExtArgs> | null
+    /**
+     * Filter, which MetaAd to fetch.
+     */
+    where?: MetaAdWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetaAds to fetch.
+     */
+    orderBy?: MetaAdOrderByWithRelationInput | MetaAdOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MetaAds.
+     */
+    cursor?: MetaAdWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetaAds from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetaAds.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MetaAds.
+     */
+    distinct?: MetaAdScalarFieldEnum | MetaAdScalarFieldEnum[]
+  }
+
+  /**
+   * MetaAd findMany
+   */
+  export type MetaAdFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAd
+     */
+    select?: MetaAdSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaAdInclude<ExtArgs> | null
+    /**
+     * Filter, which MetaAds to fetch.
+     */
+    where?: MetaAdWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetaAds to fetch.
+     */
+    orderBy?: MetaAdOrderByWithRelationInput | MetaAdOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MetaAds.
+     */
+    cursor?: MetaAdWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetaAds from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetaAds.
+     */
+    skip?: number
+    distinct?: MetaAdScalarFieldEnum | MetaAdScalarFieldEnum[]
+  }
+
+  /**
+   * MetaAd create
+   */
+  export type MetaAdCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAd
+     */
+    select?: MetaAdSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaAdInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MetaAd.
+     */
+    data: XOR<MetaAdCreateInput, MetaAdUncheckedCreateInput>
+  }
+
+  /**
+   * MetaAd createMany
+   */
+  export type MetaAdCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MetaAds.
+     */
+    data: MetaAdCreateManyInput | MetaAdCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MetaAd createManyAndReturn
+   */
+  export type MetaAdCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAd
+     */
+    select?: MetaAdSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many MetaAds.
+     */
+    data: MetaAdCreateManyInput | MetaAdCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaAdIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MetaAd update
+   */
+  export type MetaAdUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAd
+     */
+    select?: MetaAdSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaAdInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MetaAd.
+     */
+    data: XOR<MetaAdUpdateInput, MetaAdUncheckedUpdateInput>
+    /**
+     * Choose, which MetaAd to update.
+     */
+    where: MetaAdWhereUniqueInput
+  }
+
+  /**
+   * MetaAd updateMany
+   */
+  export type MetaAdUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MetaAds.
+     */
+    data: XOR<MetaAdUpdateManyMutationInput, MetaAdUncheckedUpdateManyInput>
+    /**
+     * Filter which MetaAds to update
+     */
+    where?: MetaAdWhereInput
+  }
+
+  /**
+   * MetaAd upsert
+   */
+  export type MetaAdUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAd
+     */
+    select?: MetaAdSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaAdInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MetaAd to update in case it exists.
+     */
+    where: MetaAdWhereUniqueInput
+    /**
+     * In case the MetaAd found by the `where` argument doesn't exist, create a new MetaAd with this data.
+     */
+    create: XOR<MetaAdCreateInput, MetaAdUncheckedCreateInput>
+    /**
+     * In case the MetaAd was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MetaAdUpdateInput, MetaAdUncheckedUpdateInput>
+  }
+
+  /**
+   * MetaAd delete
+   */
+  export type MetaAdDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAd
+     */
+    select?: MetaAdSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaAdInclude<ExtArgs> | null
+    /**
+     * Filter which MetaAd to delete.
+     */
+    where: MetaAdWhereUniqueInput
+  }
+
+  /**
+   * MetaAd deleteMany
+   */
+  export type MetaAdDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MetaAds to delete
+     */
+    where?: MetaAdWhereInput
+  }
+
+  /**
+   * MetaAd without action
+   */
+  export type MetaAdDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAd
+     */
+    select?: MetaAdSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaAdInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MetaInsight
+   */
+
+  export type AggregateMetaInsight = {
+    _count: MetaInsightCountAggregateOutputType | null
+    _avg: MetaInsightAvgAggregateOutputType | null
+    _sum: MetaInsightSumAggregateOutputType | null
+    _min: MetaInsightMinAggregateOutputType | null
+    _max: MetaInsightMaxAggregateOutputType | null
+  }
+
+  export type MetaInsightAvgAggregateOutputType = {
+    spend: number | null
+    impressions: number | null
+    clicks: number | null
+    ctr: number | null
+    cpc: number | null
+    purchases: number | null
+    purchaseValue: number | null
+    roas: number | null
+    costPerPurchase: number | null
+  }
+
+  export type MetaInsightSumAggregateOutputType = {
+    spend: number | null
+    impressions: number | null
+    clicks: number | null
+    ctr: number | null
+    cpc: number | null
+    purchases: number | null
+    purchaseValue: number | null
+    roas: number | null
+    costPerPurchase: number | null
+  }
+
+  export type MetaInsightMinAggregateOutputType = {
+    id: string | null
+    entityType: string | null
+    entityId: string | null
+    campaignId: string | null
+    date: Date | null
+    spend: number | null
+    impressions: number | null
+    clicks: number | null
+    ctr: number | null
+    cpc: number | null
+    purchases: number | null
+    purchaseValue: number | null
+    roas: number | null
+    costPerPurchase: number | null
+    createdAt: Date | null
+  }
+
+  export type MetaInsightMaxAggregateOutputType = {
+    id: string | null
+    entityType: string | null
+    entityId: string | null
+    campaignId: string | null
+    date: Date | null
+    spend: number | null
+    impressions: number | null
+    clicks: number | null
+    ctr: number | null
+    cpc: number | null
+    purchases: number | null
+    purchaseValue: number | null
+    roas: number | null
+    costPerPurchase: number | null
+    createdAt: Date | null
+  }
+
+  export type MetaInsightCountAggregateOutputType = {
+    id: number
+    entityType: number
+    entityId: number
+    campaignId: number
+    date: number
+    spend: number
+    impressions: number
+    clicks: number
+    ctr: number
+    cpc: number
+    purchases: number
+    purchaseValue: number
+    roas: number
+    costPerPurchase: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type MetaInsightAvgAggregateInputType = {
+    spend?: true
+    impressions?: true
+    clicks?: true
+    ctr?: true
+    cpc?: true
+    purchases?: true
+    purchaseValue?: true
+    roas?: true
+    costPerPurchase?: true
+  }
+
+  export type MetaInsightSumAggregateInputType = {
+    spend?: true
+    impressions?: true
+    clicks?: true
+    ctr?: true
+    cpc?: true
+    purchases?: true
+    purchaseValue?: true
+    roas?: true
+    costPerPurchase?: true
+  }
+
+  export type MetaInsightMinAggregateInputType = {
+    id?: true
+    entityType?: true
+    entityId?: true
+    campaignId?: true
+    date?: true
+    spend?: true
+    impressions?: true
+    clicks?: true
+    ctr?: true
+    cpc?: true
+    purchases?: true
+    purchaseValue?: true
+    roas?: true
+    costPerPurchase?: true
+    createdAt?: true
+  }
+
+  export type MetaInsightMaxAggregateInputType = {
+    id?: true
+    entityType?: true
+    entityId?: true
+    campaignId?: true
+    date?: true
+    spend?: true
+    impressions?: true
+    clicks?: true
+    ctr?: true
+    cpc?: true
+    purchases?: true
+    purchaseValue?: true
+    roas?: true
+    costPerPurchase?: true
+    createdAt?: true
+  }
+
+  export type MetaInsightCountAggregateInputType = {
+    id?: true
+    entityType?: true
+    entityId?: true
+    campaignId?: true
+    date?: true
+    spend?: true
+    impressions?: true
+    clicks?: true
+    ctr?: true
+    cpc?: true
+    purchases?: true
+    purchaseValue?: true
+    roas?: true
+    costPerPurchase?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type MetaInsightAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MetaInsight to aggregate.
+     */
+    where?: MetaInsightWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetaInsights to fetch.
+     */
+    orderBy?: MetaInsightOrderByWithRelationInput | MetaInsightOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MetaInsightWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetaInsights from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetaInsights.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MetaInsights
+    **/
+    _count?: true | MetaInsightCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MetaInsightAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MetaInsightSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MetaInsightMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MetaInsightMaxAggregateInputType
+  }
+
+  export type GetMetaInsightAggregateType<T extends MetaInsightAggregateArgs> = {
+        [P in keyof T & keyof AggregateMetaInsight]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMetaInsight[P]>
+      : GetScalarType<T[P], AggregateMetaInsight[P]>
+  }
+
+
+
+
+  export type MetaInsightGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MetaInsightWhereInput
+    orderBy?: MetaInsightOrderByWithAggregationInput | MetaInsightOrderByWithAggregationInput[]
+    by: MetaInsightScalarFieldEnum[] | MetaInsightScalarFieldEnum
+    having?: MetaInsightScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MetaInsightCountAggregateInputType | true
+    _avg?: MetaInsightAvgAggregateInputType
+    _sum?: MetaInsightSumAggregateInputType
+    _min?: MetaInsightMinAggregateInputType
+    _max?: MetaInsightMaxAggregateInputType
+  }
+
+  export type MetaInsightGroupByOutputType = {
+    id: string
+    entityType: string
+    entityId: string
+    campaignId: string | null
+    date: Date
+    spend: number
+    impressions: number
+    clicks: number
+    ctr: number
+    cpc: number
+    purchases: number
+    purchaseValue: number
+    roas: number
+    costPerPurchase: number
+    createdAt: Date
+    _count: MetaInsightCountAggregateOutputType | null
+    _avg: MetaInsightAvgAggregateOutputType | null
+    _sum: MetaInsightSumAggregateOutputType | null
+    _min: MetaInsightMinAggregateOutputType | null
+    _max: MetaInsightMaxAggregateOutputType | null
+  }
+
+  type GetMetaInsightGroupByPayload<T extends MetaInsightGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MetaInsightGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MetaInsightGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MetaInsightGroupByOutputType[P]>
+            : GetScalarType<T[P], MetaInsightGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MetaInsightSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    entityType?: boolean
+    entityId?: boolean
+    campaignId?: boolean
+    date?: boolean
+    spend?: boolean
+    impressions?: boolean
+    clicks?: boolean
+    ctr?: boolean
+    cpc?: boolean
+    purchases?: boolean
+    purchaseValue?: boolean
+    roas?: boolean
+    costPerPurchase?: boolean
+    createdAt?: boolean
+    campaign?: boolean | MetaInsight$campaignArgs<ExtArgs>
+  }, ExtArgs["result"]["metaInsight"]>
+
+  export type MetaInsightSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    entityType?: boolean
+    entityId?: boolean
+    campaignId?: boolean
+    date?: boolean
+    spend?: boolean
+    impressions?: boolean
+    clicks?: boolean
+    ctr?: boolean
+    cpc?: boolean
+    purchases?: boolean
+    purchaseValue?: boolean
+    roas?: boolean
+    costPerPurchase?: boolean
+    createdAt?: boolean
+    campaign?: boolean | MetaInsight$campaignArgs<ExtArgs>
+  }, ExtArgs["result"]["metaInsight"]>
+
+  export type MetaInsightSelectScalar = {
+    id?: boolean
+    entityType?: boolean
+    entityId?: boolean
+    campaignId?: boolean
+    date?: boolean
+    spend?: boolean
+    impressions?: boolean
+    clicks?: boolean
+    ctr?: boolean
+    cpc?: boolean
+    purchases?: boolean
+    purchaseValue?: boolean
+    roas?: boolean
+    costPerPurchase?: boolean
+    createdAt?: boolean
+  }
+
+  export type MetaInsightInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    campaign?: boolean | MetaInsight$campaignArgs<ExtArgs>
+  }
+  export type MetaInsightIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    campaign?: boolean | MetaInsight$campaignArgs<ExtArgs>
+  }
+
+  export type $MetaInsightPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MetaInsight"
+    objects: {
+      campaign: Prisma.$MetaCampaignPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      entityType: string
+      entityId: string
+      campaignId: string | null
+      date: Date
+      spend: number
+      impressions: number
+      clicks: number
+      ctr: number
+      cpc: number
+      purchases: number
+      purchaseValue: number
+      roas: number
+      costPerPurchase: number
+      createdAt: Date
+    }, ExtArgs["result"]["metaInsight"]>
+    composites: {}
+  }
+
+  type MetaInsightGetPayload<S extends boolean | null | undefined | MetaInsightDefaultArgs> = $Result.GetResult<Prisma.$MetaInsightPayload, S>
+
+  type MetaInsightCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<MetaInsightFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: MetaInsightCountAggregateInputType | true
+    }
+
+  export interface MetaInsightDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MetaInsight'], meta: { name: 'MetaInsight' } }
+    /**
+     * Find zero or one MetaInsight that matches the filter.
+     * @param {MetaInsightFindUniqueArgs} args - Arguments to find a MetaInsight
+     * @example
+     * // Get one MetaInsight
+     * const metaInsight = await prisma.metaInsight.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MetaInsightFindUniqueArgs>(args: SelectSubset<T, MetaInsightFindUniqueArgs<ExtArgs>>): Prisma__MetaInsightClient<$Result.GetResult<Prisma.$MetaInsightPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one MetaInsight that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {MetaInsightFindUniqueOrThrowArgs} args - Arguments to find a MetaInsight
+     * @example
+     * // Get one MetaInsight
+     * const metaInsight = await prisma.metaInsight.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MetaInsightFindUniqueOrThrowArgs>(args: SelectSubset<T, MetaInsightFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MetaInsightClient<$Result.GetResult<Prisma.$MetaInsightPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first MetaInsight that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaInsightFindFirstArgs} args - Arguments to find a MetaInsight
+     * @example
+     * // Get one MetaInsight
+     * const metaInsight = await prisma.metaInsight.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MetaInsightFindFirstArgs>(args?: SelectSubset<T, MetaInsightFindFirstArgs<ExtArgs>>): Prisma__MetaInsightClient<$Result.GetResult<Prisma.$MetaInsightPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first MetaInsight that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaInsightFindFirstOrThrowArgs} args - Arguments to find a MetaInsight
+     * @example
+     * // Get one MetaInsight
+     * const metaInsight = await prisma.metaInsight.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MetaInsightFindFirstOrThrowArgs>(args?: SelectSubset<T, MetaInsightFindFirstOrThrowArgs<ExtArgs>>): Prisma__MetaInsightClient<$Result.GetResult<Prisma.$MetaInsightPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more MetaInsights that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaInsightFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MetaInsights
+     * const metaInsights = await prisma.metaInsight.findMany()
+     * 
+     * // Get first 10 MetaInsights
+     * const metaInsights = await prisma.metaInsight.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const metaInsightWithIdOnly = await prisma.metaInsight.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MetaInsightFindManyArgs>(args?: SelectSubset<T, MetaInsightFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MetaInsightPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a MetaInsight.
+     * @param {MetaInsightCreateArgs} args - Arguments to create a MetaInsight.
+     * @example
+     * // Create one MetaInsight
+     * const MetaInsight = await prisma.metaInsight.create({
+     *   data: {
+     *     // ... data to create a MetaInsight
+     *   }
+     * })
+     * 
+     */
+    create<T extends MetaInsightCreateArgs>(args: SelectSubset<T, MetaInsightCreateArgs<ExtArgs>>): Prisma__MetaInsightClient<$Result.GetResult<Prisma.$MetaInsightPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many MetaInsights.
+     * @param {MetaInsightCreateManyArgs} args - Arguments to create many MetaInsights.
+     * @example
+     * // Create many MetaInsights
+     * const metaInsight = await prisma.metaInsight.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MetaInsightCreateManyArgs>(args?: SelectSubset<T, MetaInsightCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MetaInsights and returns the data saved in the database.
+     * @param {MetaInsightCreateManyAndReturnArgs} args - Arguments to create many MetaInsights.
+     * @example
+     * // Create many MetaInsights
+     * const metaInsight = await prisma.metaInsight.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MetaInsights and only return the `id`
+     * const metaInsightWithIdOnly = await prisma.metaInsight.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MetaInsightCreateManyAndReturnArgs>(args?: SelectSubset<T, MetaInsightCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MetaInsightPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a MetaInsight.
+     * @param {MetaInsightDeleteArgs} args - Arguments to delete one MetaInsight.
+     * @example
+     * // Delete one MetaInsight
+     * const MetaInsight = await prisma.metaInsight.delete({
+     *   where: {
+     *     // ... filter to delete one MetaInsight
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MetaInsightDeleteArgs>(args: SelectSubset<T, MetaInsightDeleteArgs<ExtArgs>>): Prisma__MetaInsightClient<$Result.GetResult<Prisma.$MetaInsightPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one MetaInsight.
+     * @param {MetaInsightUpdateArgs} args - Arguments to update one MetaInsight.
+     * @example
+     * // Update one MetaInsight
+     * const metaInsight = await prisma.metaInsight.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MetaInsightUpdateArgs>(args: SelectSubset<T, MetaInsightUpdateArgs<ExtArgs>>): Prisma__MetaInsightClient<$Result.GetResult<Prisma.$MetaInsightPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more MetaInsights.
+     * @param {MetaInsightDeleteManyArgs} args - Arguments to filter MetaInsights to delete.
+     * @example
+     * // Delete a few MetaInsights
+     * const { count } = await prisma.metaInsight.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MetaInsightDeleteManyArgs>(args?: SelectSubset<T, MetaInsightDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MetaInsights.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaInsightUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MetaInsights
+     * const metaInsight = await prisma.metaInsight.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MetaInsightUpdateManyArgs>(args: SelectSubset<T, MetaInsightUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one MetaInsight.
+     * @param {MetaInsightUpsertArgs} args - Arguments to update or create a MetaInsight.
+     * @example
+     * // Update or create a MetaInsight
+     * const metaInsight = await prisma.metaInsight.upsert({
+     *   create: {
+     *     // ... data to create a MetaInsight
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MetaInsight we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MetaInsightUpsertArgs>(args: SelectSubset<T, MetaInsightUpsertArgs<ExtArgs>>): Prisma__MetaInsightClient<$Result.GetResult<Prisma.$MetaInsightPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of MetaInsights.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaInsightCountArgs} args - Arguments to filter MetaInsights to count.
+     * @example
+     * // Count the number of MetaInsights
+     * const count = await prisma.metaInsight.count({
+     *   where: {
+     *     // ... the filter for the MetaInsights we want to count
+     *   }
+     * })
+    **/
+    count<T extends MetaInsightCountArgs>(
+      args?: Subset<T, MetaInsightCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MetaInsightCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MetaInsight.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaInsightAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MetaInsightAggregateArgs>(args: Subset<T, MetaInsightAggregateArgs>): Prisma.PrismaPromise<GetMetaInsightAggregateType<T>>
+
+    /**
+     * Group by MetaInsight.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaInsightGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MetaInsightGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MetaInsightGroupByArgs['orderBy'] }
+        : { orderBy?: MetaInsightGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MetaInsightGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMetaInsightGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MetaInsight model
+   */
+  readonly fields: MetaInsightFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MetaInsight.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MetaInsightClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    campaign<T extends MetaInsight$campaignArgs<ExtArgs> = {}>(args?: Subset<T, MetaInsight$campaignArgs<ExtArgs>>): Prisma__MetaCampaignClient<$Result.GetResult<Prisma.$MetaCampaignPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MetaInsight model
+   */ 
+  interface MetaInsightFieldRefs {
+    readonly id: FieldRef<"MetaInsight", 'String'>
+    readonly entityType: FieldRef<"MetaInsight", 'String'>
+    readonly entityId: FieldRef<"MetaInsight", 'String'>
+    readonly campaignId: FieldRef<"MetaInsight", 'String'>
+    readonly date: FieldRef<"MetaInsight", 'DateTime'>
+    readonly spend: FieldRef<"MetaInsight", 'Int'>
+    readonly impressions: FieldRef<"MetaInsight", 'Int'>
+    readonly clicks: FieldRef<"MetaInsight", 'Int'>
+    readonly ctr: FieldRef<"MetaInsight", 'Float'>
+    readonly cpc: FieldRef<"MetaInsight", 'Float'>
+    readonly purchases: FieldRef<"MetaInsight", 'Int'>
+    readonly purchaseValue: FieldRef<"MetaInsight", 'Int'>
+    readonly roas: FieldRef<"MetaInsight", 'Float'>
+    readonly costPerPurchase: FieldRef<"MetaInsight", 'Float'>
+    readonly createdAt: FieldRef<"MetaInsight", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MetaInsight findUnique
+   */
+  export type MetaInsightFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaInsight
+     */
+    select?: MetaInsightSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaInsightInclude<ExtArgs> | null
+    /**
+     * Filter, which MetaInsight to fetch.
+     */
+    where: MetaInsightWhereUniqueInput
+  }
+
+  /**
+   * MetaInsight findUniqueOrThrow
+   */
+  export type MetaInsightFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaInsight
+     */
+    select?: MetaInsightSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaInsightInclude<ExtArgs> | null
+    /**
+     * Filter, which MetaInsight to fetch.
+     */
+    where: MetaInsightWhereUniqueInput
+  }
+
+  /**
+   * MetaInsight findFirst
+   */
+  export type MetaInsightFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaInsight
+     */
+    select?: MetaInsightSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaInsightInclude<ExtArgs> | null
+    /**
+     * Filter, which MetaInsight to fetch.
+     */
+    where?: MetaInsightWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetaInsights to fetch.
+     */
+    orderBy?: MetaInsightOrderByWithRelationInput | MetaInsightOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MetaInsights.
+     */
+    cursor?: MetaInsightWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetaInsights from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetaInsights.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MetaInsights.
+     */
+    distinct?: MetaInsightScalarFieldEnum | MetaInsightScalarFieldEnum[]
+  }
+
+  /**
+   * MetaInsight findFirstOrThrow
+   */
+  export type MetaInsightFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaInsight
+     */
+    select?: MetaInsightSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaInsightInclude<ExtArgs> | null
+    /**
+     * Filter, which MetaInsight to fetch.
+     */
+    where?: MetaInsightWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetaInsights to fetch.
+     */
+    orderBy?: MetaInsightOrderByWithRelationInput | MetaInsightOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MetaInsights.
+     */
+    cursor?: MetaInsightWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetaInsights from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetaInsights.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MetaInsights.
+     */
+    distinct?: MetaInsightScalarFieldEnum | MetaInsightScalarFieldEnum[]
+  }
+
+  /**
+   * MetaInsight findMany
+   */
+  export type MetaInsightFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaInsight
+     */
+    select?: MetaInsightSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaInsightInclude<ExtArgs> | null
+    /**
+     * Filter, which MetaInsights to fetch.
+     */
+    where?: MetaInsightWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetaInsights to fetch.
+     */
+    orderBy?: MetaInsightOrderByWithRelationInput | MetaInsightOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MetaInsights.
+     */
+    cursor?: MetaInsightWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetaInsights from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetaInsights.
+     */
+    skip?: number
+    distinct?: MetaInsightScalarFieldEnum | MetaInsightScalarFieldEnum[]
+  }
+
+  /**
+   * MetaInsight create
+   */
+  export type MetaInsightCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaInsight
+     */
+    select?: MetaInsightSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaInsightInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MetaInsight.
+     */
+    data: XOR<MetaInsightCreateInput, MetaInsightUncheckedCreateInput>
+  }
+
+  /**
+   * MetaInsight createMany
+   */
+  export type MetaInsightCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MetaInsights.
+     */
+    data: MetaInsightCreateManyInput | MetaInsightCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MetaInsight createManyAndReturn
+   */
+  export type MetaInsightCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaInsight
+     */
+    select?: MetaInsightSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many MetaInsights.
+     */
+    data: MetaInsightCreateManyInput | MetaInsightCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaInsightIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MetaInsight update
+   */
+  export type MetaInsightUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaInsight
+     */
+    select?: MetaInsightSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaInsightInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MetaInsight.
+     */
+    data: XOR<MetaInsightUpdateInput, MetaInsightUncheckedUpdateInput>
+    /**
+     * Choose, which MetaInsight to update.
+     */
+    where: MetaInsightWhereUniqueInput
+  }
+
+  /**
+   * MetaInsight updateMany
+   */
+  export type MetaInsightUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MetaInsights.
+     */
+    data: XOR<MetaInsightUpdateManyMutationInput, MetaInsightUncheckedUpdateManyInput>
+    /**
+     * Filter which MetaInsights to update
+     */
+    where?: MetaInsightWhereInput
+  }
+
+  /**
+   * MetaInsight upsert
+   */
+  export type MetaInsightUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaInsight
+     */
+    select?: MetaInsightSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaInsightInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MetaInsight to update in case it exists.
+     */
+    where: MetaInsightWhereUniqueInput
+    /**
+     * In case the MetaInsight found by the `where` argument doesn't exist, create a new MetaInsight with this data.
+     */
+    create: XOR<MetaInsightCreateInput, MetaInsightUncheckedCreateInput>
+    /**
+     * In case the MetaInsight was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MetaInsightUpdateInput, MetaInsightUncheckedUpdateInput>
+  }
+
+  /**
+   * MetaInsight delete
+   */
+  export type MetaInsightDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaInsight
+     */
+    select?: MetaInsightSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaInsightInclude<ExtArgs> | null
+    /**
+     * Filter which MetaInsight to delete.
+     */
+    where: MetaInsightWhereUniqueInput
+  }
+
+  /**
+   * MetaInsight deleteMany
+   */
+  export type MetaInsightDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MetaInsights to delete
+     */
+    where?: MetaInsightWhereInput
+  }
+
+  /**
+   * MetaInsight.campaign
+   */
+  export type MetaInsight$campaignArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaCampaign
+     */
+    select?: MetaCampaignSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaCampaignInclude<ExtArgs> | null
+    where?: MetaCampaignWhereInput
+  }
+
+  /**
+   * MetaInsight without action
+   */
+  export type MetaInsightDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaInsight
+     */
+    select?: MetaInsightSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetaInsightInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MetaAutomationRule
+   */
+
+  export type AggregateMetaAutomationRule = {
+    _count: MetaAutomationRuleCountAggregateOutputType | null
+    _avg: MetaAutomationRuleAvgAggregateOutputType | null
+    _sum: MetaAutomationRuleSumAggregateOutputType | null
+    _min: MetaAutomationRuleMinAggregateOutputType | null
+    _max: MetaAutomationRuleMaxAggregateOutputType | null
+  }
+
+  export type MetaAutomationRuleAvgAggregateOutputType = {
+    evaluationCooldownHours: number | null
+  }
+
+  export type MetaAutomationRuleSumAggregateOutputType = {
+    evaluationCooldownHours: number | null
+  }
+
+  export type MetaAutomationRuleMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    description: string | null
+    ruleType: string | null
+    enabled: boolean | null
+    evaluationCooldownHours: number | null
+    lastEvaluatedAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MetaAutomationRuleMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    description: string | null
+    ruleType: string | null
+    enabled: boolean | null
+    evaluationCooldownHours: number | null
+    lastEvaluatedAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MetaAutomationRuleCountAggregateOutputType = {
+    id: number
+    name: number
+    description: number
+    ruleType: number
+    enabled: number
+    conditionJson: number
+    actionJson: number
+    evaluationCooldownHours: number
+    lastEvaluatedAt: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type MetaAutomationRuleAvgAggregateInputType = {
+    evaluationCooldownHours?: true
+  }
+
+  export type MetaAutomationRuleSumAggregateInputType = {
+    evaluationCooldownHours?: true
+  }
+
+  export type MetaAutomationRuleMinAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    ruleType?: true
+    enabled?: true
+    evaluationCooldownHours?: true
+    lastEvaluatedAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MetaAutomationRuleMaxAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    ruleType?: true
+    enabled?: true
+    evaluationCooldownHours?: true
+    lastEvaluatedAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MetaAutomationRuleCountAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    ruleType?: true
+    enabled?: true
+    conditionJson?: true
+    actionJson?: true
+    evaluationCooldownHours?: true
+    lastEvaluatedAt?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type MetaAutomationRuleAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MetaAutomationRule to aggregate.
+     */
+    where?: MetaAutomationRuleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetaAutomationRules to fetch.
+     */
+    orderBy?: MetaAutomationRuleOrderByWithRelationInput | MetaAutomationRuleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MetaAutomationRuleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetaAutomationRules from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetaAutomationRules.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MetaAutomationRules
+    **/
+    _count?: true | MetaAutomationRuleCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MetaAutomationRuleAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MetaAutomationRuleSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MetaAutomationRuleMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MetaAutomationRuleMaxAggregateInputType
+  }
+
+  export type GetMetaAutomationRuleAggregateType<T extends MetaAutomationRuleAggregateArgs> = {
+        [P in keyof T & keyof AggregateMetaAutomationRule]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMetaAutomationRule[P]>
+      : GetScalarType<T[P], AggregateMetaAutomationRule[P]>
+  }
+
+
+
+
+  export type MetaAutomationRuleGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MetaAutomationRuleWhereInput
+    orderBy?: MetaAutomationRuleOrderByWithAggregationInput | MetaAutomationRuleOrderByWithAggregationInput[]
+    by: MetaAutomationRuleScalarFieldEnum[] | MetaAutomationRuleScalarFieldEnum
+    having?: MetaAutomationRuleScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MetaAutomationRuleCountAggregateInputType | true
+    _avg?: MetaAutomationRuleAvgAggregateInputType
+    _sum?: MetaAutomationRuleSumAggregateInputType
+    _min?: MetaAutomationRuleMinAggregateInputType
+    _max?: MetaAutomationRuleMaxAggregateInputType
+  }
+
+  export type MetaAutomationRuleGroupByOutputType = {
+    id: string
+    name: string
+    description: string | null
+    ruleType: string
+    enabled: boolean
+    conditionJson: JsonValue
+    actionJson: JsonValue
+    evaluationCooldownHours: number
+    lastEvaluatedAt: Date | null
+    createdAt: Date
+    updatedAt: Date
+    _count: MetaAutomationRuleCountAggregateOutputType | null
+    _avg: MetaAutomationRuleAvgAggregateOutputType | null
+    _sum: MetaAutomationRuleSumAggregateOutputType | null
+    _min: MetaAutomationRuleMinAggregateOutputType | null
+    _max: MetaAutomationRuleMaxAggregateOutputType | null
+  }
+
+  type GetMetaAutomationRuleGroupByPayload<T extends MetaAutomationRuleGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MetaAutomationRuleGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MetaAutomationRuleGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MetaAutomationRuleGroupByOutputType[P]>
+            : GetScalarType<T[P], MetaAutomationRuleGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MetaAutomationRuleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    ruleType?: boolean
+    enabled?: boolean
+    conditionJson?: boolean
+    actionJson?: boolean
+    evaluationCooldownHours?: boolean
+    lastEvaluatedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["metaAutomationRule"]>
+
+  export type MetaAutomationRuleSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    ruleType?: boolean
+    enabled?: boolean
+    conditionJson?: boolean
+    actionJson?: boolean
+    evaluationCooldownHours?: boolean
+    lastEvaluatedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["metaAutomationRule"]>
+
+  export type MetaAutomationRuleSelectScalar = {
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    ruleType?: boolean
+    enabled?: boolean
+    conditionJson?: boolean
+    actionJson?: boolean
+    evaluationCooldownHours?: boolean
+    lastEvaluatedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+
+  export type $MetaAutomationRulePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MetaAutomationRule"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      description: string | null
+      ruleType: string
+      enabled: boolean
+      conditionJson: Prisma.JsonValue
+      actionJson: Prisma.JsonValue
+      evaluationCooldownHours: number
+      lastEvaluatedAt: Date | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["metaAutomationRule"]>
+    composites: {}
+  }
+
+  type MetaAutomationRuleGetPayload<S extends boolean | null | undefined | MetaAutomationRuleDefaultArgs> = $Result.GetResult<Prisma.$MetaAutomationRulePayload, S>
+
+  type MetaAutomationRuleCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<MetaAutomationRuleFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: MetaAutomationRuleCountAggregateInputType | true
+    }
+
+  export interface MetaAutomationRuleDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MetaAutomationRule'], meta: { name: 'MetaAutomationRule' } }
+    /**
+     * Find zero or one MetaAutomationRule that matches the filter.
+     * @param {MetaAutomationRuleFindUniqueArgs} args - Arguments to find a MetaAutomationRule
+     * @example
+     * // Get one MetaAutomationRule
+     * const metaAutomationRule = await prisma.metaAutomationRule.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MetaAutomationRuleFindUniqueArgs>(args: SelectSubset<T, MetaAutomationRuleFindUniqueArgs<ExtArgs>>): Prisma__MetaAutomationRuleClient<$Result.GetResult<Prisma.$MetaAutomationRulePayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one MetaAutomationRule that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {MetaAutomationRuleFindUniqueOrThrowArgs} args - Arguments to find a MetaAutomationRule
+     * @example
+     * // Get one MetaAutomationRule
+     * const metaAutomationRule = await prisma.metaAutomationRule.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MetaAutomationRuleFindUniqueOrThrowArgs>(args: SelectSubset<T, MetaAutomationRuleFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MetaAutomationRuleClient<$Result.GetResult<Prisma.$MetaAutomationRulePayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first MetaAutomationRule that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaAutomationRuleFindFirstArgs} args - Arguments to find a MetaAutomationRule
+     * @example
+     * // Get one MetaAutomationRule
+     * const metaAutomationRule = await prisma.metaAutomationRule.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MetaAutomationRuleFindFirstArgs>(args?: SelectSubset<T, MetaAutomationRuleFindFirstArgs<ExtArgs>>): Prisma__MetaAutomationRuleClient<$Result.GetResult<Prisma.$MetaAutomationRulePayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first MetaAutomationRule that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaAutomationRuleFindFirstOrThrowArgs} args - Arguments to find a MetaAutomationRule
+     * @example
+     * // Get one MetaAutomationRule
+     * const metaAutomationRule = await prisma.metaAutomationRule.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MetaAutomationRuleFindFirstOrThrowArgs>(args?: SelectSubset<T, MetaAutomationRuleFindFirstOrThrowArgs<ExtArgs>>): Prisma__MetaAutomationRuleClient<$Result.GetResult<Prisma.$MetaAutomationRulePayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more MetaAutomationRules that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaAutomationRuleFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MetaAutomationRules
+     * const metaAutomationRules = await prisma.metaAutomationRule.findMany()
+     * 
+     * // Get first 10 MetaAutomationRules
+     * const metaAutomationRules = await prisma.metaAutomationRule.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const metaAutomationRuleWithIdOnly = await prisma.metaAutomationRule.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MetaAutomationRuleFindManyArgs>(args?: SelectSubset<T, MetaAutomationRuleFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MetaAutomationRulePayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a MetaAutomationRule.
+     * @param {MetaAutomationRuleCreateArgs} args - Arguments to create a MetaAutomationRule.
+     * @example
+     * // Create one MetaAutomationRule
+     * const MetaAutomationRule = await prisma.metaAutomationRule.create({
+     *   data: {
+     *     // ... data to create a MetaAutomationRule
+     *   }
+     * })
+     * 
+     */
+    create<T extends MetaAutomationRuleCreateArgs>(args: SelectSubset<T, MetaAutomationRuleCreateArgs<ExtArgs>>): Prisma__MetaAutomationRuleClient<$Result.GetResult<Prisma.$MetaAutomationRulePayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many MetaAutomationRules.
+     * @param {MetaAutomationRuleCreateManyArgs} args - Arguments to create many MetaAutomationRules.
+     * @example
+     * // Create many MetaAutomationRules
+     * const metaAutomationRule = await prisma.metaAutomationRule.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MetaAutomationRuleCreateManyArgs>(args?: SelectSubset<T, MetaAutomationRuleCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MetaAutomationRules and returns the data saved in the database.
+     * @param {MetaAutomationRuleCreateManyAndReturnArgs} args - Arguments to create many MetaAutomationRules.
+     * @example
+     * // Create many MetaAutomationRules
+     * const metaAutomationRule = await prisma.metaAutomationRule.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MetaAutomationRules and only return the `id`
+     * const metaAutomationRuleWithIdOnly = await prisma.metaAutomationRule.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MetaAutomationRuleCreateManyAndReturnArgs>(args?: SelectSubset<T, MetaAutomationRuleCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MetaAutomationRulePayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a MetaAutomationRule.
+     * @param {MetaAutomationRuleDeleteArgs} args - Arguments to delete one MetaAutomationRule.
+     * @example
+     * // Delete one MetaAutomationRule
+     * const MetaAutomationRule = await prisma.metaAutomationRule.delete({
+     *   where: {
+     *     // ... filter to delete one MetaAutomationRule
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MetaAutomationRuleDeleteArgs>(args: SelectSubset<T, MetaAutomationRuleDeleteArgs<ExtArgs>>): Prisma__MetaAutomationRuleClient<$Result.GetResult<Prisma.$MetaAutomationRulePayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one MetaAutomationRule.
+     * @param {MetaAutomationRuleUpdateArgs} args - Arguments to update one MetaAutomationRule.
+     * @example
+     * // Update one MetaAutomationRule
+     * const metaAutomationRule = await prisma.metaAutomationRule.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MetaAutomationRuleUpdateArgs>(args: SelectSubset<T, MetaAutomationRuleUpdateArgs<ExtArgs>>): Prisma__MetaAutomationRuleClient<$Result.GetResult<Prisma.$MetaAutomationRulePayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more MetaAutomationRules.
+     * @param {MetaAutomationRuleDeleteManyArgs} args - Arguments to filter MetaAutomationRules to delete.
+     * @example
+     * // Delete a few MetaAutomationRules
+     * const { count } = await prisma.metaAutomationRule.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MetaAutomationRuleDeleteManyArgs>(args?: SelectSubset<T, MetaAutomationRuleDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MetaAutomationRules.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaAutomationRuleUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MetaAutomationRules
+     * const metaAutomationRule = await prisma.metaAutomationRule.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MetaAutomationRuleUpdateManyArgs>(args: SelectSubset<T, MetaAutomationRuleUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one MetaAutomationRule.
+     * @param {MetaAutomationRuleUpsertArgs} args - Arguments to update or create a MetaAutomationRule.
+     * @example
+     * // Update or create a MetaAutomationRule
+     * const metaAutomationRule = await prisma.metaAutomationRule.upsert({
+     *   create: {
+     *     // ... data to create a MetaAutomationRule
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MetaAutomationRule we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MetaAutomationRuleUpsertArgs>(args: SelectSubset<T, MetaAutomationRuleUpsertArgs<ExtArgs>>): Prisma__MetaAutomationRuleClient<$Result.GetResult<Prisma.$MetaAutomationRulePayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of MetaAutomationRules.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaAutomationRuleCountArgs} args - Arguments to filter MetaAutomationRules to count.
+     * @example
+     * // Count the number of MetaAutomationRules
+     * const count = await prisma.metaAutomationRule.count({
+     *   where: {
+     *     // ... the filter for the MetaAutomationRules we want to count
+     *   }
+     * })
+    **/
+    count<T extends MetaAutomationRuleCountArgs>(
+      args?: Subset<T, MetaAutomationRuleCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MetaAutomationRuleCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MetaAutomationRule.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaAutomationRuleAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MetaAutomationRuleAggregateArgs>(args: Subset<T, MetaAutomationRuleAggregateArgs>): Prisma.PrismaPromise<GetMetaAutomationRuleAggregateType<T>>
+
+    /**
+     * Group by MetaAutomationRule.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaAutomationRuleGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MetaAutomationRuleGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MetaAutomationRuleGroupByArgs['orderBy'] }
+        : { orderBy?: MetaAutomationRuleGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MetaAutomationRuleGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMetaAutomationRuleGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MetaAutomationRule model
+   */
+  readonly fields: MetaAutomationRuleFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MetaAutomationRule.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MetaAutomationRuleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MetaAutomationRule model
+   */ 
+  interface MetaAutomationRuleFieldRefs {
+    readonly id: FieldRef<"MetaAutomationRule", 'String'>
+    readonly name: FieldRef<"MetaAutomationRule", 'String'>
+    readonly description: FieldRef<"MetaAutomationRule", 'String'>
+    readonly ruleType: FieldRef<"MetaAutomationRule", 'String'>
+    readonly enabled: FieldRef<"MetaAutomationRule", 'Boolean'>
+    readonly conditionJson: FieldRef<"MetaAutomationRule", 'Json'>
+    readonly actionJson: FieldRef<"MetaAutomationRule", 'Json'>
+    readonly evaluationCooldownHours: FieldRef<"MetaAutomationRule", 'Int'>
+    readonly lastEvaluatedAt: FieldRef<"MetaAutomationRule", 'DateTime'>
+    readonly createdAt: FieldRef<"MetaAutomationRule", 'DateTime'>
+    readonly updatedAt: FieldRef<"MetaAutomationRule", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MetaAutomationRule findUnique
+   */
+  export type MetaAutomationRuleFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAutomationRule
+     */
+    select?: MetaAutomationRuleSelect<ExtArgs> | null
+    /**
+     * Filter, which MetaAutomationRule to fetch.
+     */
+    where: MetaAutomationRuleWhereUniqueInput
+  }
+
+  /**
+   * MetaAutomationRule findUniqueOrThrow
+   */
+  export type MetaAutomationRuleFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAutomationRule
+     */
+    select?: MetaAutomationRuleSelect<ExtArgs> | null
+    /**
+     * Filter, which MetaAutomationRule to fetch.
+     */
+    where: MetaAutomationRuleWhereUniqueInput
+  }
+
+  /**
+   * MetaAutomationRule findFirst
+   */
+  export type MetaAutomationRuleFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAutomationRule
+     */
+    select?: MetaAutomationRuleSelect<ExtArgs> | null
+    /**
+     * Filter, which MetaAutomationRule to fetch.
+     */
+    where?: MetaAutomationRuleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetaAutomationRules to fetch.
+     */
+    orderBy?: MetaAutomationRuleOrderByWithRelationInput | MetaAutomationRuleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MetaAutomationRules.
+     */
+    cursor?: MetaAutomationRuleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetaAutomationRules from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetaAutomationRules.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MetaAutomationRules.
+     */
+    distinct?: MetaAutomationRuleScalarFieldEnum | MetaAutomationRuleScalarFieldEnum[]
+  }
+
+  /**
+   * MetaAutomationRule findFirstOrThrow
+   */
+  export type MetaAutomationRuleFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAutomationRule
+     */
+    select?: MetaAutomationRuleSelect<ExtArgs> | null
+    /**
+     * Filter, which MetaAutomationRule to fetch.
+     */
+    where?: MetaAutomationRuleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetaAutomationRules to fetch.
+     */
+    orderBy?: MetaAutomationRuleOrderByWithRelationInput | MetaAutomationRuleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MetaAutomationRules.
+     */
+    cursor?: MetaAutomationRuleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetaAutomationRules from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetaAutomationRules.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MetaAutomationRules.
+     */
+    distinct?: MetaAutomationRuleScalarFieldEnum | MetaAutomationRuleScalarFieldEnum[]
+  }
+
+  /**
+   * MetaAutomationRule findMany
+   */
+  export type MetaAutomationRuleFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAutomationRule
+     */
+    select?: MetaAutomationRuleSelect<ExtArgs> | null
+    /**
+     * Filter, which MetaAutomationRules to fetch.
+     */
+    where?: MetaAutomationRuleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetaAutomationRules to fetch.
+     */
+    orderBy?: MetaAutomationRuleOrderByWithRelationInput | MetaAutomationRuleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MetaAutomationRules.
+     */
+    cursor?: MetaAutomationRuleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetaAutomationRules from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetaAutomationRules.
+     */
+    skip?: number
+    distinct?: MetaAutomationRuleScalarFieldEnum | MetaAutomationRuleScalarFieldEnum[]
+  }
+
+  /**
+   * MetaAutomationRule create
+   */
+  export type MetaAutomationRuleCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAutomationRule
+     */
+    select?: MetaAutomationRuleSelect<ExtArgs> | null
+    /**
+     * The data needed to create a MetaAutomationRule.
+     */
+    data: XOR<MetaAutomationRuleCreateInput, MetaAutomationRuleUncheckedCreateInput>
+  }
+
+  /**
+   * MetaAutomationRule createMany
+   */
+  export type MetaAutomationRuleCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MetaAutomationRules.
+     */
+    data: MetaAutomationRuleCreateManyInput | MetaAutomationRuleCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MetaAutomationRule createManyAndReturn
+   */
+  export type MetaAutomationRuleCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAutomationRule
+     */
+    select?: MetaAutomationRuleSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many MetaAutomationRules.
+     */
+    data: MetaAutomationRuleCreateManyInput | MetaAutomationRuleCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MetaAutomationRule update
+   */
+  export type MetaAutomationRuleUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAutomationRule
+     */
+    select?: MetaAutomationRuleSelect<ExtArgs> | null
+    /**
+     * The data needed to update a MetaAutomationRule.
+     */
+    data: XOR<MetaAutomationRuleUpdateInput, MetaAutomationRuleUncheckedUpdateInput>
+    /**
+     * Choose, which MetaAutomationRule to update.
+     */
+    where: MetaAutomationRuleWhereUniqueInput
+  }
+
+  /**
+   * MetaAutomationRule updateMany
+   */
+  export type MetaAutomationRuleUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MetaAutomationRules.
+     */
+    data: XOR<MetaAutomationRuleUpdateManyMutationInput, MetaAutomationRuleUncheckedUpdateManyInput>
+    /**
+     * Filter which MetaAutomationRules to update
+     */
+    where?: MetaAutomationRuleWhereInput
+  }
+
+  /**
+   * MetaAutomationRule upsert
+   */
+  export type MetaAutomationRuleUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAutomationRule
+     */
+    select?: MetaAutomationRuleSelect<ExtArgs> | null
+    /**
+     * The filter to search for the MetaAutomationRule to update in case it exists.
+     */
+    where: MetaAutomationRuleWhereUniqueInput
+    /**
+     * In case the MetaAutomationRule found by the `where` argument doesn't exist, create a new MetaAutomationRule with this data.
+     */
+    create: XOR<MetaAutomationRuleCreateInput, MetaAutomationRuleUncheckedCreateInput>
+    /**
+     * In case the MetaAutomationRule was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MetaAutomationRuleUpdateInput, MetaAutomationRuleUncheckedUpdateInput>
+  }
+
+  /**
+   * MetaAutomationRule delete
+   */
+  export type MetaAutomationRuleDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAutomationRule
+     */
+    select?: MetaAutomationRuleSelect<ExtArgs> | null
+    /**
+     * Filter which MetaAutomationRule to delete.
+     */
+    where: MetaAutomationRuleWhereUniqueInput
+  }
+
+  /**
+   * MetaAutomationRule deleteMany
+   */
+  export type MetaAutomationRuleDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MetaAutomationRules to delete
+     */
+    where?: MetaAutomationRuleWhereInput
+  }
+
+  /**
+   * MetaAutomationRule without action
+   */
+  export type MetaAutomationRuleDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaAutomationRule
+     */
+    select?: MetaAutomationRuleSelect<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MetaActivityLog
+   */
+
+  export type AggregateMetaActivityLog = {
+    _count: MetaActivityLogCountAggregateOutputType | null
+    _min: MetaActivityLogMinAggregateOutputType | null
+    _max: MetaActivityLogMaxAggregateOutputType | null
+  }
+
+  export type MetaActivityLogMinAggregateOutputType = {
+    id: string | null
+    timestamp: Date | null
+    action: string | null
+    entityType: string | null
+    entityId: string | null
+    entityName: string | null
+    ruleId: string | null
+    ruleName: string | null
+    previousValue: string | null
+    newValue: string | null
+    reason: string | null
+    mode: string | null
+    status: string | null
+    errorMessage: string | null
+  }
+
+  export type MetaActivityLogMaxAggregateOutputType = {
+    id: string | null
+    timestamp: Date | null
+    action: string | null
+    entityType: string | null
+    entityId: string | null
+    entityName: string | null
+    ruleId: string | null
+    ruleName: string | null
+    previousValue: string | null
+    newValue: string | null
+    reason: string | null
+    mode: string | null
+    status: string | null
+    errorMessage: string | null
+  }
+
+  export type MetaActivityLogCountAggregateOutputType = {
+    id: number
+    timestamp: number
+    action: number
+    entityType: number
+    entityId: number
+    entityName: number
+    ruleId: number
+    ruleName: number
+    previousValue: number
+    newValue: number
+    reason: number
+    mode: number
+    status: number
+    apiPayload: number
+    apiResponse: number
+    errorMessage: number
+    _all: number
+  }
+
+
+  export type MetaActivityLogMinAggregateInputType = {
+    id?: true
+    timestamp?: true
+    action?: true
+    entityType?: true
+    entityId?: true
+    entityName?: true
+    ruleId?: true
+    ruleName?: true
+    previousValue?: true
+    newValue?: true
+    reason?: true
+    mode?: true
+    status?: true
+    errorMessage?: true
+  }
+
+  export type MetaActivityLogMaxAggregateInputType = {
+    id?: true
+    timestamp?: true
+    action?: true
+    entityType?: true
+    entityId?: true
+    entityName?: true
+    ruleId?: true
+    ruleName?: true
+    previousValue?: true
+    newValue?: true
+    reason?: true
+    mode?: true
+    status?: true
+    errorMessage?: true
+  }
+
+  export type MetaActivityLogCountAggregateInputType = {
+    id?: true
+    timestamp?: true
+    action?: true
+    entityType?: true
+    entityId?: true
+    entityName?: true
+    ruleId?: true
+    ruleName?: true
+    previousValue?: true
+    newValue?: true
+    reason?: true
+    mode?: true
+    status?: true
+    apiPayload?: true
+    apiResponse?: true
+    errorMessage?: true
+    _all?: true
+  }
+
+  export type MetaActivityLogAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MetaActivityLog to aggregate.
+     */
+    where?: MetaActivityLogWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetaActivityLogs to fetch.
+     */
+    orderBy?: MetaActivityLogOrderByWithRelationInput | MetaActivityLogOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MetaActivityLogWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetaActivityLogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetaActivityLogs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MetaActivityLogs
+    **/
+    _count?: true | MetaActivityLogCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MetaActivityLogMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MetaActivityLogMaxAggregateInputType
+  }
+
+  export type GetMetaActivityLogAggregateType<T extends MetaActivityLogAggregateArgs> = {
+        [P in keyof T & keyof AggregateMetaActivityLog]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMetaActivityLog[P]>
+      : GetScalarType<T[P], AggregateMetaActivityLog[P]>
+  }
+
+
+
+
+  export type MetaActivityLogGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MetaActivityLogWhereInput
+    orderBy?: MetaActivityLogOrderByWithAggregationInput | MetaActivityLogOrderByWithAggregationInput[]
+    by: MetaActivityLogScalarFieldEnum[] | MetaActivityLogScalarFieldEnum
+    having?: MetaActivityLogScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MetaActivityLogCountAggregateInputType | true
+    _min?: MetaActivityLogMinAggregateInputType
+    _max?: MetaActivityLogMaxAggregateInputType
+  }
+
+  export type MetaActivityLogGroupByOutputType = {
+    id: string
+    timestamp: Date
+    action: string
+    entityType: string
+    entityId: string | null
+    entityName: string | null
+    ruleId: string | null
+    ruleName: string | null
+    previousValue: string | null
+    newValue: string | null
+    reason: string
+    mode: string
+    status: string
+    apiPayload: JsonValue | null
+    apiResponse: JsonValue | null
+    errorMessage: string | null
+    _count: MetaActivityLogCountAggregateOutputType | null
+    _min: MetaActivityLogMinAggregateOutputType | null
+    _max: MetaActivityLogMaxAggregateOutputType | null
+  }
+
+  type GetMetaActivityLogGroupByPayload<T extends MetaActivityLogGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MetaActivityLogGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MetaActivityLogGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MetaActivityLogGroupByOutputType[P]>
+            : GetScalarType<T[P], MetaActivityLogGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MetaActivityLogSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    timestamp?: boolean
+    action?: boolean
+    entityType?: boolean
+    entityId?: boolean
+    entityName?: boolean
+    ruleId?: boolean
+    ruleName?: boolean
+    previousValue?: boolean
+    newValue?: boolean
+    reason?: boolean
+    mode?: boolean
+    status?: boolean
+    apiPayload?: boolean
+    apiResponse?: boolean
+    errorMessage?: boolean
+  }, ExtArgs["result"]["metaActivityLog"]>
+
+  export type MetaActivityLogSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    timestamp?: boolean
+    action?: boolean
+    entityType?: boolean
+    entityId?: boolean
+    entityName?: boolean
+    ruleId?: boolean
+    ruleName?: boolean
+    previousValue?: boolean
+    newValue?: boolean
+    reason?: boolean
+    mode?: boolean
+    status?: boolean
+    apiPayload?: boolean
+    apiResponse?: boolean
+    errorMessage?: boolean
+  }, ExtArgs["result"]["metaActivityLog"]>
+
+  export type MetaActivityLogSelectScalar = {
+    id?: boolean
+    timestamp?: boolean
+    action?: boolean
+    entityType?: boolean
+    entityId?: boolean
+    entityName?: boolean
+    ruleId?: boolean
+    ruleName?: boolean
+    previousValue?: boolean
+    newValue?: boolean
+    reason?: boolean
+    mode?: boolean
+    status?: boolean
+    apiPayload?: boolean
+    apiResponse?: boolean
+    errorMessage?: boolean
+  }
+
+
+  export type $MetaActivityLogPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MetaActivityLog"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      timestamp: Date
+      action: string
+      entityType: string
+      entityId: string | null
+      entityName: string | null
+      ruleId: string | null
+      ruleName: string | null
+      previousValue: string | null
+      newValue: string | null
+      reason: string
+      mode: string
+      status: string
+      apiPayload: Prisma.JsonValue | null
+      apiResponse: Prisma.JsonValue | null
+      errorMessage: string | null
+    }, ExtArgs["result"]["metaActivityLog"]>
+    composites: {}
+  }
+
+  type MetaActivityLogGetPayload<S extends boolean | null | undefined | MetaActivityLogDefaultArgs> = $Result.GetResult<Prisma.$MetaActivityLogPayload, S>
+
+  type MetaActivityLogCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<MetaActivityLogFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: MetaActivityLogCountAggregateInputType | true
+    }
+
+  export interface MetaActivityLogDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MetaActivityLog'], meta: { name: 'MetaActivityLog' } }
+    /**
+     * Find zero or one MetaActivityLog that matches the filter.
+     * @param {MetaActivityLogFindUniqueArgs} args - Arguments to find a MetaActivityLog
+     * @example
+     * // Get one MetaActivityLog
+     * const metaActivityLog = await prisma.metaActivityLog.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MetaActivityLogFindUniqueArgs>(args: SelectSubset<T, MetaActivityLogFindUniqueArgs<ExtArgs>>): Prisma__MetaActivityLogClient<$Result.GetResult<Prisma.$MetaActivityLogPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one MetaActivityLog that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {MetaActivityLogFindUniqueOrThrowArgs} args - Arguments to find a MetaActivityLog
+     * @example
+     * // Get one MetaActivityLog
+     * const metaActivityLog = await prisma.metaActivityLog.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MetaActivityLogFindUniqueOrThrowArgs>(args: SelectSubset<T, MetaActivityLogFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MetaActivityLogClient<$Result.GetResult<Prisma.$MetaActivityLogPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first MetaActivityLog that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaActivityLogFindFirstArgs} args - Arguments to find a MetaActivityLog
+     * @example
+     * // Get one MetaActivityLog
+     * const metaActivityLog = await prisma.metaActivityLog.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MetaActivityLogFindFirstArgs>(args?: SelectSubset<T, MetaActivityLogFindFirstArgs<ExtArgs>>): Prisma__MetaActivityLogClient<$Result.GetResult<Prisma.$MetaActivityLogPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first MetaActivityLog that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaActivityLogFindFirstOrThrowArgs} args - Arguments to find a MetaActivityLog
+     * @example
+     * // Get one MetaActivityLog
+     * const metaActivityLog = await prisma.metaActivityLog.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MetaActivityLogFindFirstOrThrowArgs>(args?: SelectSubset<T, MetaActivityLogFindFirstOrThrowArgs<ExtArgs>>): Prisma__MetaActivityLogClient<$Result.GetResult<Prisma.$MetaActivityLogPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more MetaActivityLogs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaActivityLogFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MetaActivityLogs
+     * const metaActivityLogs = await prisma.metaActivityLog.findMany()
+     * 
+     * // Get first 10 MetaActivityLogs
+     * const metaActivityLogs = await prisma.metaActivityLog.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const metaActivityLogWithIdOnly = await prisma.metaActivityLog.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MetaActivityLogFindManyArgs>(args?: SelectSubset<T, MetaActivityLogFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MetaActivityLogPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a MetaActivityLog.
+     * @param {MetaActivityLogCreateArgs} args - Arguments to create a MetaActivityLog.
+     * @example
+     * // Create one MetaActivityLog
+     * const MetaActivityLog = await prisma.metaActivityLog.create({
+     *   data: {
+     *     // ... data to create a MetaActivityLog
+     *   }
+     * })
+     * 
+     */
+    create<T extends MetaActivityLogCreateArgs>(args: SelectSubset<T, MetaActivityLogCreateArgs<ExtArgs>>): Prisma__MetaActivityLogClient<$Result.GetResult<Prisma.$MetaActivityLogPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many MetaActivityLogs.
+     * @param {MetaActivityLogCreateManyArgs} args - Arguments to create many MetaActivityLogs.
+     * @example
+     * // Create many MetaActivityLogs
+     * const metaActivityLog = await prisma.metaActivityLog.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MetaActivityLogCreateManyArgs>(args?: SelectSubset<T, MetaActivityLogCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MetaActivityLogs and returns the data saved in the database.
+     * @param {MetaActivityLogCreateManyAndReturnArgs} args - Arguments to create many MetaActivityLogs.
+     * @example
+     * // Create many MetaActivityLogs
+     * const metaActivityLog = await prisma.metaActivityLog.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MetaActivityLogs and only return the `id`
+     * const metaActivityLogWithIdOnly = await prisma.metaActivityLog.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MetaActivityLogCreateManyAndReturnArgs>(args?: SelectSubset<T, MetaActivityLogCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MetaActivityLogPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a MetaActivityLog.
+     * @param {MetaActivityLogDeleteArgs} args - Arguments to delete one MetaActivityLog.
+     * @example
+     * // Delete one MetaActivityLog
+     * const MetaActivityLog = await prisma.metaActivityLog.delete({
+     *   where: {
+     *     // ... filter to delete one MetaActivityLog
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MetaActivityLogDeleteArgs>(args: SelectSubset<T, MetaActivityLogDeleteArgs<ExtArgs>>): Prisma__MetaActivityLogClient<$Result.GetResult<Prisma.$MetaActivityLogPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one MetaActivityLog.
+     * @param {MetaActivityLogUpdateArgs} args - Arguments to update one MetaActivityLog.
+     * @example
+     * // Update one MetaActivityLog
+     * const metaActivityLog = await prisma.metaActivityLog.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MetaActivityLogUpdateArgs>(args: SelectSubset<T, MetaActivityLogUpdateArgs<ExtArgs>>): Prisma__MetaActivityLogClient<$Result.GetResult<Prisma.$MetaActivityLogPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more MetaActivityLogs.
+     * @param {MetaActivityLogDeleteManyArgs} args - Arguments to filter MetaActivityLogs to delete.
+     * @example
+     * // Delete a few MetaActivityLogs
+     * const { count } = await prisma.metaActivityLog.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MetaActivityLogDeleteManyArgs>(args?: SelectSubset<T, MetaActivityLogDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MetaActivityLogs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaActivityLogUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MetaActivityLogs
+     * const metaActivityLog = await prisma.metaActivityLog.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MetaActivityLogUpdateManyArgs>(args: SelectSubset<T, MetaActivityLogUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one MetaActivityLog.
+     * @param {MetaActivityLogUpsertArgs} args - Arguments to update or create a MetaActivityLog.
+     * @example
+     * // Update or create a MetaActivityLog
+     * const metaActivityLog = await prisma.metaActivityLog.upsert({
+     *   create: {
+     *     // ... data to create a MetaActivityLog
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MetaActivityLog we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MetaActivityLogUpsertArgs>(args: SelectSubset<T, MetaActivityLogUpsertArgs<ExtArgs>>): Prisma__MetaActivityLogClient<$Result.GetResult<Prisma.$MetaActivityLogPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of MetaActivityLogs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaActivityLogCountArgs} args - Arguments to filter MetaActivityLogs to count.
+     * @example
+     * // Count the number of MetaActivityLogs
+     * const count = await prisma.metaActivityLog.count({
+     *   where: {
+     *     // ... the filter for the MetaActivityLogs we want to count
+     *   }
+     * })
+    **/
+    count<T extends MetaActivityLogCountArgs>(
+      args?: Subset<T, MetaActivityLogCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MetaActivityLogCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MetaActivityLog.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaActivityLogAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MetaActivityLogAggregateArgs>(args: Subset<T, MetaActivityLogAggregateArgs>): Prisma.PrismaPromise<GetMetaActivityLogAggregateType<T>>
+
+    /**
+     * Group by MetaActivityLog.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaActivityLogGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MetaActivityLogGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MetaActivityLogGroupByArgs['orderBy'] }
+        : { orderBy?: MetaActivityLogGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MetaActivityLogGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMetaActivityLogGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MetaActivityLog model
+   */
+  readonly fields: MetaActivityLogFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MetaActivityLog.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MetaActivityLogClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MetaActivityLog model
+   */ 
+  interface MetaActivityLogFieldRefs {
+    readonly id: FieldRef<"MetaActivityLog", 'String'>
+    readonly timestamp: FieldRef<"MetaActivityLog", 'DateTime'>
+    readonly action: FieldRef<"MetaActivityLog", 'String'>
+    readonly entityType: FieldRef<"MetaActivityLog", 'String'>
+    readonly entityId: FieldRef<"MetaActivityLog", 'String'>
+    readonly entityName: FieldRef<"MetaActivityLog", 'String'>
+    readonly ruleId: FieldRef<"MetaActivityLog", 'String'>
+    readonly ruleName: FieldRef<"MetaActivityLog", 'String'>
+    readonly previousValue: FieldRef<"MetaActivityLog", 'String'>
+    readonly newValue: FieldRef<"MetaActivityLog", 'String'>
+    readonly reason: FieldRef<"MetaActivityLog", 'String'>
+    readonly mode: FieldRef<"MetaActivityLog", 'String'>
+    readonly status: FieldRef<"MetaActivityLog", 'String'>
+    readonly apiPayload: FieldRef<"MetaActivityLog", 'Json'>
+    readonly apiResponse: FieldRef<"MetaActivityLog", 'Json'>
+    readonly errorMessage: FieldRef<"MetaActivityLog", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MetaActivityLog findUnique
+   */
+  export type MetaActivityLogFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaActivityLog
+     */
+    select?: MetaActivityLogSelect<ExtArgs> | null
+    /**
+     * Filter, which MetaActivityLog to fetch.
+     */
+    where: MetaActivityLogWhereUniqueInput
+  }
+
+  /**
+   * MetaActivityLog findUniqueOrThrow
+   */
+  export type MetaActivityLogFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaActivityLog
+     */
+    select?: MetaActivityLogSelect<ExtArgs> | null
+    /**
+     * Filter, which MetaActivityLog to fetch.
+     */
+    where: MetaActivityLogWhereUniqueInput
+  }
+
+  /**
+   * MetaActivityLog findFirst
+   */
+  export type MetaActivityLogFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaActivityLog
+     */
+    select?: MetaActivityLogSelect<ExtArgs> | null
+    /**
+     * Filter, which MetaActivityLog to fetch.
+     */
+    where?: MetaActivityLogWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetaActivityLogs to fetch.
+     */
+    orderBy?: MetaActivityLogOrderByWithRelationInput | MetaActivityLogOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MetaActivityLogs.
+     */
+    cursor?: MetaActivityLogWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetaActivityLogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetaActivityLogs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MetaActivityLogs.
+     */
+    distinct?: MetaActivityLogScalarFieldEnum | MetaActivityLogScalarFieldEnum[]
+  }
+
+  /**
+   * MetaActivityLog findFirstOrThrow
+   */
+  export type MetaActivityLogFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaActivityLog
+     */
+    select?: MetaActivityLogSelect<ExtArgs> | null
+    /**
+     * Filter, which MetaActivityLog to fetch.
+     */
+    where?: MetaActivityLogWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetaActivityLogs to fetch.
+     */
+    orderBy?: MetaActivityLogOrderByWithRelationInput | MetaActivityLogOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MetaActivityLogs.
+     */
+    cursor?: MetaActivityLogWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetaActivityLogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetaActivityLogs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MetaActivityLogs.
+     */
+    distinct?: MetaActivityLogScalarFieldEnum | MetaActivityLogScalarFieldEnum[]
+  }
+
+  /**
+   * MetaActivityLog findMany
+   */
+  export type MetaActivityLogFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaActivityLog
+     */
+    select?: MetaActivityLogSelect<ExtArgs> | null
+    /**
+     * Filter, which MetaActivityLogs to fetch.
+     */
+    where?: MetaActivityLogWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetaActivityLogs to fetch.
+     */
+    orderBy?: MetaActivityLogOrderByWithRelationInput | MetaActivityLogOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MetaActivityLogs.
+     */
+    cursor?: MetaActivityLogWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetaActivityLogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetaActivityLogs.
+     */
+    skip?: number
+    distinct?: MetaActivityLogScalarFieldEnum | MetaActivityLogScalarFieldEnum[]
+  }
+
+  /**
+   * MetaActivityLog create
+   */
+  export type MetaActivityLogCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaActivityLog
+     */
+    select?: MetaActivityLogSelect<ExtArgs> | null
+    /**
+     * The data needed to create a MetaActivityLog.
+     */
+    data: XOR<MetaActivityLogCreateInput, MetaActivityLogUncheckedCreateInput>
+  }
+
+  /**
+   * MetaActivityLog createMany
+   */
+  export type MetaActivityLogCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MetaActivityLogs.
+     */
+    data: MetaActivityLogCreateManyInput | MetaActivityLogCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MetaActivityLog createManyAndReturn
+   */
+  export type MetaActivityLogCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaActivityLog
+     */
+    select?: MetaActivityLogSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many MetaActivityLogs.
+     */
+    data: MetaActivityLogCreateManyInput | MetaActivityLogCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MetaActivityLog update
+   */
+  export type MetaActivityLogUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaActivityLog
+     */
+    select?: MetaActivityLogSelect<ExtArgs> | null
+    /**
+     * The data needed to update a MetaActivityLog.
+     */
+    data: XOR<MetaActivityLogUpdateInput, MetaActivityLogUncheckedUpdateInput>
+    /**
+     * Choose, which MetaActivityLog to update.
+     */
+    where: MetaActivityLogWhereUniqueInput
+  }
+
+  /**
+   * MetaActivityLog updateMany
+   */
+  export type MetaActivityLogUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MetaActivityLogs.
+     */
+    data: XOR<MetaActivityLogUpdateManyMutationInput, MetaActivityLogUncheckedUpdateManyInput>
+    /**
+     * Filter which MetaActivityLogs to update
+     */
+    where?: MetaActivityLogWhereInput
+  }
+
+  /**
+   * MetaActivityLog upsert
+   */
+  export type MetaActivityLogUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaActivityLog
+     */
+    select?: MetaActivityLogSelect<ExtArgs> | null
+    /**
+     * The filter to search for the MetaActivityLog to update in case it exists.
+     */
+    where: MetaActivityLogWhereUniqueInput
+    /**
+     * In case the MetaActivityLog found by the `where` argument doesn't exist, create a new MetaActivityLog with this data.
+     */
+    create: XOR<MetaActivityLogCreateInput, MetaActivityLogUncheckedCreateInput>
+    /**
+     * In case the MetaActivityLog was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MetaActivityLogUpdateInput, MetaActivityLogUncheckedUpdateInput>
+  }
+
+  /**
+   * MetaActivityLog delete
+   */
+  export type MetaActivityLogDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaActivityLog
+     */
+    select?: MetaActivityLogSelect<ExtArgs> | null
+    /**
+     * Filter which MetaActivityLog to delete.
+     */
+    where: MetaActivityLogWhereUniqueInput
+  }
+
+  /**
+   * MetaActivityLog deleteMany
+   */
+  export type MetaActivityLogDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MetaActivityLogs to delete
+     */
+    where?: MetaActivityLogWhereInput
+  }
+
+  /**
+   * MetaActivityLog without action
+   */
+  export type MetaActivityLogDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaActivityLog
+     */
+    select?: MetaActivityLogSelect<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MetaConversionEvent
+   */
+
+  export type AggregateMetaConversionEvent = {
+    _count: MetaConversionEventCountAggregateOutputType | null
+    _avg: MetaConversionEventAvgAggregateOutputType | null
+    _sum: MetaConversionEventSumAggregateOutputType | null
+    _min: MetaConversionEventMinAggregateOutputType | null
+    _max: MetaConversionEventMaxAggregateOutputType | null
+  }
+
+  export type MetaConversionEventAvgAggregateOutputType = {
+    value: number | null
+  }
+
+  export type MetaConversionEventSumAggregateOutputType = {
+    value: number | null
+  }
+
+  export type MetaConversionEventMinAggregateOutputType = {
+    id: string | null
+    eventId: string | null
+    eventName: string | null
+    eventTime: Date | null
+    sourceUrl: string | null
+    orderId: string | null
+    userEmail: string | null
+    userPhone: string | null
+    value: number | null
+    currency: string | null
+    browserSent: boolean | null
+    serverSent: boolean | null
+    serverStatus: string | null
+    serverError: string | null
+    createdAt: Date | null
+  }
+
+  export type MetaConversionEventMaxAggregateOutputType = {
+    id: string | null
+    eventId: string | null
+    eventName: string | null
+    eventTime: Date | null
+    sourceUrl: string | null
+    orderId: string | null
+    userEmail: string | null
+    userPhone: string | null
+    value: number | null
+    currency: string | null
+    browserSent: boolean | null
+    serverSent: boolean | null
+    serverStatus: string | null
+    serverError: string | null
+    createdAt: Date | null
+  }
+
+  export type MetaConversionEventCountAggregateOutputType = {
+    id: number
+    eventId: number
+    eventName: number
+    eventTime: number
+    sourceUrl: number
+    orderId: number
+    userEmail: number
+    userPhone: number
+    value: number
+    currency: number
+    browserSent: number
+    serverSent: number
+    serverStatus: number
+    serverError: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type MetaConversionEventAvgAggregateInputType = {
+    value?: true
+  }
+
+  export type MetaConversionEventSumAggregateInputType = {
+    value?: true
+  }
+
+  export type MetaConversionEventMinAggregateInputType = {
+    id?: true
+    eventId?: true
+    eventName?: true
+    eventTime?: true
+    sourceUrl?: true
+    orderId?: true
+    userEmail?: true
+    userPhone?: true
+    value?: true
+    currency?: true
+    browserSent?: true
+    serverSent?: true
+    serverStatus?: true
+    serverError?: true
+    createdAt?: true
+  }
+
+  export type MetaConversionEventMaxAggregateInputType = {
+    id?: true
+    eventId?: true
+    eventName?: true
+    eventTime?: true
+    sourceUrl?: true
+    orderId?: true
+    userEmail?: true
+    userPhone?: true
+    value?: true
+    currency?: true
+    browserSent?: true
+    serverSent?: true
+    serverStatus?: true
+    serverError?: true
+    createdAt?: true
+  }
+
+  export type MetaConversionEventCountAggregateInputType = {
+    id?: true
+    eventId?: true
+    eventName?: true
+    eventTime?: true
+    sourceUrl?: true
+    orderId?: true
+    userEmail?: true
+    userPhone?: true
+    value?: true
+    currency?: true
+    browserSent?: true
+    serverSent?: true
+    serverStatus?: true
+    serverError?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type MetaConversionEventAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MetaConversionEvent to aggregate.
+     */
+    where?: MetaConversionEventWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetaConversionEvents to fetch.
+     */
+    orderBy?: MetaConversionEventOrderByWithRelationInput | MetaConversionEventOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MetaConversionEventWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetaConversionEvents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetaConversionEvents.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MetaConversionEvents
+    **/
+    _count?: true | MetaConversionEventCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MetaConversionEventAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MetaConversionEventSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MetaConversionEventMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MetaConversionEventMaxAggregateInputType
+  }
+
+  export type GetMetaConversionEventAggregateType<T extends MetaConversionEventAggregateArgs> = {
+        [P in keyof T & keyof AggregateMetaConversionEvent]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMetaConversionEvent[P]>
+      : GetScalarType<T[P], AggregateMetaConversionEvent[P]>
+  }
+
+
+
+
+  export type MetaConversionEventGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MetaConversionEventWhereInput
+    orderBy?: MetaConversionEventOrderByWithAggregationInput | MetaConversionEventOrderByWithAggregationInput[]
+    by: MetaConversionEventScalarFieldEnum[] | MetaConversionEventScalarFieldEnum
+    having?: MetaConversionEventScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MetaConversionEventCountAggregateInputType | true
+    _avg?: MetaConversionEventAvgAggregateInputType
+    _sum?: MetaConversionEventSumAggregateInputType
+    _min?: MetaConversionEventMinAggregateInputType
+    _max?: MetaConversionEventMaxAggregateInputType
+  }
+
+  export type MetaConversionEventGroupByOutputType = {
+    id: string
+    eventId: string
+    eventName: string
+    eventTime: Date
+    sourceUrl: string | null
+    orderId: string | null
+    userEmail: string | null
+    userPhone: string | null
+    value: number | null
+    currency: string
+    browserSent: boolean
+    serverSent: boolean
+    serverStatus: string | null
+    serverError: string | null
+    createdAt: Date
+    _count: MetaConversionEventCountAggregateOutputType | null
+    _avg: MetaConversionEventAvgAggregateOutputType | null
+    _sum: MetaConversionEventSumAggregateOutputType | null
+    _min: MetaConversionEventMinAggregateOutputType | null
+    _max: MetaConversionEventMaxAggregateOutputType | null
+  }
+
+  type GetMetaConversionEventGroupByPayload<T extends MetaConversionEventGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MetaConversionEventGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MetaConversionEventGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MetaConversionEventGroupByOutputType[P]>
+            : GetScalarType<T[P], MetaConversionEventGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MetaConversionEventSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    eventId?: boolean
+    eventName?: boolean
+    eventTime?: boolean
+    sourceUrl?: boolean
+    orderId?: boolean
+    userEmail?: boolean
+    userPhone?: boolean
+    value?: boolean
+    currency?: boolean
+    browserSent?: boolean
+    serverSent?: boolean
+    serverStatus?: boolean
+    serverError?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["metaConversionEvent"]>
+
+  export type MetaConversionEventSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    eventId?: boolean
+    eventName?: boolean
+    eventTime?: boolean
+    sourceUrl?: boolean
+    orderId?: boolean
+    userEmail?: boolean
+    userPhone?: boolean
+    value?: boolean
+    currency?: boolean
+    browserSent?: boolean
+    serverSent?: boolean
+    serverStatus?: boolean
+    serverError?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["metaConversionEvent"]>
+
+  export type MetaConversionEventSelectScalar = {
+    id?: boolean
+    eventId?: boolean
+    eventName?: boolean
+    eventTime?: boolean
+    sourceUrl?: boolean
+    orderId?: boolean
+    userEmail?: boolean
+    userPhone?: boolean
+    value?: boolean
+    currency?: boolean
+    browserSent?: boolean
+    serverSent?: boolean
+    serverStatus?: boolean
+    serverError?: boolean
+    createdAt?: boolean
+  }
+
+
+  export type $MetaConversionEventPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MetaConversionEvent"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      eventId: string
+      eventName: string
+      eventTime: Date
+      sourceUrl: string | null
+      orderId: string | null
+      userEmail: string | null
+      userPhone: string | null
+      value: number | null
+      currency: string
+      browserSent: boolean
+      serverSent: boolean
+      serverStatus: string | null
+      serverError: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["metaConversionEvent"]>
+    composites: {}
+  }
+
+  type MetaConversionEventGetPayload<S extends boolean | null | undefined | MetaConversionEventDefaultArgs> = $Result.GetResult<Prisma.$MetaConversionEventPayload, S>
+
+  type MetaConversionEventCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<MetaConversionEventFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: MetaConversionEventCountAggregateInputType | true
+    }
+
+  export interface MetaConversionEventDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MetaConversionEvent'], meta: { name: 'MetaConversionEvent' } }
+    /**
+     * Find zero or one MetaConversionEvent that matches the filter.
+     * @param {MetaConversionEventFindUniqueArgs} args - Arguments to find a MetaConversionEvent
+     * @example
+     * // Get one MetaConversionEvent
+     * const metaConversionEvent = await prisma.metaConversionEvent.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MetaConversionEventFindUniqueArgs>(args: SelectSubset<T, MetaConversionEventFindUniqueArgs<ExtArgs>>): Prisma__MetaConversionEventClient<$Result.GetResult<Prisma.$MetaConversionEventPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one MetaConversionEvent that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {MetaConversionEventFindUniqueOrThrowArgs} args - Arguments to find a MetaConversionEvent
+     * @example
+     * // Get one MetaConversionEvent
+     * const metaConversionEvent = await prisma.metaConversionEvent.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MetaConversionEventFindUniqueOrThrowArgs>(args: SelectSubset<T, MetaConversionEventFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MetaConversionEventClient<$Result.GetResult<Prisma.$MetaConversionEventPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first MetaConversionEvent that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaConversionEventFindFirstArgs} args - Arguments to find a MetaConversionEvent
+     * @example
+     * // Get one MetaConversionEvent
+     * const metaConversionEvent = await prisma.metaConversionEvent.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MetaConversionEventFindFirstArgs>(args?: SelectSubset<T, MetaConversionEventFindFirstArgs<ExtArgs>>): Prisma__MetaConversionEventClient<$Result.GetResult<Prisma.$MetaConversionEventPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first MetaConversionEvent that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaConversionEventFindFirstOrThrowArgs} args - Arguments to find a MetaConversionEvent
+     * @example
+     * // Get one MetaConversionEvent
+     * const metaConversionEvent = await prisma.metaConversionEvent.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MetaConversionEventFindFirstOrThrowArgs>(args?: SelectSubset<T, MetaConversionEventFindFirstOrThrowArgs<ExtArgs>>): Prisma__MetaConversionEventClient<$Result.GetResult<Prisma.$MetaConversionEventPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more MetaConversionEvents that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaConversionEventFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MetaConversionEvents
+     * const metaConversionEvents = await prisma.metaConversionEvent.findMany()
+     * 
+     * // Get first 10 MetaConversionEvents
+     * const metaConversionEvents = await prisma.metaConversionEvent.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const metaConversionEventWithIdOnly = await prisma.metaConversionEvent.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MetaConversionEventFindManyArgs>(args?: SelectSubset<T, MetaConversionEventFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MetaConversionEventPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a MetaConversionEvent.
+     * @param {MetaConversionEventCreateArgs} args - Arguments to create a MetaConversionEvent.
+     * @example
+     * // Create one MetaConversionEvent
+     * const MetaConversionEvent = await prisma.metaConversionEvent.create({
+     *   data: {
+     *     // ... data to create a MetaConversionEvent
+     *   }
+     * })
+     * 
+     */
+    create<T extends MetaConversionEventCreateArgs>(args: SelectSubset<T, MetaConversionEventCreateArgs<ExtArgs>>): Prisma__MetaConversionEventClient<$Result.GetResult<Prisma.$MetaConversionEventPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many MetaConversionEvents.
+     * @param {MetaConversionEventCreateManyArgs} args - Arguments to create many MetaConversionEvents.
+     * @example
+     * // Create many MetaConversionEvents
+     * const metaConversionEvent = await prisma.metaConversionEvent.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MetaConversionEventCreateManyArgs>(args?: SelectSubset<T, MetaConversionEventCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MetaConversionEvents and returns the data saved in the database.
+     * @param {MetaConversionEventCreateManyAndReturnArgs} args - Arguments to create many MetaConversionEvents.
+     * @example
+     * // Create many MetaConversionEvents
+     * const metaConversionEvent = await prisma.metaConversionEvent.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MetaConversionEvents and only return the `id`
+     * const metaConversionEventWithIdOnly = await prisma.metaConversionEvent.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MetaConversionEventCreateManyAndReturnArgs>(args?: SelectSubset<T, MetaConversionEventCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MetaConversionEventPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a MetaConversionEvent.
+     * @param {MetaConversionEventDeleteArgs} args - Arguments to delete one MetaConversionEvent.
+     * @example
+     * // Delete one MetaConversionEvent
+     * const MetaConversionEvent = await prisma.metaConversionEvent.delete({
+     *   where: {
+     *     // ... filter to delete one MetaConversionEvent
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MetaConversionEventDeleteArgs>(args: SelectSubset<T, MetaConversionEventDeleteArgs<ExtArgs>>): Prisma__MetaConversionEventClient<$Result.GetResult<Prisma.$MetaConversionEventPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one MetaConversionEvent.
+     * @param {MetaConversionEventUpdateArgs} args - Arguments to update one MetaConversionEvent.
+     * @example
+     * // Update one MetaConversionEvent
+     * const metaConversionEvent = await prisma.metaConversionEvent.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MetaConversionEventUpdateArgs>(args: SelectSubset<T, MetaConversionEventUpdateArgs<ExtArgs>>): Prisma__MetaConversionEventClient<$Result.GetResult<Prisma.$MetaConversionEventPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more MetaConversionEvents.
+     * @param {MetaConversionEventDeleteManyArgs} args - Arguments to filter MetaConversionEvents to delete.
+     * @example
+     * // Delete a few MetaConversionEvents
+     * const { count } = await prisma.metaConversionEvent.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MetaConversionEventDeleteManyArgs>(args?: SelectSubset<T, MetaConversionEventDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MetaConversionEvents.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaConversionEventUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MetaConversionEvents
+     * const metaConversionEvent = await prisma.metaConversionEvent.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MetaConversionEventUpdateManyArgs>(args: SelectSubset<T, MetaConversionEventUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one MetaConversionEvent.
+     * @param {MetaConversionEventUpsertArgs} args - Arguments to update or create a MetaConversionEvent.
+     * @example
+     * // Update or create a MetaConversionEvent
+     * const metaConversionEvent = await prisma.metaConversionEvent.upsert({
+     *   create: {
+     *     // ... data to create a MetaConversionEvent
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MetaConversionEvent we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MetaConversionEventUpsertArgs>(args: SelectSubset<T, MetaConversionEventUpsertArgs<ExtArgs>>): Prisma__MetaConversionEventClient<$Result.GetResult<Prisma.$MetaConversionEventPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of MetaConversionEvents.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaConversionEventCountArgs} args - Arguments to filter MetaConversionEvents to count.
+     * @example
+     * // Count the number of MetaConversionEvents
+     * const count = await prisma.metaConversionEvent.count({
+     *   where: {
+     *     // ... the filter for the MetaConversionEvents we want to count
+     *   }
+     * })
+    **/
+    count<T extends MetaConversionEventCountArgs>(
+      args?: Subset<T, MetaConversionEventCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MetaConversionEventCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MetaConversionEvent.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaConversionEventAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MetaConversionEventAggregateArgs>(args: Subset<T, MetaConversionEventAggregateArgs>): Prisma.PrismaPromise<GetMetaConversionEventAggregateType<T>>
+
+    /**
+     * Group by MetaConversionEvent.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetaConversionEventGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MetaConversionEventGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MetaConversionEventGroupByArgs['orderBy'] }
+        : { orderBy?: MetaConversionEventGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MetaConversionEventGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMetaConversionEventGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MetaConversionEvent model
+   */
+  readonly fields: MetaConversionEventFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MetaConversionEvent.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MetaConversionEventClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MetaConversionEvent model
+   */ 
+  interface MetaConversionEventFieldRefs {
+    readonly id: FieldRef<"MetaConversionEvent", 'String'>
+    readonly eventId: FieldRef<"MetaConversionEvent", 'String'>
+    readonly eventName: FieldRef<"MetaConversionEvent", 'String'>
+    readonly eventTime: FieldRef<"MetaConversionEvent", 'DateTime'>
+    readonly sourceUrl: FieldRef<"MetaConversionEvent", 'String'>
+    readonly orderId: FieldRef<"MetaConversionEvent", 'String'>
+    readonly userEmail: FieldRef<"MetaConversionEvent", 'String'>
+    readonly userPhone: FieldRef<"MetaConversionEvent", 'String'>
+    readonly value: FieldRef<"MetaConversionEvent", 'Int'>
+    readonly currency: FieldRef<"MetaConversionEvent", 'String'>
+    readonly browserSent: FieldRef<"MetaConversionEvent", 'Boolean'>
+    readonly serverSent: FieldRef<"MetaConversionEvent", 'Boolean'>
+    readonly serverStatus: FieldRef<"MetaConversionEvent", 'String'>
+    readonly serverError: FieldRef<"MetaConversionEvent", 'String'>
+    readonly createdAt: FieldRef<"MetaConversionEvent", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MetaConversionEvent findUnique
+   */
+  export type MetaConversionEventFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaConversionEvent
+     */
+    select?: MetaConversionEventSelect<ExtArgs> | null
+    /**
+     * Filter, which MetaConversionEvent to fetch.
+     */
+    where: MetaConversionEventWhereUniqueInput
+  }
+
+  /**
+   * MetaConversionEvent findUniqueOrThrow
+   */
+  export type MetaConversionEventFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaConversionEvent
+     */
+    select?: MetaConversionEventSelect<ExtArgs> | null
+    /**
+     * Filter, which MetaConversionEvent to fetch.
+     */
+    where: MetaConversionEventWhereUniqueInput
+  }
+
+  /**
+   * MetaConversionEvent findFirst
+   */
+  export type MetaConversionEventFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaConversionEvent
+     */
+    select?: MetaConversionEventSelect<ExtArgs> | null
+    /**
+     * Filter, which MetaConversionEvent to fetch.
+     */
+    where?: MetaConversionEventWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetaConversionEvents to fetch.
+     */
+    orderBy?: MetaConversionEventOrderByWithRelationInput | MetaConversionEventOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MetaConversionEvents.
+     */
+    cursor?: MetaConversionEventWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetaConversionEvents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetaConversionEvents.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MetaConversionEvents.
+     */
+    distinct?: MetaConversionEventScalarFieldEnum | MetaConversionEventScalarFieldEnum[]
+  }
+
+  /**
+   * MetaConversionEvent findFirstOrThrow
+   */
+  export type MetaConversionEventFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaConversionEvent
+     */
+    select?: MetaConversionEventSelect<ExtArgs> | null
+    /**
+     * Filter, which MetaConversionEvent to fetch.
+     */
+    where?: MetaConversionEventWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetaConversionEvents to fetch.
+     */
+    orderBy?: MetaConversionEventOrderByWithRelationInput | MetaConversionEventOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MetaConversionEvents.
+     */
+    cursor?: MetaConversionEventWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetaConversionEvents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetaConversionEvents.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MetaConversionEvents.
+     */
+    distinct?: MetaConversionEventScalarFieldEnum | MetaConversionEventScalarFieldEnum[]
+  }
+
+  /**
+   * MetaConversionEvent findMany
+   */
+  export type MetaConversionEventFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaConversionEvent
+     */
+    select?: MetaConversionEventSelect<ExtArgs> | null
+    /**
+     * Filter, which MetaConversionEvents to fetch.
+     */
+    where?: MetaConversionEventWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetaConversionEvents to fetch.
+     */
+    orderBy?: MetaConversionEventOrderByWithRelationInput | MetaConversionEventOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MetaConversionEvents.
+     */
+    cursor?: MetaConversionEventWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetaConversionEvents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetaConversionEvents.
+     */
+    skip?: number
+    distinct?: MetaConversionEventScalarFieldEnum | MetaConversionEventScalarFieldEnum[]
+  }
+
+  /**
+   * MetaConversionEvent create
+   */
+  export type MetaConversionEventCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaConversionEvent
+     */
+    select?: MetaConversionEventSelect<ExtArgs> | null
+    /**
+     * The data needed to create a MetaConversionEvent.
+     */
+    data: XOR<MetaConversionEventCreateInput, MetaConversionEventUncheckedCreateInput>
+  }
+
+  /**
+   * MetaConversionEvent createMany
+   */
+  export type MetaConversionEventCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MetaConversionEvents.
+     */
+    data: MetaConversionEventCreateManyInput | MetaConversionEventCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MetaConversionEvent createManyAndReturn
+   */
+  export type MetaConversionEventCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaConversionEvent
+     */
+    select?: MetaConversionEventSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many MetaConversionEvents.
+     */
+    data: MetaConversionEventCreateManyInput | MetaConversionEventCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MetaConversionEvent update
+   */
+  export type MetaConversionEventUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaConversionEvent
+     */
+    select?: MetaConversionEventSelect<ExtArgs> | null
+    /**
+     * The data needed to update a MetaConversionEvent.
+     */
+    data: XOR<MetaConversionEventUpdateInput, MetaConversionEventUncheckedUpdateInput>
+    /**
+     * Choose, which MetaConversionEvent to update.
+     */
+    where: MetaConversionEventWhereUniqueInput
+  }
+
+  /**
+   * MetaConversionEvent updateMany
+   */
+  export type MetaConversionEventUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MetaConversionEvents.
+     */
+    data: XOR<MetaConversionEventUpdateManyMutationInput, MetaConversionEventUncheckedUpdateManyInput>
+    /**
+     * Filter which MetaConversionEvents to update
+     */
+    where?: MetaConversionEventWhereInput
+  }
+
+  /**
+   * MetaConversionEvent upsert
+   */
+  export type MetaConversionEventUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaConversionEvent
+     */
+    select?: MetaConversionEventSelect<ExtArgs> | null
+    /**
+     * The filter to search for the MetaConversionEvent to update in case it exists.
+     */
+    where: MetaConversionEventWhereUniqueInput
+    /**
+     * In case the MetaConversionEvent found by the `where` argument doesn't exist, create a new MetaConversionEvent with this data.
+     */
+    create: XOR<MetaConversionEventCreateInput, MetaConversionEventUncheckedCreateInput>
+    /**
+     * In case the MetaConversionEvent was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MetaConversionEventUpdateInput, MetaConversionEventUncheckedUpdateInput>
+  }
+
+  /**
+   * MetaConversionEvent delete
+   */
+  export type MetaConversionEventDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaConversionEvent
+     */
+    select?: MetaConversionEventSelect<ExtArgs> | null
+    /**
+     * Filter which MetaConversionEvent to delete.
+     */
+    where: MetaConversionEventWhereUniqueInput
+  }
+
+  /**
+   * MetaConversionEvent deleteMany
+   */
+  export type MetaConversionEventDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MetaConversionEvents to delete
+     */
+    where?: MetaConversionEventWhereInput
+  }
+
+  /**
+   * MetaConversionEvent without action
+   */
+  export type MetaConversionEventDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetaConversionEvent
+     */
+    select?: MetaConversionEventSelect<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -10021,12 +19343,193 @@ export namespace Prisma {
   export type WishlistScalarFieldEnum = (typeof WishlistScalarFieldEnum)[keyof typeof WishlistScalarFieldEnum]
 
 
+  export const MetaConfigScalarFieldEnum: {
+    id: 'id',
+    adAccountId: 'adAccountId',
+    pixelId: 'pixelId',
+    accessToken: 'accessToken',
+    capiToken: 'capiToken',
+    appId: 'appId',
+    appSecret: 'appSecret',
+    automationMode: 'automationMode',
+    automationEnabled: 'automationEnabled',
+    dailySpendCap: 'dailySpendCap',
+    maxBudgetIncreasePct: 'maxBudgetIncreasePct',
+    budgetIncreaseCooldownHours: 'budgetIncreaseCooldownHours',
+    minDataPurchases: 'minDataPurchases',
+    minDataSpendPaise: 'minDataSpendPaise',
+    maxLossPerAdPaise: 'maxLossPerAdPaise',
+    targetRoas: 'targetRoas',
+    emergencyStop: 'emergencyStop',
+    autoSyncSchedule: 'autoSyncSchedule',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type MetaConfigScalarFieldEnum = (typeof MetaConfigScalarFieldEnum)[keyof typeof MetaConfigScalarFieldEnum]
+
+
+  export const MetaCampaignScalarFieldEnum: {
+    id: 'id',
+    metaCampaignId: 'metaCampaignId',
+    name: 'name',
+    objective: 'objective',
+    status: 'status',
+    dailyBudget: 'dailyBudget',
+    lifetimeBudget: 'lifetimeBudget',
+    buyingType: 'buyingType',
+    isAutomated: 'isAutomated',
+    templateType: 'templateType',
+    productId: 'productId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type MetaCampaignScalarFieldEnum = (typeof MetaCampaignScalarFieldEnum)[keyof typeof MetaCampaignScalarFieldEnum]
+
+
+  export const MetaAdSetScalarFieldEnum: {
+    id: 'id',
+    metaAdSetId: 'metaAdSetId',
+    campaignId: 'campaignId',
+    name: 'name',
+    status: 'status',
+    dailyBudget: 'dailyBudget',
+    targetingJson: 'targetingJson',
+    optimizationGoal: 'optimizationGoal',
+    billingEvent: 'billingEvent',
+    bidAmount: 'bidAmount',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type MetaAdSetScalarFieldEnum = (typeof MetaAdSetScalarFieldEnum)[keyof typeof MetaAdSetScalarFieldEnum]
+
+
+  export const MetaAdScalarFieldEnum: {
+    id: 'id',
+    metaAdId: 'metaAdId',
+    adSetId: 'adSetId',
+    name: 'name',
+    status: 'status',
+    creativeAngle: 'creativeAngle',
+    headline: 'headline',
+    primaryText: 'primaryText',
+    description: 'description',
+    callToAction: 'callToAction',
+    imageUrl: 'imageUrl',
+    destinationUrl: 'destinationUrl',
+    creativeJson: 'creativeJson',
+    productId: 'productId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type MetaAdScalarFieldEnum = (typeof MetaAdScalarFieldEnum)[keyof typeof MetaAdScalarFieldEnum]
+
+
+  export const MetaInsightScalarFieldEnum: {
+    id: 'id',
+    entityType: 'entityType',
+    entityId: 'entityId',
+    campaignId: 'campaignId',
+    date: 'date',
+    spend: 'spend',
+    impressions: 'impressions',
+    clicks: 'clicks',
+    ctr: 'ctr',
+    cpc: 'cpc',
+    purchases: 'purchases',
+    purchaseValue: 'purchaseValue',
+    roas: 'roas',
+    costPerPurchase: 'costPerPurchase',
+    createdAt: 'createdAt'
+  };
+
+  export type MetaInsightScalarFieldEnum = (typeof MetaInsightScalarFieldEnum)[keyof typeof MetaInsightScalarFieldEnum]
+
+
+  export const MetaAutomationRuleScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    description: 'description',
+    ruleType: 'ruleType',
+    enabled: 'enabled',
+    conditionJson: 'conditionJson',
+    actionJson: 'actionJson',
+    evaluationCooldownHours: 'evaluationCooldownHours',
+    lastEvaluatedAt: 'lastEvaluatedAt',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type MetaAutomationRuleScalarFieldEnum = (typeof MetaAutomationRuleScalarFieldEnum)[keyof typeof MetaAutomationRuleScalarFieldEnum]
+
+
+  export const MetaActivityLogScalarFieldEnum: {
+    id: 'id',
+    timestamp: 'timestamp',
+    action: 'action',
+    entityType: 'entityType',
+    entityId: 'entityId',
+    entityName: 'entityName',
+    ruleId: 'ruleId',
+    ruleName: 'ruleName',
+    previousValue: 'previousValue',
+    newValue: 'newValue',
+    reason: 'reason',
+    mode: 'mode',
+    status: 'status',
+    apiPayload: 'apiPayload',
+    apiResponse: 'apiResponse',
+    errorMessage: 'errorMessage'
+  };
+
+  export type MetaActivityLogScalarFieldEnum = (typeof MetaActivityLogScalarFieldEnum)[keyof typeof MetaActivityLogScalarFieldEnum]
+
+
+  export const MetaConversionEventScalarFieldEnum: {
+    id: 'id',
+    eventId: 'eventId',
+    eventName: 'eventName',
+    eventTime: 'eventTime',
+    sourceUrl: 'sourceUrl',
+    orderId: 'orderId',
+    userEmail: 'userEmail',
+    userPhone: 'userPhone',
+    value: 'value',
+    currency: 'currency',
+    browserSent: 'browserSent',
+    serverSent: 'serverSent',
+    serverStatus: 'serverStatus',
+    serverError: 'serverError',
+    createdAt: 'createdAt'
+  };
+
+  export type MetaConversionEventScalarFieldEnum = (typeof MetaConversionEventScalarFieldEnum)[keyof typeof MetaConversionEventScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
   };
 
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+  export const NullableJsonNullValueInput: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull
+  };
+
+  export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
+  export const JsonNullValueInput: {
+    JsonNull: typeof JsonNull
+  };
+
+  export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
   export const QueryMode: {
@@ -10043,6 +19546,15 @@ export namespace Prisma {
   };
 
   export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+  export const JsonNullValueFilter: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull,
+    AnyNull: typeof AnyNull
+  };
+
+  export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
 
   /**
@@ -10139,6 +19651,13 @@ export namespace Prisma {
    */
   export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
+
+
+  /**
+   * Reference to a field of type 'Json'
+   */
+  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
   /**
    * Deep Input Types
    */
@@ -10213,6 +19732,7 @@ export namespace Prisma {
     category?: XOR<CategoryNullableRelationFilter, CategoryWhereInput> | null
     variants?: ProductVariantListRelationFilter
     wishlists?: WishlistListRelationFilter
+    metaCampaigns?: MetaCampaignListRelationFilter
   }
 
   export type ProductOrderByWithRelationInput = {
@@ -10231,6 +19751,7 @@ export namespace Prisma {
     category?: CategoryOrderByWithRelationInput
     variants?: ProductVariantOrderByRelationAggregateInput
     wishlists?: WishlistOrderByRelationAggregateInput
+    metaCampaigns?: MetaCampaignOrderByRelationAggregateInput
   }
 
   export type ProductWhereUniqueInput = Prisma.AtLeast<{
@@ -10252,6 +19773,7 @@ export namespace Prisma {
     category?: XOR<CategoryNullableRelationFilter, CategoryWhereInput> | null
     variants?: ProductVariantListRelationFilter
     wishlists?: WishlistListRelationFilter
+    metaCampaigns?: MetaCampaignListRelationFilter
   }, "id" | "slug">
 
   export type ProductOrderByWithAggregationInput = {
@@ -10786,6 +20308,846 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"Wishlist"> | Date | string
   }
 
+  export type MetaConfigWhereInput = {
+    AND?: MetaConfigWhereInput | MetaConfigWhereInput[]
+    OR?: MetaConfigWhereInput[]
+    NOT?: MetaConfigWhereInput | MetaConfigWhereInput[]
+    id?: StringFilter<"MetaConfig"> | string
+    adAccountId?: StringNullableFilter<"MetaConfig"> | string | null
+    pixelId?: StringNullableFilter<"MetaConfig"> | string | null
+    accessToken?: StringNullableFilter<"MetaConfig"> | string | null
+    capiToken?: StringNullableFilter<"MetaConfig"> | string | null
+    appId?: StringNullableFilter<"MetaConfig"> | string | null
+    appSecret?: StringNullableFilter<"MetaConfig"> | string | null
+    automationMode?: StringFilter<"MetaConfig"> | string
+    automationEnabled?: BoolFilter<"MetaConfig"> | boolean
+    dailySpendCap?: IntFilter<"MetaConfig"> | number
+    maxBudgetIncreasePct?: FloatFilter<"MetaConfig"> | number
+    budgetIncreaseCooldownHours?: IntFilter<"MetaConfig"> | number
+    minDataPurchases?: IntFilter<"MetaConfig"> | number
+    minDataSpendPaise?: IntFilter<"MetaConfig"> | number
+    maxLossPerAdPaise?: IntFilter<"MetaConfig"> | number
+    targetRoas?: FloatFilter<"MetaConfig"> | number
+    emergencyStop?: BoolFilter<"MetaConfig"> | boolean
+    autoSyncSchedule?: StringFilter<"MetaConfig"> | string
+    createdAt?: DateTimeFilter<"MetaConfig"> | Date | string
+    updatedAt?: DateTimeFilter<"MetaConfig"> | Date | string
+  }
+
+  export type MetaConfigOrderByWithRelationInput = {
+    id?: SortOrder
+    adAccountId?: SortOrderInput | SortOrder
+    pixelId?: SortOrderInput | SortOrder
+    accessToken?: SortOrderInput | SortOrder
+    capiToken?: SortOrderInput | SortOrder
+    appId?: SortOrderInput | SortOrder
+    appSecret?: SortOrderInput | SortOrder
+    automationMode?: SortOrder
+    automationEnabled?: SortOrder
+    dailySpendCap?: SortOrder
+    maxBudgetIncreasePct?: SortOrder
+    budgetIncreaseCooldownHours?: SortOrder
+    minDataPurchases?: SortOrder
+    minDataSpendPaise?: SortOrder
+    maxLossPerAdPaise?: SortOrder
+    targetRoas?: SortOrder
+    emergencyStop?: SortOrder
+    autoSyncSchedule?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MetaConfigWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: MetaConfigWhereInput | MetaConfigWhereInput[]
+    OR?: MetaConfigWhereInput[]
+    NOT?: MetaConfigWhereInput | MetaConfigWhereInput[]
+    adAccountId?: StringNullableFilter<"MetaConfig"> | string | null
+    pixelId?: StringNullableFilter<"MetaConfig"> | string | null
+    accessToken?: StringNullableFilter<"MetaConfig"> | string | null
+    capiToken?: StringNullableFilter<"MetaConfig"> | string | null
+    appId?: StringNullableFilter<"MetaConfig"> | string | null
+    appSecret?: StringNullableFilter<"MetaConfig"> | string | null
+    automationMode?: StringFilter<"MetaConfig"> | string
+    automationEnabled?: BoolFilter<"MetaConfig"> | boolean
+    dailySpendCap?: IntFilter<"MetaConfig"> | number
+    maxBudgetIncreasePct?: FloatFilter<"MetaConfig"> | number
+    budgetIncreaseCooldownHours?: IntFilter<"MetaConfig"> | number
+    minDataPurchases?: IntFilter<"MetaConfig"> | number
+    minDataSpendPaise?: IntFilter<"MetaConfig"> | number
+    maxLossPerAdPaise?: IntFilter<"MetaConfig"> | number
+    targetRoas?: FloatFilter<"MetaConfig"> | number
+    emergencyStop?: BoolFilter<"MetaConfig"> | boolean
+    autoSyncSchedule?: StringFilter<"MetaConfig"> | string
+    createdAt?: DateTimeFilter<"MetaConfig"> | Date | string
+    updatedAt?: DateTimeFilter<"MetaConfig"> | Date | string
+  }, "id">
+
+  export type MetaConfigOrderByWithAggregationInput = {
+    id?: SortOrder
+    adAccountId?: SortOrderInput | SortOrder
+    pixelId?: SortOrderInput | SortOrder
+    accessToken?: SortOrderInput | SortOrder
+    capiToken?: SortOrderInput | SortOrder
+    appId?: SortOrderInput | SortOrder
+    appSecret?: SortOrderInput | SortOrder
+    automationMode?: SortOrder
+    automationEnabled?: SortOrder
+    dailySpendCap?: SortOrder
+    maxBudgetIncreasePct?: SortOrder
+    budgetIncreaseCooldownHours?: SortOrder
+    minDataPurchases?: SortOrder
+    minDataSpendPaise?: SortOrder
+    maxLossPerAdPaise?: SortOrder
+    targetRoas?: SortOrder
+    emergencyStop?: SortOrder
+    autoSyncSchedule?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: MetaConfigCountOrderByAggregateInput
+    _avg?: MetaConfigAvgOrderByAggregateInput
+    _max?: MetaConfigMaxOrderByAggregateInput
+    _min?: MetaConfigMinOrderByAggregateInput
+    _sum?: MetaConfigSumOrderByAggregateInput
+  }
+
+  export type MetaConfigScalarWhereWithAggregatesInput = {
+    AND?: MetaConfigScalarWhereWithAggregatesInput | MetaConfigScalarWhereWithAggregatesInput[]
+    OR?: MetaConfigScalarWhereWithAggregatesInput[]
+    NOT?: MetaConfigScalarWhereWithAggregatesInput | MetaConfigScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MetaConfig"> | string
+    adAccountId?: StringNullableWithAggregatesFilter<"MetaConfig"> | string | null
+    pixelId?: StringNullableWithAggregatesFilter<"MetaConfig"> | string | null
+    accessToken?: StringNullableWithAggregatesFilter<"MetaConfig"> | string | null
+    capiToken?: StringNullableWithAggregatesFilter<"MetaConfig"> | string | null
+    appId?: StringNullableWithAggregatesFilter<"MetaConfig"> | string | null
+    appSecret?: StringNullableWithAggregatesFilter<"MetaConfig"> | string | null
+    automationMode?: StringWithAggregatesFilter<"MetaConfig"> | string
+    automationEnabled?: BoolWithAggregatesFilter<"MetaConfig"> | boolean
+    dailySpendCap?: IntWithAggregatesFilter<"MetaConfig"> | number
+    maxBudgetIncreasePct?: FloatWithAggregatesFilter<"MetaConfig"> | number
+    budgetIncreaseCooldownHours?: IntWithAggregatesFilter<"MetaConfig"> | number
+    minDataPurchases?: IntWithAggregatesFilter<"MetaConfig"> | number
+    minDataSpendPaise?: IntWithAggregatesFilter<"MetaConfig"> | number
+    maxLossPerAdPaise?: IntWithAggregatesFilter<"MetaConfig"> | number
+    targetRoas?: FloatWithAggregatesFilter<"MetaConfig"> | number
+    emergencyStop?: BoolWithAggregatesFilter<"MetaConfig"> | boolean
+    autoSyncSchedule?: StringWithAggregatesFilter<"MetaConfig"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"MetaConfig"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"MetaConfig"> | Date | string
+  }
+
+  export type MetaCampaignWhereInput = {
+    AND?: MetaCampaignWhereInput | MetaCampaignWhereInput[]
+    OR?: MetaCampaignWhereInput[]
+    NOT?: MetaCampaignWhereInput | MetaCampaignWhereInput[]
+    id?: StringFilter<"MetaCampaign"> | string
+    metaCampaignId?: StringNullableFilter<"MetaCampaign"> | string | null
+    name?: StringFilter<"MetaCampaign"> | string
+    objective?: StringFilter<"MetaCampaign"> | string
+    status?: StringFilter<"MetaCampaign"> | string
+    dailyBudget?: IntNullableFilter<"MetaCampaign"> | number | null
+    lifetimeBudget?: IntNullableFilter<"MetaCampaign"> | number | null
+    buyingType?: StringFilter<"MetaCampaign"> | string
+    isAutomated?: BoolFilter<"MetaCampaign"> | boolean
+    templateType?: StringNullableFilter<"MetaCampaign"> | string | null
+    productId?: StringNullableFilter<"MetaCampaign"> | string | null
+    createdAt?: DateTimeFilter<"MetaCampaign"> | Date | string
+    updatedAt?: DateTimeFilter<"MetaCampaign"> | Date | string
+    product?: XOR<ProductNullableRelationFilter, ProductWhereInput> | null
+    adSets?: MetaAdSetListRelationFilter
+    insights?: MetaInsightListRelationFilter
+  }
+
+  export type MetaCampaignOrderByWithRelationInput = {
+    id?: SortOrder
+    metaCampaignId?: SortOrderInput | SortOrder
+    name?: SortOrder
+    objective?: SortOrder
+    status?: SortOrder
+    dailyBudget?: SortOrderInput | SortOrder
+    lifetimeBudget?: SortOrderInput | SortOrder
+    buyingType?: SortOrder
+    isAutomated?: SortOrder
+    templateType?: SortOrderInput | SortOrder
+    productId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    product?: ProductOrderByWithRelationInput
+    adSets?: MetaAdSetOrderByRelationAggregateInput
+    insights?: MetaInsightOrderByRelationAggregateInput
+  }
+
+  export type MetaCampaignWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    metaCampaignId?: string
+    AND?: MetaCampaignWhereInput | MetaCampaignWhereInput[]
+    OR?: MetaCampaignWhereInput[]
+    NOT?: MetaCampaignWhereInput | MetaCampaignWhereInput[]
+    name?: StringFilter<"MetaCampaign"> | string
+    objective?: StringFilter<"MetaCampaign"> | string
+    status?: StringFilter<"MetaCampaign"> | string
+    dailyBudget?: IntNullableFilter<"MetaCampaign"> | number | null
+    lifetimeBudget?: IntNullableFilter<"MetaCampaign"> | number | null
+    buyingType?: StringFilter<"MetaCampaign"> | string
+    isAutomated?: BoolFilter<"MetaCampaign"> | boolean
+    templateType?: StringNullableFilter<"MetaCampaign"> | string | null
+    productId?: StringNullableFilter<"MetaCampaign"> | string | null
+    createdAt?: DateTimeFilter<"MetaCampaign"> | Date | string
+    updatedAt?: DateTimeFilter<"MetaCampaign"> | Date | string
+    product?: XOR<ProductNullableRelationFilter, ProductWhereInput> | null
+    adSets?: MetaAdSetListRelationFilter
+    insights?: MetaInsightListRelationFilter
+  }, "id" | "metaCampaignId">
+
+  export type MetaCampaignOrderByWithAggregationInput = {
+    id?: SortOrder
+    metaCampaignId?: SortOrderInput | SortOrder
+    name?: SortOrder
+    objective?: SortOrder
+    status?: SortOrder
+    dailyBudget?: SortOrderInput | SortOrder
+    lifetimeBudget?: SortOrderInput | SortOrder
+    buyingType?: SortOrder
+    isAutomated?: SortOrder
+    templateType?: SortOrderInput | SortOrder
+    productId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: MetaCampaignCountOrderByAggregateInput
+    _avg?: MetaCampaignAvgOrderByAggregateInput
+    _max?: MetaCampaignMaxOrderByAggregateInput
+    _min?: MetaCampaignMinOrderByAggregateInput
+    _sum?: MetaCampaignSumOrderByAggregateInput
+  }
+
+  export type MetaCampaignScalarWhereWithAggregatesInput = {
+    AND?: MetaCampaignScalarWhereWithAggregatesInput | MetaCampaignScalarWhereWithAggregatesInput[]
+    OR?: MetaCampaignScalarWhereWithAggregatesInput[]
+    NOT?: MetaCampaignScalarWhereWithAggregatesInput | MetaCampaignScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MetaCampaign"> | string
+    metaCampaignId?: StringNullableWithAggregatesFilter<"MetaCampaign"> | string | null
+    name?: StringWithAggregatesFilter<"MetaCampaign"> | string
+    objective?: StringWithAggregatesFilter<"MetaCampaign"> | string
+    status?: StringWithAggregatesFilter<"MetaCampaign"> | string
+    dailyBudget?: IntNullableWithAggregatesFilter<"MetaCampaign"> | number | null
+    lifetimeBudget?: IntNullableWithAggregatesFilter<"MetaCampaign"> | number | null
+    buyingType?: StringWithAggregatesFilter<"MetaCampaign"> | string
+    isAutomated?: BoolWithAggregatesFilter<"MetaCampaign"> | boolean
+    templateType?: StringNullableWithAggregatesFilter<"MetaCampaign"> | string | null
+    productId?: StringNullableWithAggregatesFilter<"MetaCampaign"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"MetaCampaign"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"MetaCampaign"> | Date | string
+  }
+
+  export type MetaAdSetWhereInput = {
+    AND?: MetaAdSetWhereInput | MetaAdSetWhereInput[]
+    OR?: MetaAdSetWhereInput[]
+    NOT?: MetaAdSetWhereInput | MetaAdSetWhereInput[]
+    id?: StringFilter<"MetaAdSet"> | string
+    metaAdSetId?: StringNullableFilter<"MetaAdSet"> | string | null
+    campaignId?: StringFilter<"MetaAdSet"> | string
+    name?: StringFilter<"MetaAdSet"> | string
+    status?: StringFilter<"MetaAdSet"> | string
+    dailyBudget?: IntNullableFilter<"MetaAdSet"> | number | null
+    targetingJson?: JsonNullableFilter<"MetaAdSet">
+    optimizationGoal?: StringFilter<"MetaAdSet"> | string
+    billingEvent?: StringFilter<"MetaAdSet"> | string
+    bidAmount?: IntNullableFilter<"MetaAdSet"> | number | null
+    createdAt?: DateTimeFilter<"MetaAdSet"> | Date | string
+    updatedAt?: DateTimeFilter<"MetaAdSet"> | Date | string
+    campaign?: XOR<MetaCampaignRelationFilter, MetaCampaignWhereInput>
+    ads?: MetaAdListRelationFilter
+  }
+
+  export type MetaAdSetOrderByWithRelationInput = {
+    id?: SortOrder
+    metaAdSetId?: SortOrderInput | SortOrder
+    campaignId?: SortOrder
+    name?: SortOrder
+    status?: SortOrder
+    dailyBudget?: SortOrderInput | SortOrder
+    targetingJson?: SortOrderInput | SortOrder
+    optimizationGoal?: SortOrder
+    billingEvent?: SortOrder
+    bidAmount?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    campaign?: MetaCampaignOrderByWithRelationInput
+    ads?: MetaAdOrderByRelationAggregateInput
+  }
+
+  export type MetaAdSetWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    metaAdSetId?: string
+    AND?: MetaAdSetWhereInput | MetaAdSetWhereInput[]
+    OR?: MetaAdSetWhereInput[]
+    NOT?: MetaAdSetWhereInput | MetaAdSetWhereInput[]
+    campaignId?: StringFilter<"MetaAdSet"> | string
+    name?: StringFilter<"MetaAdSet"> | string
+    status?: StringFilter<"MetaAdSet"> | string
+    dailyBudget?: IntNullableFilter<"MetaAdSet"> | number | null
+    targetingJson?: JsonNullableFilter<"MetaAdSet">
+    optimizationGoal?: StringFilter<"MetaAdSet"> | string
+    billingEvent?: StringFilter<"MetaAdSet"> | string
+    bidAmount?: IntNullableFilter<"MetaAdSet"> | number | null
+    createdAt?: DateTimeFilter<"MetaAdSet"> | Date | string
+    updatedAt?: DateTimeFilter<"MetaAdSet"> | Date | string
+    campaign?: XOR<MetaCampaignRelationFilter, MetaCampaignWhereInput>
+    ads?: MetaAdListRelationFilter
+  }, "id" | "metaAdSetId">
+
+  export type MetaAdSetOrderByWithAggregationInput = {
+    id?: SortOrder
+    metaAdSetId?: SortOrderInput | SortOrder
+    campaignId?: SortOrder
+    name?: SortOrder
+    status?: SortOrder
+    dailyBudget?: SortOrderInput | SortOrder
+    targetingJson?: SortOrderInput | SortOrder
+    optimizationGoal?: SortOrder
+    billingEvent?: SortOrder
+    bidAmount?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: MetaAdSetCountOrderByAggregateInput
+    _avg?: MetaAdSetAvgOrderByAggregateInput
+    _max?: MetaAdSetMaxOrderByAggregateInput
+    _min?: MetaAdSetMinOrderByAggregateInput
+    _sum?: MetaAdSetSumOrderByAggregateInput
+  }
+
+  export type MetaAdSetScalarWhereWithAggregatesInput = {
+    AND?: MetaAdSetScalarWhereWithAggregatesInput | MetaAdSetScalarWhereWithAggregatesInput[]
+    OR?: MetaAdSetScalarWhereWithAggregatesInput[]
+    NOT?: MetaAdSetScalarWhereWithAggregatesInput | MetaAdSetScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MetaAdSet"> | string
+    metaAdSetId?: StringNullableWithAggregatesFilter<"MetaAdSet"> | string | null
+    campaignId?: StringWithAggregatesFilter<"MetaAdSet"> | string
+    name?: StringWithAggregatesFilter<"MetaAdSet"> | string
+    status?: StringWithAggregatesFilter<"MetaAdSet"> | string
+    dailyBudget?: IntNullableWithAggregatesFilter<"MetaAdSet"> | number | null
+    targetingJson?: JsonNullableWithAggregatesFilter<"MetaAdSet">
+    optimizationGoal?: StringWithAggregatesFilter<"MetaAdSet"> | string
+    billingEvent?: StringWithAggregatesFilter<"MetaAdSet"> | string
+    bidAmount?: IntNullableWithAggregatesFilter<"MetaAdSet"> | number | null
+    createdAt?: DateTimeWithAggregatesFilter<"MetaAdSet"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"MetaAdSet"> | Date | string
+  }
+
+  export type MetaAdWhereInput = {
+    AND?: MetaAdWhereInput | MetaAdWhereInput[]
+    OR?: MetaAdWhereInput[]
+    NOT?: MetaAdWhereInput | MetaAdWhereInput[]
+    id?: StringFilter<"MetaAd"> | string
+    metaAdId?: StringNullableFilter<"MetaAd"> | string | null
+    adSetId?: StringFilter<"MetaAd"> | string
+    name?: StringFilter<"MetaAd"> | string
+    status?: StringFilter<"MetaAd"> | string
+    creativeAngle?: StringFilter<"MetaAd"> | string
+    headline?: StringFilter<"MetaAd"> | string
+    primaryText?: StringFilter<"MetaAd"> | string
+    description?: StringNullableFilter<"MetaAd"> | string | null
+    callToAction?: StringFilter<"MetaAd"> | string
+    imageUrl?: StringFilter<"MetaAd"> | string
+    destinationUrl?: StringFilter<"MetaAd"> | string
+    creativeJson?: JsonNullableFilter<"MetaAd">
+    productId?: StringNullableFilter<"MetaAd"> | string | null
+    createdAt?: DateTimeFilter<"MetaAd"> | Date | string
+    updatedAt?: DateTimeFilter<"MetaAd"> | Date | string
+    adSet?: XOR<MetaAdSetRelationFilter, MetaAdSetWhereInput>
+  }
+
+  export type MetaAdOrderByWithRelationInput = {
+    id?: SortOrder
+    metaAdId?: SortOrderInput | SortOrder
+    adSetId?: SortOrder
+    name?: SortOrder
+    status?: SortOrder
+    creativeAngle?: SortOrder
+    headline?: SortOrder
+    primaryText?: SortOrder
+    description?: SortOrderInput | SortOrder
+    callToAction?: SortOrder
+    imageUrl?: SortOrder
+    destinationUrl?: SortOrder
+    creativeJson?: SortOrderInput | SortOrder
+    productId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    adSet?: MetaAdSetOrderByWithRelationInput
+  }
+
+  export type MetaAdWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    metaAdId?: string
+    AND?: MetaAdWhereInput | MetaAdWhereInput[]
+    OR?: MetaAdWhereInput[]
+    NOT?: MetaAdWhereInput | MetaAdWhereInput[]
+    adSetId?: StringFilter<"MetaAd"> | string
+    name?: StringFilter<"MetaAd"> | string
+    status?: StringFilter<"MetaAd"> | string
+    creativeAngle?: StringFilter<"MetaAd"> | string
+    headline?: StringFilter<"MetaAd"> | string
+    primaryText?: StringFilter<"MetaAd"> | string
+    description?: StringNullableFilter<"MetaAd"> | string | null
+    callToAction?: StringFilter<"MetaAd"> | string
+    imageUrl?: StringFilter<"MetaAd"> | string
+    destinationUrl?: StringFilter<"MetaAd"> | string
+    creativeJson?: JsonNullableFilter<"MetaAd">
+    productId?: StringNullableFilter<"MetaAd"> | string | null
+    createdAt?: DateTimeFilter<"MetaAd"> | Date | string
+    updatedAt?: DateTimeFilter<"MetaAd"> | Date | string
+    adSet?: XOR<MetaAdSetRelationFilter, MetaAdSetWhereInput>
+  }, "id" | "metaAdId">
+
+  export type MetaAdOrderByWithAggregationInput = {
+    id?: SortOrder
+    metaAdId?: SortOrderInput | SortOrder
+    adSetId?: SortOrder
+    name?: SortOrder
+    status?: SortOrder
+    creativeAngle?: SortOrder
+    headline?: SortOrder
+    primaryText?: SortOrder
+    description?: SortOrderInput | SortOrder
+    callToAction?: SortOrder
+    imageUrl?: SortOrder
+    destinationUrl?: SortOrder
+    creativeJson?: SortOrderInput | SortOrder
+    productId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: MetaAdCountOrderByAggregateInput
+    _max?: MetaAdMaxOrderByAggregateInput
+    _min?: MetaAdMinOrderByAggregateInput
+  }
+
+  export type MetaAdScalarWhereWithAggregatesInput = {
+    AND?: MetaAdScalarWhereWithAggregatesInput | MetaAdScalarWhereWithAggregatesInput[]
+    OR?: MetaAdScalarWhereWithAggregatesInput[]
+    NOT?: MetaAdScalarWhereWithAggregatesInput | MetaAdScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MetaAd"> | string
+    metaAdId?: StringNullableWithAggregatesFilter<"MetaAd"> | string | null
+    adSetId?: StringWithAggregatesFilter<"MetaAd"> | string
+    name?: StringWithAggregatesFilter<"MetaAd"> | string
+    status?: StringWithAggregatesFilter<"MetaAd"> | string
+    creativeAngle?: StringWithAggregatesFilter<"MetaAd"> | string
+    headline?: StringWithAggregatesFilter<"MetaAd"> | string
+    primaryText?: StringWithAggregatesFilter<"MetaAd"> | string
+    description?: StringNullableWithAggregatesFilter<"MetaAd"> | string | null
+    callToAction?: StringWithAggregatesFilter<"MetaAd"> | string
+    imageUrl?: StringWithAggregatesFilter<"MetaAd"> | string
+    destinationUrl?: StringWithAggregatesFilter<"MetaAd"> | string
+    creativeJson?: JsonNullableWithAggregatesFilter<"MetaAd">
+    productId?: StringNullableWithAggregatesFilter<"MetaAd"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"MetaAd"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"MetaAd"> | Date | string
+  }
+
+  export type MetaInsightWhereInput = {
+    AND?: MetaInsightWhereInput | MetaInsightWhereInput[]
+    OR?: MetaInsightWhereInput[]
+    NOT?: MetaInsightWhereInput | MetaInsightWhereInput[]
+    id?: StringFilter<"MetaInsight"> | string
+    entityType?: StringFilter<"MetaInsight"> | string
+    entityId?: StringFilter<"MetaInsight"> | string
+    campaignId?: StringNullableFilter<"MetaInsight"> | string | null
+    date?: DateTimeFilter<"MetaInsight"> | Date | string
+    spend?: IntFilter<"MetaInsight"> | number
+    impressions?: IntFilter<"MetaInsight"> | number
+    clicks?: IntFilter<"MetaInsight"> | number
+    ctr?: FloatFilter<"MetaInsight"> | number
+    cpc?: FloatFilter<"MetaInsight"> | number
+    purchases?: IntFilter<"MetaInsight"> | number
+    purchaseValue?: IntFilter<"MetaInsight"> | number
+    roas?: FloatFilter<"MetaInsight"> | number
+    costPerPurchase?: FloatFilter<"MetaInsight"> | number
+    createdAt?: DateTimeFilter<"MetaInsight"> | Date | string
+    campaign?: XOR<MetaCampaignNullableRelationFilter, MetaCampaignWhereInput> | null
+  }
+
+  export type MetaInsightOrderByWithRelationInput = {
+    id?: SortOrder
+    entityType?: SortOrder
+    entityId?: SortOrder
+    campaignId?: SortOrderInput | SortOrder
+    date?: SortOrder
+    spend?: SortOrder
+    impressions?: SortOrder
+    clicks?: SortOrder
+    ctr?: SortOrder
+    cpc?: SortOrder
+    purchases?: SortOrder
+    purchaseValue?: SortOrder
+    roas?: SortOrder
+    costPerPurchase?: SortOrder
+    createdAt?: SortOrder
+    campaign?: MetaCampaignOrderByWithRelationInput
+  }
+
+  export type MetaInsightWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    entityType_entityId_date?: MetaInsightEntityTypeEntityIdDateCompoundUniqueInput
+    AND?: MetaInsightWhereInput | MetaInsightWhereInput[]
+    OR?: MetaInsightWhereInput[]
+    NOT?: MetaInsightWhereInput | MetaInsightWhereInput[]
+    entityType?: StringFilter<"MetaInsight"> | string
+    entityId?: StringFilter<"MetaInsight"> | string
+    campaignId?: StringNullableFilter<"MetaInsight"> | string | null
+    date?: DateTimeFilter<"MetaInsight"> | Date | string
+    spend?: IntFilter<"MetaInsight"> | number
+    impressions?: IntFilter<"MetaInsight"> | number
+    clicks?: IntFilter<"MetaInsight"> | number
+    ctr?: FloatFilter<"MetaInsight"> | number
+    cpc?: FloatFilter<"MetaInsight"> | number
+    purchases?: IntFilter<"MetaInsight"> | number
+    purchaseValue?: IntFilter<"MetaInsight"> | number
+    roas?: FloatFilter<"MetaInsight"> | number
+    costPerPurchase?: FloatFilter<"MetaInsight"> | number
+    createdAt?: DateTimeFilter<"MetaInsight"> | Date | string
+    campaign?: XOR<MetaCampaignNullableRelationFilter, MetaCampaignWhereInput> | null
+  }, "id" | "entityType_entityId_date">
+
+  export type MetaInsightOrderByWithAggregationInput = {
+    id?: SortOrder
+    entityType?: SortOrder
+    entityId?: SortOrder
+    campaignId?: SortOrderInput | SortOrder
+    date?: SortOrder
+    spend?: SortOrder
+    impressions?: SortOrder
+    clicks?: SortOrder
+    ctr?: SortOrder
+    cpc?: SortOrder
+    purchases?: SortOrder
+    purchaseValue?: SortOrder
+    roas?: SortOrder
+    costPerPurchase?: SortOrder
+    createdAt?: SortOrder
+    _count?: MetaInsightCountOrderByAggregateInput
+    _avg?: MetaInsightAvgOrderByAggregateInput
+    _max?: MetaInsightMaxOrderByAggregateInput
+    _min?: MetaInsightMinOrderByAggregateInput
+    _sum?: MetaInsightSumOrderByAggregateInput
+  }
+
+  export type MetaInsightScalarWhereWithAggregatesInput = {
+    AND?: MetaInsightScalarWhereWithAggregatesInput | MetaInsightScalarWhereWithAggregatesInput[]
+    OR?: MetaInsightScalarWhereWithAggregatesInput[]
+    NOT?: MetaInsightScalarWhereWithAggregatesInput | MetaInsightScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MetaInsight"> | string
+    entityType?: StringWithAggregatesFilter<"MetaInsight"> | string
+    entityId?: StringWithAggregatesFilter<"MetaInsight"> | string
+    campaignId?: StringNullableWithAggregatesFilter<"MetaInsight"> | string | null
+    date?: DateTimeWithAggregatesFilter<"MetaInsight"> | Date | string
+    spend?: IntWithAggregatesFilter<"MetaInsight"> | number
+    impressions?: IntWithAggregatesFilter<"MetaInsight"> | number
+    clicks?: IntWithAggregatesFilter<"MetaInsight"> | number
+    ctr?: FloatWithAggregatesFilter<"MetaInsight"> | number
+    cpc?: FloatWithAggregatesFilter<"MetaInsight"> | number
+    purchases?: IntWithAggregatesFilter<"MetaInsight"> | number
+    purchaseValue?: IntWithAggregatesFilter<"MetaInsight"> | number
+    roas?: FloatWithAggregatesFilter<"MetaInsight"> | number
+    costPerPurchase?: FloatWithAggregatesFilter<"MetaInsight"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"MetaInsight"> | Date | string
+  }
+
+  export type MetaAutomationRuleWhereInput = {
+    AND?: MetaAutomationRuleWhereInput | MetaAutomationRuleWhereInput[]
+    OR?: MetaAutomationRuleWhereInput[]
+    NOT?: MetaAutomationRuleWhereInput | MetaAutomationRuleWhereInput[]
+    id?: StringFilter<"MetaAutomationRule"> | string
+    name?: StringFilter<"MetaAutomationRule"> | string
+    description?: StringNullableFilter<"MetaAutomationRule"> | string | null
+    ruleType?: StringFilter<"MetaAutomationRule"> | string
+    enabled?: BoolFilter<"MetaAutomationRule"> | boolean
+    conditionJson?: JsonFilter<"MetaAutomationRule">
+    actionJson?: JsonFilter<"MetaAutomationRule">
+    evaluationCooldownHours?: IntFilter<"MetaAutomationRule"> | number
+    lastEvaluatedAt?: DateTimeNullableFilter<"MetaAutomationRule"> | Date | string | null
+    createdAt?: DateTimeFilter<"MetaAutomationRule"> | Date | string
+    updatedAt?: DateTimeFilter<"MetaAutomationRule"> | Date | string
+  }
+
+  export type MetaAutomationRuleOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    ruleType?: SortOrder
+    enabled?: SortOrder
+    conditionJson?: SortOrder
+    actionJson?: SortOrder
+    evaluationCooldownHours?: SortOrder
+    lastEvaluatedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MetaAutomationRuleWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: MetaAutomationRuleWhereInput | MetaAutomationRuleWhereInput[]
+    OR?: MetaAutomationRuleWhereInput[]
+    NOT?: MetaAutomationRuleWhereInput | MetaAutomationRuleWhereInput[]
+    name?: StringFilter<"MetaAutomationRule"> | string
+    description?: StringNullableFilter<"MetaAutomationRule"> | string | null
+    ruleType?: StringFilter<"MetaAutomationRule"> | string
+    enabled?: BoolFilter<"MetaAutomationRule"> | boolean
+    conditionJson?: JsonFilter<"MetaAutomationRule">
+    actionJson?: JsonFilter<"MetaAutomationRule">
+    evaluationCooldownHours?: IntFilter<"MetaAutomationRule"> | number
+    lastEvaluatedAt?: DateTimeNullableFilter<"MetaAutomationRule"> | Date | string | null
+    createdAt?: DateTimeFilter<"MetaAutomationRule"> | Date | string
+    updatedAt?: DateTimeFilter<"MetaAutomationRule"> | Date | string
+  }, "id">
+
+  export type MetaAutomationRuleOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    ruleType?: SortOrder
+    enabled?: SortOrder
+    conditionJson?: SortOrder
+    actionJson?: SortOrder
+    evaluationCooldownHours?: SortOrder
+    lastEvaluatedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: MetaAutomationRuleCountOrderByAggregateInput
+    _avg?: MetaAutomationRuleAvgOrderByAggregateInput
+    _max?: MetaAutomationRuleMaxOrderByAggregateInput
+    _min?: MetaAutomationRuleMinOrderByAggregateInput
+    _sum?: MetaAutomationRuleSumOrderByAggregateInput
+  }
+
+  export type MetaAutomationRuleScalarWhereWithAggregatesInput = {
+    AND?: MetaAutomationRuleScalarWhereWithAggregatesInput | MetaAutomationRuleScalarWhereWithAggregatesInput[]
+    OR?: MetaAutomationRuleScalarWhereWithAggregatesInput[]
+    NOT?: MetaAutomationRuleScalarWhereWithAggregatesInput | MetaAutomationRuleScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MetaAutomationRule"> | string
+    name?: StringWithAggregatesFilter<"MetaAutomationRule"> | string
+    description?: StringNullableWithAggregatesFilter<"MetaAutomationRule"> | string | null
+    ruleType?: StringWithAggregatesFilter<"MetaAutomationRule"> | string
+    enabled?: BoolWithAggregatesFilter<"MetaAutomationRule"> | boolean
+    conditionJson?: JsonWithAggregatesFilter<"MetaAutomationRule">
+    actionJson?: JsonWithAggregatesFilter<"MetaAutomationRule">
+    evaluationCooldownHours?: IntWithAggregatesFilter<"MetaAutomationRule"> | number
+    lastEvaluatedAt?: DateTimeNullableWithAggregatesFilter<"MetaAutomationRule"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"MetaAutomationRule"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"MetaAutomationRule"> | Date | string
+  }
+
+  export type MetaActivityLogWhereInput = {
+    AND?: MetaActivityLogWhereInput | MetaActivityLogWhereInput[]
+    OR?: MetaActivityLogWhereInput[]
+    NOT?: MetaActivityLogWhereInput | MetaActivityLogWhereInput[]
+    id?: StringFilter<"MetaActivityLog"> | string
+    timestamp?: DateTimeFilter<"MetaActivityLog"> | Date | string
+    action?: StringFilter<"MetaActivityLog"> | string
+    entityType?: StringFilter<"MetaActivityLog"> | string
+    entityId?: StringNullableFilter<"MetaActivityLog"> | string | null
+    entityName?: StringNullableFilter<"MetaActivityLog"> | string | null
+    ruleId?: StringNullableFilter<"MetaActivityLog"> | string | null
+    ruleName?: StringNullableFilter<"MetaActivityLog"> | string | null
+    previousValue?: StringNullableFilter<"MetaActivityLog"> | string | null
+    newValue?: StringNullableFilter<"MetaActivityLog"> | string | null
+    reason?: StringFilter<"MetaActivityLog"> | string
+    mode?: StringFilter<"MetaActivityLog"> | string
+    status?: StringFilter<"MetaActivityLog"> | string
+    apiPayload?: JsonNullableFilter<"MetaActivityLog">
+    apiResponse?: JsonNullableFilter<"MetaActivityLog">
+    errorMessage?: StringNullableFilter<"MetaActivityLog"> | string | null
+  }
+
+  export type MetaActivityLogOrderByWithRelationInput = {
+    id?: SortOrder
+    timestamp?: SortOrder
+    action?: SortOrder
+    entityType?: SortOrder
+    entityId?: SortOrderInput | SortOrder
+    entityName?: SortOrderInput | SortOrder
+    ruleId?: SortOrderInput | SortOrder
+    ruleName?: SortOrderInput | SortOrder
+    previousValue?: SortOrderInput | SortOrder
+    newValue?: SortOrderInput | SortOrder
+    reason?: SortOrder
+    mode?: SortOrder
+    status?: SortOrder
+    apiPayload?: SortOrderInput | SortOrder
+    apiResponse?: SortOrderInput | SortOrder
+    errorMessage?: SortOrderInput | SortOrder
+  }
+
+  export type MetaActivityLogWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: MetaActivityLogWhereInput | MetaActivityLogWhereInput[]
+    OR?: MetaActivityLogWhereInput[]
+    NOT?: MetaActivityLogWhereInput | MetaActivityLogWhereInput[]
+    timestamp?: DateTimeFilter<"MetaActivityLog"> | Date | string
+    action?: StringFilter<"MetaActivityLog"> | string
+    entityType?: StringFilter<"MetaActivityLog"> | string
+    entityId?: StringNullableFilter<"MetaActivityLog"> | string | null
+    entityName?: StringNullableFilter<"MetaActivityLog"> | string | null
+    ruleId?: StringNullableFilter<"MetaActivityLog"> | string | null
+    ruleName?: StringNullableFilter<"MetaActivityLog"> | string | null
+    previousValue?: StringNullableFilter<"MetaActivityLog"> | string | null
+    newValue?: StringNullableFilter<"MetaActivityLog"> | string | null
+    reason?: StringFilter<"MetaActivityLog"> | string
+    mode?: StringFilter<"MetaActivityLog"> | string
+    status?: StringFilter<"MetaActivityLog"> | string
+    apiPayload?: JsonNullableFilter<"MetaActivityLog">
+    apiResponse?: JsonNullableFilter<"MetaActivityLog">
+    errorMessage?: StringNullableFilter<"MetaActivityLog"> | string | null
+  }, "id">
+
+  export type MetaActivityLogOrderByWithAggregationInput = {
+    id?: SortOrder
+    timestamp?: SortOrder
+    action?: SortOrder
+    entityType?: SortOrder
+    entityId?: SortOrderInput | SortOrder
+    entityName?: SortOrderInput | SortOrder
+    ruleId?: SortOrderInput | SortOrder
+    ruleName?: SortOrderInput | SortOrder
+    previousValue?: SortOrderInput | SortOrder
+    newValue?: SortOrderInput | SortOrder
+    reason?: SortOrder
+    mode?: SortOrder
+    status?: SortOrder
+    apiPayload?: SortOrderInput | SortOrder
+    apiResponse?: SortOrderInput | SortOrder
+    errorMessage?: SortOrderInput | SortOrder
+    _count?: MetaActivityLogCountOrderByAggregateInput
+    _max?: MetaActivityLogMaxOrderByAggregateInput
+    _min?: MetaActivityLogMinOrderByAggregateInput
+  }
+
+  export type MetaActivityLogScalarWhereWithAggregatesInput = {
+    AND?: MetaActivityLogScalarWhereWithAggregatesInput | MetaActivityLogScalarWhereWithAggregatesInput[]
+    OR?: MetaActivityLogScalarWhereWithAggregatesInput[]
+    NOT?: MetaActivityLogScalarWhereWithAggregatesInput | MetaActivityLogScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MetaActivityLog"> | string
+    timestamp?: DateTimeWithAggregatesFilter<"MetaActivityLog"> | Date | string
+    action?: StringWithAggregatesFilter<"MetaActivityLog"> | string
+    entityType?: StringWithAggregatesFilter<"MetaActivityLog"> | string
+    entityId?: StringNullableWithAggregatesFilter<"MetaActivityLog"> | string | null
+    entityName?: StringNullableWithAggregatesFilter<"MetaActivityLog"> | string | null
+    ruleId?: StringNullableWithAggregatesFilter<"MetaActivityLog"> | string | null
+    ruleName?: StringNullableWithAggregatesFilter<"MetaActivityLog"> | string | null
+    previousValue?: StringNullableWithAggregatesFilter<"MetaActivityLog"> | string | null
+    newValue?: StringNullableWithAggregatesFilter<"MetaActivityLog"> | string | null
+    reason?: StringWithAggregatesFilter<"MetaActivityLog"> | string
+    mode?: StringWithAggregatesFilter<"MetaActivityLog"> | string
+    status?: StringWithAggregatesFilter<"MetaActivityLog"> | string
+    apiPayload?: JsonNullableWithAggregatesFilter<"MetaActivityLog">
+    apiResponse?: JsonNullableWithAggregatesFilter<"MetaActivityLog">
+    errorMessage?: StringNullableWithAggregatesFilter<"MetaActivityLog"> | string | null
+  }
+
+  export type MetaConversionEventWhereInput = {
+    AND?: MetaConversionEventWhereInput | MetaConversionEventWhereInput[]
+    OR?: MetaConversionEventWhereInput[]
+    NOT?: MetaConversionEventWhereInput | MetaConversionEventWhereInput[]
+    id?: StringFilter<"MetaConversionEvent"> | string
+    eventId?: StringFilter<"MetaConversionEvent"> | string
+    eventName?: StringFilter<"MetaConversionEvent"> | string
+    eventTime?: DateTimeFilter<"MetaConversionEvent"> | Date | string
+    sourceUrl?: StringNullableFilter<"MetaConversionEvent"> | string | null
+    orderId?: StringNullableFilter<"MetaConversionEvent"> | string | null
+    userEmail?: StringNullableFilter<"MetaConversionEvent"> | string | null
+    userPhone?: StringNullableFilter<"MetaConversionEvent"> | string | null
+    value?: IntNullableFilter<"MetaConversionEvent"> | number | null
+    currency?: StringFilter<"MetaConversionEvent"> | string
+    browserSent?: BoolFilter<"MetaConversionEvent"> | boolean
+    serverSent?: BoolFilter<"MetaConversionEvent"> | boolean
+    serverStatus?: StringNullableFilter<"MetaConversionEvent"> | string | null
+    serverError?: StringNullableFilter<"MetaConversionEvent"> | string | null
+    createdAt?: DateTimeFilter<"MetaConversionEvent"> | Date | string
+  }
+
+  export type MetaConversionEventOrderByWithRelationInput = {
+    id?: SortOrder
+    eventId?: SortOrder
+    eventName?: SortOrder
+    eventTime?: SortOrder
+    sourceUrl?: SortOrderInput | SortOrder
+    orderId?: SortOrderInput | SortOrder
+    userEmail?: SortOrderInput | SortOrder
+    userPhone?: SortOrderInput | SortOrder
+    value?: SortOrderInput | SortOrder
+    currency?: SortOrder
+    browserSent?: SortOrder
+    serverSent?: SortOrder
+    serverStatus?: SortOrderInput | SortOrder
+    serverError?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type MetaConversionEventWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    eventId?: string
+    AND?: MetaConversionEventWhereInput | MetaConversionEventWhereInput[]
+    OR?: MetaConversionEventWhereInput[]
+    NOT?: MetaConversionEventWhereInput | MetaConversionEventWhereInput[]
+    eventName?: StringFilter<"MetaConversionEvent"> | string
+    eventTime?: DateTimeFilter<"MetaConversionEvent"> | Date | string
+    sourceUrl?: StringNullableFilter<"MetaConversionEvent"> | string | null
+    orderId?: StringNullableFilter<"MetaConversionEvent"> | string | null
+    userEmail?: StringNullableFilter<"MetaConversionEvent"> | string | null
+    userPhone?: StringNullableFilter<"MetaConversionEvent"> | string | null
+    value?: IntNullableFilter<"MetaConversionEvent"> | number | null
+    currency?: StringFilter<"MetaConversionEvent"> | string
+    browserSent?: BoolFilter<"MetaConversionEvent"> | boolean
+    serverSent?: BoolFilter<"MetaConversionEvent"> | boolean
+    serverStatus?: StringNullableFilter<"MetaConversionEvent"> | string | null
+    serverError?: StringNullableFilter<"MetaConversionEvent"> | string | null
+    createdAt?: DateTimeFilter<"MetaConversionEvent"> | Date | string
+  }, "id" | "eventId">
+
+  export type MetaConversionEventOrderByWithAggregationInput = {
+    id?: SortOrder
+    eventId?: SortOrder
+    eventName?: SortOrder
+    eventTime?: SortOrder
+    sourceUrl?: SortOrderInput | SortOrder
+    orderId?: SortOrderInput | SortOrder
+    userEmail?: SortOrderInput | SortOrder
+    userPhone?: SortOrderInput | SortOrder
+    value?: SortOrderInput | SortOrder
+    currency?: SortOrder
+    browserSent?: SortOrder
+    serverSent?: SortOrder
+    serverStatus?: SortOrderInput | SortOrder
+    serverError?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: MetaConversionEventCountOrderByAggregateInput
+    _avg?: MetaConversionEventAvgOrderByAggregateInput
+    _max?: MetaConversionEventMaxOrderByAggregateInput
+    _min?: MetaConversionEventMinOrderByAggregateInput
+    _sum?: MetaConversionEventSumOrderByAggregateInput
+  }
+
+  export type MetaConversionEventScalarWhereWithAggregatesInput = {
+    AND?: MetaConversionEventScalarWhereWithAggregatesInput | MetaConversionEventScalarWhereWithAggregatesInput[]
+    OR?: MetaConversionEventScalarWhereWithAggregatesInput[]
+    NOT?: MetaConversionEventScalarWhereWithAggregatesInput | MetaConversionEventScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MetaConversionEvent"> | string
+    eventId?: StringWithAggregatesFilter<"MetaConversionEvent"> | string
+    eventName?: StringWithAggregatesFilter<"MetaConversionEvent"> | string
+    eventTime?: DateTimeWithAggregatesFilter<"MetaConversionEvent"> | Date | string
+    sourceUrl?: StringNullableWithAggregatesFilter<"MetaConversionEvent"> | string | null
+    orderId?: StringNullableWithAggregatesFilter<"MetaConversionEvent"> | string | null
+    userEmail?: StringNullableWithAggregatesFilter<"MetaConversionEvent"> | string | null
+    userPhone?: StringNullableWithAggregatesFilter<"MetaConversionEvent"> | string | null
+    value?: IntNullableWithAggregatesFilter<"MetaConversionEvent"> | number | null
+    currency?: StringWithAggregatesFilter<"MetaConversionEvent"> | string
+    browserSent?: BoolWithAggregatesFilter<"MetaConversionEvent"> | boolean
+    serverSent?: BoolWithAggregatesFilter<"MetaConversionEvent"> | boolean
+    serverStatus?: StringNullableWithAggregatesFilter<"MetaConversionEvent"> | string | null
+    serverError?: StringNullableWithAggregatesFilter<"MetaConversionEvent"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"MetaConversionEvent"> | Date | string
+  }
+
   export type CategoryCreateInput = {
     id?: string
     name: string
@@ -10854,6 +21216,7 @@ export namespace Prisma {
     category?: CategoryCreateNestedOneWithoutProductsInput
     variants?: ProductVariantCreateNestedManyWithoutProductInput
     wishlists?: WishlistCreateNestedManyWithoutProductInput
+    metaCampaigns?: MetaCampaignCreateNestedManyWithoutProductInput
   }
 
   export type ProductUncheckedCreateInput = {
@@ -10871,6 +21234,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     variants?: ProductVariantUncheckedCreateNestedManyWithoutProductInput
     wishlists?: WishlistUncheckedCreateNestedManyWithoutProductInput
+    metaCampaigns?: MetaCampaignUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type ProductUpdateInput = {
@@ -10888,6 +21252,7 @@ export namespace Prisma {
     category?: CategoryUpdateOneWithoutProductsNestedInput
     variants?: ProductVariantUpdateManyWithoutProductNestedInput
     wishlists?: WishlistUpdateManyWithoutProductNestedInput
+    metaCampaigns?: MetaCampaignUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateInput = {
@@ -10905,6 +21270,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     variants?: ProductVariantUncheckedUpdateManyWithoutProductNestedInput
     wishlists?: WishlistUncheckedUpdateManyWithoutProductNestedInput
+    metaCampaigns?: MetaCampaignUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type ProductCreateManyInput = {
@@ -11500,6 +21866,1008 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type MetaConfigCreateInput = {
+    id?: string
+    adAccountId?: string | null
+    pixelId?: string | null
+    accessToken?: string | null
+    capiToken?: string | null
+    appId?: string | null
+    appSecret?: string | null
+    automationMode?: string
+    automationEnabled?: boolean
+    dailySpendCap?: number
+    maxBudgetIncreasePct?: number
+    budgetIncreaseCooldownHours?: number
+    minDataPurchases?: number
+    minDataSpendPaise?: number
+    maxLossPerAdPaise?: number
+    targetRoas?: number
+    emergencyStop?: boolean
+    autoSyncSchedule?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MetaConfigUncheckedCreateInput = {
+    id?: string
+    adAccountId?: string | null
+    pixelId?: string | null
+    accessToken?: string | null
+    capiToken?: string | null
+    appId?: string | null
+    appSecret?: string | null
+    automationMode?: string
+    automationEnabled?: boolean
+    dailySpendCap?: number
+    maxBudgetIncreasePct?: number
+    budgetIncreaseCooldownHours?: number
+    minDataPurchases?: number
+    minDataSpendPaise?: number
+    maxLossPerAdPaise?: number
+    targetRoas?: number
+    emergencyStop?: boolean
+    autoSyncSchedule?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MetaConfigUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    adAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    pixelId?: NullableStringFieldUpdateOperationsInput | string | null
+    accessToken?: NullableStringFieldUpdateOperationsInput | string | null
+    capiToken?: NullableStringFieldUpdateOperationsInput | string | null
+    appId?: NullableStringFieldUpdateOperationsInput | string | null
+    appSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    automationMode?: StringFieldUpdateOperationsInput | string
+    automationEnabled?: BoolFieldUpdateOperationsInput | boolean
+    dailySpendCap?: IntFieldUpdateOperationsInput | number
+    maxBudgetIncreasePct?: FloatFieldUpdateOperationsInput | number
+    budgetIncreaseCooldownHours?: IntFieldUpdateOperationsInput | number
+    minDataPurchases?: IntFieldUpdateOperationsInput | number
+    minDataSpendPaise?: IntFieldUpdateOperationsInput | number
+    maxLossPerAdPaise?: IntFieldUpdateOperationsInput | number
+    targetRoas?: FloatFieldUpdateOperationsInput | number
+    emergencyStop?: BoolFieldUpdateOperationsInput | boolean
+    autoSyncSchedule?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MetaConfigUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    adAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    pixelId?: NullableStringFieldUpdateOperationsInput | string | null
+    accessToken?: NullableStringFieldUpdateOperationsInput | string | null
+    capiToken?: NullableStringFieldUpdateOperationsInput | string | null
+    appId?: NullableStringFieldUpdateOperationsInput | string | null
+    appSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    automationMode?: StringFieldUpdateOperationsInput | string
+    automationEnabled?: BoolFieldUpdateOperationsInput | boolean
+    dailySpendCap?: IntFieldUpdateOperationsInput | number
+    maxBudgetIncreasePct?: FloatFieldUpdateOperationsInput | number
+    budgetIncreaseCooldownHours?: IntFieldUpdateOperationsInput | number
+    minDataPurchases?: IntFieldUpdateOperationsInput | number
+    minDataSpendPaise?: IntFieldUpdateOperationsInput | number
+    maxLossPerAdPaise?: IntFieldUpdateOperationsInput | number
+    targetRoas?: FloatFieldUpdateOperationsInput | number
+    emergencyStop?: BoolFieldUpdateOperationsInput | boolean
+    autoSyncSchedule?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MetaConfigCreateManyInput = {
+    id?: string
+    adAccountId?: string | null
+    pixelId?: string | null
+    accessToken?: string | null
+    capiToken?: string | null
+    appId?: string | null
+    appSecret?: string | null
+    automationMode?: string
+    automationEnabled?: boolean
+    dailySpendCap?: number
+    maxBudgetIncreasePct?: number
+    budgetIncreaseCooldownHours?: number
+    minDataPurchases?: number
+    minDataSpendPaise?: number
+    maxLossPerAdPaise?: number
+    targetRoas?: number
+    emergencyStop?: boolean
+    autoSyncSchedule?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MetaConfigUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    adAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    pixelId?: NullableStringFieldUpdateOperationsInput | string | null
+    accessToken?: NullableStringFieldUpdateOperationsInput | string | null
+    capiToken?: NullableStringFieldUpdateOperationsInput | string | null
+    appId?: NullableStringFieldUpdateOperationsInput | string | null
+    appSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    automationMode?: StringFieldUpdateOperationsInput | string
+    automationEnabled?: BoolFieldUpdateOperationsInput | boolean
+    dailySpendCap?: IntFieldUpdateOperationsInput | number
+    maxBudgetIncreasePct?: FloatFieldUpdateOperationsInput | number
+    budgetIncreaseCooldownHours?: IntFieldUpdateOperationsInput | number
+    minDataPurchases?: IntFieldUpdateOperationsInput | number
+    minDataSpendPaise?: IntFieldUpdateOperationsInput | number
+    maxLossPerAdPaise?: IntFieldUpdateOperationsInput | number
+    targetRoas?: FloatFieldUpdateOperationsInput | number
+    emergencyStop?: BoolFieldUpdateOperationsInput | boolean
+    autoSyncSchedule?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MetaConfigUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    adAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    pixelId?: NullableStringFieldUpdateOperationsInput | string | null
+    accessToken?: NullableStringFieldUpdateOperationsInput | string | null
+    capiToken?: NullableStringFieldUpdateOperationsInput | string | null
+    appId?: NullableStringFieldUpdateOperationsInput | string | null
+    appSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    automationMode?: StringFieldUpdateOperationsInput | string
+    automationEnabled?: BoolFieldUpdateOperationsInput | boolean
+    dailySpendCap?: IntFieldUpdateOperationsInput | number
+    maxBudgetIncreasePct?: FloatFieldUpdateOperationsInput | number
+    budgetIncreaseCooldownHours?: IntFieldUpdateOperationsInput | number
+    minDataPurchases?: IntFieldUpdateOperationsInput | number
+    minDataSpendPaise?: IntFieldUpdateOperationsInput | number
+    maxLossPerAdPaise?: IntFieldUpdateOperationsInput | number
+    targetRoas?: FloatFieldUpdateOperationsInput | number
+    emergencyStop?: BoolFieldUpdateOperationsInput | boolean
+    autoSyncSchedule?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MetaCampaignCreateInput = {
+    id?: string
+    metaCampaignId?: string | null
+    name: string
+    objective?: string
+    status?: string
+    dailyBudget?: number | null
+    lifetimeBudget?: number | null
+    buyingType?: string
+    isAutomated?: boolean
+    templateType?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    product?: ProductCreateNestedOneWithoutMetaCampaignsInput
+    adSets?: MetaAdSetCreateNestedManyWithoutCampaignInput
+    insights?: MetaInsightCreateNestedManyWithoutCampaignInput
+  }
+
+  export type MetaCampaignUncheckedCreateInput = {
+    id?: string
+    metaCampaignId?: string | null
+    name: string
+    objective?: string
+    status?: string
+    dailyBudget?: number | null
+    lifetimeBudget?: number | null
+    buyingType?: string
+    isAutomated?: boolean
+    templateType?: string | null
+    productId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    adSets?: MetaAdSetUncheckedCreateNestedManyWithoutCampaignInput
+    insights?: MetaInsightUncheckedCreateNestedManyWithoutCampaignInput
+  }
+
+  export type MetaCampaignUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaCampaignId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    objective?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    dailyBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    lifetimeBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    buyingType?: StringFieldUpdateOperationsInput | string
+    isAutomated?: BoolFieldUpdateOperationsInput | boolean
+    templateType?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    product?: ProductUpdateOneWithoutMetaCampaignsNestedInput
+    adSets?: MetaAdSetUpdateManyWithoutCampaignNestedInput
+    insights?: MetaInsightUpdateManyWithoutCampaignNestedInput
+  }
+
+  export type MetaCampaignUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaCampaignId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    objective?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    dailyBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    lifetimeBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    buyingType?: StringFieldUpdateOperationsInput | string
+    isAutomated?: BoolFieldUpdateOperationsInput | boolean
+    templateType?: NullableStringFieldUpdateOperationsInput | string | null
+    productId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    adSets?: MetaAdSetUncheckedUpdateManyWithoutCampaignNestedInput
+    insights?: MetaInsightUncheckedUpdateManyWithoutCampaignNestedInput
+  }
+
+  export type MetaCampaignCreateManyInput = {
+    id?: string
+    metaCampaignId?: string | null
+    name: string
+    objective?: string
+    status?: string
+    dailyBudget?: number | null
+    lifetimeBudget?: number | null
+    buyingType?: string
+    isAutomated?: boolean
+    templateType?: string | null
+    productId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MetaCampaignUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaCampaignId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    objective?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    dailyBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    lifetimeBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    buyingType?: StringFieldUpdateOperationsInput | string
+    isAutomated?: BoolFieldUpdateOperationsInput | boolean
+    templateType?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MetaCampaignUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaCampaignId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    objective?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    dailyBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    lifetimeBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    buyingType?: StringFieldUpdateOperationsInput | string
+    isAutomated?: BoolFieldUpdateOperationsInput | boolean
+    templateType?: NullableStringFieldUpdateOperationsInput | string | null
+    productId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MetaAdSetCreateInput = {
+    id?: string
+    metaAdSetId?: string | null
+    name: string
+    status?: string
+    dailyBudget?: number | null
+    targetingJson?: NullableJsonNullValueInput | InputJsonValue
+    optimizationGoal?: string
+    billingEvent?: string
+    bidAmount?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    campaign: MetaCampaignCreateNestedOneWithoutAdSetsInput
+    ads?: MetaAdCreateNestedManyWithoutAdSetInput
+  }
+
+  export type MetaAdSetUncheckedCreateInput = {
+    id?: string
+    metaAdSetId?: string | null
+    campaignId: string
+    name: string
+    status?: string
+    dailyBudget?: number | null
+    targetingJson?: NullableJsonNullValueInput | InputJsonValue
+    optimizationGoal?: string
+    billingEvent?: string
+    bidAmount?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ads?: MetaAdUncheckedCreateNestedManyWithoutAdSetInput
+  }
+
+  export type MetaAdSetUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaAdSetId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    dailyBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    targetingJson?: NullableJsonNullValueInput | InputJsonValue
+    optimizationGoal?: StringFieldUpdateOperationsInput | string
+    billingEvent?: StringFieldUpdateOperationsInput | string
+    bidAmount?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    campaign?: MetaCampaignUpdateOneRequiredWithoutAdSetsNestedInput
+    ads?: MetaAdUpdateManyWithoutAdSetNestedInput
+  }
+
+  export type MetaAdSetUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaAdSetId?: NullableStringFieldUpdateOperationsInput | string | null
+    campaignId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    dailyBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    targetingJson?: NullableJsonNullValueInput | InputJsonValue
+    optimizationGoal?: StringFieldUpdateOperationsInput | string
+    billingEvent?: StringFieldUpdateOperationsInput | string
+    bidAmount?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ads?: MetaAdUncheckedUpdateManyWithoutAdSetNestedInput
+  }
+
+  export type MetaAdSetCreateManyInput = {
+    id?: string
+    metaAdSetId?: string | null
+    campaignId: string
+    name: string
+    status?: string
+    dailyBudget?: number | null
+    targetingJson?: NullableJsonNullValueInput | InputJsonValue
+    optimizationGoal?: string
+    billingEvent?: string
+    bidAmount?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MetaAdSetUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaAdSetId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    dailyBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    targetingJson?: NullableJsonNullValueInput | InputJsonValue
+    optimizationGoal?: StringFieldUpdateOperationsInput | string
+    billingEvent?: StringFieldUpdateOperationsInput | string
+    bidAmount?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MetaAdSetUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaAdSetId?: NullableStringFieldUpdateOperationsInput | string | null
+    campaignId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    dailyBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    targetingJson?: NullableJsonNullValueInput | InputJsonValue
+    optimizationGoal?: StringFieldUpdateOperationsInput | string
+    billingEvent?: StringFieldUpdateOperationsInput | string
+    bidAmount?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MetaAdCreateInput = {
+    id?: string
+    metaAdId?: string | null
+    name: string
+    status?: string
+    creativeAngle: string
+    headline: string
+    primaryText: string
+    description?: string | null
+    callToAction?: string
+    imageUrl: string
+    destinationUrl: string
+    creativeJson?: NullableJsonNullValueInput | InputJsonValue
+    productId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    adSet: MetaAdSetCreateNestedOneWithoutAdsInput
+  }
+
+  export type MetaAdUncheckedCreateInput = {
+    id?: string
+    metaAdId?: string | null
+    adSetId: string
+    name: string
+    status?: string
+    creativeAngle: string
+    headline: string
+    primaryText: string
+    description?: string | null
+    callToAction?: string
+    imageUrl: string
+    destinationUrl: string
+    creativeJson?: NullableJsonNullValueInput | InputJsonValue
+    productId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MetaAdUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaAdId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    creativeAngle?: StringFieldUpdateOperationsInput | string
+    headline?: StringFieldUpdateOperationsInput | string
+    primaryText?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    callToAction?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    destinationUrl?: StringFieldUpdateOperationsInput | string
+    creativeJson?: NullableJsonNullValueInput | InputJsonValue
+    productId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    adSet?: MetaAdSetUpdateOneRequiredWithoutAdsNestedInput
+  }
+
+  export type MetaAdUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaAdId?: NullableStringFieldUpdateOperationsInput | string | null
+    adSetId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    creativeAngle?: StringFieldUpdateOperationsInput | string
+    headline?: StringFieldUpdateOperationsInput | string
+    primaryText?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    callToAction?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    destinationUrl?: StringFieldUpdateOperationsInput | string
+    creativeJson?: NullableJsonNullValueInput | InputJsonValue
+    productId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MetaAdCreateManyInput = {
+    id?: string
+    metaAdId?: string | null
+    adSetId: string
+    name: string
+    status?: string
+    creativeAngle: string
+    headline: string
+    primaryText: string
+    description?: string | null
+    callToAction?: string
+    imageUrl: string
+    destinationUrl: string
+    creativeJson?: NullableJsonNullValueInput | InputJsonValue
+    productId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MetaAdUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaAdId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    creativeAngle?: StringFieldUpdateOperationsInput | string
+    headline?: StringFieldUpdateOperationsInput | string
+    primaryText?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    callToAction?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    destinationUrl?: StringFieldUpdateOperationsInput | string
+    creativeJson?: NullableJsonNullValueInput | InputJsonValue
+    productId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MetaAdUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaAdId?: NullableStringFieldUpdateOperationsInput | string | null
+    adSetId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    creativeAngle?: StringFieldUpdateOperationsInput | string
+    headline?: StringFieldUpdateOperationsInput | string
+    primaryText?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    callToAction?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    destinationUrl?: StringFieldUpdateOperationsInput | string
+    creativeJson?: NullableJsonNullValueInput | InputJsonValue
+    productId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MetaInsightCreateInput = {
+    id?: string
+    entityType: string
+    entityId: string
+    date: Date | string
+    spend?: number
+    impressions?: number
+    clicks?: number
+    ctr?: number
+    cpc?: number
+    purchases?: number
+    purchaseValue?: number
+    roas?: number
+    costPerPurchase?: number
+    createdAt?: Date | string
+    campaign?: MetaCampaignCreateNestedOneWithoutInsightsInput
+  }
+
+  export type MetaInsightUncheckedCreateInput = {
+    id?: string
+    entityType: string
+    entityId: string
+    campaignId?: string | null
+    date: Date | string
+    spend?: number
+    impressions?: number
+    clicks?: number
+    ctr?: number
+    cpc?: number
+    purchases?: number
+    purchaseValue?: number
+    roas?: number
+    costPerPurchase?: number
+    createdAt?: Date | string
+  }
+
+  export type MetaInsightUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    entityType?: StringFieldUpdateOperationsInput | string
+    entityId?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    spend?: IntFieldUpdateOperationsInput | number
+    impressions?: IntFieldUpdateOperationsInput | number
+    clicks?: IntFieldUpdateOperationsInput | number
+    ctr?: FloatFieldUpdateOperationsInput | number
+    cpc?: FloatFieldUpdateOperationsInput | number
+    purchases?: IntFieldUpdateOperationsInput | number
+    purchaseValue?: IntFieldUpdateOperationsInput | number
+    roas?: FloatFieldUpdateOperationsInput | number
+    costPerPurchase?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    campaign?: MetaCampaignUpdateOneWithoutInsightsNestedInput
+  }
+
+  export type MetaInsightUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    entityType?: StringFieldUpdateOperationsInput | string
+    entityId?: StringFieldUpdateOperationsInput | string
+    campaignId?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    spend?: IntFieldUpdateOperationsInput | number
+    impressions?: IntFieldUpdateOperationsInput | number
+    clicks?: IntFieldUpdateOperationsInput | number
+    ctr?: FloatFieldUpdateOperationsInput | number
+    cpc?: FloatFieldUpdateOperationsInput | number
+    purchases?: IntFieldUpdateOperationsInput | number
+    purchaseValue?: IntFieldUpdateOperationsInput | number
+    roas?: FloatFieldUpdateOperationsInput | number
+    costPerPurchase?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MetaInsightCreateManyInput = {
+    id?: string
+    entityType: string
+    entityId: string
+    campaignId?: string | null
+    date: Date | string
+    spend?: number
+    impressions?: number
+    clicks?: number
+    ctr?: number
+    cpc?: number
+    purchases?: number
+    purchaseValue?: number
+    roas?: number
+    costPerPurchase?: number
+    createdAt?: Date | string
+  }
+
+  export type MetaInsightUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    entityType?: StringFieldUpdateOperationsInput | string
+    entityId?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    spend?: IntFieldUpdateOperationsInput | number
+    impressions?: IntFieldUpdateOperationsInput | number
+    clicks?: IntFieldUpdateOperationsInput | number
+    ctr?: FloatFieldUpdateOperationsInput | number
+    cpc?: FloatFieldUpdateOperationsInput | number
+    purchases?: IntFieldUpdateOperationsInput | number
+    purchaseValue?: IntFieldUpdateOperationsInput | number
+    roas?: FloatFieldUpdateOperationsInput | number
+    costPerPurchase?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MetaInsightUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    entityType?: StringFieldUpdateOperationsInput | string
+    entityId?: StringFieldUpdateOperationsInput | string
+    campaignId?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    spend?: IntFieldUpdateOperationsInput | number
+    impressions?: IntFieldUpdateOperationsInput | number
+    clicks?: IntFieldUpdateOperationsInput | number
+    ctr?: FloatFieldUpdateOperationsInput | number
+    cpc?: FloatFieldUpdateOperationsInput | number
+    purchases?: IntFieldUpdateOperationsInput | number
+    purchaseValue?: IntFieldUpdateOperationsInput | number
+    roas?: FloatFieldUpdateOperationsInput | number
+    costPerPurchase?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MetaAutomationRuleCreateInput = {
+    id?: string
+    name: string
+    description?: string | null
+    ruleType: string
+    enabled?: boolean
+    conditionJson: JsonNullValueInput | InputJsonValue
+    actionJson: JsonNullValueInput | InputJsonValue
+    evaluationCooldownHours?: number
+    lastEvaluatedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MetaAutomationRuleUncheckedCreateInput = {
+    id?: string
+    name: string
+    description?: string | null
+    ruleType: string
+    enabled?: boolean
+    conditionJson: JsonNullValueInput | InputJsonValue
+    actionJson: JsonNullValueInput | InputJsonValue
+    evaluationCooldownHours?: number
+    lastEvaluatedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MetaAutomationRuleUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    ruleType?: StringFieldUpdateOperationsInput | string
+    enabled?: BoolFieldUpdateOperationsInput | boolean
+    conditionJson?: JsonNullValueInput | InputJsonValue
+    actionJson?: JsonNullValueInput | InputJsonValue
+    evaluationCooldownHours?: IntFieldUpdateOperationsInput | number
+    lastEvaluatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MetaAutomationRuleUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    ruleType?: StringFieldUpdateOperationsInput | string
+    enabled?: BoolFieldUpdateOperationsInput | boolean
+    conditionJson?: JsonNullValueInput | InputJsonValue
+    actionJson?: JsonNullValueInput | InputJsonValue
+    evaluationCooldownHours?: IntFieldUpdateOperationsInput | number
+    lastEvaluatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MetaAutomationRuleCreateManyInput = {
+    id?: string
+    name: string
+    description?: string | null
+    ruleType: string
+    enabled?: boolean
+    conditionJson: JsonNullValueInput | InputJsonValue
+    actionJson: JsonNullValueInput | InputJsonValue
+    evaluationCooldownHours?: number
+    lastEvaluatedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MetaAutomationRuleUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    ruleType?: StringFieldUpdateOperationsInput | string
+    enabled?: BoolFieldUpdateOperationsInput | boolean
+    conditionJson?: JsonNullValueInput | InputJsonValue
+    actionJson?: JsonNullValueInput | InputJsonValue
+    evaluationCooldownHours?: IntFieldUpdateOperationsInput | number
+    lastEvaluatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MetaAutomationRuleUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    ruleType?: StringFieldUpdateOperationsInput | string
+    enabled?: BoolFieldUpdateOperationsInput | boolean
+    conditionJson?: JsonNullValueInput | InputJsonValue
+    actionJson?: JsonNullValueInput | InputJsonValue
+    evaluationCooldownHours?: IntFieldUpdateOperationsInput | number
+    lastEvaluatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MetaActivityLogCreateInput = {
+    id?: string
+    timestamp?: Date | string
+    action: string
+    entityType: string
+    entityId?: string | null
+    entityName?: string | null
+    ruleId?: string | null
+    ruleName?: string | null
+    previousValue?: string | null
+    newValue?: string | null
+    reason: string
+    mode?: string
+    status?: string
+    apiPayload?: NullableJsonNullValueInput | InputJsonValue
+    apiResponse?: NullableJsonNullValueInput | InputJsonValue
+    errorMessage?: string | null
+  }
+
+  export type MetaActivityLogUncheckedCreateInput = {
+    id?: string
+    timestamp?: Date | string
+    action: string
+    entityType: string
+    entityId?: string | null
+    entityName?: string | null
+    ruleId?: string | null
+    ruleName?: string | null
+    previousValue?: string | null
+    newValue?: string | null
+    reason: string
+    mode?: string
+    status?: string
+    apiPayload?: NullableJsonNullValueInput | InputJsonValue
+    apiResponse?: NullableJsonNullValueInput | InputJsonValue
+    errorMessage?: string | null
+  }
+
+  export type MetaActivityLogUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    action?: StringFieldUpdateOperationsInput | string
+    entityType?: StringFieldUpdateOperationsInput | string
+    entityId?: NullableStringFieldUpdateOperationsInput | string | null
+    entityName?: NullableStringFieldUpdateOperationsInput | string | null
+    ruleId?: NullableStringFieldUpdateOperationsInput | string | null
+    ruleName?: NullableStringFieldUpdateOperationsInput | string | null
+    previousValue?: NullableStringFieldUpdateOperationsInput | string | null
+    newValue?: NullableStringFieldUpdateOperationsInput | string | null
+    reason?: StringFieldUpdateOperationsInput | string
+    mode?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    apiPayload?: NullableJsonNullValueInput | InputJsonValue
+    apiResponse?: NullableJsonNullValueInput | InputJsonValue
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type MetaActivityLogUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    action?: StringFieldUpdateOperationsInput | string
+    entityType?: StringFieldUpdateOperationsInput | string
+    entityId?: NullableStringFieldUpdateOperationsInput | string | null
+    entityName?: NullableStringFieldUpdateOperationsInput | string | null
+    ruleId?: NullableStringFieldUpdateOperationsInput | string | null
+    ruleName?: NullableStringFieldUpdateOperationsInput | string | null
+    previousValue?: NullableStringFieldUpdateOperationsInput | string | null
+    newValue?: NullableStringFieldUpdateOperationsInput | string | null
+    reason?: StringFieldUpdateOperationsInput | string
+    mode?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    apiPayload?: NullableJsonNullValueInput | InputJsonValue
+    apiResponse?: NullableJsonNullValueInput | InputJsonValue
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type MetaActivityLogCreateManyInput = {
+    id?: string
+    timestamp?: Date | string
+    action: string
+    entityType: string
+    entityId?: string | null
+    entityName?: string | null
+    ruleId?: string | null
+    ruleName?: string | null
+    previousValue?: string | null
+    newValue?: string | null
+    reason: string
+    mode?: string
+    status?: string
+    apiPayload?: NullableJsonNullValueInput | InputJsonValue
+    apiResponse?: NullableJsonNullValueInput | InputJsonValue
+    errorMessage?: string | null
+  }
+
+  export type MetaActivityLogUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    action?: StringFieldUpdateOperationsInput | string
+    entityType?: StringFieldUpdateOperationsInput | string
+    entityId?: NullableStringFieldUpdateOperationsInput | string | null
+    entityName?: NullableStringFieldUpdateOperationsInput | string | null
+    ruleId?: NullableStringFieldUpdateOperationsInput | string | null
+    ruleName?: NullableStringFieldUpdateOperationsInput | string | null
+    previousValue?: NullableStringFieldUpdateOperationsInput | string | null
+    newValue?: NullableStringFieldUpdateOperationsInput | string | null
+    reason?: StringFieldUpdateOperationsInput | string
+    mode?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    apiPayload?: NullableJsonNullValueInput | InputJsonValue
+    apiResponse?: NullableJsonNullValueInput | InputJsonValue
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type MetaActivityLogUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    action?: StringFieldUpdateOperationsInput | string
+    entityType?: StringFieldUpdateOperationsInput | string
+    entityId?: NullableStringFieldUpdateOperationsInput | string | null
+    entityName?: NullableStringFieldUpdateOperationsInput | string | null
+    ruleId?: NullableStringFieldUpdateOperationsInput | string | null
+    ruleName?: NullableStringFieldUpdateOperationsInput | string | null
+    previousValue?: NullableStringFieldUpdateOperationsInput | string | null
+    newValue?: NullableStringFieldUpdateOperationsInput | string | null
+    reason?: StringFieldUpdateOperationsInput | string
+    mode?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    apiPayload?: NullableJsonNullValueInput | InputJsonValue
+    apiResponse?: NullableJsonNullValueInput | InputJsonValue
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type MetaConversionEventCreateInput = {
+    id?: string
+    eventId: string
+    eventName: string
+    eventTime?: Date | string
+    sourceUrl?: string | null
+    orderId?: string | null
+    userEmail?: string | null
+    userPhone?: string | null
+    value?: number | null
+    currency?: string
+    browserSent?: boolean
+    serverSent?: boolean
+    serverStatus?: string | null
+    serverError?: string | null
+    createdAt?: Date | string
+  }
+
+  export type MetaConversionEventUncheckedCreateInput = {
+    id?: string
+    eventId: string
+    eventName: string
+    eventTime?: Date | string
+    sourceUrl?: string | null
+    orderId?: string | null
+    userEmail?: string | null
+    userPhone?: string | null
+    value?: number | null
+    currency?: string
+    browserSent?: boolean
+    serverSent?: boolean
+    serverStatus?: string | null
+    serverError?: string | null
+    createdAt?: Date | string
+  }
+
+  export type MetaConversionEventUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    eventId?: StringFieldUpdateOperationsInput | string
+    eventName?: StringFieldUpdateOperationsInput | string
+    eventTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    sourceUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    orderId?: NullableStringFieldUpdateOperationsInput | string | null
+    userEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    value?: NullableIntFieldUpdateOperationsInput | number | null
+    currency?: StringFieldUpdateOperationsInput | string
+    browserSent?: BoolFieldUpdateOperationsInput | boolean
+    serverSent?: BoolFieldUpdateOperationsInput | boolean
+    serverStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    serverError?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MetaConversionEventUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    eventId?: StringFieldUpdateOperationsInput | string
+    eventName?: StringFieldUpdateOperationsInput | string
+    eventTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    sourceUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    orderId?: NullableStringFieldUpdateOperationsInput | string | null
+    userEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    value?: NullableIntFieldUpdateOperationsInput | number | null
+    currency?: StringFieldUpdateOperationsInput | string
+    browserSent?: BoolFieldUpdateOperationsInput | boolean
+    serverSent?: BoolFieldUpdateOperationsInput | boolean
+    serverStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    serverError?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MetaConversionEventCreateManyInput = {
+    id?: string
+    eventId: string
+    eventName: string
+    eventTime?: Date | string
+    sourceUrl?: string | null
+    orderId?: string | null
+    userEmail?: string | null
+    userPhone?: string | null
+    value?: number | null
+    currency?: string
+    browserSent?: boolean
+    serverSent?: boolean
+    serverStatus?: string | null
+    serverError?: string | null
+    createdAt?: Date | string
+  }
+
+  export type MetaConversionEventUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    eventId?: StringFieldUpdateOperationsInput | string
+    eventName?: StringFieldUpdateOperationsInput | string
+    eventTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    sourceUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    orderId?: NullableStringFieldUpdateOperationsInput | string | null
+    userEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    value?: NullableIntFieldUpdateOperationsInput | number | null
+    currency?: StringFieldUpdateOperationsInput | string
+    browserSent?: BoolFieldUpdateOperationsInput | boolean
+    serverSent?: BoolFieldUpdateOperationsInput | boolean
+    serverStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    serverError?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MetaConversionEventUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    eventId?: StringFieldUpdateOperationsInput | string
+    eventName?: StringFieldUpdateOperationsInput | string
+    eventTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    sourceUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    orderId?: NullableStringFieldUpdateOperationsInput | string | null
+    userEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    value?: NullableIntFieldUpdateOperationsInput | number | null
+    currency?: StringFieldUpdateOperationsInput | string
+    browserSent?: BoolFieldUpdateOperationsInput | boolean
+    serverSent?: BoolFieldUpdateOperationsInput | boolean
+    serverStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    serverError?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -11656,6 +23024,12 @@ export namespace Prisma {
     none?: WishlistWhereInput
   }
 
+  export type MetaCampaignListRelationFilter = {
+    every?: MetaCampaignWhereInput
+    some?: MetaCampaignWhereInput
+    none?: MetaCampaignWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -11666,6 +23040,10 @@ export namespace Prisma {
   }
 
   export type WishlistOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MetaCampaignOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -12127,6 +23505,702 @@ export namespace Prisma {
     createdAt?: SortOrder
   }
 
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type MetaConfigCountOrderByAggregateInput = {
+    id?: SortOrder
+    adAccountId?: SortOrder
+    pixelId?: SortOrder
+    accessToken?: SortOrder
+    capiToken?: SortOrder
+    appId?: SortOrder
+    appSecret?: SortOrder
+    automationMode?: SortOrder
+    automationEnabled?: SortOrder
+    dailySpendCap?: SortOrder
+    maxBudgetIncreasePct?: SortOrder
+    budgetIncreaseCooldownHours?: SortOrder
+    minDataPurchases?: SortOrder
+    minDataSpendPaise?: SortOrder
+    maxLossPerAdPaise?: SortOrder
+    targetRoas?: SortOrder
+    emergencyStop?: SortOrder
+    autoSyncSchedule?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MetaConfigAvgOrderByAggregateInput = {
+    dailySpendCap?: SortOrder
+    maxBudgetIncreasePct?: SortOrder
+    budgetIncreaseCooldownHours?: SortOrder
+    minDataPurchases?: SortOrder
+    minDataSpendPaise?: SortOrder
+    maxLossPerAdPaise?: SortOrder
+    targetRoas?: SortOrder
+  }
+
+  export type MetaConfigMaxOrderByAggregateInput = {
+    id?: SortOrder
+    adAccountId?: SortOrder
+    pixelId?: SortOrder
+    accessToken?: SortOrder
+    capiToken?: SortOrder
+    appId?: SortOrder
+    appSecret?: SortOrder
+    automationMode?: SortOrder
+    automationEnabled?: SortOrder
+    dailySpendCap?: SortOrder
+    maxBudgetIncreasePct?: SortOrder
+    budgetIncreaseCooldownHours?: SortOrder
+    minDataPurchases?: SortOrder
+    minDataSpendPaise?: SortOrder
+    maxLossPerAdPaise?: SortOrder
+    targetRoas?: SortOrder
+    emergencyStop?: SortOrder
+    autoSyncSchedule?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MetaConfigMinOrderByAggregateInput = {
+    id?: SortOrder
+    adAccountId?: SortOrder
+    pixelId?: SortOrder
+    accessToken?: SortOrder
+    capiToken?: SortOrder
+    appId?: SortOrder
+    appSecret?: SortOrder
+    automationMode?: SortOrder
+    automationEnabled?: SortOrder
+    dailySpendCap?: SortOrder
+    maxBudgetIncreasePct?: SortOrder
+    budgetIncreaseCooldownHours?: SortOrder
+    minDataPurchases?: SortOrder
+    minDataSpendPaise?: SortOrder
+    maxLossPerAdPaise?: SortOrder
+    targetRoas?: SortOrder
+    emergencyStop?: SortOrder
+    autoSyncSchedule?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MetaConfigSumOrderByAggregateInput = {
+    dailySpendCap?: SortOrder
+    maxBudgetIncreasePct?: SortOrder
+    budgetIncreaseCooldownHours?: SortOrder
+    minDataPurchases?: SortOrder
+    minDataSpendPaise?: SortOrder
+    maxLossPerAdPaise?: SortOrder
+    targetRoas?: SortOrder
+  }
+
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type ProductNullableRelationFilter = {
+    is?: ProductWhereInput | null
+    isNot?: ProductWhereInput | null
+  }
+
+  export type MetaAdSetListRelationFilter = {
+    every?: MetaAdSetWhereInput
+    some?: MetaAdSetWhereInput
+    none?: MetaAdSetWhereInput
+  }
+
+  export type MetaInsightListRelationFilter = {
+    every?: MetaInsightWhereInput
+    some?: MetaInsightWhereInput
+    none?: MetaInsightWhereInput
+  }
+
+  export type MetaAdSetOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MetaInsightOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MetaCampaignCountOrderByAggregateInput = {
+    id?: SortOrder
+    metaCampaignId?: SortOrder
+    name?: SortOrder
+    objective?: SortOrder
+    status?: SortOrder
+    dailyBudget?: SortOrder
+    lifetimeBudget?: SortOrder
+    buyingType?: SortOrder
+    isAutomated?: SortOrder
+    templateType?: SortOrder
+    productId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MetaCampaignAvgOrderByAggregateInput = {
+    dailyBudget?: SortOrder
+    lifetimeBudget?: SortOrder
+  }
+
+  export type MetaCampaignMaxOrderByAggregateInput = {
+    id?: SortOrder
+    metaCampaignId?: SortOrder
+    name?: SortOrder
+    objective?: SortOrder
+    status?: SortOrder
+    dailyBudget?: SortOrder
+    lifetimeBudget?: SortOrder
+    buyingType?: SortOrder
+    isAutomated?: SortOrder
+    templateType?: SortOrder
+    productId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MetaCampaignMinOrderByAggregateInput = {
+    id?: SortOrder
+    metaCampaignId?: SortOrder
+    name?: SortOrder
+    objective?: SortOrder
+    status?: SortOrder
+    dailyBudget?: SortOrder
+    lifetimeBudget?: SortOrder
+    buyingType?: SortOrder
+    isAutomated?: SortOrder
+    templateType?: SortOrder
+    productId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MetaCampaignSumOrderByAggregateInput = {
+    dailyBudget?: SortOrder
+    lifetimeBudget?: SortOrder
+  }
+  export type JsonNullableFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type MetaCampaignRelationFilter = {
+    is?: MetaCampaignWhereInput
+    isNot?: MetaCampaignWhereInput
+  }
+
+  export type MetaAdListRelationFilter = {
+    every?: MetaAdWhereInput
+    some?: MetaAdWhereInput
+    none?: MetaAdWhereInput
+  }
+
+  export type MetaAdOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MetaAdSetCountOrderByAggregateInput = {
+    id?: SortOrder
+    metaAdSetId?: SortOrder
+    campaignId?: SortOrder
+    name?: SortOrder
+    status?: SortOrder
+    dailyBudget?: SortOrder
+    targetingJson?: SortOrder
+    optimizationGoal?: SortOrder
+    billingEvent?: SortOrder
+    bidAmount?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MetaAdSetAvgOrderByAggregateInput = {
+    dailyBudget?: SortOrder
+    bidAmount?: SortOrder
+  }
+
+  export type MetaAdSetMaxOrderByAggregateInput = {
+    id?: SortOrder
+    metaAdSetId?: SortOrder
+    campaignId?: SortOrder
+    name?: SortOrder
+    status?: SortOrder
+    dailyBudget?: SortOrder
+    optimizationGoal?: SortOrder
+    billingEvent?: SortOrder
+    bidAmount?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MetaAdSetMinOrderByAggregateInput = {
+    id?: SortOrder
+    metaAdSetId?: SortOrder
+    campaignId?: SortOrder
+    name?: SortOrder
+    status?: SortOrder
+    dailyBudget?: SortOrder
+    optimizationGoal?: SortOrder
+    billingEvent?: SortOrder
+    bidAmount?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MetaAdSetSumOrderByAggregateInput = {
+    dailyBudget?: SortOrder
+    bidAmount?: SortOrder
+  }
+  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedJsonNullableFilter<$PrismaModel>
+    _max?: NestedJsonNullableFilter<$PrismaModel>
+  }
+
+  export type MetaAdSetRelationFilter = {
+    is?: MetaAdSetWhereInput
+    isNot?: MetaAdSetWhereInput
+  }
+
+  export type MetaAdCountOrderByAggregateInput = {
+    id?: SortOrder
+    metaAdId?: SortOrder
+    adSetId?: SortOrder
+    name?: SortOrder
+    status?: SortOrder
+    creativeAngle?: SortOrder
+    headline?: SortOrder
+    primaryText?: SortOrder
+    description?: SortOrder
+    callToAction?: SortOrder
+    imageUrl?: SortOrder
+    destinationUrl?: SortOrder
+    creativeJson?: SortOrder
+    productId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MetaAdMaxOrderByAggregateInput = {
+    id?: SortOrder
+    metaAdId?: SortOrder
+    adSetId?: SortOrder
+    name?: SortOrder
+    status?: SortOrder
+    creativeAngle?: SortOrder
+    headline?: SortOrder
+    primaryText?: SortOrder
+    description?: SortOrder
+    callToAction?: SortOrder
+    imageUrl?: SortOrder
+    destinationUrl?: SortOrder
+    productId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MetaAdMinOrderByAggregateInput = {
+    id?: SortOrder
+    metaAdId?: SortOrder
+    adSetId?: SortOrder
+    name?: SortOrder
+    status?: SortOrder
+    creativeAngle?: SortOrder
+    headline?: SortOrder
+    primaryText?: SortOrder
+    description?: SortOrder
+    callToAction?: SortOrder
+    imageUrl?: SortOrder
+    destinationUrl?: SortOrder
+    productId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MetaCampaignNullableRelationFilter = {
+    is?: MetaCampaignWhereInput | null
+    isNot?: MetaCampaignWhereInput | null
+  }
+
+  export type MetaInsightEntityTypeEntityIdDateCompoundUniqueInput = {
+    entityType: string
+    entityId: string
+    date: Date | string
+  }
+
+  export type MetaInsightCountOrderByAggregateInput = {
+    id?: SortOrder
+    entityType?: SortOrder
+    entityId?: SortOrder
+    campaignId?: SortOrder
+    date?: SortOrder
+    spend?: SortOrder
+    impressions?: SortOrder
+    clicks?: SortOrder
+    ctr?: SortOrder
+    cpc?: SortOrder
+    purchases?: SortOrder
+    purchaseValue?: SortOrder
+    roas?: SortOrder
+    costPerPurchase?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type MetaInsightAvgOrderByAggregateInput = {
+    spend?: SortOrder
+    impressions?: SortOrder
+    clicks?: SortOrder
+    ctr?: SortOrder
+    cpc?: SortOrder
+    purchases?: SortOrder
+    purchaseValue?: SortOrder
+    roas?: SortOrder
+    costPerPurchase?: SortOrder
+  }
+
+  export type MetaInsightMaxOrderByAggregateInput = {
+    id?: SortOrder
+    entityType?: SortOrder
+    entityId?: SortOrder
+    campaignId?: SortOrder
+    date?: SortOrder
+    spend?: SortOrder
+    impressions?: SortOrder
+    clicks?: SortOrder
+    ctr?: SortOrder
+    cpc?: SortOrder
+    purchases?: SortOrder
+    purchaseValue?: SortOrder
+    roas?: SortOrder
+    costPerPurchase?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type MetaInsightMinOrderByAggregateInput = {
+    id?: SortOrder
+    entityType?: SortOrder
+    entityId?: SortOrder
+    campaignId?: SortOrder
+    date?: SortOrder
+    spend?: SortOrder
+    impressions?: SortOrder
+    clicks?: SortOrder
+    ctr?: SortOrder
+    cpc?: SortOrder
+    purchases?: SortOrder
+    purchaseValue?: SortOrder
+    roas?: SortOrder
+    costPerPurchase?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type MetaInsightSumOrderByAggregateInput = {
+    spend?: SortOrder
+    impressions?: SortOrder
+    clicks?: SortOrder
+    ctr?: SortOrder
+    cpc?: SortOrder
+    purchases?: SortOrder
+    purchaseValue?: SortOrder
+    roas?: SortOrder
+    costPerPurchase?: SortOrder
+  }
+  export type JsonFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type MetaAutomationRuleCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    ruleType?: SortOrder
+    enabled?: SortOrder
+    conditionJson?: SortOrder
+    actionJson?: SortOrder
+    evaluationCooldownHours?: SortOrder
+    lastEvaluatedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MetaAutomationRuleAvgOrderByAggregateInput = {
+    evaluationCooldownHours?: SortOrder
+  }
+
+  export type MetaAutomationRuleMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    ruleType?: SortOrder
+    enabled?: SortOrder
+    evaluationCooldownHours?: SortOrder
+    lastEvaluatedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MetaAutomationRuleMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    ruleType?: SortOrder
+    enabled?: SortOrder
+    evaluationCooldownHours?: SortOrder
+    lastEvaluatedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MetaAutomationRuleSumOrderByAggregateInput = {
+    evaluationCooldownHours?: SortOrder
+  }
+  export type JsonWithAggregatesFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedJsonFilter<$PrismaModel>
+    _max?: NestedJsonFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type MetaActivityLogCountOrderByAggregateInput = {
+    id?: SortOrder
+    timestamp?: SortOrder
+    action?: SortOrder
+    entityType?: SortOrder
+    entityId?: SortOrder
+    entityName?: SortOrder
+    ruleId?: SortOrder
+    ruleName?: SortOrder
+    previousValue?: SortOrder
+    newValue?: SortOrder
+    reason?: SortOrder
+    mode?: SortOrder
+    status?: SortOrder
+    apiPayload?: SortOrder
+    apiResponse?: SortOrder
+    errorMessage?: SortOrder
+  }
+
+  export type MetaActivityLogMaxOrderByAggregateInput = {
+    id?: SortOrder
+    timestamp?: SortOrder
+    action?: SortOrder
+    entityType?: SortOrder
+    entityId?: SortOrder
+    entityName?: SortOrder
+    ruleId?: SortOrder
+    ruleName?: SortOrder
+    previousValue?: SortOrder
+    newValue?: SortOrder
+    reason?: SortOrder
+    mode?: SortOrder
+    status?: SortOrder
+    errorMessage?: SortOrder
+  }
+
+  export type MetaActivityLogMinOrderByAggregateInput = {
+    id?: SortOrder
+    timestamp?: SortOrder
+    action?: SortOrder
+    entityType?: SortOrder
+    entityId?: SortOrder
+    entityName?: SortOrder
+    ruleId?: SortOrder
+    ruleName?: SortOrder
+    previousValue?: SortOrder
+    newValue?: SortOrder
+    reason?: SortOrder
+    mode?: SortOrder
+    status?: SortOrder
+    errorMessage?: SortOrder
+  }
+
+  export type MetaConversionEventCountOrderByAggregateInput = {
+    id?: SortOrder
+    eventId?: SortOrder
+    eventName?: SortOrder
+    eventTime?: SortOrder
+    sourceUrl?: SortOrder
+    orderId?: SortOrder
+    userEmail?: SortOrder
+    userPhone?: SortOrder
+    value?: SortOrder
+    currency?: SortOrder
+    browserSent?: SortOrder
+    serverSent?: SortOrder
+    serverStatus?: SortOrder
+    serverError?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type MetaConversionEventAvgOrderByAggregateInput = {
+    value?: SortOrder
+  }
+
+  export type MetaConversionEventMaxOrderByAggregateInput = {
+    id?: SortOrder
+    eventId?: SortOrder
+    eventName?: SortOrder
+    eventTime?: SortOrder
+    sourceUrl?: SortOrder
+    orderId?: SortOrder
+    userEmail?: SortOrder
+    userPhone?: SortOrder
+    value?: SortOrder
+    currency?: SortOrder
+    browserSent?: SortOrder
+    serverSent?: SortOrder
+    serverStatus?: SortOrder
+    serverError?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type MetaConversionEventMinOrderByAggregateInput = {
+    id?: SortOrder
+    eventId?: SortOrder
+    eventName?: SortOrder
+    eventTime?: SortOrder
+    sourceUrl?: SortOrder
+    orderId?: SortOrder
+    userEmail?: SortOrder
+    userPhone?: SortOrder
+    value?: SortOrder
+    currency?: SortOrder
+    browserSent?: SortOrder
+    serverSent?: SortOrder
+    serverStatus?: SortOrder
+    serverError?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type MetaConversionEventSumOrderByAggregateInput = {
+    value?: SortOrder
+  }
+
   export type ProductCreateNestedManyWithoutCategoryInput = {
     create?: XOR<ProductCreateWithoutCategoryInput, ProductUncheckedCreateWithoutCategoryInput> | ProductCreateWithoutCategoryInput[] | ProductUncheckedCreateWithoutCategoryInput[]
     connectOrCreate?: ProductCreateOrConnectWithoutCategoryInput | ProductCreateOrConnectWithoutCategoryInput[]
@@ -12201,6 +24275,13 @@ export namespace Prisma {
     connect?: WishlistWhereUniqueInput | WishlistWhereUniqueInput[]
   }
 
+  export type MetaCampaignCreateNestedManyWithoutProductInput = {
+    create?: XOR<MetaCampaignCreateWithoutProductInput, MetaCampaignUncheckedCreateWithoutProductInput> | MetaCampaignCreateWithoutProductInput[] | MetaCampaignUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: MetaCampaignCreateOrConnectWithoutProductInput | MetaCampaignCreateOrConnectWithoutProductInput[]
+    createMany?: MetaCampaignCreateManyProductInputEnvelope
+    connect?: MetaCampaignWhereUniqueInput | MetaCampaignWhereUniqueInput[]
+  }
+
   export type ProductVariantUncheckedCreateNestedManyWithoutProductInput = {
     create?: XOR<ProductVariantCreateWithoutProductInput, ProductVariantUncheckedCreateWithoutProductInput> | ProductVariantCreateWithoutProductInput[] | ProductVariantUncheckedCreateWithoutProductInput[]
     connectOrCreate?: ProductVariantCreateOrConnectWithoutProductInput | ProductVariantCreateOrConnectWithoutProductInput[]
@@ -12213,6 +24294,13 @@ export namespace Prisma {
     connectOrCreate?: WishlistCreateOrConnectWithoutProductInput | WishlistCreateOrConnectWithoutProductInput[]
     createMany?: WishlistCreateManyProductInputEnvelope
     connect?: WishlistWhereUniqueInput | WishlistWhereUniqueInput[]
+  }
+
+  export type MetaCampaignUncheckedCreateNestedManyWithoutProductInput = {
+    create?: XOR<MetaCampaignCreateWithoutProductInput, MetaCampaignUncheckedCreateWithoutProductInput> | MetaCampaignCreateWithoutProductInput[] | MetaCampaignUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: MetaCampaignCreateOrConnectWithoutProductInput | MetaCampaignCreateOrConnectWithoutProductInput[]
+    createMany?: MetaCampaignCreateManyProductInputEnvelope
+    connect?: MetaCampaignWhereUniqueInput | MetaCampaignWhereUniqueInput[]
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
@@ -12282,6 +24370,20 @@ export namespace Prisma {
     deleteMany?: WishlistScalarWhereInput | WishlistScalarWhereInput[]
   }
 
+  export type MetaCampaignUpdateManyWithoutProductNestedInput = {
+    create?: XOR<MetaCampaignCreateWithoutProductInput, MetaCampaignUncheckedCreateWithoutProductInput> | MetaCampaignCreateWithoutProductInput[] | MetaCampaignUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: MetaCampaignCreateOrConnectWithoutProductInput | MetaCampaignCreateOrConnectWithoutProductInput[]
+    upsert?: MetaCampaignUpsertWithWhereUniqueWithoutProductInput | MetaCampaignUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: MetaCampaignCreateManyProductInputEnvelope
+    set?: MetaCampaignWhereUniqueInput | MetaCampaignWhereUniqueInput[]
+    disconnect?: MetaCampaignWhereUniqueInput | MetaCampaignWhereUniqueInput[]
+    delete?: MetaCampaignWhereUniqueInput | MetaCampaignWhereUniqueInput[]
+    connect?: MetaCampaignWhereUniqueInput | MetaCampaignWhereUniqueInput[]
+    update?: MetaCampaignUpdateWithWhereUniqueWithoutProductInput | MetaCampaignUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: MetaCampaignUpdateManyWithWhereWithoutProductInput | MetaCampaignUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: MetaCampaignScalarWhereInput | MetaCampaignScalarWhereInput[]
+  }
+
   export type ProductVariantUncheckedUpdateManyWithoutProductNestedInput = {
     create?: XOR<ProductVariantCreateWithoutProductInput, ProductVariantUncheckedCreateWithoutProductInput> | ProductVariantCreateWithoutProductInput[] | ProductVariantUncheckedCreateWithoutProductInput[]
     connectOrCreate?: ProductVariantCreateOrConnectWithoutProductInput | ProductVariantCreateOrConnectWithoutProductInput[]
@@ -12308,6 +24410,20 @@ export namespace Prisma {
     update?: WishlistUpdateWithWhereUniqueWithoutProductInput | WishlistUpdateWithWhereUniqueWithoutProductInput[]
     updateMany?: WishlistUpdateManyWithWhereWithoutProductInput | WishlistUpdateManyWithWhereWithoutProductInput[]
     deleteMany?: WishlistScalarWhereInput | WishlistScalarWhereInput[]
+  }
+
+  export type MetaCampaignUncheckedUpdateManyWithoutProductNestedInput = {
+    create?: XOR<MetaCampaignCreateWithoutProductInput, MetaCampaignUncheckedCreateWithoutProductInput> | MetaCampaignCreateWithoutProductInput[] | MetaCampaignUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: MetaCampaignCreateOrConnectWithoutProductInput | MetaCampaignCreateOrConnectWithoutProductInput[]
+    upsert?: MetaCampaignUpsertWithWhereUniqueWithoutProductInput | MetaCampaignUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: MetaCampaignCreateManyProductInputEnvelope
+    set?: MetaCampaignWhereUniqueInput | MetaCampaignWhereUniqueInput[]
+    disconnect?: MetaCampaignWhereUniqueInput | MetaCampaignWhereUniqueInput[]
+    delete?: MetaCampaignWhereUniqueInput | MetaCampaignWhereUniqueInput[]
+    connect?: MetaCampaignWhereUniqueInput | MetaCampaignWhereUniqueInput[]
+    update?: MetaCampaignUpdateWithWhereUniqueWithoutProductInput | MetaCampaignUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: MetaCampaignUpdateManyWithWhereWithoutProductInput | MetaCampaignUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: MetaCampaignScalarWhereInput | MetaCampaignScalarWhereInput[]
   }
 
   export type OrderItemCreateNestedManyWithoutVariantInput = {
@@ -12570,6 +24686,204 @@ export namespace Prisma {
     update?: XOR<XOR<ProductUpdateToOneWithWhereWithoutWishlistsInput, ProductUpdateWithoutWishlistsInput>, ProductUncheckedUpdateWithoutWishlistsInput>
   }
 
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type ProductCreateNestedOneWithoutMetaCampaignsInput = {
+    create?: XOR<ProductCreateWithoutMetaCampaignsInput, ProductUncheckedCreateWithoutMetaCampaignsInput>
+    connectOrCreate?: ProductCreateOrConnectWithoutMetaCampaignsInput
+    connect?: ProductWhereUniqueInput
+  }
+
+  export type MetaAdSetCreateNestedManyWithoutCampaignInput = {
+    create?: XOR<MetaAdSetCreateWithoutCampaignInput, MetaAdSetUncheckedCreateWithoutCampaignInput> | MetaAdSetCreateWithoutCampaignInput[] | MetaAdSetUncheckedCreateWithoutCampaignInput[]
+    connectOrCreate?: MetaAdSetCreateOrConnectWithoutCampaignInput | MetaAdSetCreateOrConnectWithoutCampaignInput[]
+    createMany?: MetaAdSetCreateManyCampaignInputEnvelope
+    connect?: MetaAdSetWhereUniqueInput | MetaAdSetWhereUniqueInput[]
+  }
+
+  export type MetaInsightCreateNestedManyWithoutCampaignInput = {
+    create?: XOR<MetaInsightCreateWithoutCampaignInput, MetaInsightUncheckedCreateWithoutCampaignInput> | MetaInsightCreateWithoutCampaignInput[] | MetaInsightUncheckedCreateWithoutCampaignInput[]
+    connectOrCreate?: MetaInsightCreateOrConnectWithoutCampaignInput | MetaInsightCreateOrConnectWithoutCampaignInput[]
+    createMany?: MetaInsightCreateManyCampaignInputEnvelope
+    connect?: MetaInsightWhereUniqueInput | MetaInsightWhereUniqueInput[]
+  }
+
+  export type MetaAdSetUncheckedCreateNestedManyWithoutCampaignInput = {
+    create?: XOR<MetaAdSetCreateWithoutCampaignInput, MetaAdSetUncheckedCreateWithoutCampaignInput> | MetaAdSetCreateWithoutCampaignInput[] | MetaAdSetUncheckedCreateWithoutCampaignInput[]
+    connectOrCreate?: MetaAdSetCreateOrConnectWithoutCampaignInput | MetaAdSetCreateOrConnectWithoutCampaignInput[]
+    createMany?: MetaAdSetCreateManyCampaignInputEnvelope
+    connect?: MetaAdSetWhereUniqueInput | MetaAdSetWhereUniqueInput[]
+  }
+
+  export type MetaInsightUncheckedCreateNestedManyWithoutCampaignInput = {
+    create?: XOR<MetaInsightCreateWithoutCampaignInput, MetaInsightUncheckedCreateWithoutCampaignInput> | MetaInsightCreateWithoutCampaignInput[] | MetaInsightUncheckedCreateWithoutCampaignInput[]
+    connectOrCreate?: MetaInsightCreateOrConnectWithoutCampaignInput | MetaInsightCreateOrConnectWithoutCampaignInput[]
+    createMany?: MetaInsightCreateManyCampaignInputEnvelope
+    connect?: MetaInsightWhereUniqueInput | MetaInsightWhereUniqueInput[]
+  }
+
+  export type ProductUpdateOneWithoutMetaCampaignsNestedInput = {
+    create?: XOR<ProductCreateWithoutMetaCampaignsInput, ProductUncheckedCreateWithoutMetaCampaignsInput>
+    connectOrCreate?: ProductCreateOrConnectWithoutMetaCampaignsInput
+    upsert?: ProductUpsertWithoutMetaCampaignsInput
+    disconnect?: ProductWhereInput | boolean
+    delete?: ProductWhereInput | boolean
+    connect?: ProductWhereUniqueInput
+    update?: XOR<XOR<ProductUpdateToOneWithWhereWithoutMetaCampaignsInput, ProductUpdateWithoutMetaCampaignsInput>, ProductUncheckedUpdateWithoutMetaCampaignsInput>
+  }
+
+  export type MetaAdSetUpdateManyWithoutCampaignNestedInput = {
+    create?: XOR<MetaAdSetCreateWithoutCampaignInput, MetaAdSetUncheckedCreateWithoutCampaignInput> | MetaAdSetCreateWithoutCampaignInput[] | MetaAdSetUncheckedCreateWithoutCampaignInput[]
+    connectOrCreate?: MetaAdSetCreateOrConnectWithoutCampaignInput | MetaAdSetCreateOrConnectWithoutCampaignInput[]
+    upsert?: MetaAdSetUpsertWithWhereUniqueWithoutCampaignInput | MetaAdSetUpsertWithWhereUniqueWithoutCampaignInput[]
+    createMany?: MetaAdSetCreateManyCampaignInputEnvelope
+    set?: MetaAdSetWhereUniqueInput | MetaAdSetWhereUniqueInput[]
+    disconnect?: MetaAdSetWhereUniqueInput | MetaAdSetWhereUniqueInput[]
+    delete?: MetaAdSetWhereUniqueInput | MetaAdSetWhereUniqueInput[]
+    connect?: MetaAdSetWhereUniqueInput | MetaAdSetWhereUniqueInput[]
+    update?: MetaAdSetUpdateWithWhereUniqueWithoutCampaignInput | MetaAdSetUpdateWithWhereUniqueWithoutCampaignInput[]
+    updateMany?: MetaAdSetUpdateManyWithWhereWithoutCampaignInput | MetaAdSetUpdateManyWithWhereWithoutCampaignInput[]
+    deleteMany?: MetaAdSetScalarWhereInput | MetaAdSetScalarWhereInput[]
+  }
+
+  export type MetaInsightUpdateManyWithoutCampaignNestedInput = {
+    create?: XOR<MetaInsightCreateWithoutCampaignInput, MetaInsightUncheckedCreateWithoutCampaignInput> | MetaInsightCreateWithoutCampaignInput[] | MetaInsightUncheckedCreateWithoutCampaignInput[]
+    connectOrCreate?: MetaInsightCreateOrConnectWithoutCampaignInput | MetaInsightCreateOrConnectWithoutCampaignInput[]
+    upsert?: MetaInsightUpsertWithWhereUniqueWithoutCampaignInput | MetaInsightUpsertWithWhereUniqueWithoutCampaignInput[]
+    createMany?: MetaInsightCreateManyCampaignInputEnvelope
+    set?: MetaInsightWhereUniqueInput | MetaInsightWhereUniqueInput[]
+    disconnect?: MetaInsightWhereUniqueInput | MetaInsightWhereUniqueInput[]
+    delete?: MetaInsightWhereUniqueInput | MetaInsightWhereUniqueInput[]
+    connect?: MetaInsightWhereUniqueInput | MetaInsightWhereUniqueInput[]
+    update?: MetaInsightUpdateWithWhereUniqueWithoutCampaignInput | MetaInsightUpdateWithWhereUniqueWithoutCampaignInput[]
+    updateMany?: MetaInsightUpdateManyWithWhereWithoutCampaignInput | MetaInsightUpdateManyWithWhereWithoutCampaignInput[]
+    deleteMany?: MetaInsightScalarWhereInput | MetaInsightScalarWhereInput[]
+  }
+
+  export type MetaAdSetUncheckedUpdateManyWithoutCampaignNestedInput = {
+    create?: XOR<MetaAdSetCreateWithoutCampaignInput, MetaAdSetUncheckedCreateWithoutCampaignInput> | MetaAdSetCreateWithoutCampaignInput[] | MetaAdSetUncheckedCreateWithoutCampaignInput[]
+    connectOrCreate?: MetaAdSetCreateOrConnectWithoutCampaignInput | MetaAdSetCreateOrConnectWithoutCampaignInput[]
+    upsert?: MetaAdSetUpsertWithWhereUniqueWithoutCampaignInput | MetaAdSetUpsertWithWhereUniqueWithoutCampaignInput[]
+    createMany?: MetaAdSetCreateManyCampaignInputEnvelope
+    set?: MetaAdSetWhereUniqueInput | MetaAdSetWhereUniqueInput[]
+    disconnect?: MetaAdSetWhereUniqueInput | MetaAdSetWhereUniqueInput[]
+    delete?: MetaAdSetWhereUniqueInput | MetaAdSetWhereUniqueInput[]
+    connect?: MetaAdSetWhereUniqueInput | MetaAdSetWhereUniqueInput[]
+    update?: MetaAdSetUpdateWithWhereUniqueWithoutCampaignInput | MetaAdSetUpdateWithWhereUniqueWithoutCampaignInput[]
+    updateMany?: MetaAdSetUpdateManyWithWhereWithoutCampaignInput | MetaAdSetUpdateManyWithWhereWithoutCampaignInput[]
+    deleteMany?: MetaAdSetScalarWhereInput | MetaAdSetScalarWhereInput[]
+  }
+
+  export type MetaInsightUncheckedUpdateManyWithoutCampaignNestedInput = {
+    create?: XOR<MetaInsightCreateWithoutCampaignInput, MetaInsightUncheckedCreateWithoutCampaignInput> | MetaInsightCreateWithoutCampaignInput[] | MetaInsightUncheckedCreateWithoutCampaignInput[]
+    connectOrCreate?: MetaInsightCreateOrConnectWithoutCampaignInput | MetaInsightCreateOrConnectWithoutCampaignInput[]
+    upsert?: MetaInsightUpsertWithWhereUniqueWithoutCampaignInput | MetaInsightUpsertWithWhereUniqueWithoutCampaignInput[]
+    createMany?: MetaInsightCreateManyCampaignInputEnvelope
+    set?: MetaInsightWhereUniqueInput | MetaInsightWhereUniqueInput[]
+    disconnect?: MetaInsightWhereUniqueInput | MetaInsightWhereUniqueInput[]
+    delete?: MetaInsightWhereUniqueInput | MetaInsightWhereUniqueInput[]
+    connect?: MetaInsightWhereUniqueInput | MetaInsightWhereUniqueInput[]
+    update?: MetaInsightUpdateWithWhereUniqueWithoutCampaignInput | MetaInsightUpdateWithWhereUniqueWithoutCampaignInput[]
+    updateMany?: MetaInsightUpdateManyWithWhereWithoutCampaignInput | MetaInsightUpdateManyWithWhereWithoutCampaignInput[]
+    deleteMany?: MetaInsightScalarWhereInput | MetaInsightScalarWhereInput[]
+  }
+
+  export type MetaCampaignCreateNestedOneWithoutAdSetsInput = {
+    create?: XOR<MetaCampaignCreateWithoutAdSetsInput, MetaCampaignUncheckedCreateWithoutAdSetsInput>
+    connectOrCreate?: MetaCampaignCreateOrConnectWithoutAdSetsInput
+    connect?: MetaCampaignWhereUniqueInput
+  }
+
+  export type MetaAdCreateNestedManyWithoutAdSetInput = {
+    create?: XOR<MetaAdCreateWithoutAdSetInput, MetaAdUncheckedCreateWithoutAdSetInput> | MetaAdCreateWithoutAdSetInput[] | MetaAdUncheckedCreateWithoutAdSetInput[]
+    connectOrCreate?: MetaAdCreateOrConnectWithoutAdSetInput | MetaAdCreateOrConnectWithoutAdSetInput[]
+    createMany?: MetaAdCreateManyAdSetInputEnvelope
+    connect?: MetaAdWhereUniqueInput | MetaAdWhereUniqueInput[]
+  }
+
+  export type MetaAdUncheckedCreateNestedManyWithoutAdSetInput = {
+    create?: XOR<MetaAdCreateWithoutAdSetInput, MetaAdUncheckedCreateWithoutAdSetInput> | MetaAdCreateWithoutAdSetInput[] | MetaAdUncheckedCreateWithoutAdSetInput[]
+    connectOrCreate?: MetaAdCreateOrConnectWithoutAdSetInput | MetaAdCreateOrConnectWithoutAdSetInput[]
+    createMany?: MetaAdCreateManyAdSetInputEnvelope
+    connect?: MetaAdWhereUniqueInput | MetaAdWhereUniqueInput[]
+  }
+
+  export type MetaCampaignUpdateOneRequiredWithoutAdSetsNestedInput = {
+    create?: XOR<MetaCampaignCreateWithoutAdSetsInput, MetaCampaignUncheckedCreateWithoutAdSetsInput>
+    connectOrCreate?: MetaCampaignCreateOrConnectWithoutAdSetsInput
+    upsert?: MetaCampaignUpsertWithoutAdSetsInput
+    connect?: MetaCampaignWhereUniqueInput
+    update?: XOR<XOR<MetaCampaignUpdateToOneWithWhereWithoutAdSetsInput, MetaCampaignUpdateWithoutAdSetsInput>, MetaCampaignUncheckedUpdateWithoutAdSetsInput>
+  }
+
+  export type MetaAdUpdateManyWithoutAdSetNestedInput = {
+    create?: XOR<MetaAdCreateWithoutAdSetInput, MetaAdUncheckedCreateWithoutAdSetInput> | MetaAdCreateWithoutAdSetInput[] | MetaAdUncheckedCreateWithoutAdSetInput[]
+    connectOrCreate?: MetaAdCreateOrConnectWithoutAdSetInput | MetaAdCreateOrConnectWithoutAdSetInput[]
+    upsert?: MetaAdUpsertWithWhereUniqueWithoutAdSetInput | MetaAdUpsertWithWhereUniqueWithoutAdSetInput[]
+    createMany?: MetaAdCreateManyAdSetInputEnvelope
+    set?: MetaAdWhereUniqueInput | MetaAdWhereUniqueInput[]
+    disconnect?: MetaAdWhereUniqueInput | MetaAdWhereUniqueInput[]
+    delete?: MetaAdWhereUniqueInput | MetaAdWhereUniqueInput[]
+    connect?: MetaAdWhereUniqueInput | MetaAdWhereUniqueInput[]
+    update?: MetaAdUpdateWithWhereUniqueWithoutAdSetInput | MetaAdUpdateWithWhereUniqueWithoutAdSetInput[]
+    updateMany?: MetaAdUpdateManyWithWhereWithoutAdSetInput | MetaAdUpdateManyWithWhereWithoutAdSetInput[]
+    deleteMany?: MetaAdScalarWhereInput | MetaAdScalarWhereInput[]
+  }
+
+  export type MetaAdUncheckedUpdateManyWithoutAdSetNestedInput = {
+    create?: XOR<MetaAdCreateWithoutAdSetInput, MetaAdUncheckedCreateWithoutAdSetInput> | MetaAdCreateWithoutAdSetInput[] | MetaAdUncheckedCreateWithoutAdSetInput[]
+    connectOrCreate?: MetaAdCreateOrConnectWithoutAdSetInput | MetaAdCreateOrConnectWithoutAdSetInput[]
+    upsert?: MetaAdUpsertWithWhereUniqueWithoutAdSetInput | MetaAdUpsertWithWhereUniqueWithoutAdSetInput[]
+    createMany?: MetaAdCreateManyAdSetInputEnvelope
+    set?: MetaAdWhereUniqueInput | MetaAdWhereUniqueInput[]
+    disconnect?: MetaAdWhereUniqueInput | MetaAdWhereUniqueInput[]
+    delete?: MetaAdWhereUniqueInput | MetaAdWhereUniqueInput[]
+    connect?: MetaAdWhereUniqueInput | MetaAdWhereUniqueInput[]
+    update?: MetaAdUpdateWithWhereUniqueWithoutAdSetInput | MetaAdUpdateWithWhereUniqueWithoutAdSetInput[]
+    updateMany?: MetaAdUpdateManyWithWhereWithoutAdSetInput | MetaAdUpdateManyWithWhereWithoutAdSetInput[]
+    deleteMany?: MetaAdScalarWhereInput | MetaAdScalarWhereInput[]
+  }
+
+  export type MetaAdSetCreateNestedOneWithoutAdsInput = {
+    create?: XOR<MetaAdSetCreateWithoutAdsInput, MetaAdSetUncheckedCreateWithoutAdsInput>
+    connectOrCreate?: MetaAdSetCreateOrConnectWithoutAdsInput
+    connect?: MetaAdSetWhereUniqueInput
+  }
+
+  export type MetaAdSetUpdateOneRequiredWithoutAdsNestedInput = {
+    create?: XOR<MetaAdSetCreateWithoutAdsInput, MetaAdSetUncheckedCreateWithoutAdsInput>
+    connectOrCreate?: MetaAdSetCreateOrConnectWithoutAdsInput
+    upsert?: MetaAdSetUpsertWithoutAdsInput
+    connect?: MetaAdSetWhereUniqueInput
+    update?: XOR<XOR<MetaAdSetUpdateToOneWithWhereWithoutAdsInput, MetaAdSetUpdateWithoutAdsInput>, MetaAdSetUncheckedUpdateWithoutAdsInput>
+  }
+
+  export type MetaCampaignCreateNestedOneWithoutInsightsInput = {
+    create?: XOR<MetaCampaignCreateWithoutInsightsInput, MetaCampaignUncheckedCreateWithoutInsightsInput>
+    connectOrCreate?: MetaCampaignCreateOrConnectWithoutInsightsInput
+    connect?: MetaCampaignWhereUniqueInput
+  }
+
+  export type MetaCampaignUpdateOneWithoutInsightsNestedInput = {
+    create?: XOR<MetaCampaignCreateWithoutInsightsInput, MetaCampaignUncheckedCreateWithoutInsightsInput>
+    connectOrCreate?: MetaCampaignCreateOrConnectWithoutInsightsInput
+    upsert?: MetaCampaignUpsertWithoutInsightsInput
+    disconnect?: MetaCampaignWhereInput | boolean
+    delete?: MetaCampaignWhereInput | boolean
+    connect?: MetaCampaignWhereUniqueInput
+    update?: XOR<XOR<MetaCampaignUpdateToOneWithWhereWithoutInsightsInput, MetaCampaignUpdateWithoutInsightsInput>, MetaCampaignUncheckedUpdateWithoutInsightsInput>
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -12780,6 +25094,91 @@ export namespace Prisma {
     _max?: NestedEnumOrderStatusFilter<$PrismaModel>
   }
 
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+  export type NestedJsonNullableFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+  export type NestedJsonFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
   export type ProductCreateWithoutCategoryInput = {
     id?: string
     name: string
@@ -12794,6 +25193,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     variants?: ProductVariantCreateNestedManyWithoutProductInput
     wishlists?: WishlistCreateNestedManyWithoutProductInput
+    metaCampaigns?: MetaCampaignCreateNestedManyWithoutProductInput
   }
 
   export type ProductUncheckedCreateWithoutCategoryInput = {
@@ -12810,6 +25210,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     variants?: ProductVariantUncheckedCreateNestedManyWithoutProductInput
     wishlists?: WishlistUncheckedCreateNestedManyWithoutProductInput
+    metaCampaigns?: MetaCampaignUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type ProductCreateOrConnectWithoutCategoryInput = {
@@ -12937,6 +25338,50 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type MetaCampaignCreateWithoutProductInput = {
+    id?: string
+    metaCampaignId?: string | null
+    name: string
+    objective?: string
+    status?: string
+    dailyBudget?: number | null
+    lifetimeBudget?: number | null
+    buyingType?: string
+    isAutomated?: boolean
+    templateType?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    adSets?: MetaAdSetCreateNestedManyWithoutCampaignInput
+    insights?: MetaInsightCreateNestedManyWithoutCampaignInput
+  }
+
+  export type MetaCampaignUncheckedCreateWithoutProductInput = {
+    id?: string
+    metaCampaignId?: string | null
+    name: string
+    objective?: string
+    status?: string
+    dailyBudget?: number | null
+    lifetimeBudget?: number | null
+    buyingType?: string
+    isAutomated?: boolean
+    templateType?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    adSets?: MetaAdSetUncheckedCreateNestedManyWithoutCampaignInput
+    insights?: MetaInsightUncheckedCreateNestedManyWithoutCampaignInput
+  }
+
+  export type MetaCampaignCreateOrConnectWithoutProductInput = {
+    where: MetaCampaignWhereUniqueInput
+    create: XOR<MetaCampaignCreateWithoutProductInput, MetaCampaignUncheckedCreateWithoutProductInput>
+  }
+
+  export type MetaCampaignCreateManyProductInputEnvelope = {
+    data: MetaCampaignCreateManyProductInput | MetaCampaignCreateManyProductInput[]
+    skipDuplicates?: boolean
+  }
+
   export type CategoryUpsertWithoutProductsInput = {
     update: XOR<CategoryUpdateWithoutProductsInput, CategoryUncheckedUpdateWithoutProductsInput>
     create: XOR<CategoryCreateWithoutProductsInput, CategoryUncheckedCreateWithoutProductsInput>
@@ -13022,6 +25467,41 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Wishlist"> | Date | string
   }
 
+  export type MetaCampaignUpsertWithWhereUniqueWithoutProductInput = {
+    where: MetaCampaignWhereUniqueInput
+    update: XOR<MetaCampaignUpdateWithoutProductInput, MetaCampaignUncheckedUpdateWithoutProductInput>
+    create: XOR<MetaCampaignCreateWithoutProductInput, MetaCampaignUncheckedCreateWithoutProductInput>
+  }
+
+  export type MetaCampaignUpdateWithWhereUniqueWithoutProductInput = {
+    where: MetaCampaignWhereUniqueInput
+    data: XOR<MetaCampaignUpdateWithoutProductInput, MetaCampaignUncheckedUpdateWithoutProductInput>
+  }
+
+  export type MetaCampaignUpdateManyWithWhereWithoutProductInput = {
+    where: MetaCampaignScalarWhereInput
+    data: XOR<MetaCampaignUpdateManyMutationInput, MetaCampaignUncheckedUpdateManyWithoutProductInput>
+  }
+
+  export type MetaCampaignScalarWhereInput = {
+    AND?: MetaCampaignScalarWhereInput | MetaCampaignScalarWhereInput[]
+    OR?: MetaCampaignScalarWhereInput[]
+    NOT?: MetaCampaignScalarWhereInput | MetaCampaignScalarWhereInput[]
+    id?: StringFilter<"MetaCampaign"> | string
+    metaCampaignId?: StringNullableFilter<"MetaCampaign"> | string | null
+    name?: StringFilter<"MetaCampaign"> | string
+    objective?: StringFilter<"MetaCampaign"> | string
+    status?: StringFilter<"MetaCampaign"> | string
+    dailyBudget?: IntNullableFilter<"MetaCampaign"> | number | null
+    lifetimeBudget?: IntNullableFilter<"MetaCampaign"> | number | null
+    buyingType?: StringFilter<"MetaCampaign"> | string
+    isAutomated?: BoolFilter<"MetaCampaign"> | boolean
+    templateType?: StringNullableFilter<"MetaCampaign"> | string | null
+    productId?: StringNullableFilter<"MetaCampaign"> | string | null
+    createdAt?: DateTimeFilter<"MetaCampaign"> | Date | string
+    updatedAt?: DateTimeFilter<"MetaCampaign"> | Date | string
+  }
+
   export type OrderItemCreateWithoutVariantInput = {
     id?: string
     productName: string
@@ -13064,6 +25544,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     category?: CategoryCreateNestedOneWithoutProductsInput
     wishlists?: WishlistCreateNestedManyWithoutProductInput
+    metaCampaigns?: MetaCampaignCreateNestedManyWithoutProductInput
   }
 
   export type ProductUncheckedCreateWithoutVariantsInput = {
@@ -13080,6 +25561,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     wishlists?: WishlistUncheckedCreateNestedManyWithoutProductInput
+    metaCampaigns?: MetaCampaignUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type ProductCreateOrConnectWithoutVariantsInput = {
@@ -13141,6 +25623,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: CategoryUpdateOneWithoutProductsNestedInput
     wishlists?: WishlistUpdateManyWithoutProductNestedInput
+    metaCampaigns?: MetaCampaignUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateWithoutVariantsInput = {
@@ -13157,6 +25640,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     wishlists?: WishlistUncheckedUpdateManyWithoutProductNestedInput
+    metaCampaigns?: MetaCampaignUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type OrderCreateWithoutAddressInput = {
@@ -13626,6 +26110,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     category?: CategoryCreateNestedOneWithoutProductsInput
     variants?: ProductVariantCreateNestedManyWithoutProductInput
+    metaCampaigns?: MetaCampaignCreateNestedManyWithoutProductInput
   }
 
   export type ProductUncheckedCreateWithoutWishlistsInput = {
@@ -13642,6 +26127,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     variants?: ProductVariantUncheckedCreateNestedManyWithoutProductInput
+    metaCampaigns?: MetaCampaignUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type ProductCreateOrConnectWithoutWishlistsInput = {
@@ -13705,6 +26191,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: CategoryUpdateOneWithoutProductsNestedInput
     variants?: ProductVariantUpdateManyWithoutProductNestedInput
+    metaCampaigns?: MetaCampaignUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateWithoutWishlistsInput = {
@@ -13721,6 +26208,574 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     variants?: ProductVariantUncheckedUpdateManyWithoutProductNestedInput
+    metaCampaigns?: MetaCampaignUncheckedUpdateManyWithoutProductNestedInput
+  }
+
+  export type ProductCreateWithoutMetaCampaignsInput = {
+    id?: string
+    name: string
+    slug: string
+    description: string
+    fabric?: string | null
+    images?: ProductCreateimagesInput | string[]
+    basePrice: number
+    originalPrice?: number | null
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    category?: CategoryCreateNestedOneWithoutProductsInput
+    variants?: ProductVariantCreateNestedManyWithoutProductInput
+    wishlists?: WishlistCreateNestedManyWithoutProductInput
+  }
+
+  export type ProductUncheckedCreateWithoutMetaCampaignsInput = {
+    id?: string
+    name: string
+    slug: string
+    description: string
+    fabric?: string | null
+    images?: ProductCreateimagesInput | string[]
+    basePrice: number
+    originalPrice?: number | null
+    categoryId?: string | null
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    variants?: ProductVariantUncheckedCreateNestedManyWithoutProductInput
+    wishlists?: WishlistUncheckedCreateNestedManyWithoutProductInput
+  }
+
+  export type ProductCreateOrConnectWithoutMetaCampaignsInput = {
+    where: ProductWhereUniqueInput
+    create: XOR<ProductCreateWithoutMetaCampaignsInput, ProductUncheckedCreateWithoutMetaCampaignsInput>
+  }
+
+  export type MetaAdSetCreateWithoutCampaignInput = {
+    id?: string
+    metaAdSetId?: string | null
+    name: string
+    status?: string
+    dailyBudget?: number | null
+    targetingJson?: NullableJsonNullValueInput | InputJsonValue
+    optimizationGoal?: string
+    billingEvent?: string
+    bidAmount?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ads?: MetaAdCreateNestedManyWithoutAdSetInput
+  }
+
+  export type MetaAdSetUncheckedCreateWithoutCampaignInput = {
+    id?: string
+    metaAdSetId?: string | null
+    name: string
+    status?: string
+    dailyBudget?: number | null
+    targetingJson?: NullableJsonNullValueInput | InputJsonValue
+    optimizationGoal?: string
+    billingEvent?: string
+    bidAmount?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ads?: MetaAdUncheckedCreateNestedManyWithoutAdSetInput
+  }
+
+  export type MetaAdSetCreateOrConnectWithoutCampaignInput = {
+    where: MetaAdSetWhereUniqueInput
+    create: XOR<MetaAdSetCreateWithoutCampaignInput, MetaAdSetUncheckedCreateWithoutCampaignInput>
+  }
+
+  export type MetaAdSetCreateManyCampaignInputEnvelope = {
+    data: MetaAdSetCreateManyCampaignInput | MetaAdSetCreateManyCampaignInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MetaInsightCreateWithoutCampaignInput = {
+    id?: string
+    entityType: string
+    entityId: string
+    date: Date | string
+    spend?: number
+    impressions?: number
+    clicks?: number
+    ctr?: number
+    cpc?: number
+    purchases?: number
+    purchaseValue?: number
+    roas?: number
+    costPerPurchase?: number
+    createdAt?: Date | string
+  }
+
+  export type MetaInsightUncheckedCreateWithoutCampaignInput = {
+    id?: string
+    entityType: string
+    entityId: string
+    date: Date | string
+    spend?: number
+    impressions?: number
+    clicks?: number
+    ctr?: number
+    cpc?: number
+    purchases?: number
+    purchaseValue?: number
+    roas?: number
+    costPerPurchase?: number
+    createdAt?: Date | string
+  }
+
+  export type MetaInsightCreateOrConnectWithoutCampaignInput = {
+    where: MetaInsightWhereUniqueInput
+    create: XOR<MetaInsightCreateWithoutCampaignInput, MetaInsightUncheckedCreateWithoutCampaignInput>
+  }
+
+  export type MetaInsightCreateManyCampaignInputEnvelope = {
+    data: MetaInsightCreateManyCampaignInput | MetaInsightCreateManyCampaignInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ProductUpsertWithoutMetaCampaignsInput = {
+    update: XOR<ProductUpdateWithoutMetaCampaignsInput, ProductUncheckedUpdateWithoutMetaCampaignsInput>
+    create: XOR<ProductCreateWithoutMetaCampaignsInput, ProductUncheckedCreateWithoutMetaCampaignsInput>
+    where?: ProductWhereInput
+  }
+
+  export type ProductUpdateToOneWithWhereWithoutMetaCampaignsInput = {
+    where?: ProductWhereInput
+    data: XOR<ProductUpdateWithoutMetaCampaignsInput, ProductUncheckedUpdateWithoutMetaCampaignsInput>
+  }
+
+  export type ProductUpdateWithoutMetaCampaignsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    fabric?: NullableStringFieldUpdateOperationsInput | string | null
+    images?: ProductUpdateimagesInput | string[]
+    basePrice?: IntFieldUpdateOperationsInput | number
+    originalPrice?: NullableIntFieldUpdateOperationsInput | number | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    category?: CategoryUpdateOneWithoutProductsNestedInput
+    variants?: ProductVariantUpdateManyWithoutProductNestedInput
+    wishlists?: WishlistUpdateManyWithoutProductNestedInput
+  }
+
+  export type ProductUncheckedUpdateWithoutMetaCampaignsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    fabric?: NullableStringFieldUpdateOperationsInput | string | null
+    images?: ProductUpdateimagesInput | string[]
+    basePrice?: IntFieldUpdateOperationsInput | number
+    originalPrice?: NullableIntFieldUpdateOperationsInput | number | null
+    categoryId?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    variants?: ProductVariantUncheckedUpdateManyWithoutProductNestedInput
+    wishlists?: WishlistUncheckedUpdateManyWithoutProductNestedInput
+  }
+
+  export type MetaAdSetUpsertWithWhereUniqueWithoutCampaignInput = {
+    where: MetaAdSetWhereUniqueInput
+    update: XOR<MetaAdSetUpdateWithoutCampaignInput, MetaAdSetUncheckedUpdateWithoutCampaignInput>
+    create: XOR<MetaAdSetCreateWithoutCampaignInput, MetaAdSetUncheckedCreateWithoutCampaignInput>
+  }
+
+  export type MetaAdSetUpdateWithWhereUniqueWithoutCampaignInput = {
+    where: MetaAdSetWhereUniqueInput
+    data: XOR<MetaAdSetUpdateWithoutCampaignInput, MetaAdSetUncheckedUpdateWithoutCampaignInput>
+  }
+
+  export type MetaAdSetUpdateManyWithWhereWithoutCampaignInput = {
+    where: MetaAdSetScalarWhereInput
+    data: XOR<MetaAdSetUpdateManyMutationInput, MetaAdSetUncheckedUpdateManyWithoutCampaignInput>
+  }
+
+  export type MetaAdSetScalarWhereInput = {
+    AND?: MetaAdSetScalarWhereInput | MetaAdSetScalarWhereInput[]
+    OR?: MetaAdSetScalarWhereInput[]
+    NOT?: MetaAdSetScalarWhereInput | MetaAdSetScalarWhereInput[]
+    id?: StringFilter<"MetaAdSet"> | string
+    metaAdSetId?: StringNullableFilter<"MetaAdSet"> | string | null
+    campaignId?: StringFilter<"MetaAdSet"> | string
+    name?: StringFilter<"MetaAdSet"> | string
+    status?: StringFilter<"MetaAdSet"> | string
+    dailyBudget?: IntNullableFilter<"MetaAdSet"> | number | null
+    targetingJson?: JsonNullableFilter<"MetaAdSet">
+    optimizationGoal?: StringFilter<"MetaAdSet"> | string
+    billingEvent?: StringFilter<"MetaAdSet"> | string
+    bidAmount?: IntNullableFilter<"MetaAdSet"> | number | null
+    createdAt?: DateTimeFilter<"MetaAdSet"> | Date | string
+    updatedAt?: DateTimeFilter<"MetaAdSet"> | Date | string
+  }
+
+  export type MetaInsightUpsertWithWhereUniqueWithoutCampaignInput = {
+    where: MetaInsightWhereUniqueInput
+    update: XOR<MetaInsightUpdateWithoutCampaignInput, MetaInsightUncheckedUpdateWithoutCampaignInput>
+    create: XOR<MetaInsightCreateWithoutCampaignInput, MetaInsightUncheckedCreateWithoutCampaignInput>
+  }
+
+  export type MetaInsightUpdateWithWhereUniqueWithoutCampaignInput = {
+    where: MetaInsightWhereUniqueInput
+    data: XOR<MetaInsightUpdateWithoutCampaignInput, MetaInsightUncheckedUpdateWithoutCampaignInput>
+  }
+
+  export type MetaInsightUpdateManyWithWhereWithoutCampaignInput = {
+    where: MetaInsightScalarWhereInput
+    data: XOR<MetaInsightUpdateManyMutationInput, MetaInsightUncheckedUpdateManyWithoutCampaignInput>
+  }
+
+  export type MetaInsightScalarWhereInput = {
+    AND?: MetaInsightScalarWhereInput | MetaInsightScalarWhereInput[]
+    OR?: MetaInsightScalarWhereInput[]
+    NOT?: MetaInsightScalarWhereInput | MetaInsightScalarWhereInput[]
+    id?: StringFilter<"MetaInsight"> | string
+    entityType?: StringFilter<"MetaInsight"> | string
+    entityId?: StringFilter<"MetaInsight"> | string
+    campaignId?: StringNullableFilter<"MetaInsight"> | string | null
+    date?: DateTimeFilter<"MetaInsight"> | Date | string
+    spend?: IntFilter<"MetaInsight"> | number
+    impressions?: IntFilter<"MetaInsight"> | number
+    clicks?: IntFilter<"MetaInsight"> | number
+    ctr?: FloatFilter<"MetaInsight"> | number
+    cpc?: FloatFilter<"MetaInsight"> | number
+    purchases?: IntFilter<"MetaInsight"> | number
+    purchaseValue?: IntFilter<"MetaInsight"> | number
+    roas?: FloatFilter<"MetaInsight"> | number
+    costPerPurchase?: FloatFilter<"MetaInsight"> | number
+    createdAt?: DateTimeFilter<"MetaInsight"> | Date | string
+  }
+
+  export type MetaCampaignCreateWithoutAdSetsInput = {
+    id?: string
+    metaCampaignId?: string | null
+    name: string
+    objective?: string
+    status?: string
+    dailyBudget?: number | null
+    lifetimeBudget?: number | null
+    buyingType?: string
+    isAutomated?: boolean
+    templateType?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    product?: ProductCreateNestedOneWithoutMetaCampaignsInput
+    insights?: MetaInsightCreateNestedManyWithoutCampaignInput
+  }
+
+  export type MetaCampaignUncheckedCreateWithoutAdSetsInput = {
+    id?: string
+    metaCampaignId?: string | null
+    name: string
+    objective?: string
+    status?: string
+    dailyBudget?: number | null
+    lifetimeBudget?: number | null
+    buyingType?: string
+    isAutomated?: boolean
+    templateType?: string | null
+    productId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    insights?: MetaInsightUncheckedCreateNestedManyWithoutCampaignInput
+  }
+
+  export type MetaCampaignCreateOrConnectWithoutAdSetsInput = {
+    where: MetaCampaignWhereUniqueInput
+    create: XOR<MetaCampaignCreateWithoutAdSetsInput, MetaCampaignUncheckedCreateWithoutAdSetsInput>
+  }
+
+  export type MetaAdCreateWithoutAdSetInput = {
+    id?: string
+    metaAdId?: string | null
+    name: string
+    status?: string
+    creativeAngle: string
+    headline: string
+    primaryText: string
+    description?: string | null
+    callToAction?: string
+    imageUrl: string
+    destinationUrl: string
+    creativeJson?: NullableJsonNullValueInput | InputJsonValue
+    productId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MetaAdUncheckedCreateWithoutAdSetInput = {
+    id?: string
+    metaAdId?: string | null
+    name: string
+    status?: string
+    creativeAngle: string
+    headline: string
+    primaryText: string
+    description?: string | null
+    callToAction?: string
+    imageUrl: string
+    destinationUrl: string
+    creativeJson?: NullableJsonNullValueInput | InputJsonValue
+    productId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MetaAdCreateOrConnectWithoutAdSetInput = {
+    where: MetaAdWhereUniqueInput
+    create: XOR<MetaAdCreateWithoutAdSetInput, MetaAdUncheckedCreateWithoutAdSetInput>
+  }
+
+  export type MetaAdCreateManyAdSetInputEnvelope = {
+    data: MetaAdCreateManyAdSetInput | MetaAdCreateManyAdSetInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MetaCampaignUpsertWithoutAdSetsInput = {
+    update: XOR<MetaCampaignUpdateWithoutAdSetsInput, MetaCampaignUncheckedUpdateWithoutAdSetsInput>
+    create: XOR<MetaCampaignCreateWithoutAdSetsInput, MetaCampaignUncheckedCreateWithoutAdSetsInput>
+    where?: MetaCampaignWhereInput
+  }
+
+  export type MetaCampaignUpdateToOneWithWhereWithoutAdSetsInput = {
+    where?: MetaCampaignWhereInput
+    data: XOR<MetaCampaignUpdateWithoutAdSetsInput, MetaCampaignUncheckedUpdateWithoutAdSetsInput>
+  }
+
+  export type MetaCampaignUpdateWithoutAdSetsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaCampaignId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    objective?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    dailyBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    lifetimeBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    buyingType?: StringFieldUpdateOperationsInput | string
+    isAutomated?: BoolFieldUpdateOperationsInput | boolean
+    templateType?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    product?: ProductUpdateOneWithoutMetaCampaignsNestedInput
+    insights?: MetaInsightUpdateManyWithoutCampaignNestedInput
+  }
+
+  export type MetaCampaignUncheckedUpdateWithoutAdSetsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaCampaignId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    objective?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    dailyBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    lifetimeBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    buyingType?: StringFieldUpdateOperationsInput | string
+    isAutomated?: BoolFieldUpdateOperationsInput | boolean
+    templateType?: NullableStringFieldUpdateOperationsInput | string | null
+    productId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    insights?: MetaInsightUncheckedUpdateManyWithoutCampaignNestedInput
+  }
+
+  export type MetaAdUpsertWithWhereUniqueWithoutAdSetInput = {
+    where: MetaAdWhereUniqueInput
+    update: XOR<MetaAdUpdateWithoutAdSetInput, MetaAdUncheckedUpdateWithoutAdSetInput>
+    create: XOR<MetaAdCreateWithoutAdSetInput, MetaAdUncheckedCreateWithoutAdSetInput>
+  }
+
+  export type MetaAdUpdateWithWhereUniqueWithoutAdSetInput = {
+    where: MetaAdWhereUniqueInput
+    data: XOR<MetaAdUpdateWithoutAdSetInput, MetaAdUncheckedUpdateWithoutAdSetInput>
+  }
+
+  export type MetaAdUpdateManyWithWhereWithoutAdSetInput = {
+    where: MetaAdScalarWhereInput
+    data: XOR<MetaAdUpdateManyMutationInput, MetaAdUncheckedUpdateManyWithoutAdSetInput>
+  }
+
+  export type MetaAdScalarWhereInput = {
+    AND?: MetaAdScalarWhereInput | MetaAdScalarWhereInput[]
+    OR?: MetaAdScalarWhereInput[]
+    NOT?: MetaAdScalarWhereInput | MetaAdScalarWhereInput[]
+    id?: StringFilter<"MetaAd"> | string
+    metaAdId?: StringNullableFilter<"MetaAd"> | string | null
+    adSetId?: StringFilter<"MetaAd"> | string
+    name?: StringFilter<"MetaAd"> | string
+    status?: StringFilter<"MetaAd"> | string
+    creativeAngle?: StringFilter<"MetaAd"> | string
+    headline?: StringFilter<"MetaAd"> | string
+    primaryText?: StringFilter<"MetaAd"> | string
+    description?: StringNullableFilter<"MetaAd"> | string | null
+    callToAction?: StringFilter<"MetaAd"> | string
+    imageUrl?: StringFilter<"MetaAd"> | string
+    destinationUrl?: StringFilter<"MetaAd"> | string
+    creativeJson?: JsonNullableFilter<"MetaAd">
+    productId?: StringNullableFilter<"MetaAd"> | string | null
+    createdAt?: DateTimeFilter<"MetaAd"> | Date | string
+    updatedAt?: DateTimeFilter<"MetaAd"> | Date | string
+  }
+
+  export type MetaAdSetCreateWithoutAdsInput = {
+    id?: string
+    metaAdSetId?: string | null
+    name: string
+    status?: string
+    dailyBudget?: number | null
+    targetingJson?: NullableJsonNullValueInput | InputJsonValue
+    optimizationGoal?: string
+    billingEvent?: string
+    bidAmount?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    campaign: MetaCampaignCreateNestedOneWithoutAdSetsInput
+  }
+
+  export type MetaAdSetUncheckedCreateWithoutAdsInput = {
+    id?: string
+    metaAdSetId?: string | null
+    campaignId: string
+    name: string
+    status?: string
+    dailyBudget?: number | null
+    targetingJson?: NullableJsonNullValueInput | InputJsonValue
+    optimizationGoal?: string
+    billingEvent?: string
+    bidAmount?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MetaAdSetCreateOrConnectWithoutAdsInput = {
+    where: MetaAdSetWhereUniqueInput
+    create: XOR<MetaAdSetCreateWithoutAdsInput, MetaAdSetUncheckedCreateWithoutAdsInput>
+  }
+
+  export type MetaAdSetUpsertWithoutAdsInput = {
+    update: XOR<MetaAdSetUpdateWithoutAdsInput, MetaAdSetUncheckedUpdateWithoutAdsInput>
+    create: XOR<MetaAdSetCreateWithoutAdsInput, MetaAdSetUncheckedCreateWithoutAdsInput>
+    where?: MetaAdSetWhereInput
+  }
+
+  export type MetaAdSetUpdateToOneWithWhereWithoutAdsInput = {
+    where?: MetaAdSetWhereInput
+    data: XOR<MetaAdSetUpdateWithoutAdsInput, MetaAdSetUncheckedUpdateWithoutAdsInput>
+  }
+
+  export type MetaAdSetUpdateWithoutAdsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaAdSetId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    dailyBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    targetingJson?: NullableJsonNullValueInput | InputJsonValue
+    optimizationGoal?: StringFieldUpdateOperationsInput | string
+    billingEvent?: StringFieldUpdateOperationsInput | string
+    bidAmount?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    campaign?: MetaCampaignUpdateOneRequiredWithoutAdSetsNestedInput
+  }
+
+  export type MetaAdSetUncheckedUpdateWithoutAdsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaAdSetId?: NullableStringFieldUpdateOperationsInput | string | null
+    campaignId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    dailyBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    targetingJson?: NullableJsonNullValueInput | InputJsonValue
+    optimizationGoal?: StringFieldUpdateOperationsInput | string
+    billingEvent?: StringFieldUpdateOperationsInput | string
+    bidAmount?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MetaCampaignCreateWithoutInsightsInput = {
+    id?: string
+    metaCampaignId?: string | null
+    name: string
+    objective?: string
+    status?: string
+    dailyBudget?: number | null
+    lifetimeBudget?: number | null
+    buyingType?: string
+    isAutomated?: boolean
+    templateType?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    product?: ProductCreateNestedOneWithoutMetaCampaignsInput
+    adSets?: MetaAdSetCreateNestedManyWithoutCampaignInput
+  }
+
+  export type MetaCampaignUncheckedCreateWithoutInsightsInput = {
+    id?: string
+    metaCampaignId?: string | null
+    name: string
+    objective?: string
+    status?: string
+    dailyBudget?: number | null
+    lifetimeBudget?: number | null
+    buyingType?: string
+    isAutomated?: boolean
+    templateType?: string | null
+    productId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    adSets?: MetaAdSetUncheckedCreateNestedManyWithoutCampaignInput
+  }
+
+  export type MetaCampaignCreateOrConnectWithoutInsightsInput = {
+    where: MetaCampaignWhereUniqueInput
+    create: XOR<MetaCampaignCreateWithoutInsightsInput, MetaCampaignUncheckedCreateWithoutInsightsInput>
+  }
+
+  export type MetaCampaignUpsertWithoutInsightsInput = {
+    update: XOR<MetaCampaignUpdateWithoutInsightsInput, MetaCampaignUncheckedUpdateWithoutInsightsInput>
+    create: XOR<MetaCampaignCreateWithoutInsightsInput, MetaCampaignUncheckedCreateWithoutInsightsInput>
+    where?: MetaCampaignWhereInput
+  }
+
+  export type MetaCampaignUpdateToOneWithWhereWithoutInsightsInput = {
+    where?: MetaCampaignWhereInput
+    data: XOR<MetaCampaignUpdateWithoutInsightsInput, MetaCampaignUncheckedUpdateWithoutInsightsInput>
+  }
+
+  export type MetaCampaignUpdateWithoutInsightsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaCampaignId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    objective?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    dailyBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    lifetimeBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    buyingType?: StringFieldUpdateOperationsInput | string
+    isAutomated?: BoolFieldUpdateOperationsInput | boolean
+    templateType?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    product?: ProductUpdateOneWithoutMetaCampaignsNestedInput
+    adSets?: MetaAdSetUpdateManyWithoutCampaignNestedInput
+  }
+
+  export type MetaCampaignUncheckedUpdateWithoutInsightsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaCampaignId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    objective?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    dailyBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    lifetimeBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    buyingType?: StringFieldUpdateOperationsInput | string
+    isAutomated?: BoolFieldUpdateOperationsInput | boolean
+    templateType?: NullableStringFieldUpdateOperationsInput | string | null
+    productId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    adSets?: MetaAdSetUncheckedUpdateManyWithoutCampaignNestedInput
   }
 
   export type ProductCreateManyCategoryInput = {
@@ -13751,6 +26806,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     variants?: ProductVariantUpdateManyWithoutProductNestedInput
     wishlists?: WishlistUpdateManyWithoutProductNestedInput
+    metaCampaigns?: MetaCampaignUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateWithoutCategoryInput = {
@@ -13767,6 +26823,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     variants?: ProductVariantUncheckedUpdateManyWithoutProductNestedInput
     wishlists?: WishlistUncheckedUpdateManyWithoutProductNestedInput
+    metaCampaigns?: MetaCampaignUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateManyWithoutCategoryInput = {
@@ -13801,6 +26858,21 @@ export namespace Prisma {
     id?: string
     userId: string
     createdAt?: Date | string
+  }
+
+  export type MetaCampaignCreateManyProductInput = {
+    id?: string
+    metaCampaignId?: string | null
+    name: string
+    objective?: string
+    status?: string
+    dailyBudget?: number | null
+    lifetimeBudget?: number | null
+    buyingType?: string
+    isAutomated?: boolean
+    templateType?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type ProductVariantUpdateWithoutProductInput = {
@@ -13863,6 +26935,55 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MetaCampaignUpdateWithoutProductInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaCampaignId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    objective?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    dailyBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    lifetimeBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    buyingType?: StringFieldUpdateOperationsInput | string
+    isAutomated?: BoolFieldUpdateOperationsInput | boolean
+    templateType?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    adSets?: MetaAdSetUpdateManyWithoutCampaignNestedInput
+    insights?: MetaInsightUpdateManyWithoutCampaignNestedInput
+  }
+
+  export type MetaCampaignUncheckedUpdateWithoutProductInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaCampaignId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    objective?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    dailyBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    lifetimeBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    buyingType?: StringFieldUpdateOperationsInput | string
+    isAutomated?: BoolFieldUpdateOperationsInput | boolean
+    templateType?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    adSets?: MetaAdSetUncheckedUpdateManyWithoutCampaignNestedInput
+    insights?: MetaInsightUncheckedUpdateManyWithoutCampaignNestedInput
+  }
+
+  export type MetaCampaignUncheckedUpdateManyWithoutProductInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaCampaignId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    objective?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    dailyBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    lifetimeBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    buyingType?: StringFieldUpdateOperationsInput | string
+    isAutomated?: BoolFieldUpdateOperationsInput | boolean
+    templateType?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type OrderItemCreateManyVariantInput = {
@@ -14051,6 +27172,204 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type MetaAdSetCreateManyCampaignInput = {
+    id?: string
+    metaAdSetId?: string | null
+    name: string
+    status?: string
+    dailyBudget?: number | null
+    targetingJson?: NullableJsonNullValueInput | InputJsonValue
+    optimizationGoal?: string
+    billingEvent?: string
+    bidAmount?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MetaInsightCreateManyCampaignInput = {
+    id?: string
+    entityType: string
+    entityId: string
+    date: Date | string
+    spend?: number
+    impressions?: number
+    clicks?: number
+    ctr?: number
+    cpc?: number
+    purchases?: number
+    purchaseValue?: number
+    roas?: number
+    costPerPurchase?: number
+    createdAt?: Date | string
+  }
+
+  export type MetaAdSetUpdateWithoutCampaignInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaAdSetId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    dailyBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    targetingJson?: NullableJsonNullValueInput | InputJsonValue
+    optimizationGoal?: StringFieldUpdateOperationsInput | string
+    billingEvent?: StringFieldUpdateOperationsInput | string
+    bidAmount?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ads?: MetaAdUpdateManyWithoutAdSetNestedInput
+  }
+
+  export type MetaAdSetUncheckedUpdateWithoutCampaignInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaAdSetId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    dailyBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    targetingJson?: NullableJsonNullValueInput | InputJsonValue
+    optimizationGoal?: StringFieldUpdateOperationsInput | string
+    billingEvent?: StringFieldUpdateOperationsInput | string
+    bidAmount?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ads?: MetaAdUncheckedUpdateManyWithoutAdSetNestedInput
+  }
+
+  export type MetaAdSetUncheckedUpdateManyWithoutCampaignInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaAdSetId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    dailyBudget?: NullableIntFieldUpdateOperationsInput | number | null
+    targetingJson?: NullableJsonNullValueInput | InputJsonValue
+    optimizationGoal?: StringFieldUpdateOperationsInput | string
+    billingEvent?: StringFieldUpdateOperationsInput | string
+    bidAmount?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MetaInsightUpdateWithoutCampaignInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    entityType?: StringFieldUpdateOperationsInput | string
+    entityId?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    spend?: IntFieldUpdateOperationsInput | number
+    impressions?: IntFieldUpdateOperationsInput | number
+    clicks?: IntFieldUpdateOperationsInput | number
+    ctr?: FloatFieldUpdateOperationsInput | number
+    cpc?: FloatFieldUpdateOperationsInput | number
+    purchases?: IntFieldUpdateOperationsInput | number
+    purchaseValue?: IntFieldUpdateOperationsInput | number
+    roas?: FloatFieldUpdateOperationsInput | number
+    costPerPurchase?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MetaInsightUncheckedUpdateWithoutCampaignInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    entityType?: StringFieldUpdateOperationsInput | string
+    entityId?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    spend?: IntFieldUpdateOperationsInput | number
+    impressions?: IntFieldUpdateOperationsInput | number
+    clicks?: IntFieldUpdateOperationsInput | number
+    ctr?: FloatFieldUpdateOperationsInput | number
+    cpc?: FloatFieldUpdateOperationsInput | number
+    purchases?: IntFieldUpdateOperationsInput | number
+    purchaseValue?: IntFieldUpdateOperationsInput | number
+    roas?: FloatFieldUpdateOperationsInput | number
+    costPerPurchase?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MetaInsightUncheckedUpdateManyWithoutCampaignInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    entityType?: StringFieldUpdateOperationsInput | string
+    entityId?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    spend?: IntFieldUpdateOperationsInput | number
+    impressions?: IntFieldUpdateOperationsInput | number
+    clicks?: IntFieldUpdateOperationsInput | number
+    ctr?: FloatFieldUpdateOperationsInput | number
+    cpc?: FloatFieldUpdateOperationsInput | number
+    purchases?: IntFieldUpdateOperationsInput | number
+    purchaseValue?: IntFieldUpdateOperationsInput | number
+    roas?: FloatFieldUpdateOperationsInput | number
+    costPerPurchase?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MetaAdCreateManyAdSetInput = {
+    id?: string
+    metaAdId?: string | null
+    name: string
+    status?: string
+    creativeAngle: string
+    headline: string
+    primaryText: string
+    description?: string | null
+    callToAction?: string
+    imageUrl: string
+    destinationUrl: string
+    creativeJson?: NullableJsonNullValueInput | InputJsonValue
+    productId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MetaAdUpdateWithoutAdSetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaAdId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    creativeAngle?: StringFieldUpdateOperationsInput | string
+    headline?: StringFieldUpdateOperationsInput | string
+    primaryText?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    callToAction?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    destinationUrl?: StringFieldUpdateOperationsInput | string
+    creativeJson?: NullableJsonNullValueInput | InputJsonValue
+    productId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MetaAdUncheckedUpdateWithoutAdSetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaAdId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    creativeAngle?: StringFieldUpdateOperationsInput | string
+    headline?: StringFieldUpdateOperationsInput | string
+    primaryText?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    callToAction?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    destinationUrl?: StringFieldUpdateOperationsInput | string
+    creativeJson?: NullableJsonNullValueInput | InputJsonValue
+    productId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MetaAdUncheckedUpdateManyWithoutAdSetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaAdId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    creativeAngle?: StringFieldUpdateOperationsInput | string
+    headline?: StringFieldUpdateOperationsInput | string
+    primaryText?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    callToAction?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    destinationUrl?: StringFieldUpdateOperationsInput | string
+    creativeJson?: NullableJsonNullValueInput | InputJsonValue
+    productId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
 
 
   /**
@@ -14080,6 +27399,14 @@ export namespace Prisma {
      * @deprecated Use UserCountOutputTypeDefaultArgs instead
      */
     export type UserCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use MetaCampaignCountOutputTypeDefaultArgs instead
+     */
+    export type MetaCampaignCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = MetaCampaignCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use MetaAdSetCountOutputTypeDefaultArgs instead
+     */
+    export type MetaAdSetCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = MetaAdSetCountOutputTypeDefaultArgs<ExtArgs>
     /**
      * @deprecated Use CategoryDefaultArgs instead
      */
@@ -14112,6 +27439,38 @@ export namespace Prisma {
      * @deprecated Use WishlistDefaultArgs instead
      */
     export type WishlistArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = WishlistDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use MetaConfigDefaultArgs instead
+     */
+    export type MetaConfigArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = MetaConfigDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use MetaCampaignDefaultArgs instead
+     */
+    export type MetaCampaignArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = MetaCampaignDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use MetaAdSetDefaultArgs instead
+     */
+    export type MetaAdSetArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = MetaAdSetDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use MetaAdDefaultArgs instead
+     */
+    export type MetaAdArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = MetaAdDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use MetaInsightDefaultArgs instead
+     */
+    export type MetaInsightArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = MetaInsightDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use MetaAutomationRuleDefaultArgs instead
+     */
+    export type MetaAutomationRuleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = MetaAutomationRuleDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use MetaActivityLogDefaultArgs instead
+     */
+    export type MetaActivityLogArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = MetaActivityLogDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use MetaConversionEventDefaultArgs instead
+     */
+    export type MetaConversionEventArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = MetaConversionEventDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

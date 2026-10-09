@@ -72,6 +72,19 @@ export default function CheckoutPage() {
     loadUser();
   }, []);
 
+  useEffect(() => {
+    if (items.length > 0) {
+      import("@/lib/pixel").then(({ trackPixelEvent }) => {
+        trackPixelEvent("InitiateCheckout", {
+          num_items: items.length,
+          value: subtotal() / 100,
+          currency: "INR",
+          content_ids: items.map((i) => i.variantId),
+        });
+      });
+    }
+  }, [items, subtotal]);
+
   function update<K extends keyof typeof form>(
     key: K,
     value: string

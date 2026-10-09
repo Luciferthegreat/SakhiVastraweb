@@ -32,6 +32,7 @@ model Product {
   category      Category?        @relation(fields: [categoryId], references: [id])
   variants      ProductVariant[]
   wishlists     Wishlist[]
+  metaCampaigns MetaCampaign[]
 }
 
 model ProductVariant {
@@ -140,4 +141,159 @@ enum OrderStatus {
   SHIPPED
   DELIVERED
   CANCELLED
+}
+
+model MetaConfig {
+  id                          String   @id @default(cuid())
+  adAccountId                 String?
+  pixelId                     String?
+  accessToken                 String?
+  capiToken                   String?
+  appId                       String?
+  appSecret                   String?
+  automationMode              String   @default("monitor") // "monitor" | "simulation" | "live"
+  automationEnabled           Boolean  @default(false)
+  dailySpendCap               Int      @default(500000) // in paise (₹5,000)
+  maxBudgetIncreasePct        Float    @default(10.0) // 10%
+  budgetIncreaseCooldownHours Int      @default(24) // 24 hours
+  minDataPurchases            Int      @default(3) // 3 purchases
+  minDataSpendPaise           Int      @default(100000) // ₹1,000
+  maxLossPerAdPaise           Int      @default(80000) // ₹800
+  targetRoas                  Float    @default(2.5) // 2.5x
+  emergencyStop               Boolean  @default(false)
+  autoSyncSchedule            String   @default("0 */2 * * *")
+  createdAt                   DateTime @default(now())
+  updatedAt                   DateTime @updatedAt
+}
+
+model MetaCampaign {
+  id             String   @id @default(cuid())
+  metaCampaignId String?  @unique
+  name           String
+  objective      String   @default("OUTCOME_SALES")
+  status         String   @default("PAUSED")
+  dailyBudget    Int? // in paise
+  lifetimeBudget Int? // in paise
+  buyingType     String   @default("AUCTION")
+  isAutomated    Boolean  @default(true)
+  templateType   String? // "HERO_BESTSELLER", "NEW_ARRIVAL", "FESTIVE_SPECIAL", "CLEARANCE"
+  productId      String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  product  Product?      @relation(fields: [productId], references: [id], onDelete: SetNull)
+  adSets   MetaAdSet[]
+  insights MetaInsight[]
+}
+
+model MetaAdSet {
+  id               String   @id @default(cuid())
+  metaAdSetId      String?  @unique
+  campaignId       String
+  name             String
+  status           String   @default("PAUSED")
+  dailyBudget      Int? // in paise
+  targetingJson    Json?
+  optimizationGoal String   @default("OFFSITE_CONVERSIONS")
+  billingEvent     String   @default("IMPRESSIONS")
+  bidAmount        Int?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  campaign MetaCampaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  ads      MetaAd[]
+}
+
+model MetaAd {
+  id             String   @id @default(cuid())
+  metaAdId       String?  @unique
+  adSetId        String
+  name           String
+  status         String   @default("PAUSED")
+  creativeAngle  String // "PRODUCT_SHOWCASE", "BENEFIT_FOCUS", "STYLING_OUTFIT", "PRICE_OFFER", "REEL_CONCEPT", "CAROUSEL"
+  headline       String
+  primaryText    String
+  description    String?
+  callToAction   String   @default("SHOP_NOW")
+  imageUrl       String
+  destinationUrl String
+  creativeJson   Json?
+  productId      String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  adSet MetaAdSet @relation(fields: [adSetId], references: [id], onDelete: Cascade)
+}
+
+model MetaInsight {
+  id              String   @id @default(cuid())
+  entityType      String // "ACCOUNT", "CAMPAIGN", "ADSET", "AD"
+  entityId        String
+  campaignId      String?
+  date            DateTime @db.Date
+  spend           Int      @default(0) // in paise
+  impressions     Int      @default(0)
+  clicks          Int      @default(0)
+  ctr             Float    @default(0)
+  cpc             Float    @default(0)
+  purchases       Int      @default(0)
+  purchaseValue   Int      @default(0) // in paise
+  roas            Float    @default(0)
+  costPerPurchase Float    @default(0)
+  createdAt       DateTime @default(now())
+
+  campaign MetaCampaign? @relation(fields: [campaignId], references: [id], onDelete: SetNull)
+
+  @@unique([entityType, entityId, date])
+}
+
+model MetaAutomationRule {
+  id                      String    @id @default(cuid())
+  name                    String
+  description             String?
+  ruleType                String // "PAUSE_LOSER", "SCALE_WINNER", "PREVENT_OVERSPEND", "INVENTORY_CHECK", "FATIGUE_CHECK"
+  enabled                 Boolean   @default(true)
+  conditionJson           Json
+  actionJson              Json
+  evaluationCooldownHours Int       @default(6)
+  lastEvaluatedAt         DateTime?
+  createdAt               DateTime  @default(now())
+  updatedAt               DateTime  @updatedAt
+}
+
+model MetaActivityLog {
+  id            String   @id @default(cuid())
+  timestamp     DateTime @default(now())
+  action        String // "PAUSE_AD", "INCREASE_BUDGET", "CREATE_CAMPAIGN", "INVENTORY_PAUSE", "RULE_EVALUATION", "SYNC_INSIGHTS", "EMERGENCY_STOP"
+  entityType    String // "CAMPAIGN", "ADSET", "AD", "SYSTEM", "RULE"
+  entityId      String?
+  entityName    String?
+  ruleId        String?
+  ruleName      String?
+  previousValue String?
+  newValue      String?
+  reason        String
+  mode          String   @default("simulation") // "simulation" | "live" | "monitor"
+  status        String   @default("SUCCESS") // "SUCCESS" | "FAILED" | "BLOCKED_BY_SAFETY"
+  apiPayload    Json?
+  apiResponse   Json?
+  errorMessage  String?
+}
+
+model MetaConversionEvent {
+  id           String   @id @default(cuid())
+  eventId      String   @unique
+  eventName    String // "PageView", "ViewContent", "AddToCart", "InitiateCheckout", "Purchase"
+  eventTime    DateTime @default(now())
+  sourceUrl    String?
+  orderId      String?
+  userEmail    String?
+  userPhone    String?
+  value        Int? // in paise
+  currency     String   @default("INR")
+  browserSent  Boolean  @default(false)
+  serverSent   Boolean  @default(false)
+  serverStatus String? // "SENT", "FAILED", "SKIPPED"
+  serverError  String?
+  createdAt    DateTime @default(now())
 }

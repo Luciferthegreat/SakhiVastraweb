@@ -221,9 +221,160 @@ exports.Prisma.WishlistScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.MetaConfigScalarFieldEnum = {
+  id: 'id',
+  adAccountId: 'adAccountId',
+  pixelId: 'pixelId',
+  accessToken: 'accessToken',
+  capiToken: 'capiToken',
+  appId: 'appId',
+  appSecret: 'appSecret',
+  automationMode: 'automationMode',
+  automationEnabled: 'automationEnabled',
+  dailySpendCap: 'dailySpendCap',
+  maxBudgetIncreasePct: 'maxBudgetIncreasePct',
+  budgetIncreaseCooldownHours: 'budgetIncreaseCooldownHours',
+  minDataPurchases: 'minDataPurchases',
+  minDataSpendPaise: 'minDataSpendPaise',
+  maxLossPerAdPaise: 'maxLossPerAdPaise',
+  targetRoas: 'targetRoas',
+  emergencyStop: 'emergencyStop',
+  autoSyncSchedule: 'autoSyncSchedule',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.MetaCampaignScalarFieldEnum = {
+  id: 'id',
+  metaCampaignId: 'metaCampaignId',
+  name: 'name',
+  objective: 'objective',
+  status: 'status',
+  dailyBudget: 'dailyBudget',
+  lifetimeBudget: 'lifetimeBudget',
+  buyingType: 'buyingType',
+  isAutomated: 'isAutomated',
+  templateType: 'templateType',
+  productId: 'productId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.MetaAdSetScalarFieldEnum = {
+  id: 'id',
+  metaAdSetId: 'metaAdSetId',
+  campaignId: 'campaignId',
+  name: 'name',
+  status: 'status',
+  dailyBudget: 'dailyBudget',
+  targetingJson: 'targetingJson',
+  optimizationGoal: 'optimizationGoal',
+  billingEvent: 'billingEvent',
+  bidAmount: 'bidAmount',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.MetaAdScalarFieldEnum = {
+  id: 'id',
+  metaAdId: 'metaAdId',
+  adSetId: 'adSetId',
+  name: 'name',
+  status: 'status',
+  creativeAngle: 'creativeAngle',
+  headline: 'headline',
+  primaryText: 'primaryText',
+  description: 'description',
+  callToAction: 'callToAction',
+  imageUrl: 'imageUrl',
+  destinationUrl: 'destinationUrl',
+  creativeJson: 'creativeJson',
+  productId: 'productId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.MetaInsightScalarFieldEnum = {
+  id: 'id',
+  entityType: 'entityType',
+  entityId: 'entityId',
+  campaignId: 'campaignId',
+  date: 'date',
+  spend: 'spend',
+  impressions: 'impressions',
+  clicks: 'clicks',
+  ctr: 'ctr',
+  cpc: 'cpc',
+  purchases: 'purchases',
+  purchaseValue: 'purchaseValue',
+  roas: 'roas',
+  costPerPurchase: 'costPerPurchase',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.MetaAutomationRuleScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  ruleType: 'ruleType',
+  enabled: 'enabled',
+  conditionJson: 'conditionJson',
+  actionJson: 'actionJson',
+  evaluationCooldownHours: 'evaluationCooldownHours',
+  lastEvaluatedAt: 'lastEvaluatedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.MetaActivityLogScalarFieldEnum = {
+  id: 'id',
+  timestamp: 'timestamp',
+  action: 'action',
+  entityType: 'entityType',
+  entityId: 'entityId',
+  entityName: 'entityName',
+  ruleId: 'ruleId',
+  ruleName: 'ruleName',
+  previousValue: 'previousValue',
+  newValue: 'newValue',
+  reason: 'reason',
+  mode: 'mode',
+  status: 'status',
+  apiPayload: 'apiPayload',
+  apiResponse: 'apiResponse',
+  errorMessage: 'errorMessage'
+};
+
+exports.Prisma.MetaConversionEventScalarFieldEnum = {
+  id: 'id',
+  eventId: 'eventId',
+  eventName: 'eventName',
+  eventTime: 'eventTime',
+  sourceUrl: 'sourceUrl',
+  orderId: 'orderId',
+  userEmail: 'userEmail',
+  userPhone: 'userPhone',
+  value: 'value',
+  currency: 'currency',
+  browserSent: 'browserSent',
+  serverSent: 'serverSent',
+  serverStatus: 'serverStatus',
+  serverError: 'serverError',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull
+};
+
+exports.Prisma.JsonNullValueInput = {
+  JsonNull: Prisma.JsonNull
 };
 
 exports.Prisma.QueryMode = {
@@ -234,6 +385,12 @@ exports.Prisma.QueryMode = {
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
+};
+
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
 };
 exports.PaymentStatus = exports.$Enums.PaymentStatus = {
   PENDING: 'PENDING',
@@ -259,7 +416,15 @@ exports.Prisma.ModelName = {
   Order: 'Order',
   OrderItem: 'OrderItem',
   User: 'User',
-  Wishlist: 'Wishlist'
+  Wishlist: 'Wishlist',
+  MetaConfig: 'MetaConfig',
+  MetaCampaign: 'MetaCampaign',
+  MetaAdSet: 'MetaAdSet',
+  MetaAd: 'MetaAd',
+  MetaInsight: 'MetaInsight',
+  MetaAutomationRule: 'MetaAutomationRule',
+  MetaActivityLog: 'MetaActivityLog',
+  MetaConversionEvent: 'MetaConversionEvent'
 };
 
 /**

@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/db";
+import PurchaseTracker from "@/components/PurchaseTracker";
 
 function formatInr(paise: number) {
   return `₹${(paise / 100).toLocaleString("en-IN")}`;
@@ -15,6 +16,11 @@ export default async function OrderConfirmationPage({ params }: { params: { orde
 
   return (
     <section className="max-w-2xl mx-auto px-6 py-20 text-center">
+      <PurchaseTracker
+        orderNumber={order.orderNumber}
+        totalPaise={order.total}
+        itemsCount={order.items.reduce((acc, i) => acc + i.quantity, 0)}
+      />
       <p className="text-xs uppercase tracking-widest text-zari mb-3">Order confirmed</p>
       <h1 className="font-display text-4xl text-ink mb-2">Thank you, {order.address.fullName}.</h1>
       <p className="text-ink/60 mb-10">

@@ -1,24 +1,23 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export function middleware(request: NextRequest) {
+  const pathname = request.nextUrl.pathname;
+
+  // Allow login page itself
+  if (pathname === "/malik") {
+    return NextResponse.next();
+  }
+
   const adminCookie = request.cookies.get("malik_admin");
 
-  console.log(
-    "🔥 MIDDLEWARE:",
-    request.nextUrl.pathname,
-    "COOKIE:",
-    adminCookie?.value
-  );
-
-  // Agar login nahi hai to /malik par bhejo
+  // If not authenticated, redirect to /malik login
   if (!adminCookie || adminCookie.value !== "authenticated") {
     return NextResponse.redirect(new URL("/malik", request.url));
   }
 
-  // Login hai → /sync open hone do
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/sync/:path*"],
+  matcher: ["/sync/:path*", "/malik/:path*"],
 };
